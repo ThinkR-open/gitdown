@@ -1,0 +1,108 @@
+---
+title: "Create commit_down"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{aa-create-commit_down}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(commitdown)
+library(git2r)
+library(dplyr)
+```
+
+
+# Read list of commits
+
+## Reproducible example
+
+Create a versioned directory with some commits and a NEWS.md
+
+- Some commits mention an issue with `#`
+- Some commits mention a ticket with `ticket`
+
+```{r}
+library(git2r)
+path <- tempfile(pattern="git2r-")
+dir.create(path)
+repo <- init(path)
+
+## Config user
+config(repo, user.name="Alice", user.email="alice@example.org")
+
+## Write to a file and commit
+writeLines("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do",
+           file.path(path, "example.txt"))
+add(repo, "example.txt")
+commit(repo, "First commit message")
+
+## Change file and commit
+writeLines(c("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do",
+             "eiusmod tempor incididunt ut labore et dolore magna aliqua."),
+           file.path(path, "example.txt"))
+add(repo, "example.txt")
+commit(repo, "example: modification\n\nissue #1\nticket1234")
+
+## Create a tag
+tag(repo, "v0.1", "Tag v0.1 message")
+
+## Change file again and commit
+writeLines(c("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do",
+             "eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad",
+             "minim veniam, quis nostrud exercitation ullamco laboris nisi ut"),
+           file.path(path, "example.txt"))
+add(repo, "example.txt")
+commit(repo, "Third commit message\n\nissue #2.\nticket1234\n More information important for the project as breaking changes")
+
+## Add NEWS.md
+writeLines(c("# my.package 0.0.1",
+             "* example: modification 1. Issue #1.",
+             "* example: add info. Issue #2. ticket1234"),
+           file.path(path, "NEWS.md"))
+add(repo, "NEWS.md")
+commit(repo, "Add NEWS\n\nissue #32.\nissue #1.\nticket6789.\nticket1234\n Creation of the NEWS file for version 0.1.")
+```
+
+# Get commits and find pattern
+```{r}
+pattern <- "#[[:digit:]]+"
+# checkout(repo, "master")
+# Get commits
+all_commits <- git2r::commits(repo = repo, ref = "master", 
+                              topological = TRUE, time = TRUE,
+                              reverse = FALSE) %>% 
+  purrr::map_dfr(tibble::as_tibble) %>% 
+  mutate(
+    order = rev(1:n()),
+    # Find pattern
+    pattern = stringr::str_extract_all(message, pattern)
+  )
+
+# Get all tags
+as.data.frame(unlist(tags(repo)[[1]]))
+
+all_tags <- do.call(rbind, lapply(tags(repo), function(x) unlist(x))) %>% 
+  as_tibble() %>% 
+  select(name, message, target) %>% 
+  rename(sha = target, tag.name = name, tag.message = message)
+
+# Associate tags with commits
+all_commits_unnest <- all_commits_tbl %>% 
+  left_join(all_tags, by = "sha") %>% 
+  # Fill tag.name
+  arrange(desc(order)) %>% 
+  tidyr::fill(tag.name) %>% 
+  tidyr::unnest(pattern)
+
+all_commits_unnest$pattern
+```
+
