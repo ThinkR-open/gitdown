@@ -1,15 +1,13 @@
-Package: commitdown
+Package: gitdown
 Title: What the Package Does (one line, title case)
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com")
+    c(person(given = "Sébastien", family = "Rochette", role = c("aut", "cre"), email = "sebastien@thinkr.fr", comment = c(ORCID = "0000-0002-1565-9313")),
+    person(given = "ThinkR", role = "cph"))
 Description: What the package does (one paragraph).
-License: What license is it under?
+License: MIT + file LICENSE
 Depends: 
-    R (>= 3.6.1)
+    R (>= 3.5)
 Imports: 
     git2r
 Suggests: 

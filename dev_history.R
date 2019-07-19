@@ -1,6 +1,7 @@
 # General
 usethis::use_build_ignore("dev_history.R")
 usethis::use_git(message = "init commitdown")
+usethis::use_mit_license("ThinkR")
 
 # Functions
 usethis::use_r("fake_repo")
