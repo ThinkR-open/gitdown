@@ -1,4 +1,4 @@
 library(testthat)
-library(commitdown)
+library(gitdown)
 
-test_check("commitdown")
+test_check("gitdown")

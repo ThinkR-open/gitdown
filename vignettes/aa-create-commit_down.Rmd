@@ -15,11 +15,10 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(commitdown)
+library(gitdown)
 library(git2r)
 library(dplyr)
 ```
-
 
 # Read list of commits
 
@@ -29,43 +28,23 @@ Create a versioned directory with some commits and a NEWS.md
 
 - Some commits mention an issue with `#`
 - Some commits mention a ticket with `ticket`
+- A commit is associated with a tag
 
 ```{r}
 repo <- fake_repo()
 ```
 
 # Get commits and find pattern
+
+- Find all commits of a branch and associate with tags recursively
+
 ```{r}
-pattern <- "#[[:digit:]]+"
-# checkout(repo, "master")
-# Get commits
-all_commits <- git2r::commits(
-  repo = repo, ref = "master",
-  topological = TRUE, time = TRUE, reverse = FALSE
-) %>%
-  purrr::map_dfr(tibble::as_tibble) %>%
-  mutate(
-    order = rev(1:n()),
-    # Find pattern
-    pattern = stringr::str_extract_all(message, pattern)
-  )
+get_commits_tags(repo, ref = "master")
+```
 
-# Get all tags
-as.data.frame(unlist(tags(repo)[[1]]))
-
-all_tags <- do.call(rbind, lapply(tags(repo), function(x) unlist(x))) %>%
-  as_tibble() %>%
-  select(name, message, target) %>%
-  rename(sha = target, tag.name = name, tag.message = message)
-
-# Associate tags with commits
-all_commits_unnest <- all_commits %>%
-  left_join(all_tags, by = "sha") %>%
-  # Fill tag.name
-  arrange(desc(order)) %>%
-  tidyr::fill(tag.name, tag.message) %>%
-  tidyr::unnest(pattern)
-
-all_commits_unnest$pattern
+- Find all commits of a branch and detect a specific pattern
+    + Here we find commits mentionning an issue with `#123`
+```{r}
+get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master")
 ```
 

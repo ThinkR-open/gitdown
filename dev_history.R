@@ -1,14 +1,31 @@
-# General
+# General ----
 usethis::use_build_ignore("dev_history.R")
 usethis::use_git(message = "init commitdown")
 usethis::use_mit_license("ThinkR")
 
-# Functions
+# Functions ----
+usethis::use_pipe()
 usethis::use_r("fake_repo")
 usethis::use_test("fake_repo")
+usethis::use_r("get_commits")
+usethis::use_test("get_commits")
 
-# Documentation
+# Documentation ----
 usethis::use_vignette("aa-create-commit_down")
+usethis::use_readme_rmd()
 
-# Dependencies
+# Dependencies ----
 attachment::att_to_description()
+
+# dev ----
+devtools::load_all()
+devtools::test()
+
+# GLobalVariables ----
+usethis::use_r("globals.R")
+globals <- checkhelper::get_no_visible()
+globals
+# Print globals to copy-paste
+checkhelper::print_globals(globals)
+# Store in package using usethis::use_r("globals")
+

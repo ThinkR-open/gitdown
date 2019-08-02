@@ -1,24 +1,30 @@
 Package: gitdown
-Title: What the Package Does (one line, title case)
+Title: Turn Your Git Commit Messages Into A Bookdown
 Version: 0.0.0.9000
 Authors@R: 
-    c(person(given = "Sébastien", family = "Rochette", role = c("aut", "cre"), email = "sebastien@thinkr.fr", comment = c(ORCID = "0000-0002-1565-9313")),
-    person(given = "ThinkR", role = "cph"))
-Description: What the package does (one paragraph).
+    c(person(given = "Sébastien",
+             family = "Rochette",
+             role = c("aut", "cre"),
+             email = "sebastien@thinkr.fr",
+             comment = c(ORCID = "0000-0002-1565-9313")),
+      person(given = "ThinkR",
+             role = "cph"))
+Description: Read all commit messages and sort them according to
+    tags or specific text pattern.
 License: MIT + file LICENSE
 Depends: 
     R (>= 3.5)
 Imports: 
-    git2r
-Suggests: 
     dplyr,
-    knitr,
+    git2r,
+    magrittr,
     purrr,
-    rmarkdown,
     stringr,
-    testthat (>= 2.1.0),
-    tibble,
     tidyr
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 2.1.0)
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
