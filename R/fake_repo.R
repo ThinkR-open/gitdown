@@ -61,5 +61,5 @@ fake_repo <- function(path = tempfile(pattern = "git2r-")) {
   add(repo, "NEWS.md")
   commit(repo, "Add NEWS\n\nissue #32.\nissue #1.\nticket6789.\nticket1234\n Creation of the NEWS file for version 0.1.")
 
-  return(repo)
+  return(path)
 }

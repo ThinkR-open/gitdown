@@ -1,0 +1,47 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# gitdown
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of {gitdown} is to build a bookdown report of commit messages arranged according to a pattern. Book can be organised according to git tags, issues mentionned (*e.g.* `#123`) or any custom character chain included in your git commit messages (*e.g.* `category_` for use like `category_ui`, `category_doc`, ...).
+
+## Installation
+
+You can install the last version of {gitdown} from Github:
+
+``` r
+remotes::install_github("gitdown")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example, message=FALSE}
+library(dplyr)
+library(gitdown)
+## Create fake repository for the example
+repo <- fake_repo()
+```
+
+Get commits with issues mentionned. The searched pattern is a `#` followed by at least one number: `pattern = "#[[:digit:]]+"`.
+
+```{r}
+get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master") %>% 
+  select(pattern, everything())
+```
+

@@ -13,6 +13,7 @@ usethis::use_test("get_commits")
 # Documentation ----
 usethis::use_vignette("aa-create-commit_down")
 usethis::use_readme_rmd()
+usethis::use_vignette("ab-create-git_down")
 
 # Dependencies ----
 attachment::att_to_description()

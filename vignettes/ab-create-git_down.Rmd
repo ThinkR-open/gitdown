@@ -1,0 +1,42 @@
+---
+title: "ab-create-git_down"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ab-create-git_down}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(gitdown)
+```
+
+## Create book of commits
+
+### Reproducible example
+
+Create a versioned directory with some commits and a NEWS.md
+
+- Some commits mention an issue with `#`
+- Some commits mention a ticket with `ticket`
+- A commit is associated with a tag
+
+```{r}
+repo <- fake_repo()
+```
+
+### Build book
+
+```{r}
+devtools::load_all()
+browseURL(repo)
+git_down(repo)
+```
+
