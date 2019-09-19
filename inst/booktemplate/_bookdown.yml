@@ -1,5 +1,5 @@
-book_filename: "teeest"
+book_filename: "Gitbook"
 delete_merged_file: true
 language:
   ui:
-    chapter_name: "Context "
+    chapter_name: ""

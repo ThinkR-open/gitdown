@@ -4,7 +4,8 @@
 \alias{git_down}
 \title{git history to bookdown}
 \usage{
-git_down(repo = ".", book_path = "gitdown", open = TRUE)
+git_down(repo = ".", book_path = "gitdown", open = TRUE,
+  author = "John Doe", pattern, names_section, ref = "master")
 }
 \arguments{
 \item{repo}{The path to a repository. Default is `.`}
@@ -12,6 +13,14 @@ git_down(repo = ".", book_path = "gitdown", open = TRUE)
 \item{book_path}{The path to the bookdown output. Default is `"gitdown"`.}
 
 \item{open}{Should the bookdown be opened once compiled? Default is TRUE.}
+
+\item{author}{Author of the Bookdown}
+
+\item{pattern}{pattern to expose commits, like "#[[:digit:]]" for issues}
+
+\item{names_section}{names for each section, one pattern = one section}
+
+\item{ref}{the name of the branch, by default master}
 }
 \description{
 This function turns the history of git into a bookdown.

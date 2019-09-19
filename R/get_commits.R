@@ -6,7 +6,7 @@
 #' @return A tibble with commits and tags
 #'
 #' @importFrom git2r commits tags
-#' @importFrom purrr map_dfr
+#' @importFrom purrr map_dfr flatten
 #' @importFrom dplyr mutate n as_tibble select rename left_join arrange desc tibble
 #' @importFrom tidyr fill
 #'
@@ -17,7 +17,6 @@
 #' get_commits_tags(repo = repo)
 get_commits_tags <- function(repo = ".", ref = "master",
                              path = NULL, silent = FALSE) {
-
   # checkout(repo, "master")
   # Get commits
   all_commits <- commits(
@@ -35,10 +34,21 @@ get_commits_tags <- function(repo = ".", ref = "master",
     if (!isTRUE(silent)) {message("No tag found in this repository.")}
     all_tags <- tibble(sha = NA_character_, tag.name = NA_character_, tag.message = NA_character_)
   } else {
-    all_tags <- do.call(rbind, lapply(list_tags, function(x) unlist(x))) %>%
-      as_tibble() %>%
-      select(name, message, target) %>%
-      rename(sha = target, tag.name = name, tag.message = message)
+    #TODO change for modify from purrr
+    for(i in names(list_tags)){
+    list_tags[[i]][["name"]] <- i
+    }
+      all_tags <- do.call(rbind, lapply(list_tags, function(x) unlist(x))) %>%
+      as_tibble()
+      if("target" %in% names(all_tags)){
+        all_tags <- all_tags %>%
+          select(name, message, target) %>%
+          rename(sha = target, tag.name = name, tag.message = message)
+      }else{
+          all_tags <- all_tags %>%
+            select(name,message,sha) %>%
+            rename( tag.name = name, tag.message = message)
+        }
   }
 
   # Associate tags with commits

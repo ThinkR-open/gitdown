@@ -7,6 +7,11 @@ Authors@R:
              role = c("aut", "cre"),
              email = "sebastien@thinkr.fr",
              comment = c(ORCID = "0000-0002-1565-9313")),
+      person(given = "Cervan",
+             family = "Girard",
+             role = "aut",
+             email = "cervan@thinkr.fr",
+             comment = c(ORCID = "0000-0002-4816-4624")),
       person(given = "ThinkR",
              role = "cph"))
 Description: Read all commit messages and sort them according to
@@ -28,7 +33,8 @@ Imports:
     tidyr,
     utils
 Suggests: 
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    withr
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

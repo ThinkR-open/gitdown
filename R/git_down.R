@@ -7,6 +7,9 @@
 #' @param book_path The path to the bookdown output. Default is `"gitdown"`.
 #' @param open Should the bookdown be opened once compiled? Default is TRUE.
 #' @param author Author of the Bookdown
+#' @param pattern pattern to expose commits, like "#[[:digit:]]" for issues
+#' @param names_section names for each section, one pattern = one section
+#' @param ref the name of the branch, by default master
 #'
 #' @export
 #'
@@ -19,10 +22,10 @@
 #' @importFrom tidyr nest
 #' @importFrom utils read.csv2 browseURL data
 #' @importFrom magrittr %>%
+#' @importFrom git2r workdir
+#' @importFrom purrr walk2
 #'
-git_down <- function(repo = ".", book_path = "gitdown", open = TRUE, author = "John Doe"){
-  browser()
-  # meta <- as.package(repo)
+git_down <- function(repo = ".", book_path = "gitdown", open = TRUE, author = "John Doe", pattern, names_section, ref = "master"){
   unlink(file.path(repo, book_path), recursive = TRUE)
   if_not(
     file.path(repo, book_path),
@@ -35,7 +38,7 @@ git_down <- function(repo = ".", book_path = "gitdown", open = TRUE, author = "J
   )
   replace_in_file(
     file.path(repo, book_path, "_bookdown.yml"),
-    "teeest",
+    "Gitbook",
     basename(repo))
   replace_in_file(
     file.path(repo, book_path, "index.Rmd"),
@@ -47,36 +50,18 @@ git_down <- function(repo = ".", book_path = "gitdown", open = TRUE, author = "J
     "Yihui Xie",
     gsub("([^<]+) <.*", "\\1", author)
   )
-  # temp_csv <- file.path(repo, book_path, "testcsv.csv")
-  # file.create(temp_csv)
-  # on.exit(unlink(temp_csv))
-  # write(file = temp_csv, "Context; Test;Location;Test time;Result;File Name")
-  # a <- test(repo, reporter = rmd_reporter)
-  commits <- get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master", silent = TRUE)
 
+  pat <- pattern
+  meta_name <- basename(git2r::workdir(repo = repo))
+  write_file <- function(x){
+    write_in(x = x, repo = repo)
+    }
+  write_file("\n")
+  write_file(paste("# Gitbook for ", meta_name,"{-} \n"))
+  write_file(paste("Done on:", Sys.time(),"\n"))
+  write_file("\n")
 
-  write_in <- function(x, there = file.path(repo, "tests/testdown", "index.Rmd")){
-    write(x, file = there, append = TRUE)
-  }
-  write_in("\n")
-  write_in(paste("# Coverage results for package", meta$package,"{-} \n"))
-  write_in(paste("Done on:", Sys.time(),"\n"))
-  write_in("\n")
-  write_in(kable(a))
-  y <- read.csv2(temp_csv)
-  x <- y %>%
-    group_by(Context, File.Name) %>%
-    nest()
-  res <- pull(x, data)
-  res <- setNames(res, x$Context)
-  for (i in seq_along(res)){
-    write_in("\n")
-    write_in( paste( "#", names(res)[i] ) )
-    write_in("\n")
-    write_in(kable(res[i]))
-    write_in("\n")
-  }
-
+  walk2(pat, names_section, ~ each_pattern(.x, .y, repo, ref, write_file))
   res <- render(
     file.path(repo, "gitdown", "index.Rmd"))
   #knit(file.path(repo, "tests/testdown", "index.Rmd"))

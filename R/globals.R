@@ -1,5 +1,5 @@
 globalVariables(
   unique(c(
-    "name", "target", "tag.name", "tag.message"
+    "name", "sha", "target", "tag.name", "tag.message", "pattern", "order", "."
   ))
 )

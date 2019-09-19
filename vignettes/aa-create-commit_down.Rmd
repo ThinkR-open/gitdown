@@ -15,7 +15,8 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(gitdown)
+devtools::load_all()
+# library(gitdown)
 library(git2r)
 library(dplyr)
 ```
