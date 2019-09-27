@@ -18,7 +18,7 @@ included in your git commit messages (*e.g.* `category_` for use like
 You can install the last version of {gitdown} from Github:
 
 ``` r
-remotes::install_github("gitdown")
+remotes::install_github("ThinkR-open/gitdown")
 ```
 
 ## Example
@@ -43,11 +43,18 @@ get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master") %>%
 #> # A tibble: 6 x 10
 #>   pattern sha   summary message author email when                order
 #>   <chr>   <chr> <chr>   <chr>   <chr>  <chr> <dttm>              <int>
-#> 1 #32     ce7e… Add NE… "Add N… Alice  alic… 2019-09-12 22:22:49     4
-#> 2 #1      ce7e… Add NE… "Add N… Alice  alic… 2019-09-12 22:22:49     4
-#> 3 #2      6ace… Third … "Third… Alice  alic… 2019-09-12 22:22:49     3
-#> 4 #145    6ace… Third … "Third… Alice  alic… 2019-09-12 22:22:49     3
-#> 5 #1      67a1… exampl… "examp… Alice  alic… 2019-09-12 22:22:49     2
-#> 6 <NA>    ecdc… First … First … Alice  alic… 2019-09-12 22:22:49     1
+#> 1 #32     9934… Add NE… "Add N… Alice  alic… 2019-09-27 11:08:48     4
+#> 2 #1      9934… Add NE… "Add N… Alice  alic… 2019-09-27 11:08:48     4
+#> 3 #2      ec63… Third … "Third… Alice  alic… 2019-09-27 11:08:48     3
+#> 4 #145    ec63… Third … "Third… Alice  alic… 2019-09-27 11:08:48     3
+#> 5 #1      ad53… exampl… "examp… Alice  alic… 2019-09-27 11:08:48     2
+#> 6 <NA>    0901… First … First … Alice  alic… 2019-09-27 11:08:48     1
 #> # … with 2 more variables: tag.name <chr>, tag.message <chr>
+```
+
+## Create a gitbook of commits sorted by a pattern
+
+``` r
+git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"), 
+         names_section = c("Ticket", "Issues"))
 ```

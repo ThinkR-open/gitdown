@@ -18,7 +18,7 @@ usethis::use_readme_rmd()
 usethis::use_vignette("ab-create-git_down")
 
 # Dependencies ----
-attachment::att_to_description()
+attachment::att_to_description(extra.suggests = "bookdown")
 
 # dev ----
 devtools::load_all()

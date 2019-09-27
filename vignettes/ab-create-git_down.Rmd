@@ -35,7 +35,7 @@ repo <- fake_repo()
 ### Build book
 
 ```{r, eval = FALSE}
-
-git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"), names_section = c("Ticket","Issues"))
+git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"), 
+         names_section = c("Ticket", "Issues"))
 ```
 

@@ -24,7 +24,7 @@ The goal of {gitdown} is to build a bookdown report of commit messages arranged 
 You can install the last version of {gitdown} from Github:
 
 ``` r
-remotes::install_github("gitdown")
+remotes::install_github("ThinkR-open/gitdown")
 ```
 
 ## Example
@@ -43,5 +43,12 @@ Get commits with issues mentionned. The searched pattern is a `#` followed by at
 ```{r}
 get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master") %>% 
   select(pattern, everything())
+```
+
+## Create a gitbook of commits sorted by a pattern
+
+```{r, eval=FALSE}
+git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"), 
+         names_section = c("Ticket", "Issues"))
 ```
 

@@ -33,6 +33,7 @@ Imports:
     tidyr,
     utils
 Suggests: 
+    bookdown,
     testthat (>= 2.1.0),
     withr
 VignetteBuilder: 

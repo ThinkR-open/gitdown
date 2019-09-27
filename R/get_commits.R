@@ -20,7 +20,7 @@ get_commits_tags <- function(repo = ".", ref = "master",
   # checkout(repo, "master")
   # Get commits
   all_commits <- commits(
-    repo = repo, ref = "master",
+    repo = repo, ref = ref,
     topological = TRUE, time = TRUE, reverse = FALSE
   ) %>%
     map_dfr(as_tibble) %>%

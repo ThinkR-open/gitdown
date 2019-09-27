@@ -65,22 +65,29 @@ each_commit <- function(data, write_in){
 #' @param write_in function to write in good place
 #'
 #' @importFrom purrr transpose set_names walk
-#' @importFrom dplyr filter arrange group_by
+#' @importFrom dplyr filter arrange group_by mutate
+#' @importFrom stringr str_extract_all
 #' @importFrom tidyr nest
 #'
 
 each_pattern <- function(vec_pattern, names_section, repo, ref = "master", write_in){
   write_in("\n")
   write_in("\n")
-  write_in(paste("# Section :", names_section))
-  commits <- get_commits_pattern(repo, pattern = vec_pattern, ref = ref, silent = TRUE)
-  commits <- commits %>%
-    arrange(pattern, order) %>%
+  write_in(paste("# Section:", names_section))
+  commits <- get_commits_pattern(repo, pattern = vec_pattern,
+                                 ref = ref, silent = TRUE) %>%
+    mutate(pattern_numeric =
+             str_extract_all(pattern, "([[:digit:]]+)",
+                             simplify = FALSE) %>%
+             unlist() %>%
+             as.numeric()) %>%
+    arrange(pattern_numeric, pattern, order) %>%
     dplyr::filter(!is.na(pattern)) %>%
-    group_by(pattern) %>%
+    group_by(pattern_numeric, pattern) %>%
     nest() %>%
+    arrange(pattern_numeric, pattern) %>%
     transpose() %>%
     set_names(.$pattern)
 
-  walk(commits, ~ each_commit(.x, write_in))
+  walk(commits, ~each_commit(.x, write_in))
 }
