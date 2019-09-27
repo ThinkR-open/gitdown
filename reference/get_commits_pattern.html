@@ -8,32 +8,26 @@
 
 <title>Get commits associated with a text pattern — get_commits_pattern • gitdown</title>
 
-
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
 <!-- Bootstrap -->
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link href="../cosmo.css" rel="stylesheet">
+<link href="../thinkr.css" rel="stylesheet">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
-<!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
-
-
-
 
 <meta property="og:title" content="Get commits associated with a text pattern — get_commits_pattern" />
 <meta property="og:description" content="Get commits associated with a text pattern" />
@@ -42,16 +36,36 @@
 
 
 
-<!-- mathjax -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
+<!-- mathjax
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+-->
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+<!--  Code folding -->
 
+<script src="../codefolding.js"></script>
+<link href="../codefolding.css" rel="stylesheet">
+
+<!--
+<script>
+         document.write('<div class="navbar"><div class="container"><div id="code-folding-buttons" class="btn-group"><button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-_extension-text-contrast=""><span>Show/Hide all code</span><span class="caret"></span></button><ul class="dropdown-menu" style="min-width: 50px;"><li><a id="rmd-show-all-code" href="#">Show All Code</a></li><li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li></ul></div></div></div>')
+</script>
+-->
+
+<!-- google analytics
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+
+ gtag('config', 'UA-115082821-1');
+</script>
+-->
 
   </head>
 
@@ -95,13 +109,21 @@
       <a href="../articles/aa-create-commit_down.html">Create commit_down</a>
     </li>
     <li>
-      <a href="../articles/ab-create-git_down.html">ab-create-git_down</a>
+      <a href="../articles/ab-create-git_down.html">Create a bookdown with git_down</a>
     </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+          <div id="code-folding-buttons" class="btn-group"><button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-_extension-text-contrast=""><span>Show/Hide all code</span><span class="caret"></span></button><ul class="dropdown-menu" style="min-width: 50px;"><li><a id="rmd-show-all-code" href="#">Show All Code</a></li><li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li></ul></div>
+        </li>
+        <li>
+  <a href="https://github.com/Thinkr-open/gitdown">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -116,7 +138,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get commits associated with a text pattern</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/gitdown/blob/master/R/get_commits.R'><code>R/get_commits.R</code></a></small>
     <div class="hidden name"><code>get_commits_pattern.Rd</code></div>
     </div>
 
@@ -177,12 +199,12 @@ returned; that is, the output of <code>git log</code> with
 <span class='fu'>get_commits_pattern</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>)</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 6 x 10
 #&gt;   sha   summary message author email when                order tag.name
 #&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   
-#&gt; 1 42e2… Add NE… "Add N… Alice  alic… 2019-09-27 11:54:18     4 &lt;NA&gt;    
-#&gt; 2 42e2… Add NE… "Add N… Alice  alic… 2019-09-27 11:54:18     4 &lt;NA&gt;    
-#&gt; 3 8480… Third … "Third… Alice  alic… 2019-09-27 11:54:18     3 v0.1    
-#&gt; 4 8480… Third … "Third… Alice  alic… 2019-09-27 11:54:18     3 v0.1    
-#&gt; 5 4b3c… exampl… "examp… Alice  alic… 2019-09-27 11:54:18     2 v0.1    
-#&gt; 6 1629… First … First … Alice  alic… 2019-09-27 11:54:18     1 v0.1    
+#&gt; 1 84d7… Add NE… "Add N… Alice  alic… 2019-09-27 14:03:31     4 &lt;NA&gt;    
+#&gt; 2 84d7… Add NE… "Add N… Alice  alic… 2019-09-27 14:03:31     4 &lt;NA&gt;    
+#&gt; 3 e28b… Third … "Third… Alice  alic… 2019-09-27 14:03:31     3 v0.1    
+#&gt; 4 e28b… Third … "Third… Alice  alic… 2019-09-27 14:03:31     3 v0.1    
+#&gt; 5 3448… exampl… "examp… Alice  alic… 2019-09-27 14:03:31     2 v0.1    
+#&gt; 6 1626… First … First … Alice  alic… 2019-09-27 14:03:31     1 v0.1    
 #&gt; # … with 2 more variables: tag.message &lt;chr&gt;, pattern &lt;chr&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -198,12 +220,15 @@ returned; that is, the output of <code>git log</code> with
 
 
       <footer>
-      <div class="copyright">
-  <p>Developed by Sébastien Rochette, Cervan Girard.</p>
+      <div class="thinkr">
+  <p>gitdown is a  <strong>ThinkR</strong> package. Learn more at <a href="https://rtask.thinkr.fr">rtask.thinkr.fr</a>.</p>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+<div class="author">
+  <p>
+    Developed by Sébastien Rochette, Cervan Girard.
+    Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
+  </p>
 </div>
 
       </footer>
