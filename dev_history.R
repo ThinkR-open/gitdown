@@ -32,3 +32,6 @@ globals
 checkhelper::print_globals(globals)
 # Store in package using usethis::use_r("globals")
 
+# _CI
+tic::use_tic()
+usethis::use_travis()

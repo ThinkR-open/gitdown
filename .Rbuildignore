@@ -3,3 +3,6 @@
 ^dev_history\.R$
 ^LICENSE\.md$
 ^README\.Rmd$
+^\.travis\.yml$
+^appveyor\.yml$
+^tic\.R$
