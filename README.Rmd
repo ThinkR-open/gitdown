@@ -60,4 +60,9 @@ git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"),
 ```{r, echo=FALSE, out.width="90%", fig.align="center"}
 knitr::include_graphics("reference/figures/gitdown_screenshot.png")
 ```
-
+  
+  
+  
+Please note that the 'gitdown' project is released with a
+[Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.

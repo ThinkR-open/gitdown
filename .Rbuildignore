@@ -8,3 +8,4 @@
 ^tic\.R$
 ^reference$
 ^_pkgdown\.yml$
+^CODE_OF_CONDUCT\.md$

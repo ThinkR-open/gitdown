@@ -17,6 +17,8 @@ Authors@R:
 Description: Read all commit messages and sort them according to
     tags or specific text pattern.
 License: MIT + file LICENSE
+URL: https://github.com/Thinkr-open/gitdown
+BugReports: https://github.com/Thinkr-open/gitdown/issues
 Depends: 
     R (>= 3.5)
 Imports: 

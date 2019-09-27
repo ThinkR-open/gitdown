@@ -1,11 +1,18 @@
 ---
-title: "ab-create-git_down"
+title: "Create a bookdown with git_down"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{ab-create-git_down}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+<script type="text/javascript">
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
