@@ -1,0 +1,7 @@
+pandoc: '2.2'
+pkgdown: 1.4.1
+pkgdown_sha: ~
+articles:
+  aa-create-commit_down: aa-create-commit_down.html
+  ab-create-git_down: ab-create-git_down.html
+
