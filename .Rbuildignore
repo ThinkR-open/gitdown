@@ -6,3 +6,5 @@
 ^\.travis\.yml$
 ^appveyor\.yml$
 ^tic\.R$
+^reference$
+^_pkgdown\.yml$

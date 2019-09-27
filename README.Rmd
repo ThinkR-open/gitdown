@@ -15,9 +15,14 @@ knitr::opts_chunk$set(
 # gitdown
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.org/ThinkR-open/gitdown.svg?branch=master)](https://travis-ci.org/ThinkR-open/gitdown)
+[![Build status](https://ci.appveyor.com/api/projects/status/39akrxjav1m3odem?svg=true)](https://ci.appveyor.com/project/statnmap/gitdown)
+[![Coverage status](https://codecov.io/gh/ThinkR-open/gitdown/branch/master/graph/badge.svg)](https://codecov.io/github/ThinkR-open/gitdown?branch=master)
 <!-- badges: end -->
 
 The goal of {gitdown} is to build a bookdown report of commit messages arranged according to a pattern. Book can be organised according to git tags, issues mentionned (*e.g.* `#123`) or any custom character chain included in your git commit messages (*e.g.* `category_` for use like `category_ui`, `category_doc`, ...).
+
+Full documentation on {pkgdown} site : https://thinkr-open.github.io/gitdown/index.html  
 
 ## Installation
 
@@ -50,5 +55,9 @@ get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master") %>%
 ```{r, eval=FALSE}
 git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"), 
          names_section = c("Ticket", "Issues"))
+```
+
+```{r, echo=FALSE, out.width="90%", fig.align="center"}
+knitr::include_graphics("reference/figures/gitdown_screenshot.png")
 ```
 

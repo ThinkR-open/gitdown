@@ -1,5 +1,8 @@
 # General ----
 usethis::use_build_ignore("dev_history.R")
+usethis::use_build_ignore("reference/")
+usethis::use_build_ignore("_pkgdown.yml")
+
 usethis::use_git(message = "init commitdown")
 usethis::use_mit_license("ThinkR")
 
