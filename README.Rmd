@@ -58,7 +58,7 @@ git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"),
 ```
 
 ```{r, echo=FALSE, out.width="90%", fig.align="center"}
-knitr::include_graphics("reference/figures/gitdown_screenshot.png")
+knitr::include_graphics("https://raw.githubusercontent.com/ThinkR-open/gitdown/master/reference/figures/gitdown_screenshot.png")
 ```
   
   

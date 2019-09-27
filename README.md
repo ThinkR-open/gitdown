@@ -52,12 +52,12 @@ get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master") %>%
 #> # A tibble: 6 x 10
 #>   pattern sha   summary message author email when                order
 #>   <chr>   <chr> <chr>   <chr>   <chr>  <chr> <dttm>              <int>
-#> 1 #32     21d0… Add NE… "Add N… Alice  alic… 2019-09-27 13:29:35     4
-#> 2 #1      21d0… Add NE… "Add N… Alice  alic… 2019-09-27 13:29:35     4
-#> 3 #2      5088… Third … "Third… Alice  alic… 2019-09-27 13:29:35     3
-#> 4 #145    5088… Third … "Third… Alice  alic… 2019-09-27 13:29:35     3
-#> 5 #1      99a5… exampl… "examp… Alice  alic… 2019-09-27 13:29:35     2
-#> 6 <NA>    480e… First … First … Alice  alic… 2019-09-27 13:29:35     1
+#> 1 #32     7e70… Add NE… "Add N… Alice  alic… 2019-09-27 14:19:37     4
+#> 2 #1      7e70… Add NE… "Add N… Alice  alic… 2019-09-27 14:19:37     4
+#> 3 #2      bf10… Third … "Third… Alice  alic… 2019-09-27 14:19:37     3
+#> 4 #145    bf10… Third … "Third… Alice  alic… 2019-09-27 14:19:37     3
+#> 5 #1      8782… exampl… "examp… Alice  alic… 2019-09-27 14:19:37     2
+#> 6 <NA>    b87c… First … First … Alice  alic… 2019-09-27 14:19:37     1
 #> # … with 2 more variables: tag.name <chr>, tag.message <chr>
 ```
 
@@ -68,7 +68,7 @@ git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"),
          names_section = c("Ticket", "Issues"))
 ```
 
-<img src="reference/figures/gitdown_screenshot.png" width="90%" style="display: block; margin: auto;" />
+<img src="https://raw.githubusercontent.com/ThinkR-open/gitdown/master/reference/figures/gitdown_screenshot.png" width="90%" style="display: block; margin: auto;" />
 
 Please note that the ‘gitdown’ project is released with a [Contributor
 Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
