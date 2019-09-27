@@ -151,10 +151,10 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; # A tibble: 4 x 9</span></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;   sha   summary message author email when                order tag.name</span></a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   </span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 1 a296… Add NE… "Add N… Alice  alic… 2019-09-27 14:03:33     4 &lt;NA&gt;    </span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 2 b5f6… Third … "Third… Alice  alic… 2019-09-27 14:03:33     3 v0.1    </span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 3 a522… exampl… "examp… Alice  alic… 2019-09-27 14:03:33     2 v0.1    </span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 4 bc42… First … First … Alice  alic… 2019-09-27 14:03:33     1 v0.1    </span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 1 b652… Add NE… "Add N… Alice  alic… 2019-09-27 14:23:57     4 &lt;NA&gt;    </span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 2 5103… Third … "Third… Alice  alic… 2019-09-27 14:23:57     3 v0.1    </span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 3 0d4a… exampl… "examp… Alice  alic… 2019-09-27 14:23:57     2 v0.1    </span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 4 1d7c… First … First … Alice  alic… 2019-09-27 14:23:57     1 v0.1    </span></a>
 <a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; # … with 1 more variable: tag.message &lt;chr&gt;</span></a></code></pre></div>
 <ul>
 <li>Find all commits of a branch and detect a specific pattern
@@ -169,12 +169,12 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; # A tibble: 6 x 10</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   sha   summary message author email when                order tag.name</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   </span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 1 a296… Add NE… "Add N… Alice  alic… 2019-09-27 14:03:33     4 &lt;NA&gt;    </span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 2 a296… Add NE… "Add N… Alice  alic… 2019-09-27 14:03:33     4 &lt;NA&gt;    </span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 3 b5f6… Third … "Third… Alice  alic… 2019-09-27 14:03:33     3 v0.1    </span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 4 b5f6… Third … "Third… Alice  alic… 2019-09-27 14:03:33     3 v0.1    </span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 5 a522… exampl… "examp… Alice  alic… 2019-09-27 14:03:33     2 v0.1    </span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; 6 bc42… First … First … Alice  alic… 2019-09-27 14:03:33     1 v0.1    </span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 1 b652… Add NE… "Add N… Alice  alic… 2019-09-27 14:23:57     4 &lt;NA&gt;    </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 2 b652… Add NE… "Add N… Alice  alic… 2019-09-27 14:23:57     4 &lt;NA&gt;    </span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 3 5103… Third … "Third… Alice  alic… 2019-09-27 14:23:57     3 v0.1    </span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 4 5103… Third … "Third… Alice  alic… 2019-09-27 14:23:57     3 v0.1    </span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 5 0d4a… exampl… "examp… Alice  alic… 2019-09-27 14:23:57     2 v0.1    </span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; 6 1d7c… First … First … Alice  alic… 2019-09-27 14:23:57     1 v0.1    </span></a>
 <a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; # … with 2 more variables: tag.message &lt;chr&gt;, pattern &lt;chr&gt;</span></a></code></pre></div>
 </div>
   </div>
