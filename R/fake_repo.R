@@ -47,7 +47,7 @@ fake_repo <- function(path = tempfile(pattern = "git2r-")) {
   commit(repo, "Third commit message\n\nissue #2\nissue #145.\nticket1234\n More information important for the project as breaking changes")
 
   ## Create a tag
-  tag(repo, "v0.1", "Tag v0.1 message")
+  tag(repo, name = "v0.1", message = "Tag v0.1 message")
 
   ## Add NEWS.md
   writeLines(
