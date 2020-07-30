@@ -4,8 +4,15 @@
 \alias{git_down}
 \title{git history to bookdown}
 \usage{
-git_down(repo = ".", book_path = "gitdown", open = TRUE,
-  author = "John Doe", pattern, names_section, ref = "master")
+git_down(
+  repo = ".",
+  book_path = "gitdown",
+  open = TRUE,
+  author = "John Doe",
+  pattern,
+  names_section,
+  ref = "master"
+)
 }
 \arguments{
 \item{repo}{The path to a repository. Default is `.`}
