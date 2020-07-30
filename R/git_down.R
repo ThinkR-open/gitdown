@@ -14,6 +14,11 @@
 #' @export
 #'
 #' @importFrom attempt if_not
+==== BASE ====
+#' @importFrom devtools as.package test
+#' @importFrom dplyr group_by pull
+#' @importFrom knitr kable knit
+==== BASE ====
 #' @importFrom rmarkdown render
 #' @importFrom utils browseURL
 #' @importFrom git2r workdir

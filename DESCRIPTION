@@ -26,6 +26,7 @@ Imports:
     bookdown,
     dplyr,
     git2r (>= 0.26.0),
+    htmltools,
     knitr,
     lubridate,
     magrittr,
