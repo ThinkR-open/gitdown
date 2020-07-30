@@ -23,9 +23,9 @@ Depends:
     R (>= 3.4)
 Imports: 
     attempt,
-    devtools,
     dplyr,
     git2r (>= 0.26.0),
+    htmltools,
     knitr,
     lubridate,
     magrittr,
@@ -34,6 +34,7 @@ Imports:
     stats,
     stringr,
     tidyr,
+    usethis,
     utils,
     bookdown
 Suggests: 

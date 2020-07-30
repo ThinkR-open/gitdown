@@ -14,7 +14,6 @@
 #' @export
 #'
 #' @importFrom attempt if_not
-#' @importFrom devtools as.package test
 #' @importFrom dplyr group_by pull
 #' @importFrom knitr kable knit
 #' @importFrom rmarkdown render
