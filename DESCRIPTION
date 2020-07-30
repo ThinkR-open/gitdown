@@ -27,6 +27,7 @@ Imports:
     dplyr,
     git2r (>= 0.26.0),
     knitr,
+    lubridate,
     magrittr,
     purrr,
     rmarkdown,
