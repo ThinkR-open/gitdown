@@ -5,11 +5,5 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(gitdown)
-```
-
-
-```{r,echo=FALSE, message=FALSE}
-mise_en_forme(repo = here::here())
 ```
 
