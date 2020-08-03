@@ -17,7 +17,6 @@ get_time <- function(object){
 #' @return list
 #' @export
 #'
-#' @importFrom lubridate as_datetime
 #' @importFrom git2r blame
 #' @importFrom purrr pluck map flatten_dbl set_names
 #'
@@ -25,7 +24,6 @@ get_time <- function(object){
 #' repo <- fake_repo()
 #' get_info(list.files(repo)[1], repo = repo )
 get_info <- function(path, repo = "."){
-
   blame_object <- blame(repo = repo ,path = path)
 
   file <-  blame_object$hunks[[1]]$orig_path %>%
@@ -38,7 +36,7 @@ get_info <- function(path, repo = "."){
     map(get_time) %>%
     flatten_dbl() %>%
     range() %>%
-    lubridate::as_datetime() %>%
+    as.POSIXct.numeric(origin = "1970-01-01 UTC") %>%
     set_names(nm = c("first", "last"))
 
   list(file = file ,
@@ -78,8 +76,7 @@ get_last_modif <- function(repo = ".", R_folder = TRUE){
 
 #' Formatting results of get_last_modif
 #'
-#' @param repo repo
-#' @param R_folder If TRUE, it will list functions inside the R folder
+#' @inheritParams get_last_modif
 #'
 #' @return tagList
 #' @export
@@ -89,7 +86,7 @@ get_last_modif <- function(repo = ".", R_folder = TRUE){
 #' mise_en_forme(repo, R_folder = FALSE)
 mise_en_forme <- function(repo = ".", R_folder = TRUE){
 
-  htmltools::tagList(
+  as.character(
     htmltools::tags$ul(
       lapply(get_last_modif(repo, R_folder), function(x){
         htmltools::tags$li(
@@ -103,28 +100,46 @@ mise_en_forme <- function(repo = ".", R_folder = TRUE){
   )
 }
 
+
+#' Update vignette last modification of files
+#'
+#' @inheritParams get_last_modif
+#'
+#' @return update a vignette
+#' @export
+update_vign_last_modif <- function(repo = ".", R_folder = TRUE){
+  vig <- file.path(repo, "vignettes")
+  file <- file.path(vig, "modification_files.Rmd")
+  if(file.exists(file)){
+    unlink(file)
+    }
+
+    path_to_copy <- system.file("template/modification_files.Rmd", package = "gitdown")
+
+    file.copy(path_to_copy, to = vig)
+
+    if(file.exists(file)){
+      html <- mise_en_forme(repo, R_folder)
+      write(html, file = file, append = TRUE)
+    }else{
+      stop("Copying the file didn't work!")
+    }
+}
+
 #' Get the vignette for last modification
 #'
-#' @param repo repo
+#' @inheritParams get_last_modif
 #'
-#' @importFrom usethis use_package
 #'
 #' @return copy a vignette
 #' @export
 
-vignette_last_modif <- function(repo = "."){
-
-  #TODO add gitdown to DESCRIPTION
-  usethis::use_package("gitdown", type = "Suggests")
-  usethis::use_package("here", type = "Suggests")
-
+vignette_last_modif <- function(repo = ".", R_folder = TRUE){
   vig <- file.path(repo, "vignettes")
 
   if(!dir.exists(vig)){
     stop("vignettes folder doesn't exist, please create vignettes folder")
   }else{
-    path_to_copy <- system.file("template/modification_files.Rmd", package = "gitdown")
-
-    file.copy(path_to_copy, to = vig)
+    update_vign_last_modif(repo = ".", R_folder = TRUE)
   }
 }
