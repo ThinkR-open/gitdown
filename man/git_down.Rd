@@ -36,5 +36,5 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
 \examples{
 repo <- fake_repo()
 git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"),
-names_section = c("Tickets", "Issues"), open = FALSE)
+names_section = c("Tickets", "Issues"), open = TRUE)
 }

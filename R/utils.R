@@ -30,7 +30,7 @@ write_in <- function(x, repo, dir =  "gitdown", rmd = "index.Rmd") {
 
 presentation_commit <- function(commit) {
   res <- paste0(
-    paste0("### commit: ", commit$summary, "{", commit$link_commit, "}"),
+    paste0("### commit: ", commit$summary, "{#", commit$link_commit, "}"),
     "\n\n",
     paste("- Commit number:", commit$sha),
     "\n",
@@ -61,7 +61,7 @@ each_commit <- function(commits, pattern_name, link_pattern, name_section) {
   c(
     # One Pattern Section
     paste0("## ", to_singular(name_section), ": ",
-           pattern_name, "{", link_pattern, "}"),
+           pattern_name, "{#", link_pattern, "}"),
     # Commits
     map_chr(1:nrow(commits), ~presentation_commit(commits[.x, ]))
   )
@@ -85,10 +85,13 @@ to_singular <- function(x) {
 #' @param ref branch of the repo
 #'
 #' @importFrom dplyr tibble mutate bind_rows
-#'
+#' @importFrom purrr map_chr
+#' @export
+#' @examples
+#' repo <- fake_repo()
+#' each_pattern("ticket[[:digit:]]+", "Ticket", repo)
 
-each_pattern <- function(pattern, name_section, repo, ref = "master"
-                         ) {
+each_pattern <- function(pattern, name_section, repo, ref = "master") {
 
   # Create text of each commit by pattern
   res_commits <- nest_commits_by_pattern(
@@ -100,15 +103,34 @@ each_pattern <- function(pattern, name_section, repo, ref = "master"
       text = map(data, ~each_commit(.x, pattern_name, link_pattern, name_section))
     )
 
+  # Create summary table
+  summary_table <- tibble(
+    pattern_name = res_commits$pattern_name,
+    Links = map_chr(
+      res_commits$data,
+      ~paste0("[", .x$summary, "](#", .x$link_commit, ")") %>%
+        paste(collapse = ", "))
+  )
+  names(summary_table)[1] <- name_section
+
+  # Create text for section
+  text_section <- paste0(
+    paste0("# Section: ", name_section, "\n"),
+    "## Summary table\n\n",
+    paste(knitr::kable(summary_table, format = "markdown"),
+          collapse = "\n")
+  )
 
   res <- bind_rows(
     tibble(
       pattern_name = name_section,
       link_pattern = clean_link(name_section),
-      text = list(paste0("# Section: ", name_section, " {#", link_pattern, "}"))
+      text = list(text_section)
     ),
     res_commits
   )
+
+  res
 }
 
 #' Nest all commits by each pattern
@@ -149,11 +171,12 @@ nest_commits_by_pattern <- function(repo, pattern = "#[[:digit:]]+",
 #' @param x Character to clean to transform as slug
 
 clean_link <- function(x) {
-  gsub("^_|^ | $|_$", "", x) %>%
+  paste0("a", x) %>% # First must be a text
+  gsub("^_|^ | $|_$|#|@|`|\\\\|/", "", .) %>%
   gsub("[[:space:]]+|_+", "-", .) %>%
   gsub("(-)+", "-", .) %>%
   gsub("^(-)|(-)$", "", .) %>%
   tolower(.)
-  # clean_link(" -Text With _characters_ ")
+  # clean_link(" -Text With # \\\\ \ / _characters_ ")
 }
 
