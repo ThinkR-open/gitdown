@@ -22,7 +22,7 @@
 #' @examples
 #' repo <- fake_repo()
 #' git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"),
-#' names_section = c("Tickets", "Issues"), open = FALSE)
+#' names_section = c("Tickets", "Issues"), open = TRUE)
 
 git_down <- function(repo = ".", book_path = "gitdown",
                      open = TRUE, author = "John Doe",
@@ -78,14 +78,13 @@ git_down <- function(repo = ".", book_path = "gitdown",
   )
 
   write_in(x = content,
-                repo = repo,
-                dir = book_path,
-                rmd = "index.Rmd")
+           repo = repo,
+           dir = book_path,
+           rmd = "index.Rmd")
 
-  res <- render(
-    file.path(repo, book_path, "index.Rmd"))
+  res <- render(file.path(repo, book_path, "index.Rmd"))
 
-  if (open){
+  if (open) {
     browseURL(res)
   }
   res

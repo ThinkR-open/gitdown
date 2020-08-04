@@ -18,3 +18,7 @@ each_pattern(pattern, name_section, repo, ref = "master")
 \description{
 Presentation for each pattern
 }
+\examples{
+repo <- fake_repo()
+each_pattern("ticket[[:digit:]]+", "Ticket", repo)
+}
