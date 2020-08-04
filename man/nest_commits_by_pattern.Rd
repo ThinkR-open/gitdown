@@ -4,7 +4,12 @@
 \alias{nest_commits_by_pattern}
 \title{Nest all commits by each pattern}
 \usage{
-nest_commits_by_pattern(repo, pattern, ref, silent = TRUE)
+nest_commits_by_pattern(
+  repo,
+  pattern = "#[[:digit:]]+",
+  ref = "master",
+  silent = TRUE
+)
 }
 \arguments{
 \item{repo}{a path to a repository or a \code{git_repository}
@@ -32,4 +37,8 @@ or a branch. The default is NULL for the current branch.}
 }
 \description{
 Nest all commits by each pattern
+}
+\examples{
+repo <- fake_repo()
+nest_commits_by_pattern(repo)
 }

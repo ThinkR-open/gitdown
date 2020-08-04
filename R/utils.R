@@ -45,18 +45,6 @@ presentation_commit <- function(commit) {
     "\n",
     "```"
   )
-  # cat(res, sep = "")
-  # write_in("\n")
-  # write_in(paste("- Commit number", commit$sha))
-  # write_in("\n")
-  # write_in(paste("- Author: ", commit$author, "   E-mail: ", commit$email))
-  # write_in("\n")
-  # write_in(paste("- Date: ", commit$when))
-  # write_in("```")
-  # write_in("\n")
-  # write_in(commit$message)
-  # write_in("\n")
-  # write_in("```")
 }
 
 #' Write presentation for each commit
@@ -65,26 +53,18 @@ presentation_commit <- function(commit) {
 #' @param name_section character. Name of the section
 #' @param pattern_name Name of the pattern selected
 #' @param link_pattern Name of the pattern selected transformed as slug
-#' @importFrom purrr walk
+#'
+#' @importFrom purrr map_chr
 #'
 
 each_commit <- function(commits, pattern_name, link_pattern, name_section) {
-  # write_in("\n")
-  # write_in(
-  # browser()
-  #   paste0("## ", name_section, ": ", pattern_name, " {#", link_pattern, "}")
-  # )
-  # commits <- data[[1]]
-  # commit <- commits[1,]
-
   c(
     # One Pattern Section
-    paste0("## ", to_singular(name_section), ": ", pattern_name, "{", link_pattern, "}"),
+    paste0("## ", to_singular(name_section), ": ",
+           pattern_name, "{", link_pattern, "}"),
     # Commits
-    purrr::map_chr(1:nrow(commits), ~presentation_commit(commits[.x, ]))
+    map_chr(1:nrow(commits), ~presentation_commit(commits[.x, ]))
   )
-  # walk(1:nrow(commits), ~presentation_commit(commits, .x, write_in = write_in))
-
   # repo <- fake_repo()
   # one_pattern_commits <- nest_commits_by_pattern(repo, pattern = "ticket[[:digit:]]+",
   # ref = "master", silent = TRUE)[1,]
@@ -104,17 +84,11 @@ to_singular <- function(x) {
 #' @param repo path to the repo
 #' @param ref branch of the repo
 #'
-#' @importFrom purrr transpose set_names walk
-#' @importFrom dplyr filter arrange group_by mutate
-#' @importFrom stringr str_extract_all
-#' @importFrom tidyr nest
+#' @importFrom dplyr tibble mutate bind_rows
 #'
 
 each_pattern <- function(pattern, name_section, repo, ref = "master"
                          ) {
-  # write_in("\n")
-  # write_in("\n")
-  # write_in(paste("# Section:", name_section))
 
   # Create text of each commit by pattern
   res_commits <- nest_commits_by_pattern(
@@ -127,7 +101,7 @@ each_pattern <- function(pattern, name_section, repo, ref = "master"
     )
 
 
-  res <- dplyr::bind_rows(
+  res <- bind_rows(
     tibble(
       pattern_name = name_section,
       link_pattern = clean_link(name_section),
@@ -135,17 +109,21 @@ each_pattern <- function(pattern, name_section, repo, ref = "master"
     ),
     res_commits
   )
-  # cat(unlist(res$text), sep = "\n\n")
-  # walk(commits, ~each_commit(.x, name_section, write_in = write_in))
 }
 
 #' Nest all commits by each pattern
 #'
 #' @inheritParams get_commits_pattern
+#' @importFrom dplyr filter mutate arrange group_by
+#' @importFrom stringr str_extract_all
+#' @importFrom tidyr nest
 #'
 #' @export
-nest_commits_by_pattern <- function(repo, pattern,
-                                    ref, silent = TRUE) {
+#' @examples
+#' repo <- fake_repo()
+#' nest_commits_by_pattern(repo)
+nest_commits_by_pattern <- function(repo, pattern = "#[[:digit:]]+",
+                                    ref = "master", silent = TRUE) {
 
   get_commits_pattern(repo, pattern = pattern,
                       ref = ref, silent = silent) %>%
@@ -161,14 +139,10 @@ nest_commits_by_pattern <- function(repo, pattern,
     arrange(pattern_numeric, pattern_name, order) %>%
     # arrange(pattern_name, order) %>%
     # If is.na => New part
-    dplyr::filter(!is.na(pattern_name)) %>%
+    filter(!is.na(pattern_name)) %>%
     group_by(pattern_numeric, pattern_name, link_pattern) %>%
     # group_by(pattern_name, link_pattern) %>%
-    nest() # %>%
-  # arrange(pattern_numeric, pattern_name) %>%
-  # arrange(pattern_name) %>%
-  # transpose() %>%
-  # set_names(.$pattern_name)
+    nest()
 }
 
 #' Clean link
