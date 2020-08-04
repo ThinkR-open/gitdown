@@ -7,13 +7,13 @@
 write_in(x, repo, dir = "gitdown", rmd = "index.Rmd")
 }
 \arguments{
-\item{x}{what}
+\item{x}{what text to write}
 
-\item{repo}{where}
+\item{repo}{Path to directory where to store "dir"}
 
-\item{dir}{by deflaut gitbook}
+\item{dir}{Name of the dir where to write file}
 
-\item{rmd}{wich file}
+\item{rmd}{name and type of the file to write in}
 }
 \description{
 Write inside file

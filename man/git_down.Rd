@@ -4,8 +4,15 @@
 \alias{git_down}
 \title{git history to bookdown}
 \usage{
-git_down(repo = ".", book_path = "gitdown", open = TRUE,
-  author = "John Doe", pattern, names_section, ref = "master")
+git_down(
+  repo = ".",
+  book_path = "gitdown",
+  open = TRUE,
+  author = "John Doe",
+  pattern = "#[[:digit:]]+",
+  names_section = "Issues",
+  ref = "master"
+)
 }
 \arguments{
 \item{repo}{The path to a repository. Default is `.`}
@@ -16,7 +23,7 @@ git_down(repo = ".", book_path = "gitdown", open = TRUE,
 
 \item{author}{Author of the Bookdown}
 
-\item{pattern}{pattern to expose commits, like "#[[:digit:]]" for issues}
+\item{pattern}{Regex pattern to expose commits, like "#[[:digit:]]" for issues}
 
 \item{names_section}{names for each section, one pattern = one section}
 
@@ -25,4 +32,9 @@ git_down(repo = ".", book_path = "gitdown", open = TRUE,
 \description{
 This function turns the history of git into a bookdown.
 Each chapter is a group of commits. The first page gives a summary of all the groups.
+}
+\examples{
+repo <- fake_repo()
+git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"),
+names_section = c("Tickets", "Issues"), open = FALSE)
 }

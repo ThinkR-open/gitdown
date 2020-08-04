@@ -43,6 +43,6 @@ repo <- fake_repo()
 
 ```{r, eval = FALSE}
 git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"), 
-         names_section = c("Ticket", "Issues"))
+         names_section = c("Tickets", "Issues"))
 ```
 

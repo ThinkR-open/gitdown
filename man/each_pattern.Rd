@@ -4,18 +4,16 @@
 \alias{each_pattern}
 \title{Presentation for each pattern}
 \usage{
-each_pattern(vec_pattern, names_section, repo, ref = "master", write_in)
+each_pattern(pattern, name_section, repo, ref = "master")
 }
 \arguments{
-\item{vec_pattern}{vector of pattern}
+\item{pattern}{vector of regex patterns}
 
-\item{names_section}{names for pattern section}
+\item{name_section}{names for pattern section}
 
 \item{repo}{path to the repo}
 
 \item{ref}{branch of the repo}
-
-\item{write_in}{function to write in good place}
 }
 \description{
 Presentation for each pattern

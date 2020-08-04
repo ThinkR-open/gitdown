@@ -7,7 +7,7 @@
 #' @param book_path The path to the bookdown output. Default is `"gitdown"`.
 #' @param open Should the bookdown be opened once compiled? Default is TRUE.
 #' @param author Author of the Bookdown
-#' @param pattern pattern to expose commits, like "#[[:digit:]]" for issues
+#' @param pattern Regex pattern to expose commits, like "#[[:digit:]]" for issues
 #' @param names_section names for each section, one pattern = one section
 #' @param ref the name of the branch, by default master
 #'
@@ -25,17 +25,34 @@
 #' @importFrom git2r workdir
 #' @importFrom purrr walk2
 #'
-git_down <- function(repo = ".", book_path = "gitdown", open = TRUE, author = "John Doe", pattern, names_section, ref = "master"){
+#' @examples
+#' repo <- fake_repo()
+#' git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"),
+#' names_section = c("Tickets", "Issues"), open = FALSE)
+
+git_down <- function(repo = ".", book_path = "gitdown",
+                     open = TRUE, author = "John Doe",
+                     pattern = "#[[:digit:]]+",
+                     names_section = "Issues",
+                     ref = "master") {
+  if (length(pattern) != length(names_section)) {
+    stop("There should by same number of pattern and names_section")
+  }
+
+  # Clean previous book
   unlink(file.path(repo, book_path), recursive = TRUE)
   if_not(
     file.path(repo, book_path),
     dir.exists,
     ~ dir.create(file.path(repo, book_path),recursive = TRUE)
   )
-  lapply(
-    list.files(system.file("booktemplate/", package = "gitdown"), full.names = TRUE),
-    function(x){file.copy(from = x, to = normalizePath(file.path(repo, book_path)))}
-  )
+  # lapply(
+    # list.files(system.file("booktemplate", package = "gitdown"), full.names = TRUE),
+    # function(x){
+      file.copy(from = list.files(system.file("booktemplate", package = "gitdown"), full.names = TRUE),
+                to = normalizePath(file.path(repo, book_path)))
+      # }
+  # )
   replace_in_file(
     file.path(repo, book_path, "_bookdown.yml"),
     "Gitbook",
@@ -51,20 +68,34 @@ git_down <- function(repo = ".", book_path = "gitdown", open = TRUE, author = "J
     gsub("([^<]+) <.*", "\\1", author)
   )
 
-  pat <- pattern
   meta_name <- basename(git2r::workdir(repo = repo))
-  write_file <- function(x){
-    write_in(x = x, repo = repo)
-    }
-  write_file("\n")
-  write_file(paste("# Gitbook for ", meta_name,"{-} \n"))
-  write_file(paste("Done on:", Sys.time(),"\n"))
-  write_file("\n")
 
-  walk2(pat, names_section, ~ each_pattern(.x, .y, repo, ref, write_file))
+
+  # Create content
+  res <- purrr::map2_dfr(
+    pattern, names_section,
+    ~each_pattern(pattern = .x, name_section = .y, repo, ref))
+
+  content <- paste(
+    c(
+      # presentation
+      paste0("# Gitbook for ", meta_name,"{-} \n"),
+      paste0("Done on: ", Sys.time(),"\n"),
+      "\n",
+      # All commits by Pattern
+      unlist(res$text)
+    ),
+    collapse = "\n\n"
+  )
+
+  write_in(x = content,
+                repo = repo,
+                dir = book_path,
+                rmd = "index.Rmd")
+
   res <- render(
-    file.path(repo, "gitdown", "index.Rmd"))
-  #knit(file.path(repo, "tests/testdown", "index.Rmd"))
+    file.path(repo, book_path, "index.Rmd"))
+
   if (open){
     browseURL(res)
   }
