@@ -14,16 +14,10 @@
 #' @export
 #'
 #' @importFrom attempt if_not
-#' @importFrom devtools as.package test
-#' @importFrom dplyr group_by pull
-#' @importFrom knitr kable knit
 #' @importFrom rmarkdown render
-#' @importFrom stats setNames
-#' @importFrom tidyr nest
-#' @importFrom utils read.csv2 browseURL data
-#' @importFrom magrittr %>%
+#' @importFrom utils browseURL
 #' @importFrom git2r workdir
-#' @importFrom purrr walk2
+#' @importFrom purrr map2_dfr
 #'
 #' @examples
 #' repo <- fake_repo()
@@ -46,13 +40,9 @@ git_down <- function(repo = ".", book_path = "gitdown",
     dir.exists,
     ~ dir.create(file.path(repo, book_path),recursive = TRUE)
   )
-  # lapply(
-    # list.files(system.file("booktemplate", package = "gitdown"), full.names = TRUE),
-    # function(x){
-      file.copy(from = list.files(system.file("booktemplate", package = "gitdown"), full.names = TRUE),
-                to = normalizePath(file.path(repo, book_path)))
-      # }
-  # )
+  file.copy(from = list.files(system.file("booktemplate", package = "gitdown"), full.names = TRUE),
+            to = normalizePath(file.path(repo, book_path)))
+
   replace_in_file(
     file.path(repo, book_path, "_bookdown.yml"),
     "Gitbook",
@@ -68,11 +58,10 @@ git_down <- function(repo = ".", book_path = "gitdown",
     gsub("([^<]+) <.*", "\\1", author)
   )
 
-  meta_name <- basename(git2r::workdir(repo = repo))
-
+  meta_name <- basename(workdir(repo = repo))
 
   # Create content
-  res <- purrr::map2_dfr(
+  res <- map2_dfr(
     pattern, names_section,
     ~each_pattern(pattern = .x, name_section = .y, repo, ref))
 
