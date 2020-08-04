@@ -4,14 +4,10 @@
 \alias{presentation_commit}
 \title{Presentation of commit}
 \usage{
-presentation_commit(write_in, data, i)
+presentation_commit(commit)
 }
 \arguments{
-\item{write_in}{function to write in good place}
-
-\item{data}{data from get_commits_pattern}
-
-\item{i}{line number to present the commit}
+\item{commit}{one line data from get_commits_pattern}
 }
 \description{
 Presentation of commit

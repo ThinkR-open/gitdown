@@ -19,6 +19,8 @@ usethis::use_test("utils")
 usethis::use_vignette("aa-create-commit_down")
 usethis::use_readme_rmd()
 usethis::use_vignette("ab-create-git_down")
+usethis::use_data_raw()
+usethis::use_news_md()
 
 # Dependencies ----
 attachment::att_to_description(extra.suggests = "bookdown")

@@ -1,19 +1,31 @@
 context("utils functions")
+library(withr)
+
+repo_input <- tempfile(pattern = "git2r-")
+repo <- fake_repo(repo_input)
+
+with_dir(repo, {
+  dir.create("gitdown")
+      file.copy(
+        from = list.files(system.file("booktemplate/", package = "gitdown"),
+                          full.names = TRUE),
+        to = normalizePath(file.path(repo, "gitdown")))
+})
 
 test_that("replace_file", {
-  with_dir(repo,{
-    replace_in_file("example.txt",pattern = "Lorem", replacement = "test-replacment")
+  with_dir(repo, {
+    replace_in_file("example.txt", pattern = "Lorem", replacement = "test-replacment")
     test <- readLines(con = "example.txt", n = 1)
-    expect_true(str_detect(test,"test-replacment"))
+    expect_true(grepl("test-replacment", test))
   })
 
 })
 
 test_that("write_in",{
-  with_dir(repo,{
+  with_dir(repo, {
     write_in("test-write-in", repo )
     test <- readLines(con = "gitdown/index.Rmd")
-    expect_true(any(str_detect(test,"test-write-in")))
+    expect_true(any(grepl("test-write-in", test)))
   })
 })
 
@@ -23,6 +35,6 @@ test_that("git_down function",{
                     pattern = "#[[:digit:]]+",
                     names_section = "Issue"
                     )
-    expect_match(res,regexp = ".html")
+    expect_match(res, regexp = ".html")
   })
 })
