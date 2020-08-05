@@ -8,8 +8,13 @@
 
 <title>git history to bookdown — git_down • gitdown</title>
 
+
 <!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Bootstrap -->
 <link href="../cosmo.css" rel="stylesheet">
@@ -17,7 +22,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
@@ -70,7 +76,7 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -84,7 +90,7 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gitdown</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
       </span>
     </div>
 
@@ -114,13 +120,16 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
           <div id="code-folding-buttons" class="btn-group"><button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-_extension-text-contrast=""><span>Show/Hide all code</span><span class="caret"></span></button><ul class="dropdown-menu" style="min-width: 50px;"><li><a id="rmd-show-all-code" href="#">Show All Code</a></li><li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li></ul></div>
         </li>
         <li>
-  <a href="https://github.com/Thinkr-open/gitdown">
+  <a href="https://github.com/Thinkr-open/gitdown/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -148,8 +157,15 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
 Each chapter is a group of commits. The first page gives a summary of all the groups.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>git_down</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>book_path</span> <span class='kw'>=</span> <span class='st'>"gitdown"</span>, <span class='kw'>open</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>author</span> <span class='kw'>=</span> <span class='st'>"John Doe"</span>, <span class='no'>pattern</span>, <span class='no'>names_section</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='st'>"master"</span>)</pre>
+    <pre class="usage"><span class='fu'>git_down</span>(
+  <span class='kw'>repo</span> <span class='kw'>=</span> <span class='st'>"."</span>,
+  <span class='kw'>book_path</span> <span class='kw'>=</span> <span class='st'>"gitdown"</span>,
+  <span class='kw'>open</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>author</span> <span class='kw'>=</span> <span class='st'>"John Doe"</span>,
+  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>Issues</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>),
+  <span class='kw'>ref</span> <span class='kw'>=</span> <span class='st'>"master"</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -172,26 +188,33 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
     </tr>
     <tr>
       <th>pattern</th>
-      <td><p>pattern to expose commits, like "#[[:digit:]]" for issues</p></td>
-    </tr>
-    <tr>
-      <th>names_section</th>
-      <td><p>names for each section, one pattern = one section</p></td>
+      <td><p>Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues</p></td>
     </tr>
     <tr>
       <th>ref</th>
       <td><p>the name of the branch, by default master</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other parameters to pass to <code><a href='https://rdrr.io/pkg/rmarkdown/man/render.html'>render</a></code></p></td>
+    </tr>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>repo</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
+<span class='fu'>git_down</span>(<span class='no'>repo</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Tickets"</span> <span class='kw'>=</span> <span class='st'>"ticket[[:digit:]]+"</span>, <span class='st'>"Issues"</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>))</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>processing file: index.Rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |......................................................................| 100%
+#&gt;    inline R code fragments
+#&gt; 
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: index.knit.md</span></div><div class='output co'>#&gt; /usr/bin/pandoc +RTS -K512m -RTS index.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --email-obfuscation none --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/travis/R/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --include-in-header /tmp/RtmpPb96AF/rmarkdown-str1af06bda36af.html --mathjax --lua-filter /home/travis/R/Library/rmarkdown/rmd/lua/pagebreak.lua --lua-filter /home/travis/R/Library/rmarkdown/rmd/lua/latex-div.lua </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Output created: gitbook-for-git2r-1af01bb8c3eb.html</span></div><div class='output co'>#&gt; [1] "/tmp/RtmpPb96AF/git2r-1af01bb8c3eb/gitdown/gitbook-for-git2r-1af01bb8c3eb.html"</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 

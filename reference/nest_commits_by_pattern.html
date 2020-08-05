@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get commits associated chronologically with tags — get_commits_tags • gitdown</title>
+<title>Nest all commits by each pattern — nest_commits_by_pattern • gitdown</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
 
-<meta property="og:title" content="Get commits associated chronologically with tags — get_commits_tags" />
-<meta property="og:description" content="Get commits associated chronologically with tags" />
+<meta property="og:title" content="Nest all commits by each pattern — nest_commits_by_pattern" />
+<meta property="og:description" content="Nest all commits by each pattern" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -146,16 +146,21 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get commits associated chronologically with tags</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/gitdown/blob/master/R/get_commits.R'><code>R/get_commits.R</code></a></small>
-    <div class="hidden name"><code>get_commits_tags.Rd</code></div>
+    <h1>Nest all commits by each pattern</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/gitdown/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <div class="hidden name"><code>nest_commits_by_pattern.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get commits associated chronologically with tags</p>
+    <p>Nest all commits by each pattern</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_commits_tags</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='st'>"master"</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>nest_commits_by_pattern</span>(
+  <span class='no'>repo</span>,
+  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>Issues</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>),
+  <span class='kw'>ref</span> <span class='kw'>=</span> <span class='st'>"master"</span>,
+  <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,17 +171,13 @@
 object. Default is '.'</p></td>
     </tr>
     <tr>
+      <th>pattern</th>
+      <td><p>Named vector of regex patterns</p></td>
+    </tr>
+    <tr>
       <th>ref</th>
       <td><p>The name of a reference to list commits from e.g. a tag
 or a branch. The default is NULL for the current branch.</p></td>
-    </tr>
-    <tr>
-      <th>path</th>
-      <td><p>The path to a file. If not NULL, only commits modifying
-this file will be returned. Note that modifying commits that
-occurred before the file was given its present name are not
-returned; that is, the output of <code>git log</code> with
-<code>--no-follow</code> is reproduced.</p></td>
     </tr>
     <tr>
       <th>silent</th>
@@ -184,20 +185,18 @@ returned; that is, the output of <code>git log</code> with
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A tibble with commits and tags</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>repo</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
-<span class='fu'>get_commits_tags</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>)</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 4 x 9
-#&gt;   sha   summary message author email when                order tag.name
-#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   
-#&gt; 1 0a53… Add NE… "Add N… Alice  alic… 2020-08-05 19:16:19     4 &lt;NA&gt;    
-#&gt; 2 b28b… Third … "Third… Alice  alic… 2020-08-05 19:16:19     3 v0.1    
-#&gt; 3 c91e… exampl… "examp… Alice  alic… 2020-08-05 19:16:19     2 v0.1    
-#&gt; 4 7e7e… First … "First… Alice  alic… 2020-08-05 19:16:19     1 v0.1    
-#&gt; # … with 1 more variable: tag.message &lt;chr&gt;</div></pre>
+<span class='fu'>nest_commits_by_pattern</span>(<span class='no'>repo</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> )</div><div class='output co'>#&gt; # A tibble: 6 x 5
+#&gt;   pattern.type pattern.content   pattern_numeric link_pattern data             
+#&gt;   &lt;chr&gt;        &lt;chr&gt;                       &lt;dbl&gt; &lt;chr&gt;        &lt;list&gt;           
+#&gt; 1 Issues       #1                              1 aissues-1    &lt;tibble [2 × 11]&gt;
+#&gt; 2 Issues       #2                              2 aissues-2    &lt;tibble [1 × 11]&gt;
+#&gt; 3 Issues       #12                            12 aissues-12   &lt;tibble [1 × 11]&gt;
+#&gt; 4 Issues       #32                            32 aissues-32   &lt;tibble [1 × 11]&gt;
+#&gt; 5 Issues       #145                          145 aissues-145  &lt;tibble [1 × 11]&gt;
+#&gt; 6 Issues       No related issues              NA aissues-na   &lt;tibble [1 × 11]&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

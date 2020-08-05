@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get commits associated chronologically with tags — get_commits_tags • gitdown</title>
+<title>Changelog • gitdown</title>
 
 
 <!-- jquery -->
@@ -35,9 +35,7 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
 
-<meta property="og:title" content="Get commits associated chronologically with tags — get_commits_tags" />
-<meta property="og:description" content="Get commits associated chronologically with tags" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -76,7 +74,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -146,64 +144,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get commits associated chronologically with tags</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/gitdown/blob/master/R/get_commits.R'><code>R/get_commits.R</code></a></small>
-    <div class="hidden name"><code>get_commits_tags.Rd</code></div>
+      <h1 data-toc-skip>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/Thinkr-open/gitdown/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    <p>Get commits associated chronologically with tags</p>
-    </div>
-
-    <pre class="usage"><span class='fu'>get_commits_tags</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='st'>"master"</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>repo</th>
-      <td><p>a path to a repository or a <code>git_repository</code>
-object. Default is '.'</p></td>
-    </tr>
-    <tr>
-      <th>ref</th>
-      <td><p>The name of a reference to list commits from e.g. a tag
-or a branch. The default is NULL for the current branch.</p></td>
-    </tr>
-    <tr>
-      <th>path</th>
-      <td><p>The path to a file. If not NULL, only commits modifying
-this file will be returned. Note that modifying commits that
-occurred before the file was given its present name are not
-returned; that is, the output of <code>git log</code> with
-<code>--no-follow</code> is reproduced.</p></td>
-    </tr>
-    <tr>
-      <th>silent</th>
-      <td><p>Logical. Whether to hide messages.</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A tibble with commits and tags</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>repo</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
-<span class='fu'>get_commits_tags</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>)</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 4 x 9
-#&gt;   sha   summary message author email when                order tag.name
-#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   
-#&gt; 1 0a53… Add NE… "Add N… Alice  alic… 2020-08-05 19:16:19     4 &lt;NA&gt;    
-#&gt; 2 b28b… Third … "Third… Alice  alic… 2020-08-05 19:16:19     3 v0.1    
-#&gt; 3 c91e… exampl… "examp… Alice  alic… 2020-08-05 19:16:19     2 v0.1    
-#&gt; 4 7e7e… First … "First… Alice  alic… 2020-08-05 19:16:19     1 v0.1    
-#&gt; # … with 1 more variable: tag.message &lt;chr&gt;</div></pre>
+    <div id="gitdown-0-0-1" class="section level1">
+<h1 class="page-header" data-toc-text="0.0.1">
+<a href="#gitdown-0-0-1" class="anchor"></a>gitdown 0.0.1</h1>
+<p>Breaking changes</p>
+<ul>
+<li>
+<code>names_section</code> parameter is replaced by a named vector in <code>pattern</code>
+</li>
+</ul>
+<p>Other changes</p>
+<ul>
+<li>Added summary tables for each section</li>
+<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
+</ul>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
 
 

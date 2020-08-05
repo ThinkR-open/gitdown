@@ -8,8 +8,13 @@
 
 <title>Get commits associated with a text pattern — get_commits_pattern • gitdown</title>
 
+
 <!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Bootstrap -->
 <link href="../cosmo.css" rel="stylesheet">
@@ -17,7 +22,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
@@ -69,7 +75,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -83,7 +89,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gitdown</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
       </span>
     </div>
 
@@ -113,13 +119,16 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
           <div id="code-folding-buttons" class="btn-group"><button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-_extension-text-contrast=""><span>Show/Hide all code</span><span class="caret"></span></button><ul class="dropdown-menu" style="min-width: 50px;"><li><a id="rmd-show-all-code" href="#">Show All Code</a></li><li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li></ul></div>
         </li>
         <li>
-  <a href="https://github.com/Thinkr-open/gitdown">
+  <a href="https://github.com/Thinkr-open/gitdown/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -146,8 +155,13 @@
     <p>Get commits associated with a text pattern</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_commits_pattern</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>,
-  <span class='kw'>ref</span> <span class='kw'>=</span> <span class='st'>"master"</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_commits_pattern</span>(
+  <span class='kw'>repo</span> <span class='kw'>=</span> <span class='st'>"."</span>,
+  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>Ticket</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>),
+  <span class='kw'>ref</span> <span class='kw'>=</span> <span class='st'>"master"</span>,
+  <span class='kw'>path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -159,17 +173,7 @@ object. Default is '.'</p></td>
     </tr>
     <tr>
       <th>pattern</th>
-      <td><p>Pattern to look for.</p>
-<p>The default interpretation is a regular expression, as described
-in <a href='https://rdrr.io/pkg/stringi/man/stringi-search-regex.html'>stringi::stringi-search-regex</a>. Control options with
-<code><a href='https://rdrr.io/r/base/regex.html'>regex()</a></code>.</p>
-<p>Match a fixed string (i.e. by comparing only bytes), using
-<code>fixed()</code>. This is fast, but approximate. Generally,
-for matching human text, you'll want <code>coll()</code> which
-respects character matching rules for the specified locale.</p>
-<p>Match character, word, line and sentence boundaries with
-<code>boundary()</code>. An empty pattern, "", is equivalent to
-<code>boundary("character")</code>.</p></td>
+      <td><p>Named vector of regex patterns</p></td>
     </tr>
     <tr>
       <th>ref</th>
@@ -196,25 +200,40 @@ returned; that is, the output of <code>git log</code> with
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>repo</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
-<span class='fu'>get_commits_pattern</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>)</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 6 x 10
+<span class='fu'>get_commits_pattern</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ticket"</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>))</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 7 x 11
 #&gt;   sha   summary message author email when                order tag.name
 #&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   
-#&gt; 1 414e… Add NE… "Add N… Alice  alic… 2019-09-28 19:36:29     4 &lt;NA&gt;    
-#&gt; 2 414e… Add NE… "Add N… Alice  alic… 2019-09-28 19:36:29     4 &lt;NA&gt;    
-#&gt; 3 fa78… Third … "Third… Alice  alic… 2019-09-28 19:36:29     3 v0.1    
-#&gt; 4 fa78… Third … "Third… Alice  alic… 2019-09-28 19:36:29     3 v0.1    
-#&gt; 5 0ac5… exampl… "examp… Alice  alic… 2019-09-28 19:36:29     2 v0.1    
-#&gt; 6 3d4d… First … First … Alice  alic… 2019-09-28 19:36:29     1 v0.1    
-#&gt; # … with 2 more variables: tag.message &lt;chr&gt;, pattern &lt;chr&gt;</div></pre>
+#&gt; 1 0a53… Add NE… "Add N… Alice  alic… 2020-08-05 19:16:19     4 &lt;NA&gt;    
+#&gt; 2 0a53… Add NE… "Add N… Alice  alic… 2020-08-05 19:16:19     4 &lt;NA&gt;    
+#&gt; 3 0a53… Add NE… "Add N… Alice  alic… 2020-08-05 19:16:19     4 &lt;NA&gt;    
+#&gt; 4 b28b… Third … "Third… Alice  alic… 2020-08-05 19:16:19     3 v0.1    
+#&gt; 5 b28b… Third … "Third… Alice  alic… 2020-08-05 19:16:19     3 v0.1    
+#&gt; 6 c91e… exampl… "examp… Alice  alic… 2020-08-05 19:16:19     2 v0.1    
+#&gt; 7 7e7e… First … "First… Alice  alic… 2020-08-05 19:16:19     1 v0.1    
+#&gt; # … with 3 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,
+#&gt; #   pattern.content &lt;chr&gt;</div><div class='input'><span class='fu'>get_commits_pattern</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>,
+  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ticket"</span> <span class='kw'>=</span> <span class='st'>"ticket[[:digit:]]+"</span>, <span class='st'>"Issues"</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>))</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 12 x 11
+#&gt;    sha   summary message author email when                order tag.name
+#&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   
+#&gt;  1 0a53… Add NE… "Add N… Alice  alic… 2020-08-05 19:16:19     4 &lt;NA&gt;    
+#&gt;  2 0a53… Add NE… "Add N… Alice  alic… 2020-08-05 19:16:19     4 &lt;NA&gt;    
+#&gt;  3 0a53… Add NE… "Add N… Alice  alic… 2020-08-05 19:16:19     4 &lt;NA&gt;    
+#&gt;  4 0a53… Add NE… "Add N… Alice  alic… 2020-08-05 19:16:19     4 &lt;NA&gt;    
+#&gt;  5 0a53… Add NE… "Add N… Alice  alic… 2020-08-05 19:16:19     4 &lt;NA&gt;    
+#&gt;  6 b28b… Third … "Third… Alice  alic… 2020-08-05 19:16:19     3 v0.1    
+#&gt;  7 b28b… Third … "Third… Alice  alic… 2020-08-05 19:16:19     3 v0.1    
+#&gt;  8 b28b… Third … "Third… Alice  alic… 2020-08-05 19:16:19     3 v0.1    
+#&gt;  9 c91e… exampl… "examp… Alice  alic… 2020-08-05 19:16:19     2 v0.1    
+#&gt; 10 c91e… exampl… "examp… Alice  alic… 2020-08-05 19:16:19     2 v0.1    
+#&gt; 11 7e7e… First … "First… Alice  alic… 2020-08-05 19:16:19     1 v0.1    
+#&gt; 12 7e7e… First … "First… Alice  alic… 2020-08-05 19:16:19     1 v0.1    
+#&gt; # … with 3 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,
+#&gt; #   pattern.content &lt;chr&gt;</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
