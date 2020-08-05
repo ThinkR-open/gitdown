@@ -14,6 +14,7 @@ usethis::use_r("get_commits")
 usethis::use_test("get_commits")
 usethis::use_r("utils")
 usethis::use_test("utils")
+usethis::use_test("git_down")
 
 # Documentation ----
 usethis::use_vignette("aa-create-commit_down")
@@ -23,7 +24,14 @@ usethis::use_data_raw()
 usethis::use_news_md()
 
 # Dependencies ----
-attachment::att_to_description(extra.suggests = "bookdown")
+# Clean importFrom
+# remotes::install_github("dreamRs/prefixer")
+not_used <- prefixer::check_import_from()
+not_used
+# Build description deps
+# attachment::att_to_description(extra.suggests = "bookdown")
+attachment::att_to_description()
+
 
 # dev ----
 devtools::load_all()
@@ -38,5 +46,13 @@ checkhelper::print_globals(globals)
 # Store in package using usethis::use_r("globals")
 
 # _CI
+# remotes::install_github("ropenscilabs/travis")
+# remotes::install_github("ropensci/tic")
 tic::use_tic()
-usethis::use_travis()
+Sys.setenv(R_TRAVIS = ".org")
+travis::browse_travis_token(endpoint = '.org')
+tic::use_tic(wizard = FALSE, linux = "travis", mac = "travis",
+             windows = "appveyor", deploy = "travis", matrix = "travis",
+             travis_endpoint = ".org")
+# usethis::use_travis()
+usethis::use_appveyor()

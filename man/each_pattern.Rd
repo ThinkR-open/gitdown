@@ -4,21 +4,22 @@
 \alias{each_pattern}
 \title{Presentation for each pattern}
 \usage{
-each_pattern(pattern, name_section, repo, ref = "master")
+each_pattern(nest_commits, pattern.type)
 }
 \arguments{
-\item{pattern}{vector of regex patterns}
+\item{nest_commits}{commits as nested with nest_commits_by_pattern}
 
-\item{name_section}{names for pattern section}
-
-\item{repo}{path to the repo}
-
-\item{ref}{branch of the repo}
+\item{pattern.type}{Character name of the pattern to filter}
 }
 \description{
 Presentation for each pattern
 }
 \examples{
 repo <- fake_repo()
-each_pattern("ticket[[:digit:]]+", "Ticket", repo)
+res_commits <- nest_commits_by_pattern(
+  repo,
+  pattern = c("Ticket" = "ticket[[:digit:]]+"),
+  ref = "master", silent = TRUE
+)
+each_pattern(res_commits, "Ticket")
 }

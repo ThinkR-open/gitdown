@@ -44,7 +44,7 @@ fake_repo <- function(path = tempfile(pattern = "git2r-")) {
     file.path(path, "example.txt")
   )
   add(repo, "example.txt")
-  commit(repo, "Third commit message\n\nissue #2\nissue #145.\nticket1234\n More information important for the project as breaking changes")
+  commit(repo, "Third commit message\n\n-issue #2\n-issue #145.\n More information important for the project as breaking changes")
 
   ## Create a tag
   tag(repo, name = "v0.1", message = "Tag v0.1 message")
@@ -59,7 +59,7 @@ fake_repo <- function(path = tempfile(pattern = "git2r-")) {
     file.path(path, "NEWS.md")
   )
   add(repo, "NEWS.md")
-  commit(repo, "Add NEWS\n\nissue #32.\nissue #1.\nticket6789.\nticket1234\n Creation of the NEWS file for version 0.1.")
+  commit(repo, "Add NEWS\n\nissue #32.\nissue #1.\nissue#12\nticket6789.\nticket1234\n Creation of the NEWS file for version 0.1.")
 
   return(path)
 }

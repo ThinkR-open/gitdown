@@ -7,9 +7,9 @@
 #' @param book_path The path to the bookdown output. Default is `"gitdown"`.
 #' @param open Should the bookdown be opened once compiled? Default is TRUE.
 #' @param author Author of the Bookdown
-#' @param pattern Regex pattern to expose commits, like "#[[:digit:]]" for issues
-#' @param names_section names for each section, one pattern = one section
+#' @param pattern Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues
 #' @param ref the name of the branch, by default master
+#' @param ... Other parameters to pass to \code{\link[rmarkdown]{render}}
 #'
 #' @export
 #'
@@ -17,21 +17,17 @@
 #' @importFrom rmarkdown render
 #' @importFrom utils browseURL
 #' @importFrom git2r workdir
-#' @importFrom purrr map2_dfr
+#' @importFrom purrr map_dfr
+#' @importFrom bookdown gitbook
 #'
 #' @examples
 #' repo <- fake_repo()
-#' git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"),
-#' names_section = c("Tickets", "Issues"), open = TRUE)
+#' git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"))
 
 git_down <- function(repo = ".", book_path = "gitdown",
                      open = TRUE, author = "John Doe",
-                     pattern = "#[[:digit:]]+",
-                     names_section = "Issues",
-                     ref = "master") {
-  if (length(pattern) != length(names_section)) {
-    stop("There should by same number of pattern and names_section")
-  }
+                     pattern = c("Issues" = "#[[:digit:]]+"),
+                     ref = "master", ...) {
 
   # Clean previous book
   unlink(file.path(repo, book_path), recursive = TRUE)
@@ -60,10 +56,18 @@ git_down <- function(repo = ".", book_path = "gitdown",
 
   meta_name <- basename(workdir(repo = repo))
 
+  # Link commits and patterns
+  if (is.null(names(pattern))) {names(pattern) <- paste0("`", pattern, "`")}
+  res_commits <- nest_commits_by_pattern(
+    repo,
+    pattern = pattern,
+    ref = ref, silent = TRUE
+  )
+
   # Create content
-  res <- map2_dfr(
-    pattern, names_section,
-    ~each_pattern(pattern = .x, name_section = .y, repo, ref))
+  res <- map_dfr(
+    names(pattern),
+    ~each_pattern(res_commits, pattern.type = .x))
 
   content <- paste(
     c(
@@ -82,7 +86,7 @@ git_down <- function(repo = ".", book_path = "gitdown",
            dir = book_path,
            rmd = "index.Rmd")
 
-  res <- render(file.path(repo, book_path, "index.Rmd"))
+  res <- render(file.path(repo, book_path, "index.Rmd"), ...)
 
   if (open) {
     browseURL(res)

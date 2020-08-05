@@ -3,6 +3,10 @@ globalVariables(
     "name", "sha", "target", "tag.name", "tag.message", "pattern", "order", ".",
     "pattern_numeric",
     # each_pattern()
-    "link_pattern", "pattern_name", "data"
+    "link_pattern", "data", "pattern.content",
+    # get_commit_pattern
+    "pattern_extract",
+    # nest_commits_by_pattern
+    "pattern.content", "pattern.type", "text_link", "message_link.type"
   ))
 )

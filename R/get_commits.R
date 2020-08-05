@@ -36,19 +36,19 @@ get_commits_tags <- function(repo = ".", ref = "master",
   } else {
     #TODO change for modify from purrr
     for(i in names(list_tags)){
-    list_tags[[i]][["name"]] <- i
+      list_tags[[i]][["name"]] <- i
     }
-      all_tags <- do.call(rbind, lapply(list_tags, function(x) unlist(x))) %>%
+    all_tags <- do.call(rbind, lapply(list_tags, function(x) unlist(x))) %>%
       as_tibble()
-      if("target" %in% names(all_tags)){
-        all_tags <- all_tags %>%
-          select(name, message, target) %>%
-          rename(sha = target, tag.name = name, tag.message = message)
-      }else{
-          all_tags <- all_tags %>%
-            select(name,message,sha) %>%
-            rename( tag.name = name, tag.message = message)
-        }
+    if("target" %in% names(all_tags)){
+      all_tags <- all_tags %>%
+        select(name, message, target) %>%
+        rename(sha = target, tag.name = name, tag.message = message)
+    }else{
+      all_tags <- all_tags %>%
+        select(name,message,sha) %>%
+        rename( tag.name = name, tag.message = message)
+    }
   }
 
   # Associate tags with commits
@@ -61,31 +61,55 @@ get_commits_tags <- function(repo = ".", ref = "master",
 
 #' Get commits associated with a text pattern
 #'
-#' @inheritParams stringr::str_extract_all
+#' @param pattern Named vector of regex patterns
 #' @inheritParams git2r::commits
 #' @inheritParams get_commits_tags
 #'
 #' @return A tibble with commits and tags
 #'
-#' @importFrom stringr str_extract_all
-#' @importFrom dplyr mutate
+#' @importFrom dplyr mutate distinct rowwise tibble
 #' @importFrom tidyr unnest
-#' @importFrom purrr map
+#' @importFrom purrr imap flatten_chr
+#' @importFrom stats setNames
 #'
 #' @export
 #'
 #' @examples
 #' repo <- fake_repo()
-#' get_commits_pattern(repo = repo, pattern = "#[[:digit:]]+")
-get_commits_pattern <- function(repo = ".", pattern = "#[[:digit:]]+",
+#' get_commits_pattern(repo = repo, pattern = c("Ticket" = "#[[:digit:]]+"))
+#' get_commits_pattern(repo = repo,
+#'   pattern = c("Ticket" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"))
+
+get_commits_pattern <- function(repo = ".", pattern = c("Ticket" = "#[[:digit:]]+"),
                                 ref = "master", path = NULL, silent = FALSE) {
-  get_commits_tags(repo = repo,  ref = ref, path = path, silent = silent) %>%
+
+  if (is.null(names(pattern))) {names(pattern) <- paste0("`", pattern, "`")}
+
+ get_commits_tags(repo = repo,  ref = ref, path = path, silent = silent) %>%
+    rowwise() %>%
     mutate(
-      pattern = str_extract_all(message, pattern, simplify = FALSE),
-      # Keep commits with no pattern
-      pattern = map(pattern,
-                           ~{if(length(.x) == 0) NA_character_ else .x})
+      pattern_extract = list(
+        imap(pattern, ~my_extract(message, .x) %>%
+               setNames(., rep(.y, length(.)))) %>%
+          flatten_chr() %>%
+          tibble(pattern.type = names(.), pattern.content = .)
+        )
     ) %>%
     # unnest to separate multiple pattern values
-    unnest(pattern)
+    unnest(pattern_extract) %>%
+    # remove duplicates
+    distinct()
+}
+
+#' Extract pattern from message
+#'
+#' @param message Character
+#' @inheritParams stringi::stri_extract_all
+#'
+#' @importFrom stringi stri_extract_all
+
+my_extract <- function(message, pattern) {
+  # res <- unlist(str_extract_all(message, pattern, simplify = FALSE))
+  res <- unlist(stri_extract_all(message, regex = pattern, simplify = FALSE))
+  if(length(res) == 0) NA_character_ else res
 }

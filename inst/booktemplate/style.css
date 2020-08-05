@@ -16,3 +16,14 @@ pre code {
 .book .book-body .page-wrapper .page-inner {
   max-width: 1000px;
 }
+
+.commit-content {
+    overflow: auto;
+    word-wrap: normal;
+    margin: 0 0 1.275em;
+    padding: .85em 1em;
+    background: #f7f7f7;
+    font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
+    font-size: 0.9em;
+}
+
