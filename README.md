@@ -7,10 +7,10 @@
 
 [![Travis build
 status](https://travis-ci.org/ThinkR-open/gitdown.svg?branch=master)](https://travis-ci.org/ThinkR-open/gitdown)
-[![Build
-status](https://ci.appveyor.com/api/projects/status/39akrxjav1m3odem?svg=true)](https://ci.appveyor.com/project/statnmap/gitdown)
 [![Coverage
 status](https://codecov.io/gh/ThinkR-open/gitdown/branch/master/graph/badge.svg)](https://codecov.io/github/ThinkR-open/gitdown?branch=master)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/ThinkR-open/gitdown?branch=master&svg=true)](https://ci.appveyor.com/project/ThinkR-open/gitdown)
 <!-- badges: end -->
 
 The goal of {gitdown} is to build a bookdown report of commit messages
@@ -32,8 +32,6 @@ remotes::install_github("ThinkR-open/gitdown")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
 ``` r
 library(dplyr)
 library(gitdown)
@@ -42,34 +40,66 @@ repo <- fake_repo()
 ```
 
 Get commits with issues mentionned. The searched pattern is a `#`
-followed by at least one number: `pattern =
-"#[[:digit:]]+"`.
+followed by at least one number: `"#[[:digit:]]+"`. Variable
+`pattern.content` lists patterns found in the commit messages.
 
 ``` r
 get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master") %>% 
-  select(pattern, everything())
+  select(pattern.content, everything())
 #> 4 commits found.
-#> # A tibble: 6 x 10
-#>   pattern sha   summary message author email when                order
-#>   <chr>   <chr> <chr>   <chr>   <chr>  <chr> <dttm>              <int>
-#> 1 #32     7e70… Add NE… "Add N… Alice  alic… 2019-09-27 14:19:37     4
-#> 2 #1      7e70… Add NE… "Add N… Alice  alic… 2019-09-27 14:19:37     4
-#> 3 #2      bf10… Third … "Third… Alice  alic… 2019-09-27 14:19:37     3
-#> 4 #145    bf10… Third … "Third… Alice  alic… 2019-09-27 14:19:37     3
-#> 5 #1      8782… exampl… "examp… Alice  alic… 2019-09-27 14:19:37     2
-#> 6 <NA>    b87c… First … First … Alice  alic… 2019-09-27 14:19:37     1
-#> # … with 2 more variables: tag.name <chr>, tag.message <chr>
+#> # A tibble: 7 x 11
+#>   pattern.content sha   summary message author email when                order
+#>   <chr>           <chr> <chr>   <chr>   <chr>  <chr> <dttm>              <int>
+#> 1 #32             638f… Add NE… "Add N… Alice  alic… 2020-08-05 16:48:02     4
+#> 2 #1              638f… Add NE… "Add N… Alice  alic… 2020-08-05 16:48:02     4
+#> 3 #12             638f… Add NE… "Add N… Alice  alic… 2020-08-05 16:48:02     4
+#> 4 #2              1285… Third … "Third… Alice  alic… 2020-08-05 16:48:02     3
+#> 5 #145            1285… Third … "Third… Alice  alic… 2020-08-05 16:48:02     3
+#> 6 #1              49e2… exampl… "examp… Alice  alic… 2020-08-05 16:48:02     2
+#> 7 <NA>            159b… First … "First… Alice  alic… 2020-08-05 16:48:02     1
+#> # … with 3 more variables: tag.name <chr>, tag.message <chr>,
+#> #   pattern.type <chr>
+```
+
+Get commits with issues and specific home-made pattern. Use a named
+vector to properly separate types of patterns.
+
+``` r
+get_commits_pattern(
+  repo, 
+  pattern =  c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"),
+  ref = "master"
+) %>% 
+  select(pattern.type, pattern.content, everything())
+#> 4 commits found.
+#> # A tibble: 12 x 11
+#>    pattern.type pattern.content sha   summary message author email
+#>    <chr>        <chr>           <chr> <chr>   <chr>   <chr>  <chr>
+#>  1 Tickets      ticket6789      638f… Add NE… "Add N… Alice  alic…
+#>  2 Tickets      ticket1234      638f… Add NE… "Add N… Alice  alic…
+#>  3 Issues       #32             638f… Add NE… "Add N… Alice  alic…
+#>  4 Issues       #1              638f… Add NE… "Add N… Alice  alic…
+#>  5 Issues       #12             638f… Add NE… "Add N… Alice  alic…
+#>  6 Tickets      <NA>            1285… Third … "Third… Alice  alic…
+#>  7 Issues       #2              1285… Third … "Third… Alice  alic…
+#>  8 Issues       #145            1285… Third … "Third… Alice  alic…
+#>  9 Tickets      ticket1234      49e2… exampl… "examp… Alice  alic…
+#> 10 Issues       #1              49e2… exampl… "examp… Alice  alic…
+#> 11 Tickets      <NA>            159b… First … "First… Alice  alic…
+#> 12 Issues       <NA>            159b… First … "First… Alice  alic…
+#> # … with 4 more variables: when <dttm>, order <int>, tag.name <chr>,
+#> #   tag.message <chr>
 ```
 
 ## Create a gitbook of commits sorted by a pattern
 
 ``` r
-git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"), 
-         names_section = c("Ticket", "Issues"))
+git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+",
+                           "Issues" = "#[[:digit:]]+"))
 ```
 
-<img src="https://raw.githubusercontent.com/ThinkR-open/gitdown/master/reference/figures/gitdown_screenshot.png" width="90%" style="display: block; margin: auto;" />
+<img src="reference/figures/gitdown_links.png" width="90%" style="display: block; margin: auto;" />
 
-Please note that the ‘gitdown’ project is released with a [Contributor
+Please note that the {gitdown} project is released with a [Contributor
 Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
 you agree to abide by its terms.

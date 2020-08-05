@@ -9,9 +9,9 @@ git_down(
   book_path = "gitdown",
   open = TRUE,
   author = "John Doe",
-  pattern = "#[[:digit:]]+",
-  names_section = "Issues",
-  ref = "master"
+  pattern = c(Issues = "#[[:digit:]]+"),
+  ref = "master",
+  ...
 )
 }
 \arguments{
@@ -23,11 +23,11 @@ git_down(
 
 \item{author}{Author of the Bookdown}
 
-\item{pattern}{Regex pattern to expose commits, like "#[[:digit:]]" for issues}
-
-\item{names_section}{names for each section, one pattern = one section}
+\item{pattern}{Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues}
 
 \item{ref}{the name of the branch, by default master}
+
+\item{...}{Other parameters to pass to \code{\link[rmarkdown]{render}}}
 }
 \description{
 This function turns the history of git into a bookdown.
@@ -35,6 +35,5 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
 }
 \examples{
 repo <- fake_repo()
-git_down(repo, pattern = c("ticket[[:digit:]]+","#[[:digit:]]+"),
-names_section = c("Tickets", "Issues"), open = TRUE)
+git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"))
 }

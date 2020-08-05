@@ -23,17 +23,18 @@ Depends:
     R (>= 3.4)
 Imports: 
     attempt,
+    bookdown,
     dplyr,
     git2r (>= 0.26.0),
     knitr,
     magrittr,
     purrr,
     rmarkdown,
-    stringr,
+    stats,
+    stringi,
     tidyr,
     utils
 Suggests: 
-    bookdown,
     testthat (>= 2.1.0),
     withr
 VignetteBuilder: 
