@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Presentation of commit — presentation_commit • gitdown</title>
+<title>Update vignette last modification of files — update_vignette_last_modif • gitdown</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
 
-<meta property="og:title" content="Presentation of commit — presentation_commit" />
-<meta property="og:description" content="Presentation of commit" />
+<meta property="og:title" content="Update vignette last modification of files — update_vignette_last_modif" />
+<meta property="og:description" content="Update vignette last modification of files" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -146,27 +146,65 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Presentation of commit</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/gitdown/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>presentation_commit.Rd</code></div>
+    <h1>Update vignette last modification of files</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/gitdown/blob/master/R/get_info_files.R'><code>R/get_info_files.R</code></a></small>
+    <div class="hidden name"><code>update_vignette_last_modif.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Presentation of commit</p>
+    <p>Update vignette last modification of files</p>
     </div>
 
-    <pre class="usage"><span class='fu'>presentation_commit</span>(<span class='no'>commit</span>)</pre>
+    <pre class="usage"><span class='fu'>update_vignette_last_modif</span>(
+  <span class='kw'>repo</span> <span class='kw'>=</span> <span class='st'>"."</span>,
+  <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"R"</span>,
+  <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>untracked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>commit</th>
-      <td><p>one line data from get_commits_pattern</p></td>
+      <th>repo</th>
+      <td><p>git repository</p></td>
+    </tr>
+    <tr>
+      <th>path</th>
+      <td><p>Default to R folder. Use "" for the complete repository.</p></td>
+    </tr>
+    <tr>
+      <th>recursive</th>
+      <td><p>Logical. Should the listing recurse into directories?</p></td>
+    </tr>
+    <tr>
+      <th>untracked</th>
+      <td><p>Logical. Should the untracked files be included?</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>update existing vignette</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>repo</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>(<span class='kw'>as.package</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>update_vignette_last_modif</span>(<span class='no'>repo</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"R"</span>)
+<span class='kw pkg'>rmarkdown</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/rmarkdown/man/render.html'>render</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>repo</span>, <span class='st'>"vignettes"</span>, <span class='st'>"modification_files.Rmd"</span>))</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>processing file: modification_files.Rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |.......................                                               |  33%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |...............................................                       |  67%
+#&gt; label: setup (with options) 
+#&gt; List of 1
+#&gt;  $ include: logi FALSE
+#&gt; 
+#&gt;   |                                                                              |......................................................................| 100%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: modification_files.knit.md</span></div><div class='output co'>#&gt; <span class='warning'>Warning: The vignette title specified in \VignetteIndexEntry{} is different from the title in the YAML metadata. The former is "zz-modification-of-files", and the latter is "Modifications of files". If that is intentional, you may set options(rmarkdown.html_vignette.check_title = FALSE) to suppress this check.</span></div><div class='output co'>#&gt; /usr/bin/pandoc +RTS -K512m -RTS modification_files.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output modification_files.html --email-obfuscation none --self-contained --standalone --section-divs --template /home/travis/R/Library/rmarkdown/rmd/h/default.html --highlight-style pygments --css /home/travis/R/Library/rmarkdown/rmarkdown/templates/html_vignette/resources/vignette.css --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --lua-filter /home/travis/R/Library/rmarkdown/rmd/lua/pagebreak.lua --lua-filter /home/travis/R/Library/rmarkdown/rmd/lua/latex-div.lua </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Output created: modification_files.html</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

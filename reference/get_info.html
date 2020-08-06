@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Presentation of commit — presentation_commit • gitdown</title>
+<title>Get info — get_info • gitdown</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
 
-<meta property="og:title" content="Presentation of commit — presentation_commit" />
-<meta property="og:description" content="Presentation of commit" />
+<meta property="og:title" content="Get info — get_info" />
+<meta property="og:description" content="Get the first and last modification for one file. Based on git2r::blame." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -146,27 +146,50 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Presentation of commit</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/gitdown/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>presentation_commit.Rd</code></div>
+    <h1>Get info</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/gitdown/blob/master/R/get_info_files.R'><code>R/get_info_files.R</code></a></small>
+    <div class="hidden name"><code>get_info.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Presentation of commit</p>
+    <p>Get the first and last modification for one file. Based on git2r::blame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>presentation_commit</span>(<span class='no'>commit</span>)</pre>
+    <pre class="usage"><span class='fu'>get_info</span>(<span class='no'>path</span>, <span class='kw'>repo</span> <span class='kw'>=</span> <span class='st'>"."</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>commit</th>
-      <td><p>one line data from get_commits_pattern</p></td>
+      <th>path</th>
+      <td><p>path to the file</p></td>
+    </tr>
+    <tr>
+      <th>repo</th>
+      <td><p>repo of the git project</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>list</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>repo</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
+<span class='fu'>get_info</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span>(<span class='no'>repo</span>)[<span class='fl'>1</span>], <span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>)</div><div class='output co'>#&gt; $file
+#&gt; [1] "example.txt"
+#&gt; 
+#&gt; $in_repository
+#&gt; [1] TRUE
+#&gt; 
+#&gt; $first_modif
+#&gt;                     first 
+#&gt; "2020-08-06 13:24:16 UTC" 
+#&gt; 
+#&gt; $last_modif
+#&gt;                      last 
+#&gt; "2020-08-06 13:24:16 UTC" 
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
