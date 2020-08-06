@@ -50,7 +50,7 @@ get_info <- function(path, repo = ".") {
   } else {
     # Not in git repo
     file <- path
-    first_last <- c(as.POSIXct.numeric(NA_real_),
+    first_last <- c(as.POSIXct.numeric(NA_real_, origin = "1970-01-01"),
                     file.info(file.path(repo, path))$mtime) %>%
       set_names(nm = c("first", "last"))
   }
