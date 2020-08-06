@@ -1,14 +1,20 @@
 #' Create a fake git repository in tempfile for examples
 #'
 #' @param path Path to fake repository
+#' @param as.package Logical. Whether to add R/ and vignettes/
+#'  directories to fake a package
 #'
 #' @importFrom git2r init config add commit tag
 #' @export
 #'
 #' @return path to fake repository
 #' @examples
+#' # Fake repository with git
 #' fake_repo()
-fake_repo <- function(path = tempfile(pattern = "git2r-")) {
+#' # Fake repository that looks like package with git
+#' fake_repo(as.package = TRUE)
+
+fake_repo <- function(path = tempfile(pattern = "git2r-"), as.package = FALSE) {
   if (!dir.exists(path)) {dir.create(path)}
   repo <- init(path)
 
@@ -60,6 +66,29 @@ fake_repo <- function(path = tempfile(pattern = "git2r-")) {
   )
   add(repo, "NEWS.md")
   commit(repo, "Add NEWS\n\nissue #32.\nissue #1.\nissue#12\nticket6789.\nticket1234\n Creation of the NEWS file for version 0.1.")
+
+  if (isTRUE(as.package)) {
+    # Add a .gitignore
+    writeLines(
+      paste(".Rproj.user",
+            sep = "\n"),
+      file.path(path, ".gitignore")
+    )
+    ## Write a function in R/ and commit
+    dir.create(file.path(path, "R"))
+    writeLines(
+      paste("#' Fake function",
+            "#' @param x Vector of numeric",
+            "my_mean <- function(x) {mean(x, na.rm = TRUE)}",
+            sep = "\n"),
+      file.path(path, "R/my_mean.R")
+    )
+    # Do not commit R file
+    # add(repo, "R/my_mean.R")
+    # commit(repo, "Add function my_mean")
+    # Create a vignette directory
+    dir.create(file.path(path, "vignettes"))
+  }
 
   return(path)
 }

@@ -1,0 +1,13 @@
+---
+title: "Modifications of files"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{zz-modification-of-files}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+

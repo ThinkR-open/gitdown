@@ -4,10 +4,13 @@
 \alias{fake_repo}
 \title{Create a fake git repository in tempfile for examples}
 \usage{
-fake_repo(path = tempfile(pattern = "git2r-"))
+fake_repo(path = tempfile(pattern = "git2r-"), as.package = FALSE)
 }
 \arguments{
 \item{path}{Path to fake repository}
+
+\item{as.package}{Logical. Whether to add R/ and vignettes/
+directories to fake a package}
 }
 \value{
 path to fake repository
@@ -16,5 +19,8 @@ path to fake repository
 Create a fake git repository in tempfile for examples
 }
 \examples{
+# Fake repository with git
 fake_repo()
+# Fake repository that looks like package with git
+fake_repo(as.package = TRUE)
 }

@@ -70,6 +70,24 @@ git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+",
 knitr::include_graphics("reference/figures/gitdown_links.png")
 ```
   
+## Create a vignette that lists all files with date of modification
+
+```{r, eval=FALSE}
+repo_pkg <- fake_repo(as.package = TRUE)
+# List only files in R/ directory
+create_vignette_last_modif(repo_pkg)
+# List all files of the git repository
+create_vignette_last_modif(repo_pkg, path = "")
+```
+
+With this example, the vignette will show this content:  
+
+```{r, echo=FALSE, results='asis'}
+repo_pkg <- fake_repo(as.package = TRUE)
+cat(present_files(repo_pkg, path = ""))
+```
+
+
   
 Please note that the {gitdown} project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md).

@@ -15,6 +15,7 @@ usethis::use_test("get_commits")
 usethis::use_r("utils")
 usethis::use_test("utils")
 usethis::use_test("git_down")
+usethis::use_test("get_info_files")
 
 # Documentation ----
 usethis::use_vignette("aa-create-commit_down")
@@ -30,7 +31,7 @@ not_used <- prefixer::check_import_from()
 not_used
 # Build description deps
 # attachment::att_to_description(extra.suggests = "bookdown")
-attachment::att_to_description()
+attachment::att_to_description(extra.suggests = "rmarkdown")
 
 
 # dev ----
