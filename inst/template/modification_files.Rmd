@@ -1,6 +1,10 @@
 ---
-title: "Modification of files"
-output: html_document
+title: "Modifications of files"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{zz-modification-of-files}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}

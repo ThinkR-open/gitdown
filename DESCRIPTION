@@ -1,6 +1,6 @@
 Package: gitdown
 Title: Turn Your Git Commit Messages Into A Bookdown
-Version: 0.0.1.9000
+Version: 0.0.1
 Authors@R: 
     c(person(given = "Sébastien",
              family = "Rochette",
@@ -26,7 +26,6 @@ Imports:
     bookdown,
     dplyr,
     git2r (>= 0.26.0),
-    htmltools,
     knitr,
     magrittr,
     purrr,

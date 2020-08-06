@@ -3,7 +3,7 @@
 #' @param object hunks list
 #'
 #' @return time
-get_time <- function(object){
+get_time <- function(object) {
   pluck(object, "final_signature", "when", "time")
 }
 
@@ -19,35 +19,56 @@ get_time <- function(object){
 #'
 #' @importFrom git2r blame
 #' @importFrom purrr pluck map flatten_dbl set_names
+#' @importFrom dplyr mutate pull
 #'
 #' @examples
 #' repo <- fake_repo()
-#' get_info(list.files(repo)[1], repo = repo )
-get_info <- function(path, repo = "."){
-  blame_object <- blame(repo = repo ,path = path)
+#' get_info(list.files(repo)[1], repo = repo)
+get_info <- function(path, repo = ".") {
 
-  file <-  blame_object$hunks[[1]]$orig_path %>%
-    gsub(pattern = "^R/", replacement = "") %>%
-    gsub(pattern = "\\.R$", replacement = "")
+  # test if in git repo
+  in_repository <- path %in%
+    (git2r::ls_tree(repo = repo, recursive = TRUE) %>%
+       mutate(filepath = paste0(path, name)) %>%
+       pull(filepath))
 
+  if (in_repository) {
+    # In git
+    blame_object <- blame(repo = repo, path = path)
 
-  first_last <- blame_object %>%
-    pluck("hunks") %>%
-    map(get_time) %>%
-    flatten_dbl() %>%
-    range() %>%
-    as.POSIXct.numeric(origin = "1970-01-01 UTC") %>%
-    set_names(nm = c("first", "last"))
+    file <- path #basename(blame_object$hunks[[1]]$orig_path) # %>%
+    # gsub(pattern = "^R/", replacement = "") %>%
+    # gsub(pattern = "\\.R$", replacement = "")
 
-  list(file = file ,
-       fisrt_modif = first_last[1],
-       last_modif = first_last[2])
+    first_last <- blame_object %>%
+      pluck("hunks") %>%
+      map(get_time) %>%
+      flatten_dbl() %>%
+      range() %>%
+      as.POSIXct.numeric(origin = "1970-01-01") %>%
+      set_names(nm = c("first", "last"))
+  } else {
+    # Not in git repo
+    file <- path
+    first_last <- c(as.POSIXct.numeric(NA_real_),
+                    file.info(file.path(repo, path))$mtime) %>%
+      set_names(nm = c("first", "last"))
+  }
+
+  list(
+    file = file,
+    in_repository = in_repository,
+    first_modif = first_last[1],
+    last_modif = first_last[2]
+  )
 }
 
 #' Get last modification of files
 #'
-#' @param repo repo
-#' @param R_folder If TRUE, it will list functions inside the R folder
+#' @param repo git repository
+#' @param path Default to R folder. Use "" for the complete repository.
+#' @param recursive Logical. Should the listing recurse into directories?
+#' @param untracked Logical. Should the untracked files be included?
 #'
 #' @return list
 #' @export
@@ -56,19 +77,42 @@ get_info <- function(path, repo = "."){
 #'
 #' @examples
 #' repo <- fake_repo()
-#' get_last_modif(repo = repo , R_folder = FALSE)
-get_last_modif <- function(repo = ".", R_folder = TRUE){
-  if(R_folder){
-    folder <- file.path(repo, "R")
-    if(dir.exists(folder)){
-      files <- file.path('R',list.files(folder))
-    }else{
-      stop("Don't find R folder, you may use R_folder = FALSE")
-    }
+#' # Complete repository
+#' get_last_modif(repo = repo, path = "")
+#' repo <- fake_repo(as.package = TRUE)
+#' # Complete repository
+#' get_last_modif(repo = repo, path = "")
+get_last_modif <- function(repo = ".", path = "R",
+                           recursive = TRUE, untracked = TRUE) {
 
-  }else{
-    folder <- repo
-    files <- list.files(repo)
+  folder <- normalizePath(file.path(repo, path), mustWork = FALSE)
+  if (dir.exists(folder)) {
+    if (path != "") {
+      # One directory
+      files <- git2r::ls_tree(repo = repo, recursive = recursive) %>%
+        filter(path == paste0(!!path, "/")) %>%
+        mutate(filepath = paste0(path, name)) %>%
+        pull(filepath)
+      if (isTRUE(untracked)) {
+        not_in_git <- git2r::status(repo, all_untracked = TRUE) %>% unlist()
+        files <- c(files, not_in_git[grepl(paste0(path, "/"), not_in_git)])
+      }
+    } else {
+      # All files
+      files <- git2r::ls_tree(repo = repo, recursive = recursive) %>%
+        mutate(filepath = paste0(path, name)) %>%
+        pull(filepath)
+      if (isTRUE(untracked)) {
+        not_in_git <- git2r::status(repo, all_untracked = TRUE) %>% unlist()
+        files <- c(files, not_in_git[grepl(paste0(path, "/"), not_in_git)])
+      }
+    }
+  } else {
+    stop(path, "/ folder was not found")
+  }
+  if (length(files) == 0) {
+    stop("There are no files to show. ",
+         "Check the path, recursive and untracked parameters.")
   }
   map(files, ~ get_info(.x, repo = repo))
 }
@@ -78,26 +122,41 @@ get_last_modif <- function(repo = ".", R_folder = TRUE){
 #'
 #' @inheritParams get_last_modif
 #'
-#' @return tagList
+#' @importFrom dplyr transmute
+#'
+#' @return kable
 #' @export
 #'
 #' @examples
-#' repo <- fake_repo()
-#' mise_en_forme(repo, R_folder = FALSE)
-mise_en_forme <- function(repo = ".", R_folder = TRUE){
+#' repo <- fake_repo(as.package = TRUE)
+#' cat(present_files(repo))
+present_files <- function(repo = ".", path = "R",
+                          recursive = TRUE, untracked = TRUE) {
 
-  as.character(
-    htmltools::tags$ul(
-      lapply(get_last_modif(repo, R_folder), function(x){
-        htmltools::tags$li(
-          htmltools::tags$h4(paste("File:", x$file)),
-          htmltools::tags$p(paste("Date of creation:", x$fisrt_modif)),
-          htmltools::tags$p(paste("Last modification:", x$last_modif))
-        )
-      }
-      )
-    )
-  )
+  get_last_modif(repo, path, recursive, untracked) %>%
+  purrr::map_dfr(as_tibble) %>%
+    transmute(
+      File = file,
+      `Tracked in git` = ifelse(in_repository, "Yes", "No"),
+      `Date of creation` = first_modif,
+      `Last modification` = last_modif
+    ) %>%
+    knitr::kable(., format = "markdown") %>%
+    paste(., collapse = "  \n")
+
+  # as.character(
+  #   htmltools::tags$ul(
+  #     lapply(
+  #       , function(x) {
+  #         htmltools::tags$li(
+  #           htmltools::tags$h4(paste("File:", x$file)),
+  #           htmltools::tags$p(paste("Date of creation:", x$first_modif)),
+  #           htmltools::tags$p(paste("Last modification:", x$last_modif)),
+  #           htmltools::tags$p("")
+  #         )
+  #       })
+  #   )
+  # )
 }
 
 
@@ -105,41 +164,51 @@ mise_en_forme <- function(repo = ".", R_folder = TRUE){
 #'
 #' @inheritParams get_last_modif
 #'
-#' @return update a vignette
+#' @return update existing vignette
 #' @export
-update_vign_last_modif <- function(repo = ".", R_folder = TRUE){
+#' @examples
+#' repo <- fake_repo(as.package = TRUE)
+#' update_vignette_last_modif(repo, path = "R")
+#' rmarkdown::render(file.path(repo, "vignettes", "modification_files.Rmd"))
+update_vignette_last_modif <- function(repo = ".", path = "R",
+                                       recursive = TRUE, untracked = TRUE) {
   vig <- file.path(repo, "vignettes")
   file <- file.path(vig, "modification_files.Rmd")
-  if(file.exists(file)){
+  if (file.exists(file)) {
     unlink(file)
-    }
+  }
 
-    path_to_copy <- system.file("template/modification_files.Rmd", package = "gitdown")
+  path_to_copy <- system.file("template/modification_files.Rmd", package = "gitdown")
 
-    file.copy(path_to_copy, to = vig)
+  file.copy(path_to_copy, to = vig)
 
-    if(file.exists(file)){
-      html <- mise_en_forme(repo, R_folder)
-      write(html, file = file, append = TRUE)
-    }else{
-      stop("Copying the file didn't work!")
-    }
+  if (file.exists(file)) {
+    md <- c(present_files(repo, path, recursive, untracked), "\n\n")
+    write(md, file = file, append = TRUE)
+  } else {
+    stop("Copying the file didn't work!")
+  }
 }
 
-#' Get the vignette for last modification
+#' Create the vignette for last modification
 #'
 #' @inheritParams get_last_modif
 #'
 #'
 #' @return copy a vignette
 #' @export
+#'
+#' @examples
+#' repo <- fake_repo(as.package = TRUE)
+#' create_vignette_last_modif(repo, path = "R")
 
-vignette_last_modif <- function(repo = ".", R_folder = TRUE){
+create_vignette_last_modif <- function(repo = ".", path = "R",
+                                       recursive = TRUE, untracked = TRUE) {
   vig <- file.path(repo, "vignettes")
 
-  if(!dir.exists(vig)){
+  if (!dir.exists(vig)) {
     stop("vignettes folder doesn't exist, please create vignettes folder")
-  }else{
-    update_vign_last_modif(repo = ".", R_folder = TRUE)
+  } else {
+    update_vignette_last_modif(repo, path, recursive, untracked)
   }
 }

@@ -19,5 +19,5 @@ Get the first and last modification for one file. Based on git2r::blame.
 }
 \examples{
 repo <- fake_repo()
-get_info(list.files(repo)[1], repo = repo )
+get_info(list.files(repo)[1], repo = repo)
 }

@@ -7,6 +7,12 @@ globalVariables(
     # get_commit_pattern
     "pattern_extract",
     # nest_commits_by_pattern
-    "pattern.content", "pattern.type", "text_link", "message_link.type"
+    "pattern.content", "pattern.type", "text_link", "message_link.type",
+    # get_info
+    "filepath",
+    # get_last_modif
+    "filepath",
+    # present_files
+    "in_repository", "first_modif", "last_modif"
   ))
 )
