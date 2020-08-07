@@ -11,6 +11,15 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+# Copy reference/images to man/images
+# reference folder is required to work with pkgdown
+if (!dir.exists("man/figures")) {dir.create("man/figures")}
+file.copy(list.files("reference/figures", full.names = TRUE),
+          "man/figures", overwrite = TRUE)
+# if (dir.exists("docs")) {
+#   file.copy("reference/figures/thinkr-hex-remedy-favicon.ico",
+#             "docs/favicon.ico", overwrite = TRUE)
+# }
 ```
 # gitdown
 
@@ -69,7 +78,23 @@ git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+",
 ```{r, echo=FALSE, out.width="90%", fig.align="center"}
 knitr::include_graphics("reference/figures/gitdown_links.png")
 ```
-  
+
+If you add a table of correspondance, you can change titles of the patterns. 
+```{r, eval=FALSE}
+# With table of correspondance
+pattern.table <- data.frame(number = c("#2", "#1"),
+  title = c("#2 A second issue to illustrate a blog post",
+                       "#1 An example of issue"))
+git_down(
+  pattern = c("Issue" = "#[[:digit:]]+"),
+  pattern.table = pattern.table
+)
+```
+
+```{r, echo=FALSE, out.width="30%", fig.align="center"}
+knitr::include_graphics("reference/figures/issues-with-title.png")
+```
+
 ## Create a vignette that lists all files with date of modification
 
 ```{r, eval=FALSE}
