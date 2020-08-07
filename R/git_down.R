@@ -7,10 +7,10 @@
 #' @param book_path The path to the bookdown output. Default is `"gitdown"`.
 #' @param open Should the bookdown be opened once compiled? Default is TRUE.
 #' @param author Author of the Bookdown
-#' @param pattern Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues
 #' @param ref the name of the branch, by default master
 #' @param ... Other parameters to pass to \code{\link[rmarkdown]{render}}
 #'
+#' @inheritParams get_commits_pattern
 #' @export
 #'
 #' @importFrom attempt if_not
@@ -22,11 +22,19 @@
 #'
 #' @examples
 #' repo <- fake_repo()
-#' git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"))
+#' git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"),
+#' open = FALSE)
+#' # With table of correspondance
+#' pattern.table <- data.frame(number = c("#2", "#1"),
+#'   title = c("#2 A second issue to illustrate a blog post",
+#'                        "#1 An example of issue"))
+#' git_down(repo, pattern = c("Issues" = "#[[:digit:]]+"),
+#'   pattern.table = pattern.table)
 
 git_down <- function(repo = ".", book_path = "gitdown",
                      open = TRUE, author = "John Doe",
                      pattern = c("Issues" = "#[[:digit:]]+"),
+                     pattern.table = NULL,
                      ref = "master", ...) {
 
   # Clean previous book
@@ -61,6 +69,7 @@ git_down <- function(repo = ".", book_path = "gitdown",
   res_commits <- nest_commits_by_pattern(
     repo,
     pattern = pattern,
+    pattern.table = pattern.table,
     ref = ref, silent = TRUE
   )
 

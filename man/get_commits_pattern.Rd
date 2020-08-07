@@ -7,6 +7,7 @@
 get_commits_pattern(
   repo = ".",
   pattern = c(Ticket = "#[[:digit:]]+"),
+  pattern.table = NULL,
   ref = "master",
   path = NULL,
   silent = FALSE
@@ -16,7 +17,10 @@ get_commits_pattern(
 \item{repo}{a path to a repository or a \code{git_repository}
 object. Default is '.'}
 
-\item{pattern}{Named vector of regex patterns}
+\item{pattern}{Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues}
+
+\item{pattern.table}{data.frame with two columns: pattern and description.
+This is used as correspondance table to add some names to existing patterns.}
 
 \item{ref}{The name of a reference to list commits from e.g. a tag
 or a branch. The default is NULL for the current branch.}

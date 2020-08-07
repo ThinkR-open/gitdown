@@ -61,13 +61,15 @@ get_commits_tags <- function(repo = ".", ref = "master",
 
 #' Get commits associated with a text pattern
 #'
-#' @param pattern Named vector of regex patterns
+#' @param pattern Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues
+#' @param pattern.table data.frame with two columns: pattern and description.
+#' This is used as correspondance table to add some names to existing patterns.
 #' @inheritParams git2r::commits
 #' @inheritParams get_commits_tags
 #'
 #' @return A tibble with commits and tags
 #'
-#' @importFrom dplyr mutate distinct rowwise tibble
+#' @importFrom dplyr mutate distinct rowwise tibble left_join mutate if_else mutate_all
 #' @importFrom tidyr unnest
 #' @importFrom purrr imap flatten_chr
 #' @importFrom stats setNames
@@ -81,11 +83,12 @@ get_commits_tags <- function(repo = ".", ref = "master",
 #'   pattern = c("Ticket" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"))
 
 get_commits_pattern <- function(repo = ".", pattern = c("Ticket" = "#[[:digit:]]+"),
+                                pattern.table = NULL,
                                 ref = "master", path = NULL, silent = FALSE) {
 
   if (is.null(names(pattern))) {names(pattern) <- paste0("`", pattern, "`")}
 
- get_commits_tags(repo = repo,  ref = ref, path = path, silent = silent) %>%
+  res <- get_commits_tags(repo = repo,  ref = ref, path = path, silent = silent) %>%
     rowwise() %>%
     mutate(
       pattern_extract = list(
@@ -93,12 +96,31 @@ get_commits_pattern <- function(repo = ".", pattern = c("Ticket" = "#[[:digit:]]
                setNames(., rep(.y, length(.)))) %>%
           flatten_chr() %>%
           tibble(pattern.type = names(.), pattern.content = .)
-        )
+      )
     ) %>%
     # unnest to separate multiple pattern values
     unnest(pattern_extract) %>%
     # remove duplicates
     distinct()
+
+  if (!is.null(pattern.table)) {
+    if (isTRUE(ncol(pattern.table) != 2)) {
+      stop("pattern.table should be a data.frame with 2 columns, one with pattern, the second with title.")
+    } else if (ncol(pattern.table) > 2) {
+      pattern.table <- pattern.table[,1:2]
+      warning("Only the first two columns will be used, first one as pattern, second on as title")
+    }
+    names(pattern.table) <- c("pattern.content", "pattern.title")
+    res %>%
+      left_join(pattern.table %>% mutate_all(as.character), by = "pattern.content") %>%
+      # select(pattern.title, pattern.content) %>%
+      mutate(pattern.title = if_else(is.na(pattern.title), pattern.content, pattern.title))
+  } else {
+    res %>%
+      mutate(pattern.title = pattern.content)
+  }
+
+
 }
 
 #' Extract pattern from message

@@ -10,6 +10,7 @@ git_down(
   open = TRUE,
   author = "John Doe",
   pattern = c(Issues = "#[[:digit:]]+"),
+  pattern.table = NULL,
   ref = "master",
   ...
 )
@@ -25,6 +26,9 @@ git_down(
 
 \item{pattern}{Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues}
 
+\item{pattern.table}{data.frame with two columns: pattern and description.
+This is used as correspondance table to add some names to existing patterns.}
+
 \item{ref}{the name of the branch, by default master}
 
 \item{...}{Other parameters to pass to \code{\link[rmarkdown]{render}}}
@@ -35,5 +39,12 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
 }
 \examples{
 repo <- fake_repo()
-git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"))
+git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"),
+open = FALSE)
+# With table of correspondance
+pattern.table <- data.frame(number = c("#2", "#1"),
+  title = c("#2 A second issue to illustrate a blog post",
+                       "#1 An example of issue"))
+git_down(repo, pattern = c("Issues" = "#[[:digit:]]+"),
+  pattern.table = pattern.table)
 }

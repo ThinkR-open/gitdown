@@ -4,7 +4,13 @@
 \alias{each_commit}
 \title{Write presentation for each commit}
 \usage{
-each_commit(commits, pattern.content, link_pattern, pattern.type)
+each_commit(
+  commits,
+  pattern.content,
+  link_pattern,
+  pattern.type,
+  pattern.title
+)
 }
 \arguments{
 \item{commits}{table of commits of one pattern as issued from nest_commits_by_pattern}
@@ -14,6 +20,8 @@ each_commit(commits, pattern.content, link_pattern, pattern.type)
 \item{link_pattern}{Name of the pattern selected transformed as slug}
 
 \item{pattern.type}{character. Name of the section}
+
+\item{pattern.title}{Title of the pattern selected}
 }
 \description{
 Write presentation for each commit

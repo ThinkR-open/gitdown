@@ -47,18 +47,18 @@ followed by at least one number: `"#[[:digit:]]+"`. Variable
 get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master") %>% 
   select(pattern.content, everything())
 #> 4 commits found.
-#> # A tibble: 7 x 11
+#> # A tibble: 7 x 12
 #>   pattern.content sha   summary message author email when                order
 #>   <chr>           <chr> <chr>   <chr>   <chr>  <chr> <dttm>              <int>
-#> 1 #32             68ad… Add NE… "Add N… Alice  alic… 2020-08-06 11:47:48     4
-#> 2 #1              68ad… Add NE… "Add N… Alice  alic… 2020-08-06 11:47:48     4
-#> 3 #12             68ad… Add NE… "Add N… Alice  alic… 2020-08-06 11:47:48     4
-#> 4 #2              6130… Third … "Third… Alice  alic… 2020-08-06 11:47:48     3
-#> 5 #145            6130… Third … "Third… Alice  alic… 2020-08-06 11:47:48     3
-#> 6 #1              0348… exampl… "examp… Alice  alic… 2020-08-06 11:47:48     2
-#> 7 <NA>            9fda… First … "First… Alice  alic… 2020-08-06 11:47:48     1
-#> # … with 3 more variables: tag.name <chr>, tag.message <chr>,
-#> #   pattern.type <chr>
+#> 1 #32             143d… Add NE… "Add N… Alice  alic… 2020-08-07 17:49:53     4
+#> 2 #1              143d… Add NE… "Add N… Alice  alic… 2020-08-07 17:49:53     4
+#> 3 #12             143d… Add NE… "Add N… Alice  alic… 2020-08-07 17:49:53     4
+#> 4 #2              cea7… Third … "Third… Alice  alic… 2020-08-07 17:49:53     3
+#> 5 #145            cea7… Third … "Third… Alice  alic… 2020-08-07 17:49:53     3
+#> 6 #1              601c… exampl… "examp… Alice  alic… 2020-08-07 17:49:53     2
+#> 7 <NA>            6a88… First … "First… Alice  alic… 2020-08-07 17:49:53     1
+#> # … with 4 more variables: tag.name <chr>, tag.message <chr>,
+#> #   pattern.type <chr>, pattern.title <chr>
 ```
 
 Get commits with issues and specific home-made pattern. Use a named
@@ -72,23 +72,23 @@ get_commits_pattern(
 ) %>% 
   select(pattern.type, pattern.content, everything())
 #> 4 commits found.
-#> # A tibble: 12 x 11
+#> # A tibble: 12 x 12
 #>    pattern.type pattern.content sha   summary message author email
 #>    <chr>        <chr>           <chr> <chr>   <chr>   <chr>  <chr>
-#>  1 Tickets      ticket6789      68ad… Add NE… "Add N… Alice  alic…
-#>  2 Tickets      ticket1234      68ad… Add NE… "Add N… Alice  alic…
-#>  3 Issues       #32             68ad… Add NE… "Add N… Alice  alic…
-#>  4 Issues       #1              68ad… Add NE… "Add N… Alice  alic…
-#>  5 Issues       #12             68ad… Add NE… "Add N… Alice  alic…
-#>  6 Tickets      <NA>            6130… Third … "Third… Alice  alic…
-#>  7 Issues       #2              6130… Third … "Third… Alice  alic…
-#>  8 Issues       #145            6130… Third … "Third… Alice  alic…
-#>  9 Tickets      ticket1234      0348… exampl… "examp… Alice  alic…
-#> 10 Issues       #1              0348… exampl… "examp… Alice  alic…
-#> 11 Tickets      <NA>            9fda… First … "First… Alice  alic…
-#> 12 Issues       <NA>            9fda… First … "First… Alice  alic…
-#> # … with 4 more variables: when <dttm>, order <int>, tag.name <chr>,
-#> #   tag.message <chr>
+#>  1 Tickets      ticket6789      143d… Add NE… "Add N… Alice  alic…
+#>  2 Tickets      ticket1234      143d… Add NE… "Add N… Alice  alic…
+#>  3 Issues       #32             143d… Add NE… "Add N… Alice  alic…
+#>  4 Issues       #1              143d… Add NE… "Add N… Alice  alic…
+#>  5 Issues       #12             143d… Add NE… "Add N… Alice  alic…
+#>  6 Tickets      <NA>            cea7… Third … "Third… Alice  alic…
+#>  7 Issues       #2              cea7… Third … "Third… Alice  alic…
+#>  8 Issues       #145            cea7… Third … "Third… Alice  alic…
+#>  9 Tickets      ticket1234      601c… exampl… "examp… Alice  alic…
+#> 10 Issues       #1              601c… exampl… "examp… Alice  alic…
+#> 11 Tickets      <NA>            6a88… First … "First… Alice  alic…
+#> 12 Issues       <NA>            6a88… First … "First… Alice  alic…
+#> # … with 5 more variables: when <dttm>, order <int>, tag.name <chr>,
+#> #   tag.message <chr>, pattern.title <chr>
 ```
 
 ## Create a gitbook of commits sorted by a pattern
@@ -99,6 +99,22 @@ git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+",
 ```
 
 <img src="reference/figures/gitdown_links.png" width="90%" style="display: block; margin: auto;" />
+
+If you add a table of correspondance, you can change titles of the
+patterns.
+
+``` r
+# With table of correspondance
+pattern.table <- data.frame(number = c("#2", "#1"),
+  title = c("#2 A second issue to illustrate a blog post",
+                       "#1 An example of issue"))
+git_down(
+  pattern = c("Issue" = "#[[:digit:]]+"),
+  pattern.table = pattern.table
+)
+```
+
+<img src="reference/figures/issues-with-title.png" width="30%" style="display: block; margin: auto;" />
 
 ## Create a vignette that lists all files with date of modification
 
@@ -114,9 +130,9 @@ With this example, the vignette will show this content:
 
 | File         | Tracked in git | Date of creation    | Last modification   |
 | :----------- | :------------- | :------------------ | :------------------ |
-| NEWS.md      | Yes            | 2020-08-06 13:47:49 | 2020-08-06 13:47:49 |
-| example.txt  | Yes            | 2020-08-06 13:47:49 | 2020-08-06 13:47:49 |
-| R/my\_mean.R | No             | NA                  | 2020-08-06 13:47:49 |
+| NEWS.md      | Yes            | 2020-08-07 19:49:53 | 2020-08-07 19:49:53 |
+| example.txt  | Yes            | 2020-08-07 19:49:53 | 2020-08-07 19:49:53 |
+| R/my\_mean.R | No             | NA                  | 2020-08-07 19:49:53 |
 
 Please note that the {gitdown} project is released with a [Contributor
 Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,

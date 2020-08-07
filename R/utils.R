@@ -61,15 +61,16 @@ presentation_commit <- function(commit) {
 #' @param pattern.type character. Name of the section
 #' @param pattern.content Name of the pattern selected
 #' @param link_pattern Name of the pattern selected transformed as slug
+#' @param pattern.title Title of the pattern selected
 #'
 #' @importFrom purrr map_chr
 #'
 
-each_commit <- function(commits, pattern.content, link_pattern, pattern.type) {
+each_commit <- function(commits, pattern.content, link_pattern, pattern.type, pattern.title) {
   c(
     # One Pattern Section
     paste0("## ", to_singular(pattern.type), ": ",
-           pattern.content, "{#", link_pattern, "}"),
+           pattern.title, "{#", link_pattern, "}"),
     # Commits
     map_chr(1:nrow(commits), ~presentation_commit(commits[.x, ]))
   )
@@ -110,14 +111,14 @@ each_pattern <- function(nest_commits, pattern.type) {
   # Create text of each commit by pattern
   res_commits <- filter_commits %>%
     mutate(
-      text = pmap(list(data, pattern.content, link_pattern, pattern.type),
-                  function(commits, pattern.content, link_pattern, pattern.type)
-                    each_commit(commits, pattern.content, link_pattern, pattern.type))
+      text = pmap(list(data, pattern.content, link_pattern, pattern.type, pattern.title),
+                  function(commits, pattern.content, link_pattern, pattern.type, pattern.title)
+                    each_commit(commits, pattern.content, link_pattern, pattern.type, pattern.title))
     )
 
   # Create summary table
   summary_table <- tibble(
-    pattern.content = res_commits$pattern.content,
+    pattern.content = res_commits$pattern.title,
     Links = map_chr(
       res_commits$data,
       ~paste0("[", .x$summary, "](#", .x$link_commit, ")") %>%
@@ -160,9 +161,11 @@ each_pattern <- function(nest_commits, pattern.type) {
 
 nest_commits_by_pattern <- function(repo,
                                     pattern = c("Issues" = "#[[:digit:]]+"),
+                                    pattern.table = NULL,
                                     ref = "master", silent = TRUE) {
 
   res <- get_commits_pattern(repo, pattern = pattern,
+                             pattern.table = pattern.table,
                              ref = ref, silent = silent) %>%
     mutate(
       pattern_numeric =
@@ -174,19 +177,19 @@ nest_commits_by_pattern <- function(repo,
       link_commit = paste0(link_pattern, "-", sha))
 
   correspondance <- res %>%
-    select(sha, pattern.type, pattern.content, link_pattern) %>%
+    select(sha, pattern.type, pattern.title, link_pattern) %>%
     distinct() %>%
-    # filter(!is.na(pattern.content)) %>%
-    mutate(pattern.content = if_else(
-      is.na(pattern.content),
-      paste("No related", tolower(pattern.type)), pattern.content)) %>%
+    # filter(!is.na(pattern.title)) %>%
+    mutate(pattern.title = if_else(
+      is.na(pattern.title),
+      paste("No related", tolower(pattern.type)), pattern.title)) %>%
     mutate(
-      # pattern.content.regex = paste0("(?<!\\[)", pattern.content),
-      # text_inter = paste0("-[", pattern.content, "]-"),
-      text_link = paste0("[", pattern.content, "](#", link_pattern, ")")
+      # pattern.title.regex = paste0("(?<!\\[)", pattern.title),
+      # text_inter = paste0("-[", pattern.title, "]-"),
+      text_link = paste0("[", pattern.title, "](#", link_pattern, ")")
     ) %>%
     # Longest chain to smallest
-    # arrange(desc(nchar(pattern.content))) %>%
+    # arrange(desc(nchar(pattern.title))) %>%
     group_by(sha, pattern.type) %>%
     summarise(
       message_link.type = paste(text_link, collapse = ", ")
@@ -235,8 +238,9 @@ nest_commits_by_pattern <- function(repo,
     arrange(pattern.type, pattern_numeric, pattern.content, order) %>%
     # If is.na => New part
     # filter(!is.na(pattern.content)) %>%
+    mutate(pattern.title = if_else(is.na(pattern.title), paste("No related", tolower(pattern.type)), pattern.title)) %>%
     mutate(pattern.content = if_else(is.na(pattern.content), paste("No related", tolower(pattern.type)), pattern.content)) %>%
-    group_by(pattern.type, pattern_numeric, pattern.content, link_pattern) %>%
+    group_by(pattern.type, pattern_numeric, pattern.content, pattern.title, link_pattern) %>%
     nest() %>%
     ungroup()
 }
