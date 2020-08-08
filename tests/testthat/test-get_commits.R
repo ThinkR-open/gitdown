@@ -17,11 +17,9 @@ test_that("get_commits_pattern works", {
   expect_equal(ncol(patterns_tbl), 12)
   expect_equal(patterns_tbl$pattern.type, rep("Ticket", 7))
   expect_equal(patterns_tbl$pattern.content,
-               setNames(c("#32", "#1", "#12", "#2", "#145", "#1", NA),
-                        rep("Ticket", 7)))
+               c("#32", "#1", "#12", "#2", "#145", "#1", NA))
   expect_equal(patterns_tbl$pattern.title,
-               setNames(c("#32", "#1", "#12", "#2", "#145", "#1", NA),
-                        rep("Ticket", 7)))
+               c("#32", "#1", "#12", "#2", "#145", "#1", NA))
 })
 
 # With table of correspondance
@@ -38,13 +36,11 @@ test_that("get_commits_pattern with table works", {
   expect_equal(ncol(patterns_table_tbl), 12)
   expect_equal(patterns_table_tbl$pattern.type, rep("Ticket", 7))
   expect_equal(patterns_table_tbl$pattern.content,
-               setNames(c("#32", "#1", "#12", "#2", "#145", "#1", NA),
-                        rep("Ticket", 7)))
+               c("#32", "#1", "#12", "#2", "#145", "#1", NA))
   expect_equal(patterns_table_tbl$pattern.title,
-               setNames(c("#32", "#1 An example of issue",
+               c("#32", "#1 An example of issue",
                           "#12", "#2 A second issue to illustrate a blog post",
-                          "#145", "#1 An example of issue", NA),
-                        rep("", 7)))
+                          "#145", "#1 An example of issue", NA))
 })
 
 # my_extract ----

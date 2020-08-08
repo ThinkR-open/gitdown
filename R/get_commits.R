@@ -95,7 +95,8 @@ get_commits_pattern <- function(repo = ".", pattern = c("Ticket" = "#[[:digit:]]
         imap(pattern, ~my_extract(message, .x) %>%
                setNames(., rep(.y, length(.)))) %>%
           flatten_chr() %>%
-          tibble(pattern.type = names(.), pattern.content = .)
+          # {} are needed otherwise, there is a "." column
+          {tibble(pattern.type = names(.), pattern.content = unname(.))}
       )
     ) %>%
     # unnest to separate multiple pattern values
@@ -113,7 +114,6 @@ get_commits_pattern <- function(repo = ".", pattern = c("Ticket" = "#[[:digit:]]
     names(pattern.table) <- c("pattern.content", "pattern.title")
     res %>%
       left_join(pattern.table %>% mutate_all(as.character), by = "pattern.content") %>%
-      # select(pattern.title, pattern.content) %>%
       mutate(pattern.title = if_else(is.na(pattern.title), pattern.content, pattern.title))
   } else {
     res %>%
