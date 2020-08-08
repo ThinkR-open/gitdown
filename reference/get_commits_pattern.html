@@ -158,6 +158,7 @@
     <pre class="usage"><span class='fu'>get_commits_pattern</span>(
   <span class='kw'>repo</span> <span class='kw'>=</span> <span class='st'>"."</span>,
   <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>Ticket</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>),
+  <span class='kw'>pattern.table</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>ref</span> <span class='kw'>=</span> <span class='st'>"master"</span>,
   <span class='kw'>path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
@@ -173,7 +174,12 @@ object. Default is '.'</p></td>
     </tr>
     <tr>
       <th>pattern</th>
-      <td><p>Named vector of regex patterns</p></td>
+      <td><p>Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues</p></td>
+    </tr>
+    <tr>
+      <th>pattern.table</th>
+      <td><p>data.frame with two columns: pattern and description.
+This is used as correspondance table to add some names to existing patterns.</p></td>
     </tr>
     <tr>
       <th>ref</th>
@@ -200,35 +206,35 @@ returned; that is, the output of <code>git log</code> with
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>repo</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
-<span class='fu'>get_commits_pattern</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ticket"</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>))</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 7 x 11
+<span class='fu'>get_commits_pattern</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ticket"</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>))</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 7 x 12
 #&gt;   sha   summary message author email when                order tag.name
 #&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   
-#&gt; 1 48a1… Add NE… "Add N… Alice  alic… 2020-08-06 13:24:15     4 &lt;NA&gt;    
-#&gt; 2 48a1… Add NE… "Add N… Alice  alic… 2020-08-06 13:24:15     4 &lt;NA&gt;    
-#&gt; 3 48a1… Add NE… "Add N… Alice  alic… 2020-08-06 13:24:15     4 &lt;NA&gt;    
-#&gt; 4 f1ab… Third … "Third… Alice  alic… 2020-08-06 13:24:15     3 v0.1    
-#&gt; 5 f1ab… Third … "Third… Alice  alic… 2020-08-06 13:24:15     3 v0.1    
-#&gt; 6 aed5… exampl… "examp… Alice  alic… 2020-08-06 13:24:15     2 v0.1    
-#&gt; 7 5abe… First … "First… Alice  alic… 2020-08-06 13:24:15     1 v0.1    
-#&gt; # … with 3 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,
-#&gt; #   pattern.content &lt;chr&gt;</div><div class='input'><span class='fu'>get_commits_pattern</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>,
-  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ticket"</span> <span class='kw'>=</span> <span class='st'>"ticket[[:digit:]]+"</span>, <span class='st'>"Issues"</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>))</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 12 x 11
+#&gt; 1 ef15… Add NE… "Add N… Alice  alic… 2020-08-08 07:10:07     4 &lt;NA&gt;    
+#&gt; 2 ef15… Add NE… "Add N… Alice  alic… 2020-08-08 07:10:07     4 &lt;NA&gt;    
+#&gt; 3 ef15… Add NE… "Add N… Alice  alic… 2020-08-08 07:10:07     4 &lt;NA&gt;    
+#&gt; 4 8b88… Third … "Third… Alice  alic… 2020-08-08 07:10:07     3 v0.1    
+#&gt; 5 8b88… Third … "Third… Alice  alic… 2020-08-08 07:10:07     3 v0.1    
+#&gt; 6 93c3… exampl… "examp… Alice  alic… 2020-08-08 07:10:07     2 v0.1    
+#&gt; 7 c310… First … "First… Alice  alic… 2020-08-08 07:10:07     1 v0.1    
+#&gt; # … with 4 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,
+#&gt; #   pattern.content &lt;chr&gt;, pattern.title &lt;chr&gt;</div><div class='input'><span class='fu'>get_commits_pattern</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>,
+  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ticket"</span> <span class='kw'>=</span> <span class='st'>"ticket[[:digit:]]+"</span>, <span class='st'>"Issues"</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>))</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 12 x 12
 #&gt;    sha   summary message author email when                order tag.name
 #&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   
-#&gt;  1 48a1… Add NE… "Add N… Alice  alic… 2020-08-06 13:24:15     4 &lt;NA&gt;    
-#&gt;  2 48a1… Add NE… "Add N… Alice  alic… 2020-08-06 13:24:15     4 &lt;NA&gt;    
-#&gt;  3 48a1… Add NE… "Add N… Alice  alic… 2020-08-06 13:24:15     4 &lt;NA&gt;    
-#&gt;  4 48a1… Add NE… "Add N… Alice  alic… 2020-08-06 13:24:15     4 &lt;NA&gt;    
-#&gt;  5 48a1… Add NE… "Add N… Alice  alic… 2020-08-06 13:24:15     4 &lt;NA&gt;    
-#&gt;  6 f1ab… Third … "Third… Alice  alic… 2020-08-06 13:24:15     3 v0.1    
-#&gt;  7 f1ab… Third … "Third… Alice  alic… 2020-08-06 13:24:15     3 v0.1    
-#&gt;  8 f1ab… Third … "Third… Alice  alic… 2020-08-06 13:24:15     3 v0.1    
-#&gt;  9 aed5… exampl… "examp… Alice  alic… 2020-08-06 13:24:15     2 v0.1    
-#&gt; 10 aed5… exampl… "examp… Alice  alic… 2020-08-06 13:24:15     2 v0.1    
-#&gt; 11 5abe… First … "First… Alice  alic… 2020-08-06 13:24:15     1 v0.1    
-#&gt; 12 5abe… First … "First… Alice  alic… 2020-08-06 13:24:15     1 v0.1    
-#&gt; # … with 3 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,
-#&gt; #   pattern.content &lt;chr&gt;</div></pre>
+#&gt;  1 ef15… Add NE… "Add N… Alice  alic… 2020-08-08 07:10:07     4 &lt;NA&gt;    
+#&gt;  2 ef15… Add NE… "Add N… Alice  alic… 2020-08-08 07:10:07     4 &lt;NA&gt;    
+#&gt;  3 ef15… Add NE… "Add N… Alice  alic… 2020-08-08 07:10:07     4 &lt;NA&gt;    
+#&gt;  4 ef15… Add NE… "Add N… Alice  alic… 2020-08-08 07:10:07     4 &lt;NA&gt;    
+#&gt;  5 ef15… Add NE… "Add N… Alice  alic… 2020-08-08 07:10:07     4 &lt;NA&gt;    
+#&gt;  6 8b88… Third … "Third… Alice  alic… 2020-08-08 07:10:07     3 v0.1    
+#&gt;  7 8b88… Third … "Third… Alice  alic… 2020-08-08 07:10:07     3 v0.1    
+#&gt;  8 8b88… Third … "Third… Alice  alic… 2020-08-08 07:10:07     3 v0.1    
+#&gt;  9 93c3… exampl… "examp… Alice  alic… 2020-08-08 07:10:07     2 v0.1    
+#&gt; 10 93c3… exampl… "examp… Alice  alic… 2020-08-08 07:10:07     2 v0.1    
+#&gt; 11 c310… First … "First… Alice  alic… 2020-08-08 07:10:07     1 v0.1    
+#&gt; 12 c310… First … "First… Alice  alic… 2020-08-08 07:10:07     1 v0.1    
+#&gt; # … with 4 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,
+#&gt; #   pattern.content &lt;chr&gt;, pattern.title &lt;chr&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

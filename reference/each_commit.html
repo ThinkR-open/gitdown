@@ -155,7 +155,13 @@
     <p>Write presentation for each commit</p>
     </div>
 
-    <pre class="usage"><span class='fu'>each_commit</span>(<span class='no'>commits</span>, <span class='no'>pattern.content</span>, <span class='no'>link_pattern</span>, <span class='no'>pattern.type</span>)</pre>
+    <pre class="usage"><span class='fu'>each_commit</span>(
+  <span class='no'>commits</span>,
+  <span class='no'>pattern.content</span>,
+  <span class='no'>link_pattern</span>,
+  <span class='no'>pattern.type</span>,
+  <span class='no'>pattern.title</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -175,6 +181,10 @@
     <tr>
       <th>pattern.type</th>
       <td><p>character. Name of the section</p></td>
+    </tr>
+    <tr>
+      <th>pattern.title</th>
+      <td><p>Title of the pattern selected</p></td>
     </tr>
     </table>
 

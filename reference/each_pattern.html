@@ -178,13 +178,14 @@
   <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ticket"</span> <span class='kw'>=</span> <span class='st'>"ticket[[:digit:]]+"</span>),
   <span class='kw'>ref</span> <span class='kw'>=</span> <span class='st'>"master"</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 )
-<span class='fu'>each_pattern</span>(<span class='no'>res_commits</span>, <span class='st'>"Ticket"</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 6
-#&gt;   pattern.content  link_pattern    text   pattern.type pattern_numeric data     
-#&gt;   &lt;chr&gt;            &lt;chr&gt;           &lt;list&gt; &lt;chr&gt;                  &lt;dbl&gt; &lt;list&gt;   
-#&gt; 1 Ticket           aticket         &lt;chr … &lt;NA&gt;                      NA &lt;NULL&gt;   
-#&gt; 2 ticket1234       aticket-ticket… &lt;chr … Ticket                  1234 &lt;tibble …
-#&gt; 3 ticket6789       aticket-ticket… &lt;chr … Ticket                  6789 &lt;tibble …
-#&gt; 4 No related tick… aticket-na      &lt;chr … Ticket                    NA &lt;tibble …</div></pre>
+<span class='fu'>each_pattern</span>(<span class='no'>res_commits</span>, <span class='st'>"Ticket"</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 7
+#&gt;   pattern.content link_pattern text  pattern.type pattern.title pattern_numeric
+#&gt;   &lt;chr&gt;           &lt;chr&gt;        &lt;lis&gt; &lt;chr&gt;        &lt;chr&gt;                   &lt;dbl&gt;
+#&gt; 1 Ticket          aticket      &lt;chr… &lt;NA&gt;         &lt;NA&gt;                       NA
+#&gt; 2 ticket1234      aticket-tic… &lt;chr… Ticket       ticket1234               1234
+#&gt; 3 ticket6789      aticket-tic… &lt;chr… Ticket       ticket6789               6789
+#&gt; 4 No related tic… aticket-na   &lt;chr… Ticket       No related t…              NA
+#&gt; # … with 1 more variable: data &lt;list&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

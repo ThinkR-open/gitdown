@@ -156,10 +156,10 @@ $(document).ready(function () {
 <span class="co">#&gt; # A tibble: 4 x 9</span>
 <span class="co">#&gt;   sha   summary message author email when                order tag.name</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   </span>
-<span class="co">#&gt; 1 fd86… Add NE… "Add N… Alice  alic… 2020-08-06 13:24:20     4 &lt;NA&gt;    </span>
-<span class="co">#&gt; 2 178d… Third … "Third… Alice  alic… 2020-08-06 13:24:20     3 v0.1    </span>
-<span class="co">#&gt; 3 2ffd… exampl… "examp… Alice  alic… 2020-08-06 13:24:20     2 v0.1    </span>
-<span class="co">#&gt; 4 2c87… First … "First… Alice  alic… 2020-08-06 13:24:20     1 v0.1    </span>
+<span class="co">#&gt; 1 dc46… Add NE… "Add N… Alice  alic… 2020-08-08 07:10:12     4 &lt;NA&gt;    </span>
+<span class="co">#&gt; 2 f899… Third … "Third… Alice  alic… 2020-08-08 07:10:12     3 v0.1    </span>
+<span class="co">#&gt; 3 e37f… exampl… "examp… Alice  alic… 2020-08-08 07:10:12     2 v0.1    </span>
+<span class="co">#&gt; 4 540c… First … "First… Alice  alic… 2020-08-08 07:10:12     1 v0.1    </span>
 <span class="co">#&gt; # … with 1 more variable: tag.message &lt;chr&gt;</span></pre></body></html></div>
 <ul>
 <li>Find all commits of a branch and detect a specific pattern
@@ -171,18 +171,18 @@ $(document).ready(function () {
 </ul>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/get_commits_pattern.html">get_commits_pattern</a></span>(<span class="no">repo</span>, <span class="kw">pattern</span> <span class="kw">=</span> <span class="st">"#[[:digit:]]+"</span>, <span class="kw">ref</span> <span class="kw">=</span> <span class="st">"master"</span>)
 <span class="co">#&gt; 4 commits found.</span>
-<span class="co">#&gt; # A tibble: 7 x 11</span>
+<span class="co">#&gt; # A tibble: 7 x 12</span>
 <span class="co">#&gt;   sha   summary message author email when                order tag.name</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   </span>
-<span class="co">#&gt; 1 fd86… Add NE… "Add N… Alice  alic… 2020-08-06 13:24:20     4 &lt;NA&gt;    </span>
-<span class="co">#&gt; 2 fd86… Add NE… "Add N… Alice  alic… 2020-08-06 13:24:20     4 &lt;NA&gt;    </span>
-<span class="co">#&gt; 3 fd86… Add NE… "Add N… Alice  alic… 2020-08-06 13:24:20     4 &lt;NA&gt;    </span>
-<span class="co">#&gt; 4 178d… Third … "Third… Alice  alic… 2020-08-06 13:24:20     3 v0.1    </span>
-<span class="co">#&gt; 5 178d… Third … "Third… Alice  alic… 2020-08-06 13:24:20     3 v0.1    </span>
-<span class="co">#&gt; 6 2ffd… exampl… "examp… Alice  alic… 2020-08-06 13:24:20     2 v0.1    </span>
-<span class="co">#&gt; 7 2c87… First … "First… Alice  alic… 2020-08-06 13:24:20     1 v0.1    </span>
-<span class="co">#&gt; # … with 3 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,</span>
-<span class="co">#&gt; #   pattern.content &lt;chr&gt;</span></pre></body></html></div>
+<span class="co">#&gt; 1 dc46… Add NE… "Add N… Alice  alic… 2020-08-08 07:10:12     4 &lt;NA&gt;    </span>
+<span class="co">#&gt; 2 dc46… Add NE… "Add N… Alice  alic… 2020-08-08 07:10:12     4 &lt;NA&gt;    </span>
+<span class="co">#&gt; 3 dc46… Add NE… "Add N… Alice  alic… 2020-08-08 07:10:12     4 &lt;NA&gt;    </span>
+<span class="co">#&gt; 4 f899… Third … "Third… Alice  alic… 2020-08-08 07:10:12     3 v0.1    </span>
+<span class="co">#&gt; 5 f899… Third … "Third… Alice  alic… 2020-08-08 07:10:12     3 v0.1    </span>
+<span class="co">#&gt; 6 e37f… exampl… "examp… Alice  alic… 2020-08-08 07:10:12     2 v0.1    </span>
+<span class="co">#&gt; 7 540c… First … "First… Alice  alic… 2020-08-08 07:10:12     1 v0.1    </span>
+<span class="co">#&gt; # … with 4 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,</span>
+<span class="co">#&gt; #   pattern.content &lt;chr&gt;, pattern.title &lt;chr&gt;</span></pre></body></html></div>
 </div>
   </div>
 

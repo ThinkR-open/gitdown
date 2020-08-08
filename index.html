@@ -135,18 +135,18 @@
 <div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="reference/get_commits_pattern.html">get_commits_pattern</a></span>(<span class="no">repo</span>, <span class="kw">pattern</span> <span class="kw">=</span> <span class="st">"#[[:digit:]]+"</span>, <span class="kw">ref</span> <span class="kw">=</span> <span class="st">"master"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">pattern.content</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">everything</a></span>())
 <span class="co">#&gt; 4 commits found.</span>
-<span class="co">#&gt; # A tibble: 7 x 11</span>
+<span class="co">#&gt; # A tibble: 7 x 12</span>
 <span class="co">#&gt;   pattern.content sha   summary message author email when                order</span>
 <span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt;</span>
-<span class="co">#&gt; 1 #32             68ad… Add NE… "Add N… Alice  alic… 2020-08-06 11:47:48     4</span>
-<span class="co">#&gt; 2 #1              68ad… Add NE… "Add N… Alice  alic… 2020-08-06 11:47:48     4</span>
-<span class="co">#&gt; 3 #12             68ad… Add NE… "Add N… Alice  alic… 2020-08-06 11:47:48     4</span>
-<span class="co">#&gt; 4 #2              6130… Third … "Third… Alice  alic… 2020-08-06 11:47:48     3</span>
-<span class="co">#&gt; 5 #145            6130… Third … "Third… Alice  alic… 2020-08-06 11:47:48     3</span>
-<span class="co">#&gt; 6 #1              0348… exampl… "examp… Alice  alic… 2020-08-06 11:47:48     2</span>
-<span class="co">#&gt; 7 &lt;NA&gt;            9fda… First … "First… Alice  alic… 2020-08-06 11:47:48     1</span>
-<span class="co">#&gt; # … with 3 more variables: tag.name &lt;chr&gt;, tag.message &lt;chr&gt;,</span>
-<span class="co">#&gt; #   pattern.type &lt;chr&gt;</span></pre></div>
+<span class="co">#&gt; 1 #32             143d… Add NE… "Add N… Alice  alic… 2020-08-07 17:49:53     4</span>
+<span class="co">#&gt; 2 #1              143d… Add NE… "Add N… Alice  alic… 2020-08-07 17:49:53     4</span>
+<span class="co">#&gt; 3 #12             143d… Add NE… "Add N… Alice  alic… 2020-08-07 17:49:53     4</span>
+<span class="co">#&gt; 4 #2              cea7… Third … "Third… Alice  alic… 2020-08-07 17:49:53     3</span>
+<span class="co">#&gt; 5 #145            cea7… Third … "Third… Alice  alic… 2020-08-07 17:49:53     3</span>
+<span class="co">#&gt; 6 #1              601c… exampl… "examp… Alice  alic… 2020-08-07 17:49:53     2</span>
+<span class="co">#&gt; 7 &lt;NA&gt;            6a88… First … "First… Alice  alic… 2020-08-07 17:49:53     1</span>
+<span class="co">#&gt; # … with 4 more variables: tag.name &lt;chr&gt;, tag.message &lt;chr&gt;,</span>
+<span class="co">#&gt; #   pattern.type &lt;chr&gt;, pattern.title &lt;chr&gt;</span></pre></div>
 <p>Get commits with issues and specific home-made pattern. Use a named vector to properly separate types of patterns.</p>
 <div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="reference/get_commits_pattern.html">get_commits_pattern</a></span>(
   <span class="no">repo</span>,
@@ -155,23 +155,23 @@
 ) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">pattern.type</span>, <span class="no">pattern.content</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">everything</a></span>())
 <span class="co">#&gt; 4 commits found.</span>
-<span class="co">#&gt; # A tibble: 12 x 11</span>
+<span class="co">#&gt; # A tibble: 12 x 12</span>
 <span class="co">#&gt;    pattern.type pattern.content sha   summary message author email</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;</span>
-<span class="co">#&gt;  1 Tickets      ticket6789      68ad… Add NE… "Add N… Alice  alic…</span>
-<span class="co">#&gt;  2 Tickets      ticket1234      68ad… Add NE… "Add N… Alice  alic…</span>
-<span class="co">#&gt;  3 Issues       #32             68ad… Add NE… "Add N… Alice  alic…</span>
-<span class="co">#&gt;  4 Issues       #1              68ad… Add NE… "Add N… Alice  alic…</span>
-<span class="co">#&gt;  5 Issues       #12             68ad… Add NE… "Add N… Alice  alic…</span>
-<span class="co">#&gt;  6 Tickets      &lt;NA&gt;            6130… Third … "Third… Alice  alic…</span>
-<span class="co">#&gt;  7 Issues       #2              6130… Third … "Third… Alice  alic…</span>
-<span class="co">#&gt;  8 Issues       #145            6130… Third … "Third… Alice  alic…</span>
-<span class="co">#&gt;  9 Tickets      ticket1234      0348… exampl… "examp… Alice  alic…</span>
-<span class="co">#&gt; 10 Issues       #1              0348… exampl… "examp… Alice  alic…</span>
-<span class="co">#&gt; 11 Tickets      &lt;NA&gt;            9fda… First … "First… Alice  alic…</span>
-<span class="co">#&gt; 12 Issues       &lt;NA&gt;            9fda… First … "First… Alice  alic…</span>
-<span class="co">#&gt; # … with 4 more variables: when &lt;dttm&gt;, order &lt;int&gt;, tag.name &lt;chr&gt;,</span>
-<span class="co">#&gt; #   tag.message &lt;chr&gt;</span></pre></div>
+<span class="co">#&gt;  1 Tickets      ticket6789      143d… Add NE… "Add N… Alice  alic…</span>
+<span class="co">#&gt;  2 Tickets      ticket1234      143d… Add NE… "Add N… Alice  alic…</span>
+<span class="co">#&gt;  3 Issues       #32             143d… Add NE… "Add N… Alice  alic…</span>
+<span class="co">#&gt;  4 Issues       #1              143d… Add NE… "Add N… Alice  alic…</span>
+<span class="co">#&gt;  5 Issues       #12             143d… Add NE… "Add N… Alice  alic…</span>
+<span class="co">#&gt;  6 Tickets      &lt;NA&gt;            cea7… Third … "Third… Alice  alic…</span>
+<span class="co">#&gt;  7 Issues       #2              cea7… Third … "Third… Alice  alic…</span>
+<span class="co">#&gt;  8 Issues       #145            cea7… Third … "Third… Alice  alic…</span>
+<span class="co">#&gt;  9 Tickets      ticket1234      601c… exampl… "examp… Alice  alic…</span>
+<span class="co">#&gt; 10 Issues       #1              601c… exampl… "examp… Alice  alic…</span>
+<span class="co">#&gt; 11 Tickets      &lt;NA&gt;            6a88… First … "First… Alice  alic…</span>
+<span class="co">#&gt; 12 Issues       &lt;NA&gt;            6a88… First … "First… Alice  alic…</span>
+<span class="co">#&gt; # … with 5 more variables: when &lt;dttm&gt;, order &lt;int&gt;, tag.name &lt;chr&gt;,</span>
+<span class="co">#&gt; #   tag.message &lt;chr&gt;, pattern.title &lt;chr&gt;</span></pre></div>
 </div>
 <div id="create-a-gitbook-of-commits-sorted-by-a-pattern" class="section level2">
 <h2 class="hasAnchor">
@@ -179,11 +179,21 @@
 <div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="reference/git_down.html">git_down</a></span>(<span class="no">repo</span>, <span class="kw">pattern</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Tickets"</span> <span class="kw">=</span> <span class="st">"ticket[[:digit:]]+"</span>,
                            <span class="st">"Issues"</span> <span class="kw">=</span> <span class="st">"#[[:digit:]]+"</span>))</pre></div>
 <p><img src="reference/figures/gitdown_links.png" width="90%" style="display: block; margin: auto;"></p>
+<p>If you add a table of correspondance, you can change titles of the patterns.</p>
+<div class="sourceCode" id="cb6"><pre class="r"><span class="co"># With table of correspondance</span>
+<span class="no">pattern.table</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">number</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"#2"</span>, <span class="st">"#1"</span>),
+  <span class="kw">title</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"#2 A second issue to illustrate a blog post"</span>,
+                       <span class="st">"#1 An example of issue"</span>))
+<span class="fu"><a href="reference/git_down.html">git_down</a></span>(
+  <span class="kw">pattern</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Issue"</span> <span class="kw">=</span> <span class="st">"#[[:digit:]]+"</span>),
+  <span class="kw">pattern.table</span> <span class="kw">=</span> <span class="no">pattern.table</span>
+)</pre></div>
+<p><img src="reference/figures/issues-with-title.png" width="30%" style="display: block; margin: auto;"></p>
 </div>
 <div id="create-a-vignette-that-lists-all-files-with-date-of-modification" class="section level2">
 <h2 class="hasAnchor">
 <a href="#create-a-vignette-that-lists-all-files-with-date-of-modification" class="anchor"></a>Create a vignette that lists all files with date of modification</h2>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="no">repo_pkg</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/fake_repo.html">fake_repo</a></span>(<span class="kw">as.package</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<div class="sourceCode" id="cb7"><pre class="r"><span class="no">repo_pkg</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/fake_repo.html">fake_repo</a></span>(<span class="kw">as.package</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 <span class="co"># List only files in R/ directory</span>
 <span class="fu"><a href="reference/create_vignette_last_modif.html">create_vignette_last_modif</a></span>(<span class="no">repo_pkg</span>)
 <span class="co"># List all files of the git repository</span>
@@ -200,20 +210,20 @@
 <tr class="odd">
 <td align="left">NEWS.md</td>
 <td align="left">Yes</td>
-<td align="left">2020-08-06 13:47:49</td>
-<td align="left">2020-08-06 13:47:49</td>
+<td align="left">2020-08-07 19:49:53</td>
+<td align="left">2020-08-07 19:49:53</td>
 </tr>
 <tr class="even">
 <td align="left">example.txt</td>
 <td align="left">Yes</td>
-<td align="left">2020-08-06 13:47:49</td>
-<td align="left">2020-08-06 13:47:49</td>
+<td align="left">2020-08-07 19:49:53</td>
+<td align="left">2020-08-07 19:49:53</td>
 </tr>
 <tr class="odd">
 <td align="left">R/my_mean.R</td>
 <td align="left">No</td>
 <td align="left">NA</td>
-<td align="left">2020-08-06 13:47:49</td>
+<td align="left">2020-08-07 19:49:53</td>
 </tr>
 </tbody>
 </table>
