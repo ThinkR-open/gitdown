@@ -4,11 +4,3 @@ home:
     tags or specific text pattern.
 template:
   package: thinkrtemplate
-  opengraph:
-    image:
-      src: man/figures/logo.png
-      alt: "Hex logo of gitdown package"
-    twitter:
-      creator: "@statnmap"
-      site: "@thinkr_FR"
-      card: summary_large_image
