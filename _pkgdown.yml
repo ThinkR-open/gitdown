@@ -1,2 +1,14 @@
+home:
+  title: Turn Your Git Commit Messages Into A Bookdown
+  description: Read all commit messages and sort them according to
+    tags or specific text pattern.
 template:
   package: thinkrtemplate
+  opengraph:
+    image:
+      src: man/figures/logo.png
+      alt: "Hex logo of gitdown package"
+    twitter:
+      creator: "@statnmap"
+      site: "@thinkr_FR"
+      card: summary_large_image

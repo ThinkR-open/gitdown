@@ -21,7 +21,7 @@ file.copy(list.files("reference/figures", full.names = TRUE),
 #             "docs/favicon.ico", overwrite = TRUE)
 # }
 ```
-# gitdown
+# gitdown <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/ThinkR-open/gitdown.svg?branch=master)](https://travis-ci.org/ThinkR-open/gitdown)
