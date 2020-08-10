@@ -8,6 +8,13 @@
 
 <title>Get commits associated chronologically with tags — get_commits_tags • gitdown</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -37,6 +44,7 @@
 
 <meta property="og:title" content="Get commits associated chronologically with tags — get_commits_tags" />
 <meta property="og:description" content="Get commits associated chronologically with tags" />
+<meta property="og:image" content="/reference/figures/logo.png,Hex logo of gitdown package" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -193,10 +201,10 @@ returned; that is, the output of <code>git log</code> with
 <span class='fu'>get_commits_tags</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>)</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 4 x 9
 #&gt;   sha   summary message author email when                order tag.name
 #&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   
-#&gt; 1 ef15… Add NE… "Add N… Alice  alic… 2020-08-08 07:10:07     4 &lt;NA&gt;    
-#&gt; 2 8b88… Third … "Third… Alice  alic… 2020-08-08 07:10:07     3 v0.1    
-#&gt; 3 93c3… exampl… "examp… Alice  alic… 2020-08-08 07:10:07     2 v0.1    
-#&gt; 4 c310… First … "First… Alice  alic… 2020-08-08 07:10:07     1 v0.1    
+#&gt; 1 e698… Add NE… "Add N… Alice  alic… 2020-08-10 14:38:49     4 &lt;NA&gt;    
+#&gt; 2 0210… Third … "Third… Alice  alic… 2020-08-10 14:38:49     3 v0.1    
+#&gt; 3 a1da… exampl… "examp… Alice  alic… 2020-08-10 14:38:49     2 v0.1    
+#&gt; 4 1621… First … "First… Alice  alic… 2020-08-10 14:38:49     1 v0.1    
 #&gt; # … with 1 more variable: tag.message &lt;chr&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

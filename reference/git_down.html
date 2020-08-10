@@ -8,6 +8,13 @@
 
 <title>git history to bookdown — git_down • gitdown</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -38,6 +45,7 @@
 <meta property="og:title" content="git history to bookdown — git_down" />
 <meta property="og:description" content="This function turns the history of git into a bookdown.
 Each chapter is a group of commits. The first page gives a summary of all the groups." />
+<meta property="og:image" content="/reference/figures/logo.png,Hex logo of gitdown package" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -215,8 +223,8 @@ This is used as correspondance table to add some names to existing patterns.</p>
 #&gt; <span class='message'>processing file: index.Rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |......................................................................| 100%
 #&gt;    inline R code fragments
 #&gt; 
-#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: index.knit.md</span></div><div class='output co'>#&gt; /usr/bin/pandoc +RTS -K512m -RTS index.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --email-obfuscation none --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/travis/R/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --include-in-header /tmp/Rtmp6pj1Fb/rmarkdown-str3a447c482690.html --mathjax --lua-filter /home/travis/R/Library/rmarkdown/rmd/lua/pagebreak.lua --lua-filter /home/travis/R/Library/rmarkdown/rmd/lua/latex-div.lua </div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Output created: gitbook-for-git2r-3a4416487c13.html</span></div><div class='output co'>#&gt; [1] "/tmp/Rtmp6pj1Fb/git2r-3a4416487c13/gitdown/gitbook-for-git2r-3a4416487c13.html"</div><div class='input'><span class='co'># With table of correspondance</span>
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: index.knit.md</span></div><div class='output co'>#&gt; /usr/bin/pandoc +RTS -K512m -RTS index.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --email-obfuscation none --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/travis/R/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --include-in-header /tmp/Rtmp4Yk4HS/rmarkdown-str3a994fff77e3.html --mathjax --lua-filter /home/travis/R/Library/rmarkdown/rmd/lua/pagebreak.lua --lua-filter /home/travis/R/Library/rmarkdown/rmd/lua/latex-div.lua </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Output created: gitbook-for-git2r-3a9925ce811f.html</span></div><div class='output co'>#&gt; [1] "/tmp/Rtmp4Yk4HS/git2r-3a9925ce811f/gitdown/gitbook-for-git2r-3a9925ce811f.html"</div><div class='input'><span class='co'># With table of correspondance</span>
 <span class='no'>pattern.table</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>number</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"#2"</span>, <span class='st'>"#1"</span>),
   <span class='kw'>title</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"#2 A second issue to illustrate a blog post"</span>,
                        <span class='st'>"#1 An example of issue"</span>))
@@ -226,8 +234,8 @@ This is used as correspondance table to add some names to existing patterns.</p>
 #&gt; <span class='message'>processing file: index.Rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |......................................................................| 100%
 #&gt;    inline R code fragments
 #&gt; 
-#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: index.knit.md</span></div><div class='output co'>#&gt; /usr/bin/pandoc +RTS -K512m -RTS index.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --email-obfuscation none --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/travis/R/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --include-in-header /tmp/Rtmp6pj1Fb/rmarkdown-str3a4426001bb9.html --mathjax --lua-filter /home/travis/R/Library/rmarkdown/rmd/lua/pagebreak.lua --lua-filter /home/travis/R/Library/rmarkdown/rmd/lua/latex-div.lua </div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Output created: gitbook-for-git2r-3a4416487c13.html</span></div><div class='output co'>#&gt; [1] "/tmp/Rtmp6pj1Fb/git2r-3a4416487c13/gitdown/gitbook-for-git2r-3a4416487c13.html"</div></pre>
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: index.knit.md</span></div><div class='output co'>#&gt; /usr/bin/pandoc +RTS -K512m -RTS index.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --email-obfuscation none --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/travis/R/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --include-in-header /tmp/Rtmp4Yk4HS/rmarkdown-str3a998df3ea0.html --mathjax --lua-filter /home/travis/R/Library/rmarkdown/rmd/lua/pagebreak.lua --lua-filter /home/travis/R/Library/rmarkdown/rmd/lua/latex-div.lua </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Output created: gitbook-for-git2r-3a9925ce811f.html</span></div><div class='output co'>#&gt; [1] "/tmp/Rtmp4Yk4HS/git2r-3a9925ce811f/gitdown/gitbook-for-git2r-3a9925ce811f.html"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
