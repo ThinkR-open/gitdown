@@ -119,7 +119,7 @@ each_pattern <- function(nest_commits, pattern.type) {
   # Create summary table
   summary_table <- tibble(
     pattern.content = res_commits$pattern.title,
-    Links = map_chr(
+    `Commits links` = map_chr(
       res_commits$data,
       ~paste0("[", .x$summary, "](#", .x$link_commit, ")") %>%
         paste(collapse = ", "))
