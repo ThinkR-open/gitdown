@@ -30,7 +30,7 @@ write_in <- function(x, repo, dir =  "gitdown", rmd = "index.Rmd") {
 
 presentation_commit <- function(commit) {
   res <- paste0(
-    paste0("### commit: ", commit$summary, "{#", commit$link_commit, "}"),
+    paste0("### commit: ", clean_text(commit$summary), "{#", commit$link_commit, "}"),
     "\n\n",
     paste("- Commit number:", commit$sha),
     "\n",
@@ -121,7 +121,7 @@ each_pattern <- function(nest_commits, pattern.type) {
     pattern.content = res_commits$pattern.title,
     `Commits links` = map_chr(
       res_commits$data,
-      ~paste0("[", .x$summary, "](#", .x$link_commit, ")") %>%
+      ~paste0("[", clean_text(.x$summary), "](#", .x$link_commit, ")") %>%
         paste(collapse = ", "))
   )
   names(summary_table)[1] <- pattern.type
@@ -173,8 +173,12 @@ nest_commits_by_pattern <- function(repo,
                          simplify = FALSE) %>%
         unlist() %>%
         as.numeric(),
+      pattern.type = clean_text(pattern.type),
+      pattern.content = clean_text(pattern.content),
+      pattern.title = clean_text(pattern.title),
       link_pattern = clean_link(paste(pattern.type, pattern.content)),
-      link_commit = paste0(link_pattern, "-", sha))
+      link_commit = paste0(link_pattern, "-", sha)
+    )
 
   correspondance <- res %>%
     select(sha, pattern.type, pattern.title, link_pattern) %>%
@@ -197,11 +201,11 @@ nest_commits_by_pattern <- function(repo,
     group_by(sha) %>%
     summarise(
       message_link = paste(paste0("  + ", pattern.type, ": ", message_link.type),
-                        collapse = "  \n")
+                           collapse = "  \n")
     ) %>%
     ungroup()
 
-# c("# text #1\n issue#1\n#2  #145  #") %>%
+  # c("# text #1\n issue#1\n#2  #145  #") %>%
   # c("toto") %>%
   # stringi::stri_replace_all_regex(
   #   pattern = correspondance$pattern.content.regex,
@@ -233,9 +237,9 @@ nest_commits_by_pattern <- function(repo,
     #       ) %>%
     #     stringi::stri_replace_all_regex(replacement = "\\\\#", pattern = "^(#)") %>%
     #     # Go to newline
-    #     stringi::stri_replace_all_regex(replacement = "  \\\n", pattern = "\\n")
-    # ) %>%
-    arrange(pattern.type, pattern_numeric, pattern.content, order) %>%
+  #     stringi::stri_replace_all_regex(replacement = "  \\\n", pattern = "\\n")
+  # ) %>%
+  arrange(pattern.type, pattern_numeric, pattern.content, order) %>%
     # If is.na => New part
     # filter(!is.na(pattern.content)) %>%
     mutate(pattern.title = if_else(is.na(pattern.title), paste("No related", tolower(pattern.type)), pattern.title)) %>%
@@ -249,11 +253,29 @@ nest_commits_by_pattern <- function(repo,
 #' @param x Character to clean to transform as slug
 
 clean_link <- function(x) {
-  paste0("a", x) %>% # First must be a text
-    gsub("^_|^ | $|_$|#|@|`|\\\\|/|\\[|\\]|\\(|\\)|\\{|\\}|\"|\\+|:", "", .) %>%
-    gsub("[[:space:]]+|_+", "-", .) %>%
+  x %>%
+    clean_text() %>%
+    # Clean all special characters
+    # gsub("^_|^ | $|_$|#|@|'|`|\\$|\\\\|/|\\[|\\]|\\(|\\)|\\{|\\}|\"|\\+|:", "", .) %>%
+    gsub("\\W", "-", .) %>%
+    # remove duplicate space (underscore kept)
+    # gsub("[[:space:]]+|_+", "-", .) %>%
+    # gsub("[[:space:]]+", "-", .) %>%
     gsub("(-)+", "-", .) %>%
     gsub("^(-)|(-)$", "", .) %>%
+    # Remove all spaces and digits at the beginning
+    gsub("^(_*|-*|\\s*|\\d*)+", "", .) %>%
     tolower(.)
 }
 
+#' Clean text in titles
+#'
+#' Removes stars, underscores, \{\} and []
+#' @param x Character to clean to transform as slug
+
+clean_text <- function(x) {
+  x %>%
+    gsub("_|\\*|\\{|\\}", "", .) %>%
+    gsub("[", "-", ., fixed = TRUE) %>%
+    gsub("]", "-", ., fixed = TRUE)
+}
