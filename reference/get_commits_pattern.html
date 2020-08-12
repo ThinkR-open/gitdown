@@ -217,30 +217,30 @@ returned; that is, the output of <code>git log</code> with
 <span class='fu'>get_commits_pattern</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ticket"</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>))</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 7 x 12
 #&gt;   sha   summary message author email when                order tag.name
 #&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   
-#&gt; 1 f9a3… Add NE… "Add N… Alice  alic… 2020-08-11 12:17:14     4 &lt;NA&gt;    
-#&gt; 2 f9a3… Add NE… "Add N… Alice  alic… 2020-08-11 12:17:14     4 &lt;NA&gt;    
-#&gt; 3 f9a3… Add NE… "Add N… Alice  alic… 2020-08-11 12:17:14     4 &lt;NA&gt;    
-#&gt; 4 30fe… Third … "Third… Alice  alic… 2020-08-11 12:17:14     3 v0.1    
-#&gt; 5 30fe… Third … "Third… Alice  alic… 2020-08-11 12:17:14     3 v0.1    
-#&gt; 6 22e8… exampl… "examp… Alice  alic… 2020-08-11 12:17:14     2 v0.1    
-#&gt; 7 539b… First … "First… Alice  alic… 2020-08-11 12:17:14     1 v0.1    
+#&gt; 1 e729… Add NE… "Add N… Alice  alic… 2020-08-12 14:56:32     4 &lt;NA&gt;    
+#&gt; 2 e729… Add NE… "Add N… Alice  alic… 2020-08-12 14:56:32     4 &lt;NA&gt;    
+#&gt; 3 e729… Add NE… "Add N… Alice  alic… 2020-08-12 14:56:32     4 &lt;NA&gt;    
+#&gt; 4 b789… Third … "Third… Alice  alic… 2020-08-12 14:56:32     3 v0.1    
+#&gt; 5 b789… Third … "Third… Alice  alic… 2020-08-12 14:56:32     3 v0.1    
+#&gt; 6 3f10… exampl… "examp… Alice  alic… 2020-08-12 14:56:32     2 v0.1    
+#&gt; 7 4b51… First … "First… Alice  alic… 2020-08-12 14:56:32     1 v0.1    
 #&gt; # … with 4 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,
 #&gt; #   pattern.content &lt;chr&gt;, pattern.title &lt;chr&gt;</div><div class='input'><span class='fu'>get_commits_pattern</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>,
   <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ticket"</span> <span class='kw'>=</span> <span class='st'>"ticket[[:digit:]]+"</span>, <span class='st'>"Issues"</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>))</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 12 x 12
 #&gt;    sha   summary message author email when                order tag.name
 #&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   
-#&gt;  1 f9a3… Add NE… "Add N… Alice  alic… 2020-08-11 12:17:14     4 &lt;NA&gt;    
-#&gt;  2 f9a3… Add NE… "Add N… Alice  alic… 2020-08-11 12:17:14     4 &lt;NA&gt;    
-#&gt;  3 f9a3… Add NE… "Add N… Alice  alic… 2020-08-11 12:17:14     4 &lt;NA&gt;    
-#&gt;  4 f9a3… Add NE… "Add N… Alice  alic… 2020-08-11 12:17:14     4 &lt;NA&gt;    
-#&gt;  5 f9a3… Add NE… "Add N… Alice  alic… 2020-08-11 12:17:14     4 &lt;NA&gt;    
-#&gt;  6 30fe… Third … "Third… Alice  alic… 2020-08-11 12:17:14     3 v0.1    
-#&gt;  7 30fe… Third … "Third… Alice  alic… 2020-08-11 12:17:14     3 v0.1    
-#&gt;  8 30fe… Third … "Third… Alice  alic… 2020-08-11 12:17:14     3 v0.1    
-#&gt;  9 22e8… exampl… "examp… Alice  alic… 2020-08-11 12:17:14     2 v0.1    
-#&gt; 10 22e8… exampl… "examp… Alice  alic… 2020-08-11 12:17:14     2 v0.1    
-#&gt; 11 539b… First … "First… Alice  alic… 2020-08-11 12:17:14     1 v0.1    
-#&gt; 12 539b… First … "First… Alice  alic… 2020-08-11 12:17:14     1 v0.1    
+#&gt;  1 e729… Add NE… "Add N… Alice  alic… 2020-08-12 14:56:32     4 &lt;NA&gt;    
+#&gt;  2 e729… Add NE… "Add N… Alice  alic… 2020-08-12 14:56:32     4 &lt;NA&gt;    
+#&gt;  3 e729… Add NE… "Add N… Alice  alic… 2020-08-12 14:56:32     4 &lt;NA&gt;    
+#&gt;  4 e729… Add NE… "Add N… Alice  alic… 2020-08-12 14:56:32     4 &lt;NA&gt;    
+#&gt;  5 e729… Add NE… "Add N… Alice  alic… 2020-08-12 14:56:32     4 &lt;NA&gt;    
+#&gt;  6 b789… Third … "Third… Alice  alic… 2020-08-12 14:56:32     3 v0.1    
+#&gt;  7 b789… Third … "Third… Alice  alic… 2020-08-12 14:56:32     3 v0.1    
+#&gt;  8 b789… Third … "Third… Alice  alic… 2020-08-12 14:56:32     3 v0.1    
+#&gt;  9 3f10… exampl… "examp… Alice  alic… 2020-08-12 14:56:32     2 v0.1    
+#&gt; 10 3f10… exampl… "examp… Alice  alic… 2020-08-12 14:56:32     2 v0.1    
+#&gt; 11 4b51… First … "First… Alice  alic… 2020-08-12 14:56:32     1 v0.1    
+#&gt; 12 4b51… First … "First… Alice  alic… 2020-08-12 14:56:32     1 v0.1    
 #&gt; # … with 4 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,
 #&gt; #   pattern.content &lt;chr&gt;, pattern.title &lt;chr&gt;</div></pre>
   </div>
