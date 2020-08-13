@@ -52,6 +52,7 @@ test_that("present_files error", {
 
 # create_vignette_last_modif ----
 create_vignette_last_modif(repo_pkg)
+# browseURL(repo_pkg)
 
 test_that("create_vignette_last_modif works", {
   expect_true(file.exists(file.path(repo_pkg, "vignettes", "modification_files.Rmd")))

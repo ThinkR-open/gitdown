@@ -144,19 +144,6 @@ present_files <- function(repo = ".", path = "R",
     knitr::kable(., format = "markdown") %>%
     paste(., collapse = "  \n")
 
-  # as.character(
-  #   htmltools::tags$ul(
-  #     lapply(
-  #       , function(x) {
-  #         htmltools::tags$li(
-  #           htmltools::tags$h4(paste("File:", x$file)),
-  #           htmltools::tags$p(paste("Date of creation:", x$first_modif)),
-  #           htmltools::tags$p(paste("Last modification:", x$last_modif)),
-  #           htmltools::tags$p("")
-  #         )
-  #       })
-  #   )
-  # )
 }
 
 
@@ -183,7 +170,10 @@ update_vignette_last_modif <- function(repo = ".", path = "R",
   file.copy(path_to_copy, to = vig)
 
   if (file.exists(file)) {
-    md <- c(present_files(repo, path, recursive, untracked), "\n\n")
+    md <- c(
+      paste0("Created on: ", Sys.time()),
+      "\n\n",
+      present_files(repo, path, recursive, untracked), "\n\n")
     write(md, file = file, append = TRUE)
   } else {
     stop("Copying the file didn't work!")
