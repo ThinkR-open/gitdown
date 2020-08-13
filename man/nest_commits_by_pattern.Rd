@@ -31,5 +31,5 @@ Nest all commits by each pattern
 }
 \examples{
 repo <- fake_repo()
-nest_commits_by_pattern(repo, pattern = )
+nest_commits_by_pattern(repo)
 }

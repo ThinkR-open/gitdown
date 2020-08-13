@@ -79,19 +79,22 @@ git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+",
 knitr::include_graphics("reference/figures/gitdown_links.png")
 ```
 
-If you add a table of correspondance, you can change titles of the patterns. 
+If you add a table of correspondance, you can change titles of the patterns.  
+_Note that you can use [{gitlabr}](https://statnmap.github.io/gitlabr/) or [{gh}](gh.r-lib.org) to retrieve list of issues from Gitlab or Github respectively._  
 ```{r, eval=FALSE}
 # With table of correspondance
-pattern.table <- data.frame(number = c("#2", "#1"),
+pattern.table <- data.frame(
+  number = c("#2", "#1", "#1000"),
   title = c("#2 A second issue to illustrate a blog post",
-                       "#1 An example of issue"))
+            "#1 An example of issue",
+            "#1000 issue with no commit"))
 git_down(
   pattern = c("Issue" = "#[[:digit:]]+"),
   pattern.table = pattern.table
 )
 ```
 
-```{r, echo=FALSE, out.width="30%", fig.align="center"}
+```{r, echo=FALSE, out.width="90%", fig.align="center"}
 knitr::include_graphics("reference/figures/issues-with-title.png")
 ```
 

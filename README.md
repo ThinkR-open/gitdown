@@ -50,13 +50,13 @@ get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master") %>%
 #> # A tibble: 7 x 12
 #>   pattern.content sha   summary message author email when                order
 #>   <chr>           <chr> <chr>   <chr>   <chr>  <chr> <dttm>              <int>
-#> 1 #32             3856… Add NE… "Add N… Alice  alic… 2020-08-10 14:29:37     4
-#> 2 #1              3856… Add NE… "Add N… Alice  alic… 2020-08-10 14:29:37     4
-#> 3 #12             3856… Add NE… "Add N… Alice  alic… 2020-08-10 14:29:37     4
-#> 4 #2              a4b8… Third … "Third… Alice  alic… 2020-08-10 14:29:37     3
-#> 5 #145            a4b8… Third … "Third… Alice  alic… 2020-08-10 14:29:37     3
-#> 6 #1              494b… exampl… "examp… Alice  alic… 2020-08-10 14:29:37     2
-#> 7 <NA>            228b… First … "First… Alice  alic… 2020-08-10 14:29:37     1
+#> 1 #32             ba1e… Add NE… "Add N… Alice  alic… 2020-08-13 09:21:05     4
+#> 2 #1              ba1e… Add NE… "Add N… Alice  alic… 2020-08-13 09:21:05     4
+#> 3 #12             ba1e… Add NE… "Add N… Alice  alic… 2020-08-13 09:21:05     4
+#> 4 #2              f7cd… Third … "Third… Alice  alic… 2020-08-13 09:21:05     3
+#> 5 #145            f7cd… Third … "Third… Alice  alic… 2020-08-13 09:21:05     3
+#> 6 #1              3194… exampl… "examp… Alice  alic… 2020-08-13 09:21:05     2
+#> 7 <NA>            ec7b… First … "First… Alice  alic… 2020-08-13 09:21:05     1
 #> # … with 4 more variables: tag.name <chr>, tag.message <chr>,
 #> #   pattern.type <chr>, pattern.title <chr>
 ```
@@ -75,18 +75,18 @@ get_commits_pattern(
 #> # A tibble: 12 x 12
 #>    pattern.type pattern.content sha   summary message author email
 #>    <chr>        <chr>           <chr> <chr>   <chr>   <chr>  <chr>
-#>  1 Tickets      ticket6789      3856… Add NE… "Add N… Alice  alic…
-#>  2 Tickets      ticket1234      3856… Add NE… "Add N… Alice  alic…
-#>  3 Issues       #32             3856… Add NE… "Add N… Alice  alic…
-#>  4 Issues       #1              3856… Add NE… "Add N… Alice  alic…
-#>  5 Issues       #12             3856… Add NE… "Add N… Alice  alic…
-#>  6 Tickets      <NA>            a4b8… Third … "Third… Alice  alic…
-#>  7 Issues       #2              a4b8… Third … "Third… Alice  alic…
-#>  8 Issues       #145            a4b8… Third … "Third… Alice  alic…
-#>  9 Tickets      ticket1234      494b… exampl… "examp… Alice  alic…
-#> 10 Issues       #1              494b… exampl… "examp… Alice  alic…
-#> 11 Tickets      <NA>            228b… First … "First… Alice  alic…
-#> 12 Issues       <NA>            228b… First … "First… Alice  alic…
+#>  1 Tickets      ticket6789      ba1e… Add NE… "Add N… Alice  alic…
+#>  2 Tickets      ticket1234      ba1e… Add NE… "Add N… Alice  alic…
+#>  3 Issues       #32             ba1e… Add NE… "Add N… Alice  alic…
+#>  4 Issues       #1              ba1e… Add NE… "Add N… Alice  alic…
+#>  5 Issues       #12             ba1e… Add NE… "Add N… Alice  alic…
+#>  6 Tickets      <NA>            f7cd… Third … "Third… Alice  alic…
+#>  7 Issues       #2              f7cd… Third … "Third… Alice  alic…
+#>  8 Issues       #145            f7cd… Third … "Third… Alice  alic…
+#>  9 Tickets      ticket1234      3194… exampl… "examp… Alice  alic…
+#> 10 Issues       #1              3194… exampl… "examp… Alice  alic…
+#> 11 Tickets      <NA>            ec7b… First … "First… Alice  alic…
+#> 12 Issues       <NA>            ec7b… First … "First… Alice  alic…
 #> # … with 5 more variables: when <dttm>, order <int>, tag.name <chr>,
 #> #   tag.message <chr>, pattern.title <chr>
 ```
@@ -101,20 +101,25 @@ git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+",
 <img src="reference/figures/gitdown_links.png" width="90%" style="display: block; margin: auto;" />
 
 If you add a table of correspondance, you can change titles of the
-patterns.
+patterns.  
+*Note that you can use [{gitlabr}](https://statnmap.github.io/gitlabr/)
+or [{gh}](gh.r-lib.org) to retrieve list of issues from Gitlab or Github
+respectively.*
 
 ``` r
 # With table of correspondance
-pattern.table <- data.frame(number = c("#2", "#1"),
+pattern.table <- data.frame(
+  number = c("#2", "#1", "#1000"),
   title = c("#2 A second issue to illustrate a blog post",
-                       "#1 An example of issue"))
+            "#1 An example of issue",
+            "#1000 issue with no commit"))
 git_down(
   pattern = c("Issue" = "#[[:digit:]]+"),
   pattern.table = pattern.table
 )
 ```
 
-<img src="reference/figures/issues-with-title.png" width="30%" style="display: block; margin: auto;" />
+<img src="reference/figures/issues-with-title.png" width="90%" style="display: block; margin: auto;" />
 
 ## Create a vignette that lists all files with date of modification
 
@@ -130,9 +135,9 @@ With this example, the vignette will show this content:
 
 | File         | Tracked in git | Date of creation    | Last modification   |
 | :----------- | :------------- | :------------------ | :------------------ |
-| NEWS.md      | Yes            | 2020-08-10 16:29:38 | 2020-08-10 16:29:38 |
-| example.txt  | Yes            | 2020-08-10 16:29:38 | 2020-08-10 16:29:38 |
-| R/my\_mean.R | No             | NA                  | 2020-08-10 16:29:38 |
+| NEWS.md      | Yes            | 2020-08-13 11:21:05 | 2020-08-13 11:21:05 |
+| example.txt  | Yes            | 2020-08-13 11:21:05 | 2020-08-13 11:21:05 |
+| R/my\_mean.R | No             | NA                  | 2020-08-13 11:21:05 |
 
 Please note that the {gitdown} project is released with a [Contributor
 Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,

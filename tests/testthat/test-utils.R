@@ -36,6 +36,16 @@ nest_out <- nest_commits_by_pattern(repo)
 nest_out_patterns <- nest_commits_by_pattern(
   repo,
   pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"))
+# With table of correspondance
+pattern.table <- data.frame(
+  number = c("#2", "#1", "#1000"),
+  title = c("#2 A second issue to illustrate a blog post",
+            "#1 An example of issue",
+            "#1000 issue with no commit"))
+nest_out_pattern_table <- nest_commits_by_pattern(
+  repo,
+  pattern.table = pattern.table,
+  pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"))
 
 # writeLines(aa, "tests/testthat/presentation_commit")
 
@@ -63,6 +73,58 @@ test_that("nest_commits_by_pattern", {
     "  + Issues: [#2](#issues-2), [#145](#issues-145)  \n  + Tickets: [No related tickets](#tickets-na)"
     # "Third commit message  \n  \nissue [#2](#issues-2)  \nissue [#145](#issues-145).  \n[ticket1234](#tickets-ticket1234)  \n More information important for the project as breaking changes"
   )
+  # With supp issues
+  expect_true(is.na(nest_out_pattern_table$data[[6]]$sha))
+})
+
+# each_pattern ----
+res_each_pattern <- each_pattern(nest_out_pattern_table, "Issues")
+
+test_that("nest_commits_by_pattern", {
+  expect_equal(nrow(res_each_pattern), 8)
+  expect_equal(ncol(res_each_pattern), 7)
+  expect_equal(res_each_pattern$text[[7]][1],
+               "## Issue: #1000 issue with no commit{#issues-1000}")
+})
+
+# each_commit ----
+# One issue with 2 commits
+two_commits <- each_commit(
+  commits = nest_out_pattern_table[1,]$data[[1]],
+  pattern.content = nest_out_pattern_table[1,]$pattern.content,
+  link_pattern = nest_out_pattern_table[1,]$link_pattern,
+  pattern.type = nest_out_pattern_table[1,]$pattern.type,
+  pattern.title = nest_out_pattern_table[1,]$pattern.title
+)# One issue with no commits
+no_commits <- each_commit(
+  commits = nest_out_pattern_table[6,]$data[[1]],
+  pattern.content = nest_out_pattern_table[6,]$pattern.content,
+  link_pattern = nest_out_pattern_table[6,]$link_pattern,
+  pattern.type = nest_out_pattern_table[6,]$pattern.type,
+  pattern.title = nest_out_pattern_table[6,]$pattern.title
+)
+
+test_that("each_commit", {
+  # two commits
+  expect_equal(length(two_commits), 3)
+  expect_equal(
+    two_commits[1],
+    "## Issue: #1 An example of issue{#issues-1}"
+  )
+  expect_true(
+    grepl("Related patterns:\n  + Issues: [#1 An example of issue](#issues-1)  \n  + Tickets: [ticket1234](#tickets-ticket1234)",
+          two_commits[2], fixed = TRUE)
+  )
+  # no commits
+  expect_equal(length(no_commits), 2)
+  expect_equal(
+    no_commits[1],
+    "## Issue: #1000 issue with no commit{#issues-1000}"
+  )
+  expect_equal(
+    no_commits[2],
+    "*No commits*"
+  )
 })
 
 # presentation_commit ----
@@ -79,8 +141,6 @@ one_commit <- structure(
     link_pattern = "issues-32",
     link_commit = "issues-32-3f0bdaee89cecee654a1cfb24acd1a5efcfbe86e",
     message_link = "  + Issues: [#32](#issues-32), [#1](#issues-1), [#12](#issues-12)  \n  + Tickets: [ticket6789](#tickets-ticket6789), [ticket1234](#tickets-ticket1234)"
-    # message_link = "Add NEWS\n\nissue [#32](#issues-32).\nissue [#1](#issues-1).\nticket6789.\nticket1234\n Creation of the NEWS file for version 0.1."
-    # message_link = "Add NEWS\n\n- issue [#32](#issues-32).\n- issue [#1](#issues-1).\nticket6789.\nticket1234\n Creation of the NEWS file for version 0.1."
   ),
   row.names = c(NA, -1L), class = c("tbl_df", "tbl", "data.frame")
 )

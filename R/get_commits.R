@@ -69,7 +69,8 @@ get_commits_tags <- function(repo = ".", ref = "master",
 #'
 #' @return A tibble with commits and tags
 #'
-#' @importFrom dplyr mutate distinct rowwise tibble left_join mutate if_else mutate_all
+#' @importFrom dplyr mutate distinct rowwise tibble left_join mutate
+#' @importFrom dplyr if_else mutate_all filter select
 #' @importFrom tidyr unnest
 #' @importFrom purrr imap flatten_chr
 #' @importFrom stats setNames
@@ -111,10 +112,30 @@ get_commits_pattern <- function(repo = ".", pattern = c("Ticket" = "#[[:digit:]]
       pattern.table <- pattern.table[,1:2]
       warning("Only the first two columns will be used, first one as pattern, second on as title")
     }
-    names(pattern.table) <- c("pattern.content", "pattern.title")
+    names(pattern.table) <- c("pattern.content.orig", "pattern.title")
+    pattern.table.content <- pattern.table %>%
+      rowwise() %>%
+      mutate(
+        pattern_extract = list(
+          imap(pattern, ~my_extract(pattern.content.orig, .x) %>%
+                 setNames(., rep(.y, length(.)))) %>%
+            flatten_chr() %>%
+            # {} are needed otherwise, there is a "." column
+            {tibble(pattern.type = names(.), pattern.content = unname(.))}
+        )
+      ) %>%
+      # unnest to separate multiple pattern values
+      unnest(pattern_extract) %>%
+      filter(!is.na(pattern.content)) %>%
+      # remove duplicates
+      distinct() %>%
+      select(-pattern.content.orig)
+
     res %>%
-      left_join(pattern.table %>% mutate_all(as.character), by = "pattern.content") %>%
-      mutate(pattern.title = if_else(is.na(pattern.title), pattern.content, pattern.title))
+      dplyr::full_join(pattern.table.content %>% mutate_all(as.character),
+                       by = c("pattern.type", "pattern.content")) %>%
+      mutate(pattern.title = if_else(is.na(pattern.title),
+                                     pattern.content, pattern.title))
   } else {
     res %>%
       mutate(pattern.title = pattern.content)

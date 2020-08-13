@@ -13,9 +13,11 @@ test_that("git_down function",{
 })
 
 # With table of correspondance
-pattern.table <- data.frame(number = c("#2", "#1"),
+pattern.table <- data.frame(
+  number = c("#2", "#1", "#1000"),
   title = c("#2 A second issue to illustrate a blog post",
-                       "#1 An example of issue"))
+            "#1 An example of issue",
+            "#1000 issue with no commit"))
 
 test_that("git_down with pattern table",{
   with_dir(repo, {

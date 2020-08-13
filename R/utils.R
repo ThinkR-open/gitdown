@@ -67,17 +67,24 @@ presentation_commit <- function(commit) {
 #'
 
 each_commit <- function(commits, pattern.content, link_pattern, pattern.type, pattern.title) {
-  c(
-    # One Pattern Section
-    paste0("## ", to_singular(pattern.type), ": ",
-           pattern.title, "{#", link_pattern, "}"),
-    # Commits
-    map_chr(1:nrow(commits), ~presentation_commit(commits[.x, ]))
-  )
-  # repo <- fake_repo()
-  # one_pattern_commits <- nest_commits_by_pattern(repo, pattern = "ticket[[:digit:]]+",
-  # ref = "master", silent = TRUE)[1,]
-  # each_commit(one_pattern_commits, pattern.type = "Ticket")
+  # if no commits
+  if (length(commits$sha) == 1 && is.na(commits$sha)) {
+    c(
+      # One Pattern Section
+      paste0("## ", to_singular(pattern.type), ": ",
+             pattern.title, "{#", link_pattern, "}"),
+      # Commits
+      "*No commits*"
+    )
+  } else {
+    c(
+      # One Pattern Section
+      paste0("## ", to_singular(pattern.type), ": ",
+             pattern.title, "{#", link_pattern, "}"),
+      # Commits
+      map_chr(1:nrow(commits), ~presentation_commit(commits[.x, ]))
+    )
+  }
 }
 
 #' To singular
@@ -98,10 +105,10 @@ to_singular <- function(x) {
 #' repo <- fake_repo()
 #' res_commits <- nest_commits_by_pattern(
 #'   repo,
-#'   pattern = c("Ticket" = "ticket[[:digit:]]+"),
+#'   pattern = c("Tickets" = "ticket[[:digit:]]+"),
 #'   ref = "master", silent = TRUE
 #' )
-#' each_pattern(res_commits, "Ticket")
+#' each_pattern(res_commits, "Tickets")
 
 each_pattern <- function(nest_commits, pattern.type) {
 
@@ -121,8 +128,14 @@ each_pattern <- function(nest_commits, pattern.type) {
     pattern.content = res_commits$pattern.title,
     `Commits links` = map_chr(
       res_commits$data,
-      ~paste0("[", clean_text(.x$summary), "](#", .x$link_commit, ")") %>%
-        paste(collapse = ", "))
+      ~ifelse(length(.x$sha) == 1 && is.na(.x$sha),
+              # no commits
+              "No commits",
+              # commits
+              paste0("[", clean_text(.x$summary), "](#", .x$link_commit, ")") %>%
+                paste(collapse = ", ")
+      )
+    )
   )
   names(summary_table)[1] <- pattern.type
 
@@ -157,7 +170,7 @@ each_pattern <- function(nest_commits, pattern.type) {
 #' @export
 #' @examples
 #' repo <- fake_repo()
-#' nest_commits_by_pattern(repo, pattern = )
+#' nest_commits_by_pattern(repo)
 
 nest_commits_by_pattern <- function(repo,
                                     pattern = c("Issues" = "#[[:digit:]]+"),
@@ -188,12 +201,9 @@ nest_commits_by_pattern <- function(repo,
       is.na(pattern.title),
       paste("No related", tolower(pattern.type)), pattern.title)) %>%
     mutate(
-      # pattern.title.regex = paste0("(?<!\\[)", pattern.title),
-      # text_inter = paste0("-[", pattern.title, "]-"),
       text_link = paste0("[", pattern.title, "](#", link_pattern, ")")
     ) %>%
     # Longest chain to smallest
-    # arrange(desc(nchar(pattern.title))) %>%
     group_by(sha, pattern.type) %>%
     summarise(
       message_link.type = paste(text_link, collapse = ", ")
@@ -205,43 +215,9 @@ nest_commits_by_pattern <- function(repo,
     ) %>%
     ungroup()
 
-  # c("# text #1\n issue#1\n#2  #145  #") %>%
-  # c("toto") %>%
-  # stringi::stri_replace_all_regex(
-  #   pattern = correspondance$pattern.content.regex,
-  #   replacement = correspondance$text_inter,
-  #   vectorize_all = FALSE) %>%
-  # stringi::stri_extract_all_fixed(
-  #   pattern = correspondance$text_inter,
-  #   omit_no_match = TRUE
-  # ) %>% unlist() %>% unique() %>%
-  # # Replace with url
-  # stringi::stri_replace_all_fixed(
-  #   pattern = correspondance$text_inter,
-  #   replacement = correspondance$text_link,
-  #   vectorize_all = FALSE)# %>%
-  # stringi::stri_replace_all_regex(replacement = "\\\\#", pattern = "^(#)") %>%
-  # stringi::stri_replace_all_regex(replacement = "\\\n\\\n", pattern = "\\n")
-
   res %>%
-    # rowwise() %>%
     left_join(correspondance, by = "sha") %>%
-    # mutate(
-    #   message_link =
-    #     # Replace with url
-    #     stringi::stri_replace_all_regex(
-    #       message,
-    #       pattern = correspondance$pattern.content.regex,
-    #       replacement = correspondance$text_link,
-    #       vectorize_all = FALSE
-    #       ) %>%
-    #     stringi::stri_replace_all_regex(replacement = "\\\\#", pattern = "^(#)") %>%
-    #     # Go to newline
-  #     stringi::stri_replace_all_regex(replacement = "  \\\n", pattern = "\\n")
-  # ) %>%
-  arrange(pattern.type, pattern_numeric, pattern.content, order) %>%
-    # If is.na => New part
-    # filter(!is.na(pattern.content)) %>%
+    arrange(pattern.type, pattern_numeric, pattern.content, order) %>%
     mutate(pattern.title = if_else(is.na(pattern.title), paste("No related", tolower(pattern.type)), pattern.title)) %>%
     mutate(pattern.content = if_else(is.na(pattern.content), paste("No related", tolower(pattern.type)), pattern.content)) %>%
     group_by(pattern.type, pattern_numeric, pattern.content, pattern.title, link_pattern) %>%
@@ -256,11 +232,7 @@ clean_link <- function(x) {
   x %>%
     clean_text() %>%
     # Clean all special characters
-    # gsub("^_|^ | $|_$|#|@|'|`|\\$|\\\\|/|\\[|\\]|\\(|\\)|\\{|\\}|\"|\\+|:", "", .) %>%
     gsub("\\W", "-", .) %>%
-    # remove duplicate space (underscore kept)
-    # gsub("[[:space:]]+|_+", "-", .) %>%
-    # gsub("[[:space:]]+", "-", .) %>%
     gsub("(-)+", "-", .) %>%
     gsub("^(-)|(-)$", "", .) %>%
     # Remove all spaces and digits at the beginning

@@ -24,23 +24,25 @@ test_that("get_commits_pattern works", {
 
 # With table of correspondance
 pattern.table <- data.frame(
-  number = c("#2", "#1"),
+  number = c("#2", "#1", "#1000"),
   title = c("#2 A second issue to illustrate a blog post",
-            "#1 An example of issue"))
+            "#1 An example of issue",
+            "#1000 issue with no commit"))
 
 patterns_table_tbl <- get_commits_pattern(repo = repo, silent = TRUE,
                                           pattern.table = pattern.table)
 
 test_that("get_commits_pattern with table works", {
-  expect_equal(nrow(patterns_table_tbl), 7)
+  expect_equal(nrow(patterns_table_tbl), 8)
   expect_equal(ncol(patterns_table_tbl), 12)
-  expect_equal(patterns_table_tbl$pattern.type, rep("Ticket", 7))
+  expect_equal(patterns_table_tbl$pattern.type, rep("Ticket", 8))
   expect_equal(patterns_table_tbl$pattern.content,
-               c("#32", "#1", "#12", "#2", "#145", "#1", NA))
+               c("#32", "#1", "#12", "#2", "#145", "#1", NA, "#1000"))
   expect_equal(patterns_table_tbl$pattern.title,
                c("#32", "#1 An example of issue",
                           "#12", "#2 A second issue to illustrate a blog post",
-                          "#145", "#1 An example of issue", NA))
+                          "#145", "#1 An example of issue", NA,
+                 "#1000 issue with no commit"))
 })
 
 # my_extract ----

@@ -5,7 +5,7 @@ globalVariables(
     # each_pattern()
     "link_pattern", "data", "pattern.content",
     # get_commit_pattern
-    "pattern_extract", "pattern.title",
+    "pattern_extract", "pattern.title", "pattern.content.orig",
     # nest_commits_by_pattern
     "pattern.content", "pattern.type", "text_link", "message_link.type",
     # get_info

@@ -18,8 +18,8 @@ Presentation for each pattern
 repo <- fake_repo()
 res_commits <- nest_commits_by_pattern(
   repo,
-  pattern = c("Ticket" = "ticket[[:digit:]]+"),
+  pattern = c("Tickets" = "ticket[[:digit:]]+"),
   ref = "master", silent = TRUE
 )
-each_pattern(res_commits, "Ticket")
+each_pattern(res_commits, "Tickets")
 }
