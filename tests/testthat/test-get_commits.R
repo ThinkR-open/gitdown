@@ -45,6 +45,31 @@ test_that("get_commits_pattern with table works", {
                  "#1000 issue with no commit"))
 })
 
+# Test conditions
+# With pattern names
+pattern_no_name <- get_commits_pattern(repo = repo, silent = TRUE,
+                    pattern = "#[[:digit:]]+")
+
+test_that("get_commits_pattern fails", {
+  expect_true(all(pattern_no_name$pattern.type == rep("`#[[:digit:]]+`", 7)))
+})
+
+# With bad table of correspondance
+pattern.table <- data.frame(
+  number = c("#2", "#1", "#1000"),
+  title = c("#2 A second issue to illustrate a blog post",
+            "#1 An example of issue",
+            "#1000 issue with no commit"),
+  third = c(1, 1, 1))
+
+test_that("get_commits_pattern fails", {
+  expect_error(
+    get_commits_pattern(repo = repo, silent = TRUE,
+                        pattern.table = pattern.table)
+  )
+})
+
+
 # my_extract ----
 test_that("my_extract works", {
   expect_equal(my_extract("message #1", "#[[:digit:]]+"), "#1")

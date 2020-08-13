@@ -113,7 +113,7 @@ to_singular <- function(x) {
 each_pattern <- function(nest_commits, pattern.type) {
 
   filter_commits <- nest_commits %>%
-    filter(pattern.type == !!pattern.type)
+    filter(pattern.type == clean_text(!!pattern.type))
 
   # Create text of each commit by pattern
   res_commits <- filter_commits %>%
