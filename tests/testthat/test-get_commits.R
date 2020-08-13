@@ -55,7 +55,9 @@ test_that("get_commits_pattern fails", {
 })
 
 # With bad table of correspondance
-pattern.table <- data.frame(
+pattern.table.1 <- data.frame(
+  number = c("#2", "#1", "#1000"))
+pattern.table.3 <- data.frame(
   number = c("#2", "#1", "#1000"),
   title = c("#2 A second issue to illustrate a blog post",
             "#1 An example of issue",
@@ -65,7 +67,11 @@ pattern.table <- data.frame(
 test_that("get_commits_pattern fails", {
   expect_error(
     get_commits_pattern(repo = repo, silent = TRUE,
-                        pattern.table = pattern.table)
+                        pattern.table = pattern.table.1)
+  )
+  expect_warning(
+    get_commits_pattern(repo = repo, silent = TRUE,
+                        pattern.table = pattern.table.3)
   )
 })
 
