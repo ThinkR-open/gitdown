@@ -97,7 +97,7 @@ git_down <- function(repo = ".", book_path = "gitdown",
 
   res <- render(file.path(repo, book_path, "index.Rmd"), ...)
 
-  if (open) {
+  if (isTRUE(open)) {
     browseURL(res)
   }
   res

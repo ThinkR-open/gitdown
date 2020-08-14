@@ -93,6 +93,8 @@ git_down(
   pattern.table = pattern.table
 )
 ```
+_Note that characters like `[`, `]`, `_` or `*` will be replaced by `-` in the titles to avoid conflicts with markdown syntax._
+
 
 ```{r, echo=FALSE, out.width="90%", fig.align="center"}
 knitr::include_graphics("reference/figures/issues-with-title.png")

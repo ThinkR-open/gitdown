@@ -247,7 +247,8 @@ clean_link <- function(x) {
 
 clean_text <- function(x) {
   x %>%
-    gsub("_|\\*|\\{|\\}", "", .) %>%
+    gsub("\\*|\\{|\\}", "", .) %>%
+    gsub("_", "-", .) %>%
     gsub("[", "-", ., fixed = TRUE) %>%
     gsub("]", "-", ., fixed = TRUE)
 }

@@ -6,7 +6,8 @@ repo <- fake_repo(repo_input)
 # Classic use
 with_dir(repo, {
   res <- git_down(author = "Cervan",
-                  pattern = c("Issue" = "#[[:digit:]]+")
+                  pattern = c("Issue" = "#[[:digit:]]+"),
+                  open = FALSE
   )
 })
 lines <- readLines(file.path(dirname(res), "section-issue.html"))
@@ -22,7 +23,8 @@ test_that("git_down function",{
 # Pattern without name and special characters cleaned
 with_dir(repo, {
   res <- git_down(author = "StatnMap",
-                  pattern = c("#[[:digit:]]+")
+                  pattern = c("#[[:digit:]]+"),
+                  open = FALSE
   )
 })
 
@@ -47,7 +49,8 @@ test_that("git_down with pattern table",{
   with_dir(repo, {
     res <- git_down(author = "Cervan",
                     pattern = c("Issue" = "#[[:digit:]]+"),
-                    pattern.table = pattern.table
+                    pattern.table = pattern.table,
+                    open = FALSE
     )
     expect_match(res, regexp = ".html")
   })

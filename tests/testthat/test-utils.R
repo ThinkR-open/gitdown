@@ -168,6 +168,6 @@ test_that("clean_link", {
 test_that("clean_text", {
   expect_equal(
     clean_text("__ toto *[toot] * _{#}"),
-    " toto -toot-  #")
+    "-- toto -toot-  -#")
 })
 
