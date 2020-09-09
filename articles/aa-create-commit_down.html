@@ -132,9 +132,11 @@
 $(document).ready(function () {
   window.initializeCodeFolding("show" === "show");
 });
-</script><div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">gitdown</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">git2r</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)</pre></body></html></div>
+</script><div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/Thinkr-open/gitdown">gitdown</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://docs.ropensci.org/git2r">git2r</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
+</pre></div>
 <div id="read-list-of-commits" class="section level1">
 <h1 class="hasAnchor">
 <a href="#read-list-of-commits" class="anchor"></a>Read list of commits</h1>
@@ -149,7 +151,9 @@ $(document).ready(function () {
 </li>
 <li>A commit is associated with a tag</li>
 </ul>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">repo</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/fake_repo.html">fake_repo</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw">repo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fake_repo.html">fake_repo</a></span>()
+</pre></div>
 </div>
 </div>
 <div id="get-commits-and-find-pattern" class="section level1">
@@ -158,16 +162,18 @@ $(document).ready(function () {
 <ul>
 <li>Find all commits of a branch and associate with tags recursively</li>
 </ul>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/get_commits_tags.html">get_commits_tags</a></span>(<span class="no">repo</span>, <span class="kw">ref</span> <span class="kw">=</span> <span class="st">"master"</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="../reference/get_commits_tags.html">get_commits_tags</a></span>(<span class="kw">repo</span>, ref = <span class="st">"master"</span>)
 <span class="co">#&gt; 4 commits found.</span>
 <span class="co">#&gt; # A tibble: 4 x 9</span>
 <span class="co">#&gt;   sha   summary message author email when                order tag.name</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   </span>
-<span class="co">#&gt; 1 8976… Add NE… "Add N… Alice  alic… 2020-08-14 09:52:37     4 &lt;NA&gt;    </span>
-<span class="co">#&gt; 2 cffd… Third … "Third… Alice  alic… 2020-08-14 09:52:37     3 v0.1    </span>
-<span class="co">#&gt; 3 5852… exampl… "examp… Alice  alic… 2020-08-14 09:52:37     2 v0.1    </span>
-<span class="co">#&gt; 4 2d7d… First … "First… Alice  alic… 2020-08-14 09:52:37     1 v0.1    </span>
-<span class="co">#&gt; # … with 1 more variable: tag.message &lt;chr&gt;</span></pre></body></html></div>
+<span class="co">#&gt; 1 f8a5… Add NE… "Add N… Alice  alic… 2020-09-09 13:23:45     4 &lt;NA&gt;    </span>
+<span class="co">#&gt; 2 1c8c… Third … "Third… Alice  alic… 2020-09-09 13:23:45     3 v0.1    </span>
+<span class="co">#&gt; 3 816b… exampl… "examp… Alice  alic… 2020-09-09 13:23:45     2 v0.1    </span>
+<span class="co">#&gt; 4 3681… First … "First… Alice  alic… 2020-09-09 13:23:45     1 v0.1    </span>
+<span class="co">#&gt; # … with 1 more variable: tag.message &lt;chr&gt;</span>
+</pre></div>
 <ul>
 <li>Find all commits of a branch and detect a specific pattern
 <ul>
@@ -176,20 +182,22 @@ $(document).ready(function () {
 </ul>
 </li>
 </ul>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/get_commits_pattern.html">get_commits_pattern</a></span>(<span class="no">repo</span>, <span class="kw">pattern</span> <span class="kw">=</span> <span class="st">"#[[:digit:]]+"</span>, <span class="kw">ref</span> <span class="kw">=</span> <span class="st">"master"</span>)
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu"><a href="../reference/get_commits_pattern.html">get_commits_pattern</a></span>(<span class="kw">repo</span>, pattern = <span class="st">"#[[:digit:]]+"</span>, ref = <span class="st">"master"</span>)
 <span class="co">#&gt; 4 commits found.</span>
 <span class="co">#&gt; # A tibble: 7 x 12</span>
 <span class="co">#&gt;   sha   summary message author email when                order tag.name</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   </span>
-<span class="co">#&gt; 1 8976… Add NE… "Add N… Alice  alic… 2020-08-14 09:52:37     4 &lt;NA&gt;    </span>
-<span class="co">#&gt; 2 8976… Add NE… "Add N… Alice  alic… 2020-08-14 09:52:37     4 &lt;NA&gt;    </span>
-<span class="co">#&gt; 3 8976… Add NE… "Add N… Alice  alic… 2020-08-14 09:52:37     4 &lt;NA&gt;    </span>
-<span class="co">#&gt; 4 cffd… Third … "Third… Alice  alic… 2020-08-14 09:52:37     3 v0.1    </span>
-<span class="co">#&gt; 5 cffd… Third … "Third… Alice  alic… 2020-08-14 09:52:37     3 v0.1    </span>
-<span class="co">#&gt; 6 5852… exampl… "examp… Alice  alic… 2020-08-14 09:52:37     2 v0.1    </span>
-<span class="co">#&gt; 7 2d7d… First … "First… Alice  alic… 2020-08-14 09:52:37     1 v0.1    </span>
+<span class="co">#&gt; 1 f8a5… Add NE… "Add N… Alice  alic… 2020-09-09 13:23:45     4 &lt;NA&gt;    </span>
+<span class="co">#&gt; 2 f8a5… Add NE… "Add N… Alice  alic… 2020-09-09 13:23:45     4 &lt;NA&gt;    </span>
+<span class="co">#&gt; 3 f8a5… Add NE… "Add N… Alice  alic… 2020-09-09 13:23:45     4 &lt;NA&gt;    </span>
+<span class="co">#&gt; 4 1c8c… Third … "Third… Alice  alic… 2020-09-09 13:23:45     3 v0.1    </span>
+<span class="co">#&gt; 5 1c8c… Third … "Third… Alice  alic… 2020-09-09 13:23:45     3 v0.1    </span>
+<span class="co">#&gt; 6 816b… exampl… "examp… Alice  alic… 2020-09-09 13:23:45     2 v0.1    </span>
+<span class="co">#&gt; 7 3681… First … "First… Alice  alic… 2020-09-09 13:23:45     1 v0.1    </span>
 <span class="co">#&gt; # … with 4 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,</span>
-<span class="co">#&gt; #   pattern.content &lt;chr&gt;, pattern.title &lt;chr&gt;</span></pre></body></html></div>
+<span class="co">#&gt; #   pattern.content &lt;chr&gt;, pattern.title &lt;chr&gt;</span>
+</pre></div>
 </div>
   </div>
 

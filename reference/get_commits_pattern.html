@@ -164,12 +164,12 @@
     </div>
 
     <pre class="usage"><span class='fu'>get_commits_pattern</span>(
-  <span class='kw'>repo</span> <span class='kw'>=</span> <span class='st'>"."</span>,
-  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>Ticket</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>),
-  <span class='kw'>pattern.table</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ref</span> <span class='kw'>=</span> <span class='st'>"master"</span>,
-  <span class='kw'>path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  repo = <span class='st'>"."</span>,
+  pattern = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(Ticket = <span class='st'>"#[[:digit:]]+"</span>),
+  pattern.table = <span class='kw'>NULL</span>,
+  ref = <span class='st'>"master"</span>,
+  path = <span class='kw'>NULL</span>,
+  silent = <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -213,36 +213,38 @@ returned; that is, the output of <code>git log</code> with
     <p>A tibble with commits and tags</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>repo</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
-<span class='fu'>get_commits_pattern</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ticket"</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>))</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 7 x 12
+    <pre class="examples"><div class='input'><span class='kw'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
+<span class='fu'>get_commits_pattern</span>(repo = <span class='kw'>repo</span>, pattern = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ticket"</span> = <span class='st'>"#[[:digit:]]+"</span>))
+</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 7 x 12</span><span>
 #&gt;   sha   summary message author email when                order tag.name
-#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   
-#&gt; 1 ce71… Add NE… "Add N… Alice  alic… 2020-08-14 09:52:32     4 &lt;NA&gt;    
-#&gt; 2 ce71… Add NE… "Add N… Alice  alic… 2020-08-14 09:52:32     4 &lt;NA&gt;    
-#&gt; 3 ce71… Add NE… "Add N… Alice  alic… 2020-08-14 09:52:32     4 &lt;NA&gt;    
-#&gt; 4 cf3f… Third … "Third… Alice  alic… 2020-08-14 09:52:32     3 v0.1    
-#&gt; 5 cf3f… Third … "Third… Alice  alic… 2020-08-14 09:52:32     3 v0.1    
-#&gt; 6 bd78… exampl… "examp… Alice  alic… 2020-08-14 09:52:32     2 v0.1    
-#&gt; 7 629f… First … "First… Alice  alic… 2020-08-14 09:52:32     1 v0.1    
-#&gt; # … with 4 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,
-#&gt; #   pattern.content &lt;chr&gt;, pattern.title &lt;chr&gt;</div><div class='input'><span class='fu'>get_commits_pattern</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>,
-  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ticket"</span> <span class='kw'>=</span> <span class='st'>"ticket[[:digit:]]+"</span>, <span class='st'>"Issues"</span> <span class='kw'>=</span> <span class='st'>"#[[:digit:]]+"</span>))</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 12 x 12
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
+#&gt; </span><span style='color: #555555;'>1</span><span> 9087… Add NE… </span><span style='color: #555555;'>"</span><span>Add N… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'>2</span><span> 9087… Add NE… </span><span style='color: #555555;'>"</span><span>Add N… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'>3</span><span> 9087… Add NE… </span><span style='color: #555555;'>"</span><span>Add N… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'>4</span><span> 2c47… Third … </span><span style='color: #555555;'>"</span><span>Third… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     3 v0.1    
+#&gt; </span><span style='color: #555555;'>5</span><span> 2c47… Third … </span><span style='color: #555555;'>"</span><span>Third… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     3 v0.1    
+#&gt; </span><span style='color: #555555;'>6</span><span> 1e25… exampl… </span><span style='color: #555555;'>"</span><span>examp… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     2 v0.1    
+#&gt; </span><span style='color: #555555;'>7</span><span> 91bf… First … </span><span style='color: #555555;'>"</span><span>First… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     1 v0.1    
+#&gt; </span><span style='color: #555555;'># … with 4 more variables: tag.message </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, pattern.type </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   pattern.content </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, pattern.title </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='fu'>get_commits_pattern</span>(repo = <span class='kw'>repo</span>,
+  pattern = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ticket"</span> = <span class='st'>"ticket[[:digit:]]+"</span>, <span class='st'>"Issues"</span> = <span class='st'>"#[[:digit:]]+"</span>))
+</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 12 x 12</span><span>
 #&gt;    sha   summary message author email when                order tag.name
-#&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   
-#&gt;  1 ce71… Add NE… "Add N… Alice  alic… 2020-08-14 09:52:32     4 &lt;NA&gt;    
-#&gt;  2 ce71… Add NE… "Add N… Alice  alic… 2020-08-14 09:52:32     4 &lt;NA&gt;    
-#&gt;  3 ce71… Add NE… "Add N… Alice  alic… 2020-08-14 09:52:32     4 &lt;NA&gt;    
-#&gt;  4 ce71… Add NE… "Add N… Alice  alic… 2020-08-14 09:52:32     4 &lt;NA&gt;    
-#&gt;  5 ce71… Add NE… "Add N… Alice  alic… 2020-08-14 09:52:32     4 &lt;NA&gt;    
-#&gt;  6 cf3f… Third … "Third… Alice  alic… 2020-08-14 09:52:32     3 v0.1    
-#&gt;  7 cf3f… Third … "Third… Alice  alic… 2020-08-14 09:52:32     3 v0.1    
-#&gt;  8 cf3f… Third … "Third… Alice  alic… 2020-08-14 09:52:32     3 v0.1    
-#&gt;  9 bd78… exampl… "examp… Alice  alic… 2020-08-14 09:52:32     2 v0.1    
-#&gt; 10 bd78… exampl… "examp… Alice  alic… 2020-08-14 09:52:32     2 v0.1    
-#&gt; 11 629f… First … "First… Alice  alic… 2020-08-14 09:52:32     1 v0.1    
-#&gt; 12 629f… First … "First… Alice  alic… 2020-08-14 09:52:32     1 v0.1    
-#&gt; # … with 4 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,
-#&gt; #   pattern.content &lt;chr&gt;, pattern.title &lt;chr&gt;</div></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
+#&gt; </span><span style='color: #555555;'> 1</span><span> 9087… Add NE… </span><span style='color: #555555;'>"</span><span>Add N… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'> 2</span><span> 9087… Add NE… </span><span style='color: #555555;'>"</span><span>Add N… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'> 3</span><span> 9087… Add NE… </span><span style='color: #555555;'>"</span><span>Add N… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'> 4</span><span> 9087… Add NE… </span><span style='color: #555555;'>"</span><span>Add N… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'> 5</span><span> 9087… Add NE… </span><span style='color: #555555;'>"</span><span>Add N… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'> 6</span><span> 2c47… Third … </span><span style='color: #555555;'>"</span><span>Third… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     3 v0.1    
+#&gt; </span><span style='color: #555555;'> 7</span><span> 2c47… Third … </span><span style='color: #555555;'>"</span><span>Third… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     3 v0.1    
+#&gt; </span><span style='color: #555555;'> 8</span><span> 2c47… Third … </span><span style='color: #555555;'>"</span><span>Third… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     3 v0.1    
+#&gt; </span><span style='color: #555555;'> 9</span><span> 1e25… exampl… </span><span style='color: #555555;'>"</span><span>examp… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     2 v0.1    
+#&gt; </span><span style='color: #555555;'>10</span><span> 1e25… exampl… </span><span style='color: #555555;'>"</span><span>examp… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     2 v0.1    
+#&gt; </span><span style='color: #555555;'>11</span><span> 91bf… First … </span><span style='color: #555555;'>"</span><span>First… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     1 v0.1    
+#&gt; </span><span style='color: #555555;'>12</span><span> 91bf… First … </span><span style='color: #555555;'>"</span><span>First… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:39</span><span>     1 v0.1    
+#&gt; </span><span style='color: #555555;'># … with 4 more variables: tag.message </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, pattern.type </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   pattern.content </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, pattern.title </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

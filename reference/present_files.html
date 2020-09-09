@@ -163,7 +163,7 @@
     <p>Formatting results of get_last_modif</p>
     </div>
 
-    <pre class="usage"><span class='fu'>present_files</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"R"</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>untracked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>present_files</span>(repo = <span class='st'>"."</span>, path = <span class='st'>"R"</span>, recursive = <span class='fl'>TRUE</span>, untracked = <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -191,10 +191,11 @@
     <p>kable</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>repo</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>(<span class='kw'>as.package</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='fu'>present_files</span>(<span class='no'>repo</span>))</div><div class='output co'>#&gt; |File        |Tracked in git |Date of creation |Last modification   |  
+    <pre class="examples"><div class='input'><span class='kw'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>(as.package = <span class='fl'>TRUE</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='fu'>present_files</span>(<span class='kw'>repo</span>))
+</div><div class='output co'>#&gt; |File        |Tracked in git |Date of creation |Last modification   |  
 #&gt; |:-----------|:--------------|:----------------|:-------------------|  
-#&gt; |R/my_mean.R |No             |NA               |2020-08-14 09:52:35 |</div></pre>
+#&gt; |R/my_mean.R |No             |NA               |2020-09-09 13:23:42 |</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

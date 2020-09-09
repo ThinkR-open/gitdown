@@ -163,7 +163,7 @@
     <p>Get commits associated chronologically with tags</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_commits_tags</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='st'>"master"</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_commits_tags</span>(repo = <span class='st'>"."</span>, ref = <span class='st'>"master"</span>, path = <span class='kw'>NULL</span>, silent = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -197,15 +197,16 @@ returned; that is, the output of <code>git log</code> with
     <p>A tibble with commits and tags</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>repo</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
-<span class='fu'>get_commits_tags</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>)</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; # A tibble: 4 x 9
+    <pre class="examples"><div class='input'><span class='kw'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
+<span class='fu'>get_commits_tags</span>(repo = <span class='kw'>repo</span>)
+</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 4 x 9</span><span>
 #&gt;   sha   summary message author email when                order tag.name
-#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   
-#&gt; 1 ce71… Add NE… "Add N… Alice  alic… 2020-08-14 09:52:32     4 &lt;NA&gt;    
-#&gt; 2 cf3f… Third … "Third… Alice  alic… 2020-08-14 09:52:32     3 v0.1    
-#&gt; 3 bd78… exampl… "examp… Alice  alic… 2020-08-14 09:52:32     2 v0.1    
-#&gt; 4 629f… First … "First… Alice  alic… 2020-08-14 09:52:32     1 v0.1    
-#&gt; # … with 1 more variable: tag.message &lt;chr&gt;</div></pre>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
+#&gt; </span><span style='color: #555555;'>1</span><span> ca34… Add NE… </span><span style='color: #555555;'>"</span><span>Add N… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:40</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'>2</span><span> a3ad… Third … </span><span style='color: #555555;'>"</span><span>Third… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:40</span><span>     3 v0.1    
+#&gt; </span><span style='color: #555555;'>3</span><span> d387… exampl… </span><span style='color: #555555;'>"</span><span>examp… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:40</span><span>     2 v0.1    
+#&gt; </span><span style='color: #555555;'>4</span><span> a295… First … </span><span style='color: #555555;'>"</span><span>First… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:40</span><span>     1 v0.1    
+#&gt; </span><span style='color: #555555;'># … with 1 more variable: tag.message </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

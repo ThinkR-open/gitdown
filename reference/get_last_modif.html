@@ -163,7 +163,7 @@
     <p>Get last modification of files</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_last_modif</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"R"</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>untracked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_last_modif</span>(repo = <span class='st'>"."</span>, path = <span class='st'>"R"</span>, recursive = <span class='fl'>TRUE</span>, untracked = <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -191,9 +191,10 @@
     <p>list</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>repo</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
+    <pre class="examples"><div class='input'><span class='kw'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
 <span class='co'># Complete repository</span>
-<span class='fu'>get_last_modif</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>""</span>)</div><div class='output co'>#&gt; [[1]]
+<span class='fu'>get_last_modif</span>(repo = <span class='kw'>repo</span>, path = <span class='st'>""</span>)
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]]$file
 #&gt; [1] "NEWS.md"
 #&gt; 
@@ -202,11 +203,11 @@
 #&gt; 
 #&gt; [[1]]$first_modif
 #&gt;                     first 
-#&gt; "2020-08-14 09:52:33 UTC" 
+#&gt; "2020-09-09 13:23:40 UTC" 
 #&gt; 
 #&gt; [[1]]$last_modif
 #&gt;                      last 
-#&gt; "2020-08-14 09:52:33 UTC" 
+#&gt; "2020-09-09 13:23:40 UTC" 
 #&gt; 
 #&gt; 
 #&gt; [[2]]
@@ -218,15 +219,16 @@
 #&gt; 
 #&gt; [[2]]$first_modif
 #&gt;                     first 
-#&gt; "2020-08-14 09:52:33 UTC" 
+#&gt; "2020-09-09 13:23:40 UTC" 
 #&gt; 
 #&gt; [[2]]$last_modif
 #&gt;                      last 
-#&gt; "2020-08-14 09:52:33 UTC" 
+#&gt; "2020-09-09 13:23:40 UTC" 
 #&gt; 
-#&gt; </div><div class='input'><span class='no'>repo</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>(<span class='kw'>as.package</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+#&gt; </div><div class='input'><span class='kw'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>(as.package = <span class='fl'>TRUE</span>)
 <span class='co'># Complete repository</span>
-<span class='fu'>get_last_modif</span>(<span class='kw'>repo</span> <span class='kw'>=</span> <span class='no'>repo</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>""</span>)</div><div class='output co'>#&gt; [[1]]
+<span class='fu'>get_last_modif</span>(repo = <span class='kw'>repo</span>, path = <span class='st'>""</span>)
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]]$file
 #&gt; [1] "NEWS.md"
 #&gt; 
@@ -235,11 +237,11 @@
 #&gt; 
 #&gt; [[1]]$first_modif
 #&gt;                     first 
-#&gt; "2020-08-14 09:52:33 UTC" 
+#&gt; "2020-09-09 13:23:40 UTC" 
 #&gt; 
 #&gt; [[1]]$last_modif
 #&gt;                      last 
-#&gt; "2020-08-14 09:52:33 UTC" 
+#&gt; "2020-09-09 13:23:40 UTC" 
 #&gt; 
 #&gt; 
 #&gt; [[2]]
@@ -251,11 +253,11 @@
 #&gt; 
 #&gt; [[2]]$first_modif
 #&gt;                     first 
-#&gt; "2020-08-14 09:52:33 UTC" 
+#&gt; "2020-09-09 13:23:40 UTC" 
 #&gt; 
 #&gt; [[2]]$last_modif
 #&gt;                      last 
-#&gt; "2020-08-14 09:52:33 UTC" 
+#&gt; "2020-09-09 13:23:40 UTC" 
 #&gt; 
 #&gt; 
 #&gt; $untracked.untracked
@@ -271,7 +273,7 @@
 #&gt; 
 #&gt; $untracked.untracked$last_modif
 #&gt;                      last 
-#&gt; "2020-08-14 09:52:33 UTC" 
+#&gt; "2020-09-09 13:23:40 UTC" 
 #&gt; 
 #&gt; </div></pre>
   </div>
