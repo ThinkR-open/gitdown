@@ -117,7 +117,13 @@ repo_pkg <- fake_repo(as.package = TRUE)
 cat(present_files(repo_pkg, path = ""))
 ```
 
+## Sponsor
 
+The development of this package has been sponsored by: 
+
+<a href = "https://www.servier.fr/"><img src = "man/figures/servier.png"></img></a>
+  
+## Code of Conduct
   
 Please note that the {gitdown} project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md).

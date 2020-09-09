@@ -13,7 +13,9 @@ Authors@R:
              email = "cervan@thinkr.fr",
              comment = c(ORCID = "0000-0002-4816-4624")),
       person(given = "ThinkR",
-             role = "cph"))
+             role = "cph"),
+      person(given = "Institut de Recherches Internationales Servier",
+            role = c("spn")))
 Description: Read all commit messages and sort them according to
     tags or specific text pattern.
 License: MIT + file LICENSE
