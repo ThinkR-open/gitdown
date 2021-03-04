@@ -1,5 +1,5 @@
 Package: gitdown
-Title: Turn Your Git Commit Messages Into A Bookdown
+Title: Turn Your Git Commit Messages into a Bookdown
 Version: 0.0.1
 Authors@R: 
     c(person(given = "Sébastien",
