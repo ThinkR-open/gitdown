@@ -105,7 +105,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -137,7 +137,7 @@
         </li>
         <li>
   <a href="https://github.com/Thinkr-open/gitdown/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -163,7 +163,7 @@
     <p>Get commits associated chronologically with tags</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_commits_tags</span>(repo = <span class='st'>"."</span>, ref = <span class='st'>"master"</span>, path = <span class='kw'>NULL</span>, silent = <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_commits_tags</span><span class='op'>(</span>repo <span class='op'>=</span> <span class='st'>"."</span>, ref <span class='op'>=</span> <span class='st'>"master"</span>, path <span class='op'>=</span> <span class='cn'>NULL</span>, silent <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -197,16 +197,16 @@ returned; that is, the output of <code>git log</code> with
     <p>A tibble with commits and tags</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
-<span class='fu'>get_commits_tags</span>(repo = <span class='kw'>repo</span>)
-</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 4 x 9</span><span>
-#&gt;   sha   summary message author email when                order tag.name
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
-#&gt; </span><span style='color: #555555;'>1</span><span> ca34… Add NE… </span><span style='color: #555555;'>"</span><span>Add N… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:40</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #555555;'>2</span><span> a3ad… Third … </span><span style='color: #555555;'>"</span><span>Third… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:40</span><span>     3 v0.1    
-#&gt; </span><span style='color: #555555;'>3</span><span> d387… exampl… </span><span style='color: #555555;'>"</span><span>examp… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:40</span><span>     2 v0.1    
-#&gt; </span><span style='color: #555555;'>4</span><span> a295… First … </span><span style='color: #555555;'>"</span><span>First… Alice  alic… 2020-09-09 </span><span style='color: #555555;'>13:23:40</span><span>     1 v0.1    
-#&gt; </span><span style='color: #555555;'># … with 1 more variable: tag.message </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
+    <pre class="examples"><div class='input'><span class='va'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'>get_commits_tags</span><span class='op'>(</span>repo <span class='op'>=</span> <span class='va'>repo</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 9</span><span>
+#&gt;   sha      summary  message      author email when                order tag.name
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> a8f009c… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\n… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 8ce2d7f… Third c… </span><span style='color: #949494;'>"</span><span>Third comm… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     3 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> d4a7905… example… </span><span style='color: #949494;'>"</span><span>example: m… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     2 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> 04eb21d… First c… </span><span style='color: #949494;'>"</span><span>First comm… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     1 v0.1    
+#&gt; </span><span style='color: #949494;'># … with 1 more variable: tag.message &lt;chr&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

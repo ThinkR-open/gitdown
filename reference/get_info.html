@@ -105,7 +105,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -137,7 +137,7 @@
         </li>
         <li>
   <a href="https://github.com/Thinkr-open/gitdown/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -163,7 +163,7 @@
     <p>Get the first and last modification for one file. Based on git2r::blame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_info</span>(<span class='kw'>path</span>, repo = <span class='st'>"."</span>)</pre>
+    <pre class="usage"><span class='fu'>get_info</span><span class='op'>(</span><span class='va'>path</span>, repo <span class='op'>=</span> <span class='st'>"."</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -183,8 +183,8 @@
     <p>list</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
-<span class='fu'>get_info</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span>(<span class='kw'>repo</span>)[<span class='fl'>1</span>], repo = <span class='kw'>repo</span>)
+    <pre class="examples"><div class='input'><span class='va'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'>get_info</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span><span class='va'>repo</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, repo <span class='op'>=</span> <span class='va'>repo</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $file
 #&gt; [1] "example.txt"
 #&gt; 
@@ -193,11 +193,11 @@
 #&gt; 
 #&gt; $first_modif
 #&gt;                     first 
-#&gt; "2020-09-09 13:23:40 UTC" 
+#&gt; "2021-03-04 20:28:21 UTC" 
 #&gt; 
 #&gt; $last_modif
 #&gt;                      last 
-#&gt; "2020-09-09 13:23:40 UTC" 
+#&gt; "2021-03-04 20:28:21 UTC" 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

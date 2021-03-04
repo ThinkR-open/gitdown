@@ -64,7 +64,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -101,7 +101,7 @@
         </li>
         <li>
   <a href="https://github.com/Thinkr-open/gitdown/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -115,7 +115,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="ab-create-git_down_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Create a bookdown with git_down</h1>
@@ -132,9 +132,8 @@
 $(document).ready(function () {
   window.initializeCodeFolding("show" === "show");
 });
-</script><div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/Thinkr-open/gitdown">gitdown</a></span>)
-</pre></div>
+</script><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Thinkr-open/gitdown">gitdown</a></span><span class="op">)</span></code></pre></div>
 <div id="create-book-of-commits" class="section level2">
 <h2 class="hasAnchor">
 <a href="#create-book-of-commits" class="anchor"></a>Create book of commits</h2>
@@ -149,16 +148,14 @@ $(document).ready(function () {
 </li>
 <li>A commit is associated with a tag</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">repo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fake_repo.html">fake_repo</a></span>()
-</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">repo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fake_repo.html">fake_repo</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="build-book" class="section level3">
 <h3 class="hasAnchor">
 <a href="#build-book" class="anchor"></a>Build book</h3>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="../reference/git_down.html">git_down</a></span>(<span class="kw">repo</span>, pattern = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Tickets"</span> = <span class="st">"ticket[[:digit:]]+"</span>, <span class="st">"Issues"</span> = <span class="st">"#[[:digit:]]+"</span>))
-</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/git_down.html">git_down</a></span><span class="op">(</span><span class="va">repo</span>, pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Tickets"</span> <span class="op">=</span> <span class="st">"ticket[[:digit:]]+"</span>, <span class="st">"Issues"</span> <span class="op">=</span> <span class="st">"#[[:digit:]]+"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
   </div>

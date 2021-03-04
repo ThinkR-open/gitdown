@@ -105,7 +105,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -137,7 +137,7 @@
         </li>
         <li>
   <a href="https://github.com/Thinkr-open/gitdown/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -163,13 +163,13 @@
     <p>Nest all commits by each pattern</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nest_commits_by_pattern</span>(
-  <span class='kw'>repo</span>,
-  pattern = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(Issues = <span class='st'>"#[[:digit:]]+"</span>),
-  pattern.table = <span class='kw'>NULL</span>,
-  ref = <span class='st'>"master"</span>,
-  silent = <span class='fl'>TRUE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>nest_commits_by_pattern</span><span class='op'>(</span>
+  <span class='va'>repo</span>,
+  pattern <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>Issues <span class='op'>=</span> <span class='st'>"#[[:digit:]]+"</span><span class='op'>)</span>,
+  pattern.table <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ref <span class='op'>=</span> <span class='st'>"master"</span>,
+  silent <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -201,17 +201,17 @@ or a branch. The default is NULL for the current branch.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
-<span class='fu'>nest_commits_by_pattern</span>(<span class='kw'>repo</span>)
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 6</span><span>
+    <pre class="examples"><div class='input'><span class='va'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'>nest_commits_by_pattern</span><span class='op'>(</span><span class='va'>repo</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 6</span><span>
 #&gt;   pattern.type pattern.content  pattern.title pattern_numeric link_pattern data 
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;lis&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Issues       #1               #1                          1 issues-1     </span><span style='color: #555555;'>&lt;tib</span><span>…
-#&gt; </span><span style='color: #555555;'>2</span><span> Issues       #2               #2                          2 issues-2     </span><span style='color: #555555;'>&lt;tib</span><span>…
-#&gt; </span><span style='color: #555555;'>3</span><span> Issues       #12              #12                        12 issues-12    </span><span style='color: #555555;'>&lt;tib</span><span>…
-#&gt; </span><span style='color: #555555;'>4</span><span> Issues       #32              #32                        32 issues-32    </span><span style='color: #555555;'>&lt;tib</span><span>…
-#&gt; </span><span style='color: #555555;'>5</span><span> Issues       #145             #145                      145 issues-145   </span><span style='color: #555555;'>&lt;tib</span><span>…
-#&gt; </span><span style='color: #555555;'>6</span><span> Issues       No related issu… No related i…              </span><span style='color: #BB0000;'>NA</span><span> issues-na    </span><span style='color: #555555;'>&lt;tib</span><span>…</div></span></pre>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;lis&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Issues       #1               #1                          1 issues-1     </span><span style='color: #949494;'>&lt;tib</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Issues       #2               #2                          2 issues-2     </span><span style='color: #949494;'>&lt;tib</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Issues       #12              #12                        12 issues-12    </span><span style='color: #949494;'>&lt;tib</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Issues       #32              #32                        32 issues-32    </span><span style='color: #949494;'>&lt;tib</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Issues       #145             #145                      145 issues-145   </span><span style='color: #949494;'>&lt;tib</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> Issues       No related issu… No related i…              </span><span style='color: #BB0000;'>NA</span><span> issues-na    </span><span style='color: #949494;'>&lt;tib</span><span>…</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

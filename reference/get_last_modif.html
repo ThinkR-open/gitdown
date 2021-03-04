@@ -105,7 +105,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -137,7 +137,7 @@
         </li>
         <li>
   <a href="https://github.com/Thinkr-open/gitdown/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -163,7 +163,7 @@
     <p>Get last modification of files</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_last_modif</span>(repo = <span class='st'>"."</span>, path = <span class='st'>"R"</span>, recursive = <span class='fl'>TRUE</span>, untracked = <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_last_modif</span><span class='op'>(</span>repo <span class='op'>=</span> <span class='st'>"."</span>, path <span class='op'>=</span> <span class='st'>"R"</span>, recursive <span class='op'>=</span> <span class='cn'>TRUE</span>, untracked <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -191,9 +191,9 @@
     <p>list</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>()
+    <pre class="examples"><div class='input'><span class='va'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='co'># Complete repository</span>
-<span class='fu'>get_last_modif</span>(repo = <span class='kw'>repo</span>, path = <span class='st'>""</span>)
+<span class='fu'>get_last_modif</span><span class='op'>(</span>repo <span class='op'>=</span> <span class='va'>repo</span>, path <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]]$file
 #&gt; [1] "NEWS.md"
@@ -203,11 +203,11 @@
 #&gt; 
 #&gt; [[1]]$first_modif
 #&gt;                     first 
-#&gt; "2020-09-09 13:23:40 UTC" 
+#&gt; "2021-03-04 20:28:21 UTC" 
 #&gt; 
 #&gt; [[1]]$last_modif
 #&gt;                      last 
-#&gt; "2020-09-09 13:23:40 UTC" 
+#&gt; "2021-03-04 20:28:21 UTC" 
 #&gt; 
 #&gt; 
 #&gt; [[2]]
@@ -219,15 +219,15 @@
 #&gt; 
 #&gt; [[2]]$first_modif
 #&gt;                     first 
-#&gt; "2020-09-09 13:23:40 UTC" 
+#&gt; "2021-03-04 20:28:21 UTC" 
 #&gt; 
 #&gt; [[2]]$last_modif
 #&gt;                      last 
-#&gt; "2020-09-09 13:23:40 UTC" 
+#&gt; "2021-03-04 20:28:21 UTC" 
 #&gt; 
-#&gt; </div><div class='input'><span class='kw'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span>(as.package = <span class='fl'>TRUE</span>)
+#&gt; </div><div class='input'><span class='va'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span><span class='op'>(</span>as.package <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='co'># Complete repository</span>
-<span class='fu'>get_last_modif</span>(repo = <span class='kw'>repo</span>, path = <span class='st'>""</span>)
+<span class='fu'>get_last_modif</span><span class='op'>(</span>repo <span class='op'>=</span> <span class='va'>repo</span>, path <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]]$file
 #&gt; [1] "NEWS.md"
@@ -237,11 +237,11 @@
 #&gt; 
 #&gt; [[1]]$first_modif
 #&gt;                     first 
-#&gt; "2020-09-09 13:23:40 UTC" 
+#&gt; "2021-03-04 20:28:21 UTC" 
 #&gt; 
 #&gt; [[1]]$last_modif
 #&gt;                      last 
-#&gt; "2020-09-09 13:23:40 UTC" 
+#&gt; "2021-03-04 20:28:21 UTC" 
 #&gt; 
 #&gt; 
 #&gt; [[2]]
@@ -253,11 +253,11 @@
 #&gt; 
 #&gt; [[2]]$first_modif
 #&gt;                     first 
-#&gt; "2020-09-09 13:23:40 UTC" 
+#&gt; "2021-03-04 20:28:21 UTC" 
 #&gt; 
 #&gt; [[2]]$last_modif
 #&gt;                      last 
-#&gt; "2020-09-09 13:23:40 UTC" 
+#&gt; "2021-03-04 20:28:21 UTC" 
 #&gt; 
 #&gt; 
 #&gt; $untracked.untracked
@@ -273,7 +273,7 @@
 #&gt; 
 #&gt; $untracked.untracked$last_modif
 #&gt;                      last 
-#&gt; "2020-09-09 13:23:40 UTC" 
+#&gt; "2021-03-04 20:28:21 UTC" 
 #&gt; 
 #&gt; </div></pre>
   </div>
