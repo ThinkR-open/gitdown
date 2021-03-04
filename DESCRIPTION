@@ -15,7 +15,7 @@ Authors@R:
       person(given = "ThinkR",
              role = "cph"),
       person(given = "Institut de Recherches Internationales Servier",
-            role = c("spn")))
+             role = "spn"))
 Description: Read all commit messages and sort them according to
     tags or specific text pattern.
 License: MIT + file LICENSE
@@ -43,4 +43,4 @@ VignetteBuilder:
     knitr
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

@@ -33,7 +33,7 @@ not_used <- prefixer::check_import_from()
 not_used
 # Build description deps
 # attachment::att_to_description(extra.suggests = "bookdown")
-attachment::att_to_description(extra.suggests = "rmarkdown")
+attachment::att_amend_desc(extra.suggests = "rmarkdown")
 
 
 # dev ----
@@ -51,11 +51,14 @@ checkhelper::print_globals(globals)
 # _CI
 # remotes::install_github("ropenscilabs/travis")
 # remotes::install_github("ropensci/tic")
-tic::use_tic()
-Sys.setenv(R_TRAVIS = ".org")
-travis::browse_travis_token(endpoint = '.org')
-tic::use_tic(wizard = FALSE, linux = "travis", mac = "travis",
-             windows = "appveyor", deploy = "travis", matrix = "travis",
-             travis_endpoint = ".org")
-# usethis::use_travis()
-usethis::use_appveyor()
+# tic::use_tic()
+# Sys.setenv(R_TRAVIS = ".org")
+# travis::browse_travis_token(endpoint = '.org')
+# tic::use_tic(wizard = FALSE, linux = "travis", mac = "travis",
+#              windows = "appveyor", deploy = "travis", matrix = "travis",
+#              travis_endpoint = ".org")
+# # usethis::use_travis()
+# usethis::use_appveyor()
+usethis::use_github_action_check_standard()
+usethis::use_github_action("pkgdown")
+usethis::use_github_action("test-coverage")
