@@ -5,12 +5,9 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/ThinkR-open/gitdown.svg?branch=master)](https://travis-ci.org/ThinkR-open/gitdown)
 [![Coverage
 status](https://codecov.io/gh/ThinkR-open/gitdown/branch/master/graph/badge.svg)](https://codecov.io/github/ThinkR-open/gitdown?branch=master)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/ThinkR-open/gitdown?branch=master&svg=true)](https://ci.appveyor.com/project/ThinkR-open/gitdown)
+[![R-CMD-check](https://github.com/ThinkR-open/gitdown/workflows/R-CMD-check/badge.svg)](https://github.com/ThinkR-open/gitdown/actions)
 <!-- badges: end -->
 
 The goal of {gitdown} is to build a bookdown report of commit messages
@@ -50,13 +47,13 @@ get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master") %>%
 #> # A tibble: 7 x 12
 #>   pattern.content sha   summary message author email when                order
 #>   <chr>           <chr> <chr>   <chr>   <chr>  <chr> <dttm>              <int>
-#> 1 #32             7945… Add NE… "Add N… Alice  alic… 2020-09-09 13:06:00     4
-#> 2 #1              7945… Add NE… "Add N… Alice  alic… 2020-09-09 13:06:00     4
-#> 3 #12             7945… Add NE… "Add N… Alice  alic… 2020-09-09 13:06:00     4
-#> 4 #2              94c7… Third … "Third… Alice  alic… 2020-09-09 13:06:00     3
-#> 5 #145            94c7… Third … "Third… Alice  alic… 2020-09-09 13:06:00     3
-#> 6 #1              3ae8… exampl… "examp… Alice  alic… 2020-09-09 13:06:00     2
-#> 7 <NA>            8a91… First … "First… Alice  alic… 2020-09-09 13:06:00     1
+#> 1 #32             03f7… Add NE… "Add N… Alice  alic… 2021-03-04 18:26:32     4
+#> 2 #1              03f7… Add NE… "Add N… Alice  alic… 2021-03-04 18:26:32     4
+#> 3 #12             03f7… Add NE… "Add N… Alice  alic… 2021-03-04 18:26:32     4
+#> 4 #2              e7c9… Third … "Third… Alice  alic… 2021-03-04 18:26:32     3
+#> 5 #145            e7c9… Third … "Third… Alice  alic… 2021-03-04 18:26:32     3
+#> 6 #1              a02f… exampl… "examp… Alice  alic… 2021-03-04 18:26:32     2
+#> 7 <NA>            8fcf… First … "First… Alice  alic… 2021-03-04 18:26:32     1
 #> # … with 4 more variables: tag.name <chr>, tag.message <chr>,
 #> #   pattern.type <chr>, pattern.title <chr>
 ```
@@ -75,18 +72,18 @@ get_commits_pattern(
 #> # A tibble: 12 x 12
 #>    pattern.type pattern.content sha   summary message author email
 #>    <chr>        <chr>           <chr> <chr>   <chr>   <chr>  <chr>
-#>  1 Tickets      ticket6789      7945… Add NE… "Add N… Alice  alic…
-#>  2 Tickets      ticket1234      7945… Add NE… "Add N… Alice  alic…
-#>  3 Issues       #32             7945… Add NE… "Add N… Alice  alic…
-#>  4 Issues       #1              7945… Add NE… "Add N… Alice  alic…
-#>  5 Issues       #12             7945… Add NE… "Add N… Alice  alic…
-#>  6 Tickets      <NA>            94c7… Third … "Third… Alice  alic…
-#>  7 Issues       #2              94c7… Third … "Third… Alice  alic…
-#>  8 Issues       #145            94c7… Third … "Third… Alice  alic…
-#>  9 Tickets      ticket1234      3ae8… exampl… "examp… Alice  alic…
-#> 10 Issues       #1              3ae8… exampl… "examp… Alice  alic…
-#> 11 Tickets      <NA>            8a91… First … "First… Alice  alic…
-#> 12 Issues       <NA>            8a91… First … "First… Alice  alic…
+#>  1 Tickets      ticket6789      03f7… Add NE… "Add N… Alice  alic…
+#>  2 Tickets      ticket1234      03f7… Add NE… "Add N… Alice  alic…
+#>  3 Issues       #32             03f7… Add NE… "Add N… Alice  alic…
+#>  4 Issues       #1              03f7… Add NE… "Add N… Alice  alic…
+#>  5 Issues       #12             03f7… Add NE… "Add N… Alice  alic…
+#>  6 Tickets      <NA>            e7c9… Third … "Third… Alice  alic…
+#>  7 Issues       #2              e7c9… Third … "Third… Alice  alic…
+#>  8 Issues       #145            e7c9… Third … "Third… Alice  alic…
+#>  9 Tickets      ticket1234      a02f… exampl… "examp… Alice  alic…
+#> 10 Issues       #1              a02f… exampl… "examp… Alice  alic…
+#> 11 Tickets      <NA>            8fcf… First … "First… Alice  alic…
+#> 12 Issues       <NA>            8fcf… First … "First… Alice  alic…
 #> # … with 5 more variables: when <dttm>, order <int>, tag.name <chr>,
 #> #   tag.message <chr>, pattern.title <chr>
 ```
@@ -137,10 +134,10 @@ create_vignette_last_modif(repo_pkg, path = "")
 With this example, the vignette will show this content:
 
 | File         | Tracked in git | Date of creation    | Last modification   |
-| :----------- | :------------- | :------------------ | :------------------ |
-| NEWS.md      | Yes            | 2020-09-09 15:06:00 | 2020-09-09 15:06:00 |
-| example.txt  | Yes            | 2020-09-09 15:06:00 | 2020-09-09 15:06:00 |
-| R/my\_mean.R | No             | NA                  | 2020-09-09 15:06:00 |
+|:-------------|:---------------|:--------------------|:--------------------|
+| NEWS.md      | Yes            | 2021-03-04 19:26:33 | 2021-03-04 19:26:33 |
+| example.txt  | Yes            | 2021-03-04 19:26:33 | 2021-03-04 19:26:33 |
+| R/my\_mean.R | No             | NA                  | 2021-03-04 19:26:33 |
 
 ## Sponsor
 

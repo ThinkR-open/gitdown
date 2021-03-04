@@ -38,6 +38,29 @@ test_that("git_down no name function",{
   expect_true(length(one_line_exists) == 1)
 })
 
+# With multiple patterns ----
+
+with_dir(repo, {
+  res <- git_down(author = "Seb",
+                  pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"),
+                  open = FALSE
+  )
+})
+lines <- readLines(file.path(dirname(res), "section-issues.html"))
+one_line_exists <- grep('<h2><span class="header-section-number">2.2</span> Issue: #1</h2>',
+                        lines, fixed = TRUE)
+lines <- readLines(file.path(dirname(res), "section-tickets.html"))
+one_line_ticket_exists <- grep('<h2><span class="header-section-number">1.2</span> Ticket: ticket1234</h2>',
+                        lines, fixed = TRUE)
+
+test_that("git_down multiple pattern works", {
+  expect_match(res, regexp = ".html")
+  expect_true(file.exists(file.path(dirname(res), "section-issues.html")))
+  expect_true(file.exists(file.path(dirname(res), "section-tickets.html")))
+  expect_true(length(one_line_exists) == 1)
+  expect_true(length(one_line_ticket_exists) == 1)
+})
+
 # With table of correspondance
 pattern.table <- data.frame(
   number = c("#2", "#1", "#1000"),
