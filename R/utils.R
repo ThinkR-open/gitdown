@@ -21,7 +21,7 @@ write_in <- function(x, repo, dir =  "gitdown", rmd = "index.Rmd") {
   dir_out <- normalizePath(file.path(repo, dir))
   if (!dir.exists(dir_out)) {dir.create(dir_out)}
   there <- file.path(dir_out, rmd)
-  write(x, file = there, append = TRUE)
+  write(enc2utf8(x), file = there, append = TRUE)
 }
 
 #' Presentation of commit
@@ -39,11 +39,11 @@ presentation_commit <- function(commit) {
     paste("- Date:", commit$when),
     "\n",
     paste("- Message content:"),
-    "\n",
+    "\n\n",
     "```",
     "\n",
     paste(commit$message),
-    "\n",
+    "\n\n",
     "```",
     "\n",
     paste("- Related patterns:\n"),

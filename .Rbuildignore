@@ -12,3 +12,4 @@
 ^data-raw$
 ^gitdown$
 ^\.github$
+^cran-comments\.md$

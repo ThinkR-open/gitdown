@@ -68,7 +68,12 @@ usethis::use_github_action("test-coverage")
 rcmdcheck::rcmdcheck(args = "--as-cran")
 spelling::spell_check_package()
 rhub::check_for_cran()
-rhub::check_on_windows()
+rhub::check_on_windows(check_args = "--force-multiarch")
 rhub::check_on_fedora()
 devtools::check_win_devel()
+devtools::check_win_release()
+
+usethis::use_cran_badge()
+usethis::use_cran_comments()
+
 devtools::release()

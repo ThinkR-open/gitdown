@@ -1,4 +1,3 @@
-context("utils functions")
 library(withr)
 
 repo_input <- tempfile(pattern = "git2r-")
@@ -46,8 +45,6 @@ nest_out_pattern_table <- nest_commits_by_pattern(
   repo,
   pattern.table = pattern.table,
   pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"))
-
-# writeLines(aa, "tests/testthat/presentation_commit")
 
 test_that("nest_commits_by_pattern", {
   # One pattern
@@ -146,10 +143,11 @@ one_commit <- structure(
 )
 
 prez_commit <- gitdown:::presentation_commit(one_commit)
-# writeLines(prez_commit, "tests/testthat/presentation_commit")
+# writeLines(prez_commit, "tests/testthat/presentation_commit.md")
+# paste(readLines("tests/testthat/presentation_commit.md"), collapse = "\n")
 
 test_that("presentation_commit", {
-  expect_equal(prez_commit, paste(readLines("presentation_commit"), collapse = "\n"))
+  expect_equal(prez_commit, paste(readLines("presentation_commit.md"), collapse = "\n"))
 })
 
 # clean_link ----
