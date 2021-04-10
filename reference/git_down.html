@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>git history to bookdown — git_down • gitdown</title>
+<title>Turns the history of git into a bookdown. — git_down • gitdown</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,10 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
 
-<meta property="og:title" content="git history to bookdown — git_down" />
-<meta property="og:description" content="This function turns the history of git into a bookdown.
+<meta property="og:title" content="Turns the history of git into a bookdown. — git_down" />
+<meta property="og:description" content="Read all commit messages of your local git repository and
+sort them according to tags or specific text pattern into chapters of
+a HTML book using 'bookdown'.
 Each chapter is a group of commits. The first page gives a summary of all the groups." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -98,7 +100,7 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gitdown</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -155,13 +157,15 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>git history to bookdown</h1>
+    <h1>Turns the history of git into a bookdown.</h1>
     <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/gitdown/blob/master/R/git_down.R'><code>R/git_down.R</code></a></small>
     <div class="hidden name"><code>git_down.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function turns the history of git into a bookdown.
+    <p>Read all commit messages of your local git repository and
+sort them according to tags or specific text pattern into chapters of
+a HTML book using 'bookdown'.
 Each chapter is a group of commits. The first page gives a summary of all the groups.</p>
     </div>
 
@@ -193,7 +197,7 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
     </tr>
     <tr>
       <th>author</th>
-      <td><p>Author of the Bookdown</p></td>
+      <td><p>Author of the bookdown</p></td>
     </tr>
     <tr>
       <th>pattern</th>
@@ -202,7 +206,7 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
     <tr>
       <th>pattern.table</th>
       <td><p>data.frame with two columns: pattern and description.
-This is used as correspondance table to add some names to existing patterns.</p></td>
+This is used as correspondence table to add some names to existing patterns.</p></td>
     </tr>
     <tr>
       <th>ref</th>
@@ -214,30 +218,38 @@ This is used as correspondance table to add some names to existing patterns.</p>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A directory with content of a HTML gitbook</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'>git_down</span><span class='op'>(</span><span class='va'>repo</span>, pattern <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Tickets"</span> <span class='op'>=</span> <span class='st'>"ticket[[:digit:]]+"</span>, <span class='st'>"Issues"</span> <span class='op'>=</span> <span class='st'>"#[[:digit:]]+"</span><span class='op'>)</span>,
+<span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'>git_down</span><span class='op'>(</span><span class='va'>repo</span>, pattern <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Tickets"</span> <span class='op'>=</span> <span class='st'>"ticket[[:digit:]]+"</span>, <span class='st'>"Issues"</span> <span class='op'>=</span> <span class='st'>"#[[:digit:]]+"</span><span class='op'>)</span>,
 open <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>processing file: index.Rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |......................................................................| 100%
 #&gt;    inline R code fragments
 #&gt; 
-#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: index.knit.md</span></div><div class='output co'>#&gt; /usr/local/bin/pandoc +RTS -K512m -RTS index.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /Users/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --metadata-file /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpcva3BA/file654307c4475 --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /Users/runner/work/_temp/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --include-in-header /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpcva3BA/rmarkdown-str6545cada2c9.html --mathjax </div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Output created: gitbook-for-git2r-6544dca9ad9.html</span></div><div class='output co'>#&gt; [1] "/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmpcva3BA/git2r-6544dca9ad9/gitdown/gitbook-for-git2r-6544dca9ad9.html"</div><div class='input'><span class='co'># With table of correspondance</span>
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: index.knit.md</span></div><div class='output co'>#&gt; /usr/local/bin/pandoc +RTS -K512m -RTS index.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /Users/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --metadata-file /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprSGgWe/file7a730b9e38e --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /Users/runner/work/_temp/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --include-in-header /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprSGgWe/rmarkdown-str7a77c0a989f.html --mathjax </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Output created: gitbook-for-git2r-7a77aafe077.html</span></div><div class='input'><span class='co'># Open the book</span>
+<span class='co'># browseURL(res)</span>
+
+<span class='co'># With table of correspondence</span>
 <span class='va'>pattern.table</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>number <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#2"</span>, <span class='st'>"#1"</span><span class='op'>)</span>,
   title <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#2 A second issue to illustrate a blog post"</span>,
                        <span class='st'>"#1 An example of issue"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>git_down</span><span class='op'>(</span><span class='va'>repo</span>, pattern <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Issues"</span> <span class='op'>=</span> <span class='st'>"#[[:digit:]]+"</span><span class='op'>)</span>,
-  pattern.table <span class='op'>=</span> <span class='va'>pattern.table</span><span class='op'>)</span>
+<span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'>git_down</span><span class='op'>(</span><span class='va'>repo</span>, pattern <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Issues"</span> <span class='op'>=</span> <span class='st'>"#[[:digit:]]+"</span><span class='op'>)</span>,
+  pattern.table <span class='op'>=</span> <span class='va'>pattern.table</span>, open <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>processing file: index.Rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |......................................................................| 100%
 #&gt;    inline R code fragments
 #&gt; 
-#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: index.knit.md</span></div><div class='output co'>#&gt; /usr/local/bin/pandoc +RTS -K512m -RTS index.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /Users/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --metadata-file /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpcva3BA/file654b9a69a8 --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /Users/runner/work/_temp/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --include-in-header /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpcva3BA/rmarkdown-str654468e9a8b.html --mathjax </div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Output created: gitbook-for-git2r-6544dca9ad9.html</span></div><div class='output co'>#&gt; [1] "/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmpcva3BA/git2r-6544dca9ad9/gitdown/gitbook-for-git2r-6544dca9ad9.html"</div></pre>
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: index.knit.md</span></div><div class='output co'>#&gt; /usr/local/bin/pandoc +RTS -K512m -RTS index.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /Users/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --metadata-file /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprSGgWe/file7a71baa2e58 --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /Users/runner/work/_temp/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --include-in-header /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprSGgWe/rmarkdown-str7a741c8a198.html --mathjax </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Output created: gitbook-for-git2r-7a77aafe077.html</span></div><div class='input'><span class='co'># Open the book</span>
+<span class='co'># browseURL(res)</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

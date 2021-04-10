@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a fake git repository in tempfile for examples — fake_repo • gitdown</title>
+<title>Create a fake git repository in a specific folder — fake_repo • gitdown</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
 
-<meta property="og:title" content="Create a fake git repository in tempfile for examples — fake_repo" />
-<meta property="og:description" content="Create a fake git repository in tempfile for examples" />
+<meta property="og:title" content="Create a fake git repository in a specific folder — fake_repo" />
+<meta property="og:description" content="A fake repository allows to create reproducible examples for this package functions" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -97,7 +97,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gitdown</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -154,13 +154,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a fake git repository in tempfile for examples</h1>
+    <h1>Create a fake git repository in a specific folder</h1>
     <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/gitdown/blob/master/R/fake_repo.R'><code>R/fake_repo.R</code></a></small>
     <div class="hidden name"><code>fake_repo.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a fake git repository in tempfile for examples</p>
+    <p>A fake repository allows to create reproducible examples for this package functions</p>
     </div>
 
     <pre class="usage"><span class='fu'>fake_repo</span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>pattern <span class='op'>=</span> <span class='st'>"git2r-"</span><span class='op'>)</span>, as.package <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
@@ -181,14 +181,15 @@ directories to fake a package</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>path to fake repository</p>
+    <p>A few files and an initiated git repository in 'path'.
+Returns the path of the fake repository.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Fake repository with git</span>
 <span class='fu'>fake_repo</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpcva3BA/git2r-65452efd9a3"</div><div class='input'><span class='co'># Fake repository that looks like package with git</span>
+</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprSGgWe/git2r-7a75b1fd4b6"</div><div class='input'><span class='co'># Fake repository that looks like package with git</span>
 <span class='fu'>fake_repo</span><span class='op'>(</span>as.package <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpcva3BA/git2r-654b986df"</div></pre>
+</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprSGgWe/git2r-7a76c62777"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nest all commits by each pattern — nest_commits_by_pattern • gitdown</title>
+<title>Nest all commits by each pattern found in the commit messages — nest_commits_by_pattern • gitdown</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
 
-<meta property="og:title" content="Nest all commits by each pattern — nest_commits_by_pattern" />
-<meta property="og:description" content="Nest all commits by each pattern" />
+<meta property="og:title" content="Nest all commits by each pattern found in the commit messages — nest_commits_by_pattern" />
+<meta property="og:description" content="Nest all commits by each pattern found in the commit messages" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -97,7 +97,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gitdown</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -154,13 +154,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Nest all commits by each pattern</h1>
+    <h1>Nest all commits by each pattern found in the commit messages</h1>
     <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/gitdown/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
     <div class="hidden name"><code>nest_commits_by_pattern.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Nest all commits by each pattern</p>
+    <p>Nest all commits by each pattern found in the commit messages</p>
     </div>
 
     <pre class="usage"><span class='fu'>nest_commits_by_pattern</span><span class='op'>(</span>
@@ -186,7 +186,7 @@ object. Default is '.'</p></td>
     <tr>
       <th>pattern.table</th>
       <td><p>data.frame with two columns: pattern and description.
-This is used as correspondance table to add some names to existing patterns.</p></td>
+This is used as correspondence table to add some names to existing patterns.</p></td>
     </tr>
     <tr>
       <th>ref</th>
@@ -199,6 +199,10 @@ or a branch. The default is NULL for the current branch.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A tibble with a row for each different pattern found and
+a nested 'data' column with all related commits</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span><span class='op'>(</span><span class='op'>)</span>

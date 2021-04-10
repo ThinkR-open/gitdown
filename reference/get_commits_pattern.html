@@ -97,7 +97,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gitdown</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -187,7 +187,7 @@ object. Default is '.'</p></td>
     <tr>
       <th>pattern.table</th>
       <td><p>data.frame with two columns: pattern and description.
-This is used as correspondance table to add some names to existing patterns.</p></td>
+This is used as correspondence table to add some names to existing patterns.</p></td>
     </tr>
     <tr>
       <th>ref</th>
@@ -210,7 +210,7 @@ returned; that is, the output of <code>git log</code> with
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble with commits and tags</p>
+    <p>A tibble with commits content, information, associated tags and associated patterns found.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -218,31 +218,31 @@ returned; that is, the output of <code>git log</code> with
 </div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7 x 12</span><span>
 #&gt;   sha      summary  message      author email when                order tag.name
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> a8f009c… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\n… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> a8f009c… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\n… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> a8f009c… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\n… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> 8ce2d7f… Third c… </span><span style='color: #949494;'>"</span><span>Third comm… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     3 v0.1    
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> 8ce2d7f… Third c… </span><span style='color: #949494;'>"</span><span>Third comm… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     3 v0.1    
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> d4a7905… example… </span><span style='color: #949494;'>"</span><span>example: m… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     2 v0.1    
-#&gt; </span><span style='color: #BCBCBC;'>7</span><span> 04eb21d… First c… </span><span style='color: #949494;'>"</span><span>First comm… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     1 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 76c7ed7… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\n… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 76c7ed7… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\n… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 76c7ed7… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\n… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> 399112e… Third c… </span><span style='color: #949494;'>"</span><span>Third comm… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     3 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> 399112e… Third c… </span><span style='color: #949494;'>"</span><span>Third comm… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     3 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> ec0a0d0… example… </span><span style='color: #949494;'>"</span><span>example: m… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     2 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span> e334aa9… First c… </span><span style='color: #949494;'>"</span><span>First comm… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     1 v0.1    
 #&gt; </span><span style='color: #949494;'># … with 4 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,</span><span>
 #&gt; </span><span style='color: #949494;'>#   pattern.content &lt;chr&gt;, pattern.title &lt;chr&gt;</span><span></div><div class='input'><span class='fu'>get_commits_pattern</span><span class='op'>(</span>repo <span class='op'>=</span> <span class='va'>repo</span>,
   pattern <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Ticket"</span> <span class='op'>=</span> <span class='st'>"ticket[[:digit:]]+"</span>, <span class='st'>"Issues"</span> <span class='op'>=</span> <span class='st'>"#[[:digit:]]+"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 12 x 12</span><span>
 #&gt;    sha      summary  message     author email when                order tag.name
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> a8f009c… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> a8f009c… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> a8f009c… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> a8f009c… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> a8f009c… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 8ce2d7f… Third c… </span><span style='color: #949494;'>"</span><span>Third com… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     3 v0.1    
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 8ce2d7f… Third c… </span><span style='color: #949494;'>"</span><span>Third com… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     3 v0.1    
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 8ce2d7f… Third c… </span><span style='color: #949494;'>"</span><span>Third com… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     3 v0.1    
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> d4a7905… example… </span><span style='color: #949494;'>"</span><span>example: … Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     2 v0.1    
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> d4a7905… example… </span><span style='color: #949494;'>"</span><span>example: … Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     2 v0.1    
-#&gt; </span><span style='color: #BCBCBC;'>11</span><span> 04eb21d… First c… </span><span style='color: #949494;'>"</span><span>First com… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     1 v0.1    
-#&gt; </span><span style='color: #BCBCBC;'>12</span><span> 04eb21d… First c… </span><span style='color: #949494;'>"</span><span>First com… Alice  alic… 2021-03-04 </span><span style='color: #949494;'>20:28:20</span><span>     1 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 76c7ed7… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 76c7ed7… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 76c7ed7… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 76c7ed7… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 76c7ed7… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 399112e… Third c… </span><span style='color: #949494;'>"</span><span>Third com… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     3 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 399112e… Third c… </span><span style='color: #949494;'>"</span><span>Third com… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     3 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 399112e… Third c… </span><span style='color: #949494;'>"</span><span>Third com… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     3 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> ec0a0d0… example… </span><span style='color: #949494;'>"</span><span>example: … Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     2 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> ec0a0d0… example… </span><span style='color: #949494;'>"</span><span>example: … Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     2 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> e334aa9… First c… </span><span style='color: #949494;'>"</span><span>First com… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     1 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> e334aa9… First c… </span><span style='color: #949494;'>"</span><span>First com… Alice  alic… 2021-04-10 </span><span style='color: #949494;'>10:38:46</span><span>     1 v0.1    
 #&gt; </span><span style='color: #949494;'># … with 4 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,</span><span>
 #&gt; </span><span style='color: #949494;'>#   pattern.content &lt;chr&gt;, pattern.title &lt;chr&gt;</span><span></div></span></pre>
   </div>
