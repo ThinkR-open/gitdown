@@ -2,7 +2,7 @@
 % Please edit documentation in R/git_down.R
 \name{git_down}
 \alias{git_down}
-\title{git history to bookdown}
+\title{Turns the history of git into a bookdown.}
 \usage{
 git_down(
   repo = ".",
@@ -22,29 +22,39 @@ git_down(
 
 \item{open}{Should the bookdown be opened once compiled? Default is TRUE.}
 
-\item{author}{Author of the Bookdown}
+\item{author}{Author of the bookdown}
 
 \item{pattern}{Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues}
 
 \item{pattern.table}{data.frame with two columns: pattern and description.
-This is used as correspondance table to add some names to existing patterns.}
+This is used as correspondence table to add some names to existing patterns.}
 
 \item{ref}{the name of the branch, by default master}
 
 \item{...}{Other parameters to pass to \code{\link[rmarkdown]{render}}}
 }
+\value{
+A directory with content of a HTML gitbook
+}
 \description{
-This function turns the history of git into a bookdown.
+Read all commit messages of your local git repository and
+sort them according to tags or specific text pattern into chapters of
+a HTML book using 'bookdown'.
 Each chapter is a group of commits. The first page gives a summary of all the groups.
 }
 \examples{
 repo <- fake_repo()
-git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"),
+res <- git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"),
 open = FALSE)
-# With table of correspondance
+# Open the book
+# browseURL(res)
+
+# With table of correspondence
 pattern.table <- data.frame(number = c("#2", "#1"),
   title = c("#2 A second issue to illustrate a blog post",
                        "#1 An example of issue"))
-git_down(repo, pattern = c("Issues" = "#[[:digit:]]+"),
-  pattern.table = pattern.table)
+res <- git_down(repo, pattern = c("Issues" = "#[[:digit:]]+"),
+  pattern.table = pattern.table, open = FALSE)
+# Open the book
+# browseURL(res)
 }

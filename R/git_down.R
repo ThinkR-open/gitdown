@@ -1,17 +1,21 @@
-#' git history to bookdown
+#' Turns the history of git into a bookdown.
 #'
-#' This function turns the history of git into a bookdown.
+#' Read all commit messages of your local git repository and
+#' sort them according to tags or specific text pattern into chapters of
+#' a HTML book using 'bookdown'.
 #' Each chapter is a group of commits. The first page gives a summary of all the groups.
 #'
 #' @param repo The path to a repository. Default is `.`
 #' @param book_path The path to the bookdown output. Default is `"gitdown"`.
 #' @param open Should the bookdown be opened once compiled? Default is TRUE.
-#' @param author Author of the Bookdown
+#' @param author Author of the bookdown
 #' @param ref the name of the branch, by default master
 #' @param ... Other parameters to pass to \code{\link[rmarkdown]{render}}
 #'
 #' @inheritParams get_commits_pattern
 #' @export
+#'
+#' @return A directory with content of a HTML gitbook
 #'
 #' @importFrom attempt if_not
 #' @importFrom rmarkdown render
@@ -22,14 +26,19 @@
 #'
 #' @examples
 #' repo <- fake_repo()
-#' git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"),
+#' res <- git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"),
 #' open = FALSE)
-#' # With table of correspondance
+#' # Open the book
+#' # browseURL(res)
+#'
+#' # With table of correspondence
 #' pattern.table <- data.frame(number = c("#2", "#1"),
 #'   title = c("#2 A second issue to illustrate a blog post",
 #'                        "#1 An example of issue"))
-#' git_down(repo, pattern = c("Issues" = "#[[:digit:]]+"),
-#'   pattern.table = pattern.table)
+#' res <- git_down(repo, pattern = c("Issues" = "#[[:digit:]]+"),
+#'   pattern.table = pattern.table, open = FALSE)
+#' # Open the book
+#' # browseURL(res)
 
 git_down <- function(repo = ".", book_path = "gitdown",
                      open = TRUE, author = "John Doe",

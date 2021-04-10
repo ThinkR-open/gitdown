@@ -22,7 +22,7 @@ test_that("get_commits_pattern works", {
                c("#32", "#1", "#12", "#2", "#145", "#1", NA))
 })
 
-# With table of correspondance
+# With table of correspondence
 pattern.table <- data.frame(
   number = c("#2", "#1", "#1000"),
   title = c("#2 A second issue to illustrate a blog post",
@@ -54,7 +54,7 @@ test_that("get_commits_pattern fails", {
   expect_true(all(pattern_no_name$pattern.type == rep("`#[[:digit:]]+`", 7)))
 })
 
-# With bad table of correspondance
+# With bad table of correspondence
 pattern.table.1 <- data.frame(
   number = c("#2", "#1", "#1000"))
 pattern.table.3 <- data.frame(

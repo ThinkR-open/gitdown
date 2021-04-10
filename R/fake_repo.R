@@ -1,4 +1,6 @@
-#' Create a fake git repository in tempfile for examples
+#' Create a fake git repository in a specific folder
+#'
+#' A fake repository allows to create reproducible examples for this package functions
 #'
 #' @param path Path to fake repository
 #' @param as.package Logical. Whether to add R/ and vignettes/
@@ -7,7 +9,8 @@
 #' @importFrom git2r init config add commit tag
 #' @export
 #'
-#' @return path to fake repository
+#' @return A few files and an initiated git repository in 'path'.
+#' Returns the path of the fake repository.
 #' @examples
 #' # Fake repository with git
 #' fake_repo()

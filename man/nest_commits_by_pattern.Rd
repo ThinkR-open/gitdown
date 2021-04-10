@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{nest_commits_by_pattern}
 \alias{nest_commits_by_pattern}
-\title{Nest all commits by each pattern}
+\title{Nest all commits by each pattern found in the commit messages}
 \usage{
 nest_commits_by_pattern(
   repo,
@@ -19,15 +19,19 @@ object. Default is '.'}
 \item{pattern}{Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues}
 
 \item{pattern.table}{data.frame with two columns: pattern and description.
-This is used as correspondance table to add some names to existing patterns.}
+This is used as correspondence table to add some names to existing patterns.}
 
 \item{ref}{The name of a reference to list commits from e.g. a tag
 or a branch. The default is NULL for the current branch.}
 
 \item{silent}{Logical. Whether to hide messages.}
 }
+\value{
+A tibble with a row for each different pattern found and
+a nested 'data' column with all related commits
+}
 \description{
-Nest all commits by each pattern
+Nest all commits by each pattern found in the commit messages
 }
 \examples{
 repo <- fake_repo()

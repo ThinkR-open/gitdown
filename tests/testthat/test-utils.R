@@ -36,7 +36,7 @@ nest_out <- nest_commits_by_pattern(repo)
 nest_out_patterns <- nest_commits_by_pattern(
   repo,
   pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"))
-# With table of correspondance
+# With table of correspondence
 pattern.table <- data.frame(
   number = c("#2", "#1", "#1000"),
   title = c("#2 A second issue to illustrate a blog post",

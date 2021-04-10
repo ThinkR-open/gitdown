@@ -50,7 +50,7 @@ get_commits_tags(repo, ref = "master")
 ```
 
 - Find all commits of a branch and detect a specific pattern
-    + Here we find commits mentionning an issue with `#123`
+    + Here we find commits mentioning an issue with `#123`
 ```{r}
 get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master")
 ```

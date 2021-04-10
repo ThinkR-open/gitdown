@@ -2,9 +2,17 @@
 % Please edit documentation in R/get_info_files.R
 \name{create_vignette_last_modif}
 \alias{create_vignette_last_modif}
-\title{Create the vignette for last modification}
+\alias{update_vignette_last_modif}
+\title{Creates and updates a vignette in the 'vignette/' directory of a package with last modification time of tracked files}
 \usage{
 create_vignette_last_modif(
+  repo = ".",
+  path = "R",
+  recursive = TRUE,
+  untracked = TRUE
+)
+
+update_vignette_last_modif(
   repo = ".",
   path = "R",
   recursive = TRUE,
@@ -18,15 +26,21 @@ create_vignette_last_modif(
 
 \item{recursive}{Logical. Should the listing recurse into directories?}
 
-\item{untracked}{Logical. Should the untracked files be included?}
+\item{untracked}{Logical. Should the not tracked files be included?}
 }
 \value{
-copy a vignette
+Creates and updates the content of the "modification_files.Rmd" vignette
 }
 \description{
-Create the vignette for last modification
+Creates and updates a vignette in the 'vignette/' directory of a package with last modification time of tracked files
 }
 \examples{
+
+# Creates vignette
 repo <- fake_repo(as.package = TRUE)
 create_vignette_last_modif(repo, path = "R")
+# update vignette
+repo <- fake_repo(as.package = TRUE)
+update_vignette_last_modif(repo, path = "R")
+rmarkdown::render(file.path(repo, "vignettes", "modification_files.Rmd"))
 }

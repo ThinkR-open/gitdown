@@ -93,7 +93,77 @@ to_singular <- function(x) {
   gsub("s$", "", x)
 }
 
-#' Presentation for each pattern
+#' Nest all commits by each pattern found in the commit messages
+#'
+#' @inheritParams get_commits_pattern
+#' @importFrom dplyr filter mutate arrange group_by if_else
+#' @importFrom dplyr ungroup distinct select summarise left_join
+#' @importFrom stringi stri_extract_all
+#' @importFrom tidyr nest
+#'
+#' @return A tibble with a row for each different pattern found and
+#' a nested 'data' column with all related commits
+#'
+#' @export
+#' @examples
+#' repo <- fake_repo()
+#' nest_commits_by_pattern(repo)
+
+nest_commits_by_pattern <- function(repo,
+                                    pattern = c("Issues" = "#[[:digit:]]+"),
+                                    pattern.table = NULL,
+                                    ref = "master", silent = TRUE) {
+
+  res <- get_commits_pattern(repo, pattern = pattern,
+                             pattern.table = pattern.table,
+                             ref = ref, silent = silent) %>%
+    mutate(
+      pattern_numeric =
+        stri_extract_all(pattern.content, regex = "([[:digit:]]+)",
+                         simplify = FALSE) %>%
+        unlist() %>%
+        as.numeric(),
+      pattern.type = clean_text(pattern.type),
+      pattern.content = clean_text(pattern.content),
+      pattern.title = clean_text(pattern.title),
+      link_pattern = clean_link(paste(pattern.type, pattern.content)),
+      link_commit = paste0(link_pattern, "-", sha)
+    )
+
+  correspondence <- res %>%
+    select(sha, pattern.type, pattern.title, link_pattern) %>%
+    distinct() %>%
+    # filter(!is.na(pattern.title)) %>%
+    mutate(pattern.title = if_else(
+      is.na(pattern.title),
+      paste("No related", tolower(pattern.type)), pattern.title)) %>%
+    mutate(
+      text_link = paste0("[", pattern.title, "](#", link_pattern, ")")
+    ) %>%
+    # Longest chain to smallest
+    group_by(sha, pattern.type) %>%
+    summarise(
+      message_link.type = paste(text_link, collapse = ", ")
+    ) %>%
+    group_by(sha) %>%
+    summarise(
+      message_link = paste(paste0("  + ", pattern.type, ": ", message_link.type),
+                           collapse = "  \n")
+    ) %>%
+    ungroup()
+
+  res %>%
+    left_join(correspondence, by = "sha") %>%
+    arrange(pattern.type, pattern_numeric, pattern.content, order) %>%
+    mutate(pattern.title = if_else(is.na(pattern.title), paste("No related", tolower(pattern.type)), pattern.title)) %>%
+    mutate(pattern.content = if_else(is.na(pattern.content), paste("No related", tolower(pattern.type)), pattern.content)) %>%
+    group_by(pattern.type, pattern_numeric, pattern.content, pattern.title, link_pattern) %>%
+    nest() %>%
+    ungroup()
+}
+
+
+#' Create the text to add in a markdown file to present each pattern as a chapter of the book
 #'
 #' @param nest_commits commits as nested with nest_commits_by_pattern
 #' @param pattern.type Character name of the pattern to filter
@@ -101,6 +171,8 @@ to_singular <- function(x) {
 #' @importFrom dplyr tibble mutate bind_rows filter
 #' @importFrom purrr map_chr pmap
 #' @export
+#' @return A tibble with a row for each different pattern found and
+#' a 'text' column to be included in a markdown file.
 #' @examples
 #' repo <- fake_repo()
 #' res_commits <- nest_commits_by_pattern(
@@ -157,72 +229,6 @@ each_pattern <- function(nest_commits, pattern.type) {
   )
 
   res
-}
-
-#' Nest all commits by each pattern
-#'
-#' @inheritParams get_commits_pattern
-#' @importFrom dplyr filter mutate arrange group_by if_else
-#' @importFrom dplyr ungroup distinct select summarise left_join
-#' @importFrom stringi stri_extract_all
-#' @importFrom tidyr nest
-#'
-#' @export
-#' @examples
-#' repo <- fake_repo()
-#' nest_commits_by_pattern(repo)
-
-nest_commits_by_pattern <- function(repo,
-                                    pattern = c("Issues" = "#[[:digit:]]+"),
-                                    pattern.table = NULL,
-                                    ref = "master", silent = TRUE) {
-
-  res <- get_commits_pattern(repo, pattern = pattern,
-                             pattern.table = pattern.table,
-                             ref = ref, silent = silent) %>%
-    mutate(
-      pattern_numeric =
-        stri_extract_all(pattern.content, regex = "([[:digit:]]+)",
-                         simplify = FALSE) %>%
-        unlist() %>%
-        as.numeric(),
-      pattern.type = clean_text(pattern.type),
-      pattern.content = clean_text(pattern.content),
-      pattern.title = clean_text(pattern.title),
-      link_pattern = clean_link(paste(pattern.type, pattern.content)),
-      link_commit = paste0(link_pattern, "-", sha)
-    )
-
-  correspondance <- res %>%
-    select(sha, pattern.type, pattern.title, link_pattern) %>%
-    distinct() %>%
-    # filter(!is.na(pattern.title)) %>%
-    mutate(pattern.title = if_else(
-      is.na(pattern.title),
-      paste("No related", tolower(pattern.type)), pattern.title)) %>%
-    mutate(
-      text_link = paste0("[", pattern.title, "](#", link_pattern, ")")
-    ) %>%
-    # Longest chain to smallest
-    group_by(sha, pattern.type) %>%
-    summarise(
-      message_link.type = paste(text_link, collapse = ", ")
-    ) %>%
-    group_by(sha) %>%
-    summarise(
-      message_link = paste(paste0("  + ", pattern.type, ": ", message_link.type),
-                           collapse = "  \n")
-    ) %>%
-    ungroup()
-
-  res %>%
-    left_join(correspondance, by = "sha") %>%
-    arrange(pattern.type, pattern_numeric, pattern.content, order) %>%
-    mutate(pattern.title = if_else(is.na(pattern.title), paste("No related", tolower(pattern.type)), pattern.title)) %>%
-    mutate(pattern.content = if_else(is.na(pattern.content), paste("No related", tolower(pattern.type)), pattern.content)) %>%
-    group_by(pattern.type, pattern_numeric, pattern.content, pattern.title, link_pattern) %>%
-    nest() %>%
-    ungroup()
 }
 
 #' Clean link

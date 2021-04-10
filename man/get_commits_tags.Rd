@@ -22,7 +22,7 @@ returned; that is, the output of \code{git log} with
 \item{silent}{Logical. Whether to hide messages.}
 }
 \value{
-A tibble with commits and tags
+A tibble with commits content, information and associated tags
 }
 \description{
 Get commits associated chronologically with tags

@@ -20,7 +20,7 @@ object. Default is '.'}
 \item{pattern}{Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues}
 
 \item{pattern.table}{data.frame with two columns: pattern and description.
-This is used as correspondance table to add some names to existing patterns.}
+This is used as correspondence table to add some names to existing patterns.}
 
 \item{ref}{The name of a reference to list commits from e.g. a tag
 or a branch. The default is NULL for the current branch.}
@@ -34,7 +34,7 @@ returned; that is, the output of \code{git log} with
 \item{silent}{Logical. Whether to hide messages.}
 }
 \value{
-A tibble with commits and tags
+A tibble with commits content, information, associated tags and associated patterns found.
 }
 \description{
 Get commits associated with a text pattern

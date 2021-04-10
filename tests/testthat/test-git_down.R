@@ -45,6 +45,7 @@ with_dir(repo, {
                   pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"),
                   open = FALSE
   )
+  res <- normalizePath(res)
 })
 lines <- readLines(file.path(dirname(res), "section-issues.html"))
 one_line_exists <- grep('<h2><span class="header-section-number">2.2</span> Issue: #1</h2>',
@@ -61,7 +62,7 @@ test_that("git_down multiple pattern works", {
   expect_true(length(one_line_ticket_exists) == 1)
 })
 
-# With table of correspondance
+# With table of correspondence
 pattern.table <- data.frame(
   number = c("#2", "#1", "#1000"),
   title = c("#2 A second issue to illustrate a blog post",

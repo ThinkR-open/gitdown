@@ -1,3 +1,7 @@
+# gitdown 0.1.0
+
+* Get ready for CRAN
+
 # gitdown 0.0.1
 
 Breaking changes

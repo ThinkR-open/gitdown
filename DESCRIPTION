@@ -1,6 +1,6 @@
 Package: gitdown
-Title: Turn Your Git Commit Messages into a Bookdown
-Version: 0.0.1
+Title: Turn Your Git Commit Messages into a HTML Book
+Version: 0.1.0
 Authors@R: 
     c(person(given = "Sébastien",
              family = "Rochette",
@@ -16,8 +16,11 @@ Authors@R:
              role = "cph"),
       person(given = "Institut de Recherches Internationales Servier",
              role = "spn"))
-Description: Read all commit messages and sort them according to
-    tags or specific text pattern.
+Description: Read all commit messages of your local git repository and
+    sort them according to tags or specific text pattern into chapters of
+    a HTML book using 'bookdown'. The git history book presentation helps
+    organisms required to testify for every changes in their source code,
+    in relation to features requests.
 License: MIT + file LICENSE
 URL: https://github.com/Thinkr-open/gitdown
 BugReports: https://github.com/Thinkr-open/gitdown/issues
@@ -42,5 +45,4 @@ Suggests:
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
-LazyData: true
 RoxygenNote: 7.1.1

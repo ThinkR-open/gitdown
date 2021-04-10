@@ -62,3 +62,13 @@ checkhelper::print_globals(globals)
 usethis::use_github_action_check_standard()
 usethis::use_github_action("pkgdown")
 usethis::use_github_action("test-coverage")
+
+
+# CRAN
+rcmdcheck::rcmdcheck(args = "--as-cran")
+spelling::spell_check_package()
+rhub::check_for_cran()
+rhub::check_on_windows()
+rhub::check_on_fedora()
+devtools::check_win_devel()
+devtools::release()

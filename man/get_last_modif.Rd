@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_info_files.R
 \name{get_last_modif}
 \alias{get_last_modif}
-\title{Get last modification of files}
+\title{Get the first and last modification time of files of a repository}
 \usage{
 get_last_modif(repo = ".", path = "R", recursive = TRUE, untracked = TRUE)
 }
@@ -13,13 +13,13 @@ get_last_modif(repo = ".", path = "R", recursive = TRUE, untracked = TRUE)
 
 \item{recursive}{Logical. Should the listing recurse into directories?}
 
-\item{untracked}{Logical. Should the untracked files be included?}
+\item{untracked}{Logical. Should the not tracked files be included?}
 }
 \value{
-list
+A list of files with information on first and last modification time.
 }
 \description{
-Get last modification of files
+Get the first and last modification time of files of a repository
 }
 \examples{
 repo <- fake_repo()

@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_info_files.R
 \name{present_files}
 \alias{present_files}
-\title{Formatting results of get_last_modif}
+\title{Presenting results of files and last modification time in a printed table using 'kable()'}
 \usage{
 present_files(repo = ".", path = "R", recursive = TRUE, untracked = TRUE)
 }
@@ -13,13 +13,13 @@ present_files(repo = ".", path = "R", recursive = TRUE, untracked = TRUE)
 
 \item{recursive}{Logical. Should the listing recurse into directories?}
 
-\item{untracked}{Logical. Should the untracked files be included?}
+\item{untracked}{Logical. Should the not tracked files be included?}
 }
 \value{
-kable
+A 'kable()' output to be included in a markdown file
 }
 \description{
-Formatting results of get_last_modif
+Presenting results of files and last modification time in a printed table using 'kable()'
 }
 \examples{
 repo <- fake_repo(as.package = TRUE)

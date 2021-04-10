@@ -7,14 +7,12 @@ get_time <- function(object) {
   pluck(object, "final_signature", "when", "time")
 }
 
-#' Get info
-#'
-#' Get the first and last modification for one file. Based on git2r::blame.
+#' Get the first and last modification time for a specific file, based on git2r::blame().
 #'
 #' @param path path to the file
 #' @param repo repo of the git project
 #'
-#' @return list
+#' @return A list with information on first and last modification time of the selected file.
 #' @export
 #'
 #' @importFrom git2r blame
@@ -63,14 +61,14 @@ get_info <- function(path, repo = ".") {
   )
 }
 
-#' Get last modification of files
+#' Get the first and last modification time of files of a repository
 #'
 #' @param repo git repository
 #' @param path Default to R folder. Use "" for the complete repository.
 #' @param recursive Logical. Should the listing recurse into directories?
-#' @param untracked Logical. Should the untracked files be included?
+#' @param untracked Logical. Should the not tracked files be included?
 #'
-#' @return list
+#' @return A list of files with information on first and last modification time.
 #' @export
 #'
 #' @importFrom purrr map
@@ -118,13 +116,13 @@ get_last_modif <- function(repo = ".", path = "R",
 }
 
 
-#' Formatting results of get_last_modif
+#' Presenting results of files and last modification time in a printed table using 'kable()'
 #'
 #' @inheritParams get_last_modif
 #'
 #' @importFrom dplyr transmute
 #'
-#' @return kable
+#' @return A 'kable()' output to be included in a markdown file
 #' @export
 #'
 #' @examples
@@ -147,13 +145,36 @@ present_files <- function(repo = ".", path = "R",
 }
 
 
-#' Update vignette last modification of files
+#' Creates and updates a vignette in the 'vignette/' directory of a package with last modification time of tracked files
 #'
+#' @return Creates and updates the content of the "modification_files.Rmd" vignette
+#' @export
+#'
+#' @rdname create_vignette_last_modif
+#' @examples
+#'
+#' # Creates vignette
+#' repo <- fake_repo(as.package = TRUE)
+#' create_vignette_last_modif(repo, path = "R")
+
+create_vignette_last_modif <- function(repo = ".", path = "R",
+                                       recursive = TRUE, untracked = TRUE) {
+  vig <- file.path(repo, "vignettes")
+
+  if (!dir.exists(vig)) {
+    stop("vignettes folder doesn't exist, please create vignettes folder")
+  } else {
+    update_vignette_last_modif(repo, path, recursive, untracked)
+  }
+}
+
 #' @inheritParams get_last_modif
 #'
-#' @return update existing vignette
 #' @export
+#' @rdname create_vignette_last_modif
+#'
 #' @examples
+#' # update vignette
 #' repo <- fake_repo(as.package = TRUE)
 #' update_vignette_last_modif(repo, path = "R")
 #' rmarkdown::render(file.path(repo, "vignettes", "modification_files.Rmd"))
@@ -177,28 +198,5 @@ update_vignette_last_modif <- function(repo = ".", path = "R",
     write(md, file = file, append = TRUE)
   } else {
     stop("Copying the file didn't work!")
-  }
-}
-
-#' Create the vignette for last modification
-#'
-#' @inheritParams get_last_modif
-#'
-#'
-#' @return copy a vignette
-#' @export
-#'
-#' @examples
-#' repo <- fake_repo(as.package = TRUE)
-#' create_vignette_last_modif(repo, path = "R")
-
-create_vignette_last_modif <- function(repo = ".", path = "R",
-                                       recursive = TRUE, untracked = TRUE) {
-  vig <- file.path(repo, "vignettes")
-
-  if (!dir.exists(vig)) {
-    stop("vignettes folder doesn't exist, please create vignettes folder")
-  } else {
-    update_vignette_last_modif(repo, path, recursive, untracked)
   }
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{each_pattern}
 \alias{each_pattern}
-\title{Presentation for each pattern}
+\title{Create the text to add in a markdown file to present each pattern as a chapter of the book}
 \usage{
 each_pattern(nest_commits, pattern.type)
 }
@@ -11,8 +11,12 @@ each_pattern(nest_commits, pattern.type)
 
 \item{pattern.type}{Character name of the pattern to filter}
 }
+\value{
+A tibble with a row for each different pattern found and
+a 'text' column to be included in a markdown file.
+}
 \description{
-Presentation for each pattern
+Create the text to add in a markdown file to present each pattern as a chapter of the book
 }
 \examples{
 repo <- fake_repo()

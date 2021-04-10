@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_info_files.R
 \name{get_info}
 \alias{get_info}
-\title{Get info}
+\title{Get the first and last modification time for a specific file, based on git2r::blame().}
 \usage{
 get_info(path, repo = ".")
 }
@@ -12,10 +12,10 @@ get_info(path, repo = ".")
 \item{repo}{repo of the git project}
 }
 \value{
-list
+A list with information on first and last modification time of the selected file.
 }
 \description{
-Get the first and last modification for one file. Based on git2r::blame.
+Get the first and last modification time for a specific file, based on git2r::blame().
 }
 \examples{
 repo <- fake_repo()

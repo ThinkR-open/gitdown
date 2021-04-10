@@ -3,7 +3,7 @@
 #' @inheritParams git2r::commits
 #' @param silent Logical. Whether to hide messages.
 #'
-#' @return A tibble with commits and tags
+#' @return A tibble with commits content, information and associated tags
 #'
 #' @importFrom git2r commits tags
 #' @importFrom purrr map_dfr flatten
@@ -63,11 +63,11 @@ get_commits_tags <- function(repo = ".", ref = "master",
 #'
 #' @param pattern Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues
 #' @param pattern.table data.frame with two columns: pattern and description.
-#' This is used as correspondance table to add some names to existing patterns.
+#' This is used as correspondence table to add some names to existing patterns.
 #' @inheritParams git2r::commits
 #' @inheritParams get_commits_tags
 #'
-#' @return A tibble with commits and tags
+#' @return A tibble with commits content, information, associated tags and associated patterns found.
 #'
 #' @importFrom dplyr mutate distinct rowwise tibble left_join mutate
 #' @importFrom dplyr if_else mutate_all filter select

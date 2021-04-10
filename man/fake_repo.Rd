@@ -2,7 +2,7 @@
 % Please edit documentation in R/fake_repo.R
 \name{fake_repo}
 \alias{fake_repo}
-\title{Create a fake git repository in tempfile for examples}
+\title{Create a fake git repository in a specific folder}
 \usage{
 fake_repo(path = tempfile(pattern = "git2r-"), as.package = FALSE)
 }
@@ -13,10 +13,11 @@ fake_repo(path = tempfile(pattern = "git2r-"), as.package = FALSE)
 directories to fake a package}
 }
 \value{
-path to fake repository
+A few files and an initiated git repository in 'path'.
+Returns the path of the fake repository.
 }
 \description{
-Create a fake git repository in tempfile for examples
+A fake repository allows to create reproducible examples for this package functions
 }
 \examples{
 # Fake repository with git
