@@ -21,7 +21,7 @@ Full documentation on {pkgdown} site :
 
 ## Installation
 
-You can install the last version of {gitdown} from Github:
+You can install the last version of {gitdown} from GitHub:
 
 ``` r
 remotes::install_github("ThinkR-open/gitdown")
@@ -64,8 +64,8 @@ git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+",
 If you add a table of correspondence, you can change titles of the
 patterns.  
 *Note that you can use [{gitlabr}](https://statnmap.github.io/gitlabr/)
-or [{gh}](https://gh.r-lib.org) to retrieve list of issues from Gitlab
-or Github respectively, as presented in [“Download Gitlab or Github
+or [{gh}](https://gh.r-lib.org) to retrieve list of issues from GitLab
+or GitHub respectively, as presented in [“Download GitLab or GitHub
 issues and make a summary report of your
 commits”](https://rtask.thinkr.fr/download-gitlab-or-github-issues-and-make-a-summary-report-of-your-commits/).*
 
@@ -103,13 +103,13 @@ get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master") %>%
 #> # A tibble: 7 x 12
 #>   pattern.content sha    summary message  author email when                order
 #>   <chr>           <chr>  <chr>   <chr>    <chr>  <chr> <dttm>              <int>
-#> 1 #32             7c1aa… Add NE… "Add NE… Alice  alic… 2021-05-08 17:29:32     4
-#> 2 #1              7c1aa… Add NE… "Add NE… Alice  alic… 2021-05-08 17:29:32     4
-#> 3 #12             7c1aa… Add NE… "Add NE… Alice  alic… 2021-05-08 17:29:32     4
-#> 4 #2              a0285… Third … "Third … Alice  alic… 2021-05-08 17:29:32     3
-#> 5 #145            a0285… Third … "Third … Alice  alic… 2021-05-08 17:29:32     3
-#> 6 #1              fe750… exampl… "exampl… Alice  alic… 2021-05-08 17:29:32     2
-#> 7 <NA>            4fe03… First … "First … Alice  alic… 2021-05-08 17:29:32     1
+#> 1 #32             e66cf… Add NE… "Add NE… Alice  alic… 2021-05-08 18:00:01     4
+#> 2 #1              e66cf… Add NE… "Add NE… Alice  alic… 2021-05-08 18:00:01     4
+#> 3 #12             e66cf… Add NE… "Add NE… Alice  alic… 2021-05-08 18:00:01     4
+#> 4 #2              cebbb… Third … "Third … Alice  alic… 2021-05-08 18:00:01     3
+#> 5 #145            cebbb… Third … "Third … Alice  alic… 2021-05-08 18:00:01     3
+#> 6 #1              934b8… exampl… "exampl… Alice  alic… 2021-05-08 18:00:01     2
+#> 7 <NA>            1ba16… First … "First … Alice  alic… 2021-05-08 18:00:01     1
 #> # … with 4 more variables: tag.name <chr>, tag.message <chr>,
 #> #   pattern.type <chr>, pattern.title <chr>
 ```
@@ -128,18 +128,18 @@ get_commits_pattern(
 #> # A tibble: 12 x 12
 #>    pattern.type pattern.content sha       summary   message        author email 
 #>    <chr>        <chr>           <chr>     <chr>     <chr>          <chr>  <chr> 
-#>  1 Tickets      ticket6789      7c1aace9… Add NEWS  "Add NEWS\n\n… Alice  alice…
-#>  2 Tickets      ticket1234      7c1aace9… Add NEWS  "Add NEWS\n\n… Alice  alice…
-#>  3 Issues       #32             7c1aace9… Add NEWS  "Add NEWS\n\n… Alice  alice…
-#>  4 Issues       #1              7c1aace9… Add NEWS  "Add NEWS\n\n… Alice  alice…
-#>  5 Issues       #12             7c1aace9… Add NEWS  "Add NEWS\n\n… Alice  alice…
-#>  6 Tickets      <NA>            a028509a… Third co… "Third commit… Alice  alice…
-#>  7 Issues       #2              a028509a… Third co… "Third commit… Alice  alice…
-#>  8 Issues       #145            a028509a… Third co… "Third commit… Alice  alice…
-#>  9 Tickets      ticket1234      fe750dfe… example:… "example: mod… Alice  alice…
-#> 10 Issues       #1              fe750dfe… example:… "example: mod… Alice  alice…
-#> 11 Tickets      <NA>            4fe0392f… First co… "First commit… Alice  alice…
-#> 12 Issues       <NA>            4fe0392f… First co… "First commit… Alice  alice…
+#>  1 Tickets      ticket6789      e66cf6b1… Add NEWS  "Add NEWS\n\n… Alice  alice…
+#>  2 Tickets      ticket1234      e66cf6b1… Add NEWS  "Add NEWS\n\n… Alice  alice…
+#>  3 Issues       #32             e66cf6b1… Add NEWS  "Add NEWS\n\n… Alice  alice…
+#>  4 Issues       #1              e66cf6b1… Add NEWS  "Add NEWS\n\n… Alice  alice…
+#>  5 Issues       #12             e66cf6b1… Add NEWS  "Add NEWS\n\n… Alice  alice…
+#>  6 Tickets      <NA>            cebbb5e9… Third co… "Third commit… Alice  alice…
+#>  7 Issues       #2              cebbb5e9… Third co… "Third commit… Alice  alice…
+#>  8 Issues       #145            cebbb5e9… Third co… "Third commit… Alice  alice…
+#>  9 Tickets      ticket1234      934b8178… example:… "example: mod… Alice  alice…
+#> 10 Issues       #1              934b8178… example:… "example: mod… Alice  alice…
+#> 11 Tickets      <NA>            1ba16a26… First co… "First commit… Alice  alice…
+#> 12 Issues       <NA>            1ba16a26… First co… "First commit… Alice  alice…
 #> # … with 5 more variables: when <dttm>, order <int>, tag.name <chr>,
 #> #   tag.message <chr>, pattern.title <chr>
 ```
@@ -158,9 +158,9 @@ With this example, the vignette will show this content:
 
 | File         | Tracked in git | Date of creation    | Last modification   |
 |:-------------|:---------------|:--------------------|:--------------------|
-| NEWS.md      | Yes            | 2021-05-08 19:29:33 | 2021-05-08 19:29:33 |
-| example.txt  | Yes            | 2021-05-08 19:29:33 | 2021-05-08 19:29:33 |
-| R/my\_mean.R | No             | NA                  | 2021-05-08 19:29:33 |
+| NEWS.md      | Yes            | 2021-05-08 20:00:01 | 2021-05-08 20:00:01 |
+| example.txt  | Yes            | 2021-05-08 20:00:01 | 2021-05-08 20:00:01 |
+| R/my\_mean.R | No             | NA                  | 2021-05-08 20:00:01 |
 
 ## Sponsor
 

@@ -34,7 +34,7 @@ Full documentation on {pkgdown} site : https://thinkr-open.github.io/gitdown/ind
 
 ## Installation
 
-You can install the last version of {gitdown} from Github:
+You can install the last version of {gitdown} from GitHub:
 
 ``` r
 remotes::install_github("ThinkR-open/gitdown")
@@ -70,7 +70,7 @@ knitr::include_graphics("reference/figures/gitdown_links.png")
 ```
 
 If you add a table of correspondence, you can change titles of the patterns.  
-_Note that you can use [{gitlabr}](https://statnmap.github.io/gitlabr/) or [{gh}](https://gh.r-lib.org) to retrieve list of issues from Gitlab or Github respectively, as presented in ["Download Gitlab or Github issues and make a summary report of your commits"](https://rtask.thinkr.fr/download-gitlab-or-github-issues-and-make-a-summary-report-of-your-commits/)._  
+_Note that you can use [{gitlabr}](https://statnmap.github.io/gitlabr/) or [{gh}](https://gh.r-lib.org) to retrieve list of issues from GitLab or GitHub respectively, as presented in ["Download GitLab or GitHub issues and make a summary report of your commits"](https://rtask.thinkr.fr/download-gitlab-or-github-issues-and-make-a-summary-report-of-your-commits/)._  
 
 ```{r, eval=FALSE}
 # With table of correspondence

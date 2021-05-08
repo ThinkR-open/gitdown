@@ -17,7 +17,7 @@ The main functions to be used in this package are \code{\link[=git_down]{git_dow
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://thinkr-open.github.io/gitdown}
+  \item \url{https://thinkr-open.github.io/gitdown/}
   \item \url{https://github.com/Thinkr-open/gitdown}
   \item Report bugs at \url{https://github.com/Thinkr-open/gitdown/issues}
 }

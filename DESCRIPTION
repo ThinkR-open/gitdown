@@ -1,6 +1,6 @@
 Package: gitdown
 Title: Turn Your Git Commit Messages into a HTML Book
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: 
     c(person(given = "Sébastien",
              family = "Rochette",
@@ -22,7 +22,7 @@ Description: Read all commit messages of your local git repository and
     organisms required to testify for every changes in their source code,
     in relation to features requests.
 License: MIT + file LICENSE
-URL: https://thinkr-open.github.io/gitdown,
+URL: https://thinkr-open.github.io/gitdown/,
     https://github.com/Thinkr-open/gitdown
 BugReports: https://github.com/Thinkr-open/gitdown/issues
 Depends: 
