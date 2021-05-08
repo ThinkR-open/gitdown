@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Create a bookdown with git_down • gitdown</title>
+<title>Create a gitbook with git_down • gitdown</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -18,7 +18,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Create a bookdown with git_down">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Create a gitbook with git_down">
 <meta property="og:description" content="gitdown">
 <meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
@@ -56,7 +56,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gitdown</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -79,10 +79,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/aa-create-commit_down.html">Create commit_down</a>
-    </li>
-    <li>
-      <a href="../articles/ab-create-git_down.html">Create a bookdown with git_down</a>
+      <a href="../articles/ab-create-git_down.html">Create a gitbook with git_down</a>
     </li>
   </ul>
 </li>
@@ -118,7 +115,7 @@
       </header><script src="ab-create-git_down_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Create a bookdown with git_down</h1>
+      <h1 data-toc-skip>Create a gitbook with git_down</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/Thinkr-open/gitdown/blob/master/vignettes/ab-create-git_down.Rmd"><code>vignettes/ab-create-git_down.Rmd</code></a></small>
@@ -132,15 +129,10 @@
 $(document).ready(function () {
   window.initializeCodeFolding("show" === "show");
 });
-</script><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Thinkr-open/gitdown">gitdown</a></span><span class="op">)</span></code></pre></div>
-<div id="create-book-of-commits" class="section level2">
+</script><div id="create-a-reproducible-example-of-a-versioned-directory" class="section level2">
 <h2 class="hasAnchor">
-<a href="#create-book-of-commits" class="anchor"></a>Create book of commits</h2>
-<div id="reproducible-example" class="section level3">
-<h3 class="hasAnchor">
-<a href="#reproducible-example" class="anchor"></a>Reproducible example</h3>
-<p>Create a versioned directory with some commits and a NEWS.md</p>
+<a href="#create-a-reproducible-example-of-a-versioned-directory" class="anchor"></a>Create a reproducible example of a versioned directory</h2>
+<p>Create a versioned directory with some commits and a NEWS.md in a temporary directory</p>
 <ul>
 <li>Some commits mention an issue with <code>#</code>
 </li>
@@ -148,15 +140,101 @@ $(document).ready(function () {
 </li>
 <li>A commit is associated with a tag</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">repo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fake_repo.html">fake_repo</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="build-book" class="section level3">
-<h3 class="hasAnchor">
-<a href="#build-book" class="anchor"></a>Build book</h3>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div id="build-book-of-commits-messages" class="section level2">
+<h2 class="hasAnchor">
+<a href="#build-book-of-commits-messages" class="anchor"></a>Build book of commits messages</h2>
+<p>The main function of {gitdown} is to build this gitbook with all commit messages ordered according to a pattern. Each commit message associated with an issue will be recorded in the section of this issue. A commit message can thus appears multiple times if it is associated with multiple issues.<br>
+If you have your own referencing system for tickets in an external software, you can also create the gitbook associated like using <code>ticket</code> as in the example below.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/git_down.html">git_down</a></span><span class="op">(</span><span class="va">repo</span>, pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Tickets"</span> <span class="op">=</span> <span class="st">"ticket[[:digit:]]+"</span>, <span class="st">"Issues"</span> <span class="op">=</span> <span class="st">"#[[:digit:]]+"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
+<div id="read-list-of-commits-and-extract-information" class="section level2">
+<h2 class="hasAnchor">
+<a href="#read-list-of-commits-and-extract-information" class="anchor"></a>Read list of commits and extract information</h2>
+<p>As a side effect of {gitdown}, you can get some intermediate information used to build the book with some exported functions.</p>
+<div id="get-commits-and-find-pattern" class="section level3">
+<h3 class="hasAnchor">
+<a href="#get-commits-and-find-pattern" class="anchor"></a>Get commits and find pattern</h3>
+<ul>
+<li>Find all commits of a branch and associate with tags recursively</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_commits_tags.html">get_commits_tags</a></span><span class="op">(</span><span class="va">repo</span>, ref <span class="op">=</span> <span class="st">"master"</span><span class="op">)</span>
+<span class="co">#&gt; 4 commits found.</span>
+<span class="co">#&gt; # A tibble: 4 x 9</span>
+<span class="co">#&gt;   sha      summary  message      author email when                order tag.name</span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   </span>
+<span class="co">#&gt; 1 d612ff2… Add NEWS "Add NEWS\n… Alice  alic… 2021-05-08 18:14:48     4 &lt;NA&gt;    </span>
+<span class="co">#&gt; 2 0c5976c… Third c… "Third comm… Alice  alic… 2021-05-08 18:14:48     3 v0.1    </span>
+<span class="co">#&gt; 3 a4d1f7f… example… "example: m… Alice  alic… 2021-05-08 18:14:48     2 v0.1    </span>
+<span class="co">#&gt; 4 84039eb… First c… "First comm… Alice  alic… 2021-05-08 18:14:48     1 v0.1    </span>
+<span class="co">#&gt; # … with 1 more variable: tag.message &lt;chr&gt;</span></code></pre></div>
+<ul>
+<li>Find all commits of a branch and detect a specific pattern
+<ul>
+<li>Here we find commits mentioning an issue with <code>#123</code>
+</li>
+</ul>
+</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_commits_pattern.html">get_commits_pattern</a></span><span class="op">(</span><span class="va">repo</span>, pattern <span class="op">=</span> <span class="st">"#[[:digit:]]+"</span>, ref <span class="op">=</span> <span class="st">"master"</span><span class="op">)</span>
+<span class="co">#&gt; 4 commits found.</span>
+<span class="co">#&gt; # A tibble: 7 x 12</span>
+<span class="co">#&gt;   sha      summary  message      author email when                order tag.name</span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;   </span>
+<span class="co">#&gt; 1 d612ff2… Add NEWS "Add NEWS\n… Alice  alic… 2021-05-08 18:14:48     4 &lt;NA&gt;    </span>
+<span class="co">#&gt; 2 d612ff2… Add NEWS "Add NEWS\n… Alice  alic… 2021-05-08 18:14:48     4 &lt;NA&gt;    </span>
+<span class="co">#&gt; 3 d612ff2… Add NEWS "Add NEWS\n… Alice  alic… 2021-05-08 18:14:48     4 &lt;NA&gt;    </span>
+<span class="co">#&gt; 4 0c5976c… Third c… "Third comm… Alice  alic… 2021-05-08 18:14:48     3 v0.1    </span>
+<span class="co">#&gt; 5 0c5976c… Third c… "Third comm… Alice  alic… 2021-05-08 18:14:48     3 v0.1    </span>
+<span class="co">#&gt; 6 a4d1f7f… example… "example: m… Alice  alic… 2021-05-08 18:14:48     2 v0.1    </span>
+<span class="co">#&gt; 7 84039eb… First c… "First comm… Alice  alic… 2021-05-08 18:14:48     1 v0.1    </span>
+<span class="co">#&gt; # … with 4 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,</span>
+<span class="co">#&gt; #   pattern.content &lt;chr&gt;, pattern.title &lt;chr&gt;</span></code></pre></div>
+</div>
+</div>
+<div id="create-a-vignette-that-lists-all-files-with-date-of-modification" class="section level2">
+<h2 class="hasAnchor">
+<a href="#create-a-vignette-that-lists-all-files-with-date-of-modification" class="anchor"></a>Create a vignette that lists all files with date of modification</h2>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">repo_pkg</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fake_repo.html">fake_repo</a></span><span class="op">(</span>as.package <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="co"># List only files in R/ directory</span>
+<span class="fu"><a href="../reference/create_vignette_last_modif.html">create_vignette_last_modif</a></span><span class="op">(</span><span class="va">repo_pkg</span><span class="op">)</span>
+<span class="co"># List all files of the git repository</span>
+<span class="fu"><a href="../reference/create_vignette_last_modif.html">create_vignette_last_modif</a></span><span class="op">(</span><span class="va">repo_pkg</span>, path <span class="op">=</span> <span class="st">""</span><span class="op">)</span></code></pre></div>
+<p>With this example, the vignette will show this content:</p>
+<table class="table">
+<thead><tr class="header">
+<th align="left">File</th>
+<th align="left">Tracked in git</th>
+<th align="left">Date of creation</th>
+<th align="left">Last modification</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">NEWS.md</td>
+<td align="left">Yes</td>
+<td align="left">2021-05-08 18:14:49</td>
+<td align="left">2021-05-08 18:14:49</td>
+</tr>
+<tr class="even">
+<td align="left">example.txt</td>
+<td align="left">Yes</td>
+<td align="left">2021-05-08 18:14:49</td>
+<td align="left">2021-05-08 18:14:49</td>
+</tr>
+<tr class="odd">
+<td align="left">R/my_mean.R</td>
+<td align="left">No</td>
+<td align="left">NA</td>
+<td align="left">2021-05-08 18:14:49</td>
+</tr>
+</tbody>
+</table>
 </div>
   </div>
 

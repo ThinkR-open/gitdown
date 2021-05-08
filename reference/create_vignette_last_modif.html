@@ -97,7 +97,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gitdown</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -120,10 +120,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/aa-create-commit_down.html">Create commit_down</a>
-    </li>
-    <li>
-      <a href="../articles/ab-create-git_down.html">Create a bookdown with git_down</a>
+      <a href="../articles/ab-create-git_down.html">Create a gitbook with git_down</a>
     </li>
   </ul>
 </li>
@@ -186,7 +183,7 @@
     </tr>
     <tr>
       <th>path</th>
-      <td><p>Default to R folder. Use "" for the complete repository.</p></td>
+      <td><p>Default to R folder. Use "" for the complete directory</p></td>
     </tr>
     <tr>
       <th>recursive</th>
@@ -200,7 +197,8 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Creates and updates the content of the "modification_files.Rmd" vignette</p>
+    <p>No return value, called for side effect.
+Creates and updates the content of the "modification_files.Rmd" vignette</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -224,7 +222,7 @@
 #&gt;   |                                                                              |......................................................................| 100%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: modification_files.knit.md</span></div><div class='output co'>#&gt; <span class='warning'>Warning: The vignette title specified in \VignetteIndexEntry{} is different from the title in the YAML metadata. The former is "zz-modification-of-files", and the latter is "Modifications of files". If that is intentional, you may set options(rmarkdown.html_vignette.check_title = FALSE) to suppress this check.</span></div><div class='output co'>#&gt; /usr/local/bin/pandoc +RTS -K512m -RTS modification_files.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output modification_files.html --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --section-divs --template /Users/runner/work/_temp/Library/rmarkdown/rmd/h/default.html --highlight-style pygments --css /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/templates/html_vignette/resources/vignette.css --include-in-header /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpoVQcUc/rmarkdown-str8666d9ac556.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: modification_files.knit.md</span></div><div class='output co'>#&gt; <span class='warning'>Warning: The vignette title specified in \VignetteIndexEntry{} is different from the title in the YAML metadata. The former is "zz-modification-of-files", and the latter is "Modifications of files". If that is intentional, you may set options(rmarkdown.html_vignette.check_title = FALSE) to suppress this check.</span></div><div class='output co'>#&gt; /usr/local/bin/pandoc +RTS -K512m -RTS modification_files.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output modification_files.html --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --standalone --section-divs --template /Users/runner/work/_temp/Library/rmarkdown/rmd/h/default.html --highlight-style pygments --css /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/templates/html_vignette/resources/vignette.css --include-in-header /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpppgNBa/rmarkdown-str8db24868f87.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' </div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Output created: modification_files.html</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

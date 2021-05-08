@@ -97,7 +97,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gitdown</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -120,10 +120,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/aa-create-commit_down.html">Create commit_down</a>
-    </li>
-    <li>
-      <a href="../articles/ab-create-git_down.html">Create a bookdown with git_down</a>
+      <a href="../articles/ab-create-git_down.html">Create a gitbook with git_down</a>
     </li>
   </ul>
 </li>
@@ -194,7 +191,18 @@ returned; that is, the output of <code>git log</code> with
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble with commits content, information and associated tags</p>
+    <p>A tibble with one line for each commit and the following columns:</p><ul>
+<li><p>sha: sha of the commit</p></li>
+<li><p>summary: First line of the commit message</p></li>
+<li><p>message: Full content of the commit message</p></li>
+<li><p>author: author of the commit</p></li>
+<li><p>email: email of the author</p></li>
+<li><p>when: commit time</p></li>
+<li><p>order: order of commit messages. 1 is the oldest.</p></li>
+<li><p>tag.name: name of tag associated with all commits since the last tag</p></li>
+<li><p>tag.message: message of the tagged commit</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -202,10 +210,10 @@ returned; that is, the output of <code>git log</code> with
 </div><div class='output co'>#&gt; <span class='message'>4 commits found.</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 9</span><span>
 #&gt;   sha      summary  message      author email when                order tag.name
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> df3bbb4… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\n… Alice  alic… 2021-04-11 </span><span style='color: #949494;'>09:03:04</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> bc2b39a… Third c… </span><span style='color: #949494;'>"</span><span>Third comm… Alice  alic… 2021-04-11 </span><span style='color: #949494;'>09:03:04</span><span>     3 v0.1    
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 77d0414… example… </span><span style='color: #949494;'>"</span><span>example: m… Alice  alic… 2021-04-11 </span><span style='color: #949494;'>09:03:04</span><span>     2 v0.1    
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> 55d5218… First c… </span><span style='color: #949494;'>"</span><span>First comm… Alice  alic… 2021-04-11 </span><span style='color: #949494;'>09:03:04</span><span>     1 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 915140b… Add NEWS </span><span style='color: #949494;'>"</span><span>Add NEWS\n… Alice  alic… 2021-05-08 </span><span style='color: #949494;'>18:14:38</span><span>     4 </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 729296d… Third c… </span><span style='color: #949494;'>"</span><span>Third comm… Alice  alic… 2021-05-08 </span><span style='color: #949494;'>18:14:38</span><span>     3 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 62c4e5c… example… </span><span style='color: #949494;'>"</span><span>example: m… Alice  alic… 2021-05-08 </span><span style='color: #949494;'>18:14:38</span><span>     2 v0.1    
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> eeb0e77… First c… </span><span style='color: #949494;'>"</span><span>First comm… Alice  alic… 2021-05-08 </span><span style='color: #949494;'>18:14:38</span><span>     1 v0.1    
 #&gt; </span><span style='color: #949494;'># … with 1 more variable: tag.message &lt;chr&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

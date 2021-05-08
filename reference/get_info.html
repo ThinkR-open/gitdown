@@ -97,7 +97,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gitdown</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -120,10 +120,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/aa-create-commit_down.html">Create commit_down</a>
-    </li>
-    <li>
-      <a href="../articles/ab-create-git_down.html">Create a bookdown with git_down</a>
+      <a href="../articles/ab-create-git_down.html">Create a gitbook with git_down</a>
     </li>
   </ul>
 </li>
@@ -180,7 +177,16 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list with information on first and last modification time of the selected file.</p>
+    <p>A list with information of the selected file:</p><ul>
+<li><p>file: file name</p></li>
+<li><p>in_repository: Logical. Whether the file has already been commit once in the
+git repository</p></li>
+<li><p>first_modif: time of first modification. Commit time if in the git repository,
+system date of creation otherwise.</p></li>
+<li><p>last_modif: time of last modification. Commit time if in the git repository,
+system date of last modification otherwise.</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>repo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fake_repo.html'>fake_repo</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -193,11 +199,11 @@
 #&gt; 
 #&gt; $first_modif
 #&gt;                     first 
-#&gt; "2021-04-11 09:03:04 UTC" 
+#&gt; "2021-05-08 18:14:38 UTC" 
 #&gt; 
 #&gt; $last_modif
 #&gt;                      last 
-#&gt; "2021-04-11 09:03:04 UTC" 
+#&gt; "2021-05-08 18:14:40 UTC" 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
