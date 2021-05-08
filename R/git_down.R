@@ -1,4 +1,4 @@
-#' Turns the history of git into a bookdown.
+#' Turns the active branch history of git into a bookdown.
 #'
 #' Read all commit messages of your local git repository and
 #' sort them according to tags or specific text pattern into chapters of
@@ -10,12 +10,12 @@
 #' @param open Should the bookdown be opened once compiled? Default is TRUE.
 #' @param author Author of the bookdown
 #' @param ref the name of the branch, by default master
-#' @param ... Other parameters to pass to \code{\link[rmarkdown]{render}}
+#' @param ... Other parameters to pass to [rmarkdown::render()]
 #'
 #' @inheritParams get_commits_pattern
 #' @export
 #'
-#' @return A directory with content of a HTML gitbook
+#' @return Path of the HTML gitbook saved in the repo/book_path directory.
 #'
 #' @importFrom attempt if_not
 #' @importFrom rmarkdown render
@@ -28,17 +28,20 @@
 #' repo <- fake_repo()
 #' res <- git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"),
 #' open = FALSE)
+#' \dontrun{
 #' # Open the book
-#' # browseURL(res)
-#'
+#'   browseURL(res)
+#' }
 #' # With table of correspondence
 #' pattern.table <- data.frame(number = c("#2", "#1"),
 #'   title = c("#2 A second issue to illustrate a blog post",
 #'                        "#1 An example of issue"))
 #' res <- git_down(repo, pattern = c("Issues" = "#[[:digit:]]+"),
 #'   pattern.table = pattern.table, open = FALSE)
+#' \dontrun{
 #' # Open the book
-#' # browseURL(res)
+#'   browseURL(res)
+#' }
 
 git_down <- function(repo = ".", book_path = "gitdown",
                      open = TRUE, author = "John Doe",

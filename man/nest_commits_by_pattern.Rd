@@ -16,9 +16,9 @@ nest_commits_by_pattern(
 \item{repo}{a path to a repository or a \code{git_repository}
 object. Default is '.'}
 
-\item{pattern}{Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues}
+\item{pattern}{Named vector with regex pattern to expose commits, like \verb{c("Issues" = "#\[\[:digit:\]\]")} for issues}
 
-\item{pattern.table}{data.frame with two columns: pattern and description.
+\item{pattern.table}{data.frame with two columns: pattern and description of the pattern.
 This is used as correspondence table to add some names to existing patterns.}
 
 \item{ref}{The name of a reference to list commits from e.g. a tag
@@ -27,8 +27,17 @@ or a branch. The default is NULL for the current branch.}
 \item{silent}{Logical. Whether to hide messages.}
 }
 \value{
-A tibble with a row for each different pattern found and
+A tibble with a row for each different pattern found in commit messages
+and following columns:
+\itemize{
+\item pattern.type: name of the pattern found in the commit message
+\item pattern.content: pattern found in the commit message
+\item pattern.title: pattern.content or title used in the pattern.table
 a nested 'data' column with all related commits
+\item pattern_numeric: extraction of numeric value in pattern.content
+\item link_pattern: internal url of the pattern in the future HTML gitbook
+\item data: a nested list of tibbles with commits content as issued from \code{\link[=get_commits_pattern]{get_commits_pattern()}}
+}
 }
 \description{
 Nest all commits by each pattern found in the commit messages
@@ -36,4 +45,15 @@ Nest all commits by each pattern found in the commit messages
 \examples{
 repo <- fake_repo()
 nest_commits_by_pattern(repo)
+
+# With table of correspondence
+pattern.table <- data.frame(
+  number = c("#2", "#1", "#1000"),
+  title = c("#2 A second issue to illustrate a blog post",
+            "#1 An example of issue",
+            "#1000 issue with no commit"))
+ nest_commits_by_pattern(
+  repo,
+  pattern.table = pattern.table,
+  pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"))
 }

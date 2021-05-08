@@ -2,24 +2,33 @@
 % Please edit documentation in R/get_info_files.R
 \name{get_last_modif}
 \alias{get_last_modif}
-\title{Get the first and last modification time of files of a repository}
+\title{Get the first and last modification time of files of a directory}
 \usage{
 get_last_modif(repo = ".", path = "R", recursive = TRUE, untracked = TRUE)
 }
 \arguments{
 \item{repo}{git repository}
 
-\item{path}{Default to R folder. Use "" for the complete repository.}
+\item{path}{Default to R folder. Use "" for the complete directory}
 
 \item{recursive}{Logical. Should the listing recurse into directories?}
 
 \item{untracked}{Logical. Should the not tracked files be included?}
 }
 \value{
-A list of files with information on first and last modification time.
+A list of files with information of each file:
+\itemize{
+\item file: file name
+\item in_repository: Logical. Whether the file has already been commit once in the
+git repository
+\item first_modif: time of first modification. Commit time if in the git repository,
+system date of creation otherwise.
+\item last_modif: time of last modification. Commit time if in the git repository,
+system date of last modification otherwise.
+}
 }
 \description{
-Get the first and last modification time of files of a repository
+Get the first and last modification time of files of a directory
 }
 \examples{
 repo <- fake_repo()

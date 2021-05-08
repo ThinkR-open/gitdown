@@ -9,7 +9,7 @@ present_files(repo = ".", path = "R", recursive = TRUE, untracked = TRUE)
 \arguments{
 \item{repo}{git repository}
 
-\item{path}{Default to R folder. Use "" for the complete repository.}
+\item{path}{Default to R folder. Use "" for the complete directory}
 
 \item{recursive}{Logical. Should the listing recurse into directories?}
 

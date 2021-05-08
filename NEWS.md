@@ -1,3 +1,7 @@
+# gitdown 0.1.1
+
+* Improve documentation
+
 # gitdown 0.1.0
 
 * Get ready for CRAN

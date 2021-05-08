@@ -17,9 +17,9 @@ get_commits_pattern(
 \item{repo}{a path to a repository or a \code{git_repository}
 object. Default is '.'}
 
-\item{pattern}{Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues}
+\item{pattern}{Named vector with regex pattern to expose commits, like \verb{c("Issues" = "#\[\[:digit:\]\]")} for issues}
 
-\item{pattern.table}{data.frame with two columns: pattern and description.
+\item{pattern.table}{data.frame with two columns: pattern and description of the pattern.
 This is used as correspondence table to add some names to existing patterns.}
 
 \item{ref}{The name of a reference to list commits from e.g. a tag
@@ -34,7 +34,21 @@ returned; that is, the output of \code{git log} with
 \item{silent}{Logical. Whether to hide messages.}
 }
 \value{
-A tibble with commits content, information, associated tags and associated patterns found.
+A tibble with one line for each commit, duplicated if
+associated with multiple patterns and the following columns:
+\itemize{
+\item sha: sha of the commit
+\item summary: First line of the commit message
+\item message: Full content of the commit message
+\item author: author of the commit
+\item email: email of the author
+\item when: commit time
+\item order: order of commit messages. 1 is the oldest.
+\item tag.name: name of tag associated with all commits since the last tag
+\item tag.message: message of the tagged commit
+\item pattern.type: name of the pattern found in the commit message
+\item pattern.content: pattern found in the commit message
+}
 }
 \description{
 Get commits associated with a text pattern

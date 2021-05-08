@@ -3,7 +3,17 @@
 #' @inheritParams git2r::commits
 #' @param silent Logical. Whether to hide messages.
 #'
-#' @return A tibble with commits content, information and associated tags
+#' @return A tibble with one line for each commit and the following columns:
+#'
+#' - sha: sha of the commit
+#' - summary: First line of the commit message
+#' - message: Full content of the commit message
+#' - author: author of the commit
+#' - email: email of the author
+#' - when: commit time
+#' - order: order of commit messages. 1 is the oldest.
+#' - tag.name: name of tag associated with all commits since the last tag
+#' - tag.message: message of the tagged commit
 #'
 #' @importFrom git2r commits tags
 #' @importFrom purrr map_dfr flatten
@@ -61,13 +71,26 @@ get_commits_tags <- function(repo = ".", ref = "master",
 
 #' Get commits associated with a text pattern
 #'
-#' @param pattern Named vector with regex pattern to expose commits, like c("Issues" = "#[[:digit:]]") for issues
-#' @param pattern.table data.frame with two columns: pattern and description.
+#' @param pattern Named vector with regex pattern to expose commits, like `c("Issues" = "#\[\[:digit:\]\]")` for issues
+#' @param pattern.table data.frame with two columns: pattern and description of the pattern.
 #' This is used as correspondence table to add some names to existing patterns.
 #' @inheritParams git2r::commits
 #' @inheritParams get_commits_tags
 #'
-#' @return A tibble with commits content, information, associated tags and associated patterns found.
+#' @return A tibble with one line for each commit, duplicated if
+#'  associated with multiple patterns and the following columns:
+#'
+#' - sha: sha of the commit
+#' - summary: First line of the commit message
+#' - message: Full content of the commit message
+#' - author: author of the commit
+#' - email: email of the author
+#' - when: commit time
+#' - order: order of commit messages. 1 is the oldest.
+#' - tag.name: name of tag associated with all commits since the last tag
+#' - tag.message: message of the tagged commit
+#' - pattern.type: name of the pattern found in the commit message
+#' - pattern.content: pattern found in the commit message
 #'
 #' @importFrom dplyr mutate distinct rowwise tibble left_join mutate
 #' @importFrom dplyr if_else mutate_all filter select
@@ -150,6 +173,7 @@ get_commits_pattern <- function(repo = ".", pattern = c("Ticket" = "#[[:digit:]]
 #' @inheritParams stringi::stri_extract_all
 #'
 #' @importFrom stringi stri_extract_all
+#' @noRd
 
 my_extract <- function(message, pattern) {
   # res <- unlist(str_extract_all(message, pattern, simplify = FALSE))

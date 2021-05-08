@@ -13,7 +13,18 @@ each_pattern(nest_commits, pattern.type)
 }
 \value{
 A tibble with a row for each different pattern found and
-a 'text' column to be included in a markdown file.
+a 'text' column to be included in a markdown file:
+\itemize{
+\item pattern.content: pattern found in the commit message
+\item link_pattern: internal url of the pattern in the future HTML gitbook
+\item text: list of vectors of markdown text to present commits of each pattern
+in the HTML gitbook output
+\item pattern.type: name of the pattern found in the commit message
+\item pattern.title: pattern.content or title used in the pattern.table
+a nested 'data' column with all related commits
+\item pattern_numeric: extraction of numeric value in pattern.content
+\item data: a nested list of tibbles with commits content as issued from \code{\link[=get_commits_pattern]{get_commits_pattern()}}
+}
 }
 \description{
 Create the text to add in a markdown file to present each pattern as a chapter of the book

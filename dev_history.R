@@ -25,6 +25,8 @@ usethis::use_readme_rmd()
 usethis::use_vignette("ab-create-git_down")
 usethis::use_data_raw()
 usethis::use_news_md()
+usethis::use_roxygen_md()
+usethis::use_package_doc()
 
 # Dependencies ----
 # Clean importFrom
@@ -65,8 +67,16 @@ usethis::use_github_action("test-coverage")
 
 
 # CRAN
+devtools::build_readme()
+urlchecker::url_check()
+urlchecker::url_update()
+
+# usethis::use_release_issue(version = "0.1.1")
+usethis::use_version('patch')
+
 rcmdcheck::rcmdcheck(args = "--as-cran")
 spelling::spell_check_package()
+rhub::validate_email()
 rhub::check_for_cran()
 rhub::check_on_windows(check_args = "--force-multiarch")
 rhub::check_on_fedora()

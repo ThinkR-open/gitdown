@@ -9,8 +9,8 @@
 #' @importFrom git2r init config add commit tag
 #' @export
 #'
-#' @return A few files and an initiated git repository in 'path'.
-#' Returns the path of the fake repository.
+#' @return Character. Path of a fake repository used for reproducible examples.
+#' Fake repository contains a few files with an initiated git repository.
 #' @examples
 #' # Fake repository with git
 #' fake_repo()

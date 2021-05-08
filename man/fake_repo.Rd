@@ -13,8 +13,8 @@ fake_repo(path = tempfile(pattern = "git2r-"), as.package = FALSE)
 directories to fake a package}
 }
 \value{
-A few files and an initiated git repository in 'path'.
-Returns the path of the fake repository.
+Character. Path of a fake repository used for reproducible examples.
+Fake repository contains a few files with an initiated git repository.
 }
 \description{
 A fake repository allows to create reproducible examples for this package functions

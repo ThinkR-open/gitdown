@@ -22,13 +22,14 @@ update_vignette_last_modif(
 \arguments{
 \item{repo}{git repository}
 
-\item{path}{Default to R folder. Use "" for the complete repository.}
+\item{path}{Default to R folder. Use "" for the complete directory}
 
 \item{recursive}{Logical. Should the listing recurse into directories?}
 
 \item{untracked}{Logical. Should the not tracked files be included?}
 }
 \value{
+No return value, called for side effect.
 Creates and updates the content of the "modification_files.Rmd" vignette
 }
 \description{

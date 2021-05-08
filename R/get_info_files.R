@@ -3,6 +3,7 @@
 #' @param object hunks list
 #'
 #' @return time
+#' @noRd
 get_time <- function(object) {
   pluck(object, "final_signature", "when", "time")
 }
@@ -12,7 +13,16 @@ get_time <- function(object) {
 #' @param path path to the file
 #' @param repo repo of the git project
 #'
-#' @return A list with information on first and last modification time of the selected file.
+#' @return A list with information of the selected file:
+#'
+#' - file: file name
+#' - in_repository: Logical. Whether the file has already been commit once in the
+#' git repository
+#' - first_modif: time of first modification. Commit time if in the git repository,
+#' system date of creation otherwise.
+#' - last_modif: time of last modification. Commit time if in the git repository,
+#' system date of last modification otherwise.
+#'
 #' @export
 #'
 #' @importFrom git2r blame
@@ -61,14 +71,23 @@ get_info <- function(path, repo = ".") {
   )
 }
 
-#' Get the first and last modification time of files of a repository
+#' Get the first and last modification time of files of a directory
 #'
 #' @param repo git repository
-#' @param path Default to R folder. Use "" for the complete repository.
+#' @param path Default to R folder. Use "" for the complete directory
 #' @param recursive Logical. Should the listing recurse into directories?
 #' @param untracked Logical. Should the not tracked files be included?
 #'
-#' @return A list of files with information on first and last modification time.
+#' @return A list of files with information of each file:
+#'
+#' - file: file name
+#' - in_repository: Logical. Whether the file has already been commit once in the
+#' git repository
+#' - first_modif: time of first modification. Commit time if in the git repository,
+#' system date of creation otherwise.
+#' - last_modif: time of last modification. Commit time if in the git repository,
+#' system date of last modification otherwise.
+#'
 #' @export
 #'
 #' @importFrom purrr map
@@ -147,7 +166,8 @@ present_files <- function(repo = ".", path = "R",
 
 #' Creates and updates a vignette in the 'vignette/' directory of a package with last modification time of tracked files
 #'
-#' @return Creates and updates the content of the "modification_files.Rmd" vignette
+#' @return No return value, called for side effect.
+#' Creates and updates the content of the "modification_files.Rmd" vignette
 #' @export
 #'
 #' @rdname create_vignette_last_modif
