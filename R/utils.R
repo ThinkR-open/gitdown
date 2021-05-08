@@ -104,13 +104,32 @@ to_singular <- function(x) {
 #' @importFrom stringi stri_extract_all
 #' @importFrom tidyr nest
 #'
-#' @return A tibble with a row for each different pattern found and
+#' @return A tibble with a row for each different pattern found in commit messages
+#' and following columns:
+#'
+#' - pattern.type: name of the pattern found in the commit message
+#' - pattern.content: pattern found in the commit message
+#' - pattern.title: pattern.content or title used in the pattern.table
 #' a nested 'data' column with all related commits
+#' - pattern_numeric: extraction of numeric value in pattern.content
+#' - link_pattern: internal url of the pattern in the future HTML gitbook
+#' - data: a nested list of tibbles with commits content as issued from [get_commits_pattern()]
 #'
 #' @export
 #' @examples
 #' repo <- fake_repo()
 #' nest_commits_by_pattern(repo)
+#'
+#' # With table of correspondence
+#' pattern.table <- data.frame(
+#'   number = c("#2", "#1", "#1000"),
+#'   title = c("#2 A second issue to illustrate a blog post",
+#'             "#1 An example of issue",
+#'             "#1000 issue with no commit"))
+#'  nest_commits_by_pattern(
+#'   repo,
+#'   pattern.table = pattern.table,
+#'   pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"))
 
 nest_commits_by_pattern <- function(repo,
                                     pattern = c("Issues" = "#[[:digit:]]+"),
@@ -175,7 +194,18 @@ nest_commits_by_pattern <- function(repo,
 #' @importFrom purrr map_chr pmap
 #' @export
 #' @return A tibble with a row for each different pattern found and
-#' a 'text' column to be included in a markdown file.
+#' a 'text' column to be included in a markdown file:
+#'
+#' - pattern.content: pattern found in the commit message
+#' - link_pattern: internal url of the pattern in the future HTML gitbook
+#' - text: list of vectors of markdown text to present commits of each pattern
+#' in the HTML gitbook output
+#' - pattern.type: name of the pattern found in the commit message
+#' - pattern.title: pattern.content or title used in the pattern.table
+#' a nested 'data' column with all related commits
+#' - pattern_numeric: extraction of numeric value in pattern.content
+#' - data: a nested list of tibbles with commits content as issued from [get_commits_pattern()]
+#'
 #' @examples
 #' repo <- fake_repo()
 #' res_commits <- nest_commits_by_pattern(

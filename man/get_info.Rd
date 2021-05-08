@@ -12,7 +12,16 @@ get_info(path, repo = ".")
 \item{repo}{repo of the git project}
 }
 \value{
-A list with information on first and last modification time of the selected file.
+A list with information of the selected file:
+\itemize{
+\item file: file name
+\item in_repository: Logical. Whether the file has already been commit once in the
+git repository
+\item first_modif: time of first modification. Commit time if in the git repository,
+system date of creation otherwise.
+\item last_modif: time of last modification. Commit time if in the git repository,
+system date of last modification otherwise.
+}
 }
 \description{
 Get the first and last modification time for a specific file, based on git2r::blame().

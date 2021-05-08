@@ -1,4 +1,4 @@
-#' Turns the history of git into a bookdown.
+#' Turns the active branch history of git into a bookdown.
 #'
 #' Read all commit messages of your local git repository and
 #' sort them according to tags or specific text pattern into chapters of
@@ -10,12 +10,12 @@
 #' @param open Should the bookdown be opened once compiled? Default is TRUE.
 #' @param author Author of the bookdown
 #' @param ref the name of the branch, by default master
-#' @param ... Other parameters to pass to \code{\link[rmarkdown]{render}}
+#' @param ... Other parameters to pass to [rmarkdown::render()]
 #'
 #' @inheritParams get_commits_pattern
 #' @export
 #'
-#' @return A directory with content of a HTML gitbook
+#' @return Path of the HTML gitbook saved in the repo/book_path directory.
 #'
 #' @importFrom attempt if_not
 #' @importFrom rmarkdown render

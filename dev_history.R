@@ -25,6 +25,8 @@ usethis::use_readme_rmd()
 usethis::use_vignette("ab-create-git_down")
 usethis::use_data_raw()
 usethis::use_news_md()
+usethis::use_roxygen_md()
+usethis::use_package_doc()
 
 # Dependencies ----
 # Clean importFrom

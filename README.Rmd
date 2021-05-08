@@ -40,7 +40,13 @@ You can install the last version of {gitdown} from Github:
 remotes::install_github("ThinkR-open/gitdown")
 ```
 
-## Example
+## Create a reproducible example of a versioned directory
+
+Create a versioned directory with some commits and a NEWS.md in a temporary directory
+
+- Some commits mention an issue with `#`
+- Some commits mention a ticket with `ticket`
+- A commit is associated with a tag
 
 ```{r example, message=FALSE}
 library(dplyr)
@@ -48,6 +54,46 @@ library(gitdown)
 ## Create fake repository for the example
 repo <- fake_repo()
 ```
+
+## Create a gitbook of commits sorted by a pattern
+
+The main function of {gitdown} is to build this gitbook with all commit messages ordered according to a pattern. Each commit message associated with an issue will be recorded in the section of this issue. A commit message can thus appears multiple times if it is associated with multiple issues.  
+If you have your own referencing system for tickets in an external software, you can also create the gitbook associated like using `ticket` as in the example below.
+
+```{r, eval=FALSE}
+git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+",
+                           "Issues" = "#[[:digit:]]+"))
+```
+
+```{r, echo=FALSE, out.width="90%", fig.align="center"}
+knitr::include_graphics("reference/figures/gitdown_links.png")
+```
+
+If you add a table of correspondence, you can change titles of the patterns.  
+_Note that you can use [{gitlabr}](https://statnmap.github.io/gitlabr/) or [{gh}](https://gh.r-lib.org) to retrieve list of issues from Gitlab or Github respectively, as presented in ["Download Gitlab or Github issues and make a summary report of your commits"](https://rtask.thinkr.fr/download-gitlab-or-github-issues-and-make-a-summary-report-of-your-commits/)._  
+
+```{r, eval=FALSE}
+# With table of correspondence
+pattern.table <- data.frame(
+  number = c("#2", "#1", "#1000"),
+  title = c("#2 A second issue to illustrate a blog post",
+            "#1 An example of issue",
+            "#1000 issue with no commit"))
+git_down(
+  pattern = c("Issue" = "#[[:digit:]]+"),
+  pattern.table = pattern.table
+)
+```
+_Note that characters like `[`, `]`, `_` or `*` will be replaced by `-` in the titles to avoid conflicts with markdown syntax._
+
+
+```{r, echo=FALSE, out.width="90%", fig.align="center"}
+knitr::include_graphics("reference/figures/issues-with-title.png")
+```
+
+## Read list of commits and extract information
+
+As a side effect of {gitdown}, you can get some intermediate information used to build the book with some exported functions.
 
 Get commits with issues mentioned. The searched pattern is a `#` followed by at least one number: `"#[[:digit:]]+"`. Variable `pattern.content` lists patterns found in the commit messages. 
 
@@ -67,37 +113,6 @@ get_commits_pattern(
   select(pattern.type, pattern.content, everything())
 ```
 
-## Create a gitbook of commits sorted by a pattern
-
-```{r, eval=FALSE}
-git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+",
-                           "Issues" = "#[[:digit:]]+"))
-```
-
-```{r, echo=FALSE, out.width="90%", fig.align="center"}
-knitr::include_graphics("reference/figures/gitdown_links.png")
-```
-
-If you add a table of correspondence, you can change titles of the patterns.  
-_Note that you can use [{gitlabr}](https://statnmap.github.io/gitlabr/) or [{gh}](https://gh.r-lib.org) to retrieve list of issues from Gitlab or Github respectively._  
-```{r, eval=FALSE}
-# With table of correspondence
-pattern.table <- data.frame(
-  number = c("#2", "#1", "#1000"),
-  title = c("#2 A second issue to illustrate a blog post",
-            "#1 An example of issue",
-            "#1000 issue with no commit"))
-git_down(
-  pattern = c("Issue" = "#[[:digit:]]+"),
-  pattern.table = pattern.table
-)
-```
-_Note that characters like `[`, `]`, `_` or `*` will be replaced by `-` in the titles to avoid conflicts with markdown syntax._
-
-
-```{r, echo=FALSE, out.width="90%", fig.align="center"}
-knitr::include_graphics("reference/figures/issues-with-title.png")
-```
 
 ## Create a vignette that lists all files with date of modification
 

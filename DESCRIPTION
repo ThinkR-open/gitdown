@@ -22,7 +22,8 @@ Description: Read all commit messages of your local git repository and
     organisms required to testify for every changes in their source code,
     in relation to features requests.
 License: MIT + file LICENSE
-URL: https://github.com/Thinkr-open/gitdown
+URL: https://thinkr-open.github.io/gitdown,
+    https://github.com/Thinkr-open/gitdown
 BugReports: https://github.com/Thinkr-open/gitdown/issues
 Depends: 
     R (>= 3.4)
@@ -45,4 +46,5 @@ Suggests:
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1

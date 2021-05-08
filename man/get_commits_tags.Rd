@@ -22,7 +22,18 @@ returned; that is, the output of \code{git log} with
 \item{silent}{Logical. Whether to hide messages.}
 }
 \value{
-A tibble with commits content, information and associated tags
+A tibble with one line for each commit and the following columns:
+\itemize{
+\item sha: sha of the commit
+\item summary: First line of the commit message
+\item message: Full content of the commit message
+\item author: author of the commit
+\item email: email of the author
+\item when: commit time
+\item order: order of commit messages. 1 is the oldest.
+\item tag.name: name of tag associated with all commits since the last tag
+\item tag.message: message of the tagged commit
+}
 }
 \description{
 Get commits associated chronologically with tags
