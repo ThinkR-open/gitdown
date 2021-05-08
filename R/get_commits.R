@@ -150,6 +150,7 @@ get_commits_pattern <- function(repo = ".", pattern = c("Ticket" = "#[[:digit:]]
 #' @inheritParams stringi::stri_extract_all
 #'
 #' @importFrom stringi stri_extract_all
+#' @noRd
 
 my_extract <- function(message, pattern) {
   # res <- unlist(str_extract_all(message, pattern, simplify = FALSE))

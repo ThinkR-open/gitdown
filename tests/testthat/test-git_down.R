@@ -170,6 +170,7 @@ if (debug) {
   dir.create("debug")
   file.copy(all_res_files, "debug", recursive = TRUE)
   unlink(all_res_files, recursive = TRUE)
+  utils::zip(zipfile = "debug.zip", files = "debug")
 }
 
 # clean dir

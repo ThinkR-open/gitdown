@@ -3,7 +3,7 @@
 #' @param file Path of file
 #' @param pattern Pattern to replace
 #' @param replacement A character vector of replacements
-#'
+#' @noRd
 replace_in_file <- function(file, pattern, replacement) {
   a <- readLines(file)
   a <- gsub(pattern, replacement, a)
@@ -16,7 +16,7 @@ replace_in_file <- function(file, pattern, replacement) {
 #' @param dir Name of the dir where to write file
 #' @param rmd name and type of the file to write in
 #' @param repo Path to directory where to store "dir"
-#'
+#' @noRd
 write_in <- function(x, repo, dir =  "gitdown", rmd = "index.Rmd") {
   dir_out <- normalizePath(file.path(repo, dir))
   if (!dir.exists(dir_out)) {dir.create(dir_out)}
@@ -27,6 +27,7 @@ write_in <- function(x, repo, dir =  "gitdown", rmd = "index.Rmd") {
 #' Presentation of commit
 #'
 #' @param commit one line data from get_commits_pattern
+#' @noRd
 
 presentation_commit <- function(commit) {
   res <- paste0(
@@ -65,6 +66,7 @@ presentation_commit <- function(commit) {
 #'
 #' @importFrom purrr map_chr
 #'
+#' @noRd
 
 each_commit <- function(commits, pattern.content, link_pattern, pattern.type, pattern.title) {
   # if no commits
@@ -89,6 +91,7 @@ each_commit <- function(commits, pattern.content, link_pattern, pattern.type, pa
 
 #' To singular
 #' @param x Character
+#' @noRd
 to_singular <- function(x) {
   gsub("s$", "", x)
 }
@@ -233,6 +236,7 @@ each_pattern <- function(nest_commits, pattern.type) {
 
 #' Clean link
 #' @param x Character to clean to transform as slug
+#' @noRd
 
 clean_link <- function(x) {
   x %>%
@@ -250,6 +254,7 @@ clean_link <- function(x) {
 #'
 #' Removes stars, underscores, \{\} and []
 #' @param x Character to clean to transform as slug
+#' @noRd
 
 clean_text <- function(x) {
   x %>%

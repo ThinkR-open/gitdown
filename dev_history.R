@@ -65,6 +65,7 @@ usethis::use_github_action("test-coverage")
 
 
 # CRAN
+usethis::use_release_issue(version = "0.1.1")
 rcmdcheck::rcmdcheck(args = "--as-cran")
 spelling::spell_check_package()
 rhub::check_for_cran()
