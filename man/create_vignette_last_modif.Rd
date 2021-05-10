@@ -39,9 +39,13 @@ Creates and updates a vignette in the 'vignette/' directory of a package with la
 
 # Creates vignette
 repo <- fake_repo(as.package = TRUE)
-create_vignette_last_modif(repo, path = "R")
+if (rmarkdown::pandoc_available("1.12.3")) {
+  create_vignette_last_modif(repo, path = "R")
+}
 # update vignette
 repo <- fake_repo(as.package = TRUE)
-update_vignette_last_modif(repo, path = "R")
-rmarkdown::render(file.path(repo, "vignettes", "modification_files.Rmd"))
+if (rmarkdown::pandoc_available("1.12.3")) {
+  update_vignette_last_modif(repo, path = "R")
+  rmarkdown::render(file.path(repo, "vignettes", "modification_files.Rmd"))
+}
 }

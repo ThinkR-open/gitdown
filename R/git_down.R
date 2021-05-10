@@ -26,8 +26,10 @@
 #'
 #' @examples
 #' repo <- fake_repo()
-#' res <- git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"),
-#' open = FALSE)
+#' if (rmarkdown::pandoc_available("1.12.3")) {
+#'   res <- git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"),
+#'     open = FALSE)
+#' }
 #' \dontrun{
 #' # Open the book
 #'   browseURL(res)
@@ -36,8 +38,10 @@
 #' pattern.table <- data.frame(number = c("#2", "#1"),
 #'   title = c("#2 A second issue to illustrate a blog post",
 #'                        "#1 An example of issue"))
-#' res <- git_down(repo, pattern = c("Issues" = "#[[:digit:]]+"),
-#'   pattern.table = pattern.table, open = FALSE)
+#' if (rmarkdown::pandoc_available("1.12.3")) {
+#'   res <- git_down(repo, pattern = c("Issues" = "#[[:digit:]]+"),
+#'     pattern.table = pattern.table, open = FALSE)
+#' }
 #' \dontrun{
 #' # Open the book
 #'   browseURL(res)

@@ -71,7 +71,6 @@ devtools::build_readme()
 urlchecker::url_check()
 urlchecker::url_update()
 
-# usethis::use_release_issue(version = "0.1.1")
 usethis::use_version('patch')
 
 rcmdcheck::rcmdcheck(args = "--as-cran")
@@ -80,6 +79,7 @@ rhub::validate_email()
 rhub::check_for_cran()
 rhub::check_on_windows(check_args = "--force-multiarch")
 rhub::check_on_fedora()
+rhub::check_on_solaris()
 devtools::check_win_devel()
 devtools::check_win_release()
 

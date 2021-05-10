@@ -51,26 +51,27 @@ test_that("present_files error", {
 })
 
 # create_vignette_last_modif ----
-create_vignette_last_modif(repo_pkg)
-# browseURL(repo_pkg)
+if (rmarkdown::pandoc_available("1.12.3")) {
+  create_vignette_last_modif(repo_pkg)
+  # browseURL(repo_pkg)
 
-test_that("create_vignette_last_modif works", {
-  expect_true(file.exists(file.path(repo_pkg, "vignettes", "modification_files.Rmd")))
-})
-# Clean repo
-file.remove(file.path(repo_pkg, "vignettes", "modification_files.Rmd"))
+  test_that("create_vignette_last_modif works", {
+    expect_true(file.exists(file.path(repo_pkg, "vignettes", "modification_files.Rmd")))
+  })
+  # Clean repo
+  file.remove(file.path(repo_pkg, "vignettes", "modification_files.Rmd"))
 
-# All files
-create_vignette_last_modif(repo_pkg, path = "")
+  # All files
+  create_vignette_last_modif(repo_pkg, path = "")
 
-test_that("create_vignette_last_modif works", {
-  expect_true(file.exists(file.path(repo_pkg, "vignettes", "modification_files.Rmd")))
-})
-# Clean repo
-file.remove(file.path(repo_pkg, "vignettes", "modification_files.Rmd"))
+  test_that("create_vignette_last_modif works", {
+    expect_true(file.exists(file.path(repo_pkg, "vignettes", "modification_files.Rmd")))
+  })
+  # Clean repo
+  file.remove(file.path(repo_pkg, "vignettes", "modification_files.Rmd"))
 
-# No vignettes/
-test_that("create_vignette_last_modif error", {
-  expect_error(create_vignette_last_modif(repo_no_pkg))
-})
-
+  # No vignettes/
+  test_that("create_vignette_last_modif error", {
+    expect_error(create_vignette_last_modif(repo_no_pkg))
+  })
+}
