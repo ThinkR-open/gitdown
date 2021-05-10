@@ -24,8 +24,8 @@ file.copy(list.files("reference/figures", full.names = TRUE),
 # gitdown <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 <!-- badges: start -->
-[![Coverage status](https://codecov.io/gh/ThinkR-open/gitdown/branch/master/graph/badge.svg)](https://codecov.io/github/ThinkR-open/gitdown?branch=master)
 [![R-CMD-check](https://github.com/ThinkR-open/gitdown/workflows/R-CMD-check/badge.svg)](https://github.com/ThinkR-open/gitdown/actions)
+[![Coverage status](https://codecov.io/gh/ThinkR-open/gitdown/branch/master/graph/badge.svg)](https://codecov.io/github/ThinkR-open/gitdown?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/gitdown)](https://CRAN.R-project.org/package=gitdown)
 <!-- badges: end -->
 
@@ -34,6 +34,13 @@ The goal of {gitdown} is to build a bookdown report of commit messages arranged 
 Full documentation on {pkgdown} site : https://thinkr-open.github.io/gitdown/index.html  
 
 ## Installation
+
+You can install the stable version of {gitdown} from CRAN:
+
+```r
+install.packages("gitdown")
+```
+
 
 You can install the last version of {gitdown} from GitHub:
 
