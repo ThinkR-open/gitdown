@@ -26,6 +26,7 @@ file.copy(list.files("reference/figures", full.names = TRUE),
 <!-- badges: start -->
 [![Coverage status](https://codecov.io/gh/ThinkR-open/gitdown/branch/master/graph/badge.svg)](https://codecov.io/github/ThinkR-open/gitdown?branch=master)
 [![R-CMD-check](https://github.com/ThinkR-open/gitdown/workflows/R-CMD-check/badge.svg)](https://github.com/ThinkR-open/gitdown/actions)
+[![CRAN status](https://www.r-pkg.org/badges/version/gitdown)](https://CRAN.R-project.org/package=gitdown)
 <!-- badges: end -->
 
 The goal of {gitdown} is to build a bookdown report of commit messages arranged according to a pattern. Book can be organized according to git tags, issues mentioned (*e.g.* `#123`) or any custom character chain included in your git commit messages (*e.g.* `category_` for use like `category_ui`, `category_doc`, ...).
