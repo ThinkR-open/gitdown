@@ -182,13 +182,13 @@ If you have your own referencing system for tickets in an external software, you
 <span class="co">#&gt; # A tibble: 7 x 12</span>
 <span class="co">#&gt;   pattern.content sha    summary message  author email when                order</span>
 <span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt;</span>
-<span class="co">#&gt; 1 #32             e66cf… Add NE… "Add NE… Alice  alic… 2021-05-08 18:00:01     4</span>
-<span class="co">#&gt; 2 #1              e66cf… Add NE… "Add NE… Alice  alic… 2021-05-08 18:00:01     4</span>
-<span class="co">#&gt; 3 #12             e66cf… Add NE… "Add NE… Alice  alic… 2021-05-08 18:00:01     4</span>
-<span class="co">#&gt; 4 #2              cebbb… Third … "Third … Alice  alic… 2021-05-08 18:00:01     3</span>
-<span class="co">#&gt; 5 #145            cebbb… Third … "Third … Alice  alic… 2021-05-08 18:00:01     3</span>
-<span class="co">#&gt; 6 #1              934b8… exampl… "exampl… Alice  alic… 2021-05-08 18:00:01     2</span>
-<span class="co">#&gt; 7 &lt;NA&gt;            1ba16… First … "First … Alice  alic… 2021-05-08 18:00:01     1</span>
+<span class="co">#&gt; 1 #32             1174c… Add NE… "Add NE… Alice  alic… 2021-05-10 13:56:40     4</span>
+<span class="co">#&gt; 2 #1              1174c… Add NE… "Add NE… Alice  alic… 2021-05-10 13:56:40     4</span>
+<span class="co">#&gt; 3 #12             1174c… Add NE… "Add NE… Alice  alic… 2021-05-10 13:56:40     4</span>
+<span class="co">#&gt; 4 #2              d4af8… Third … "Third … Alice  alic… 2021-05-10 13:56:40     3</span>
+<span class="co">#&gt; 5 #145            d4af8… Third … "Third … Alice  alic… 2021-05-10 13:56:40     3</span>
+<span class="co">#&gt; 6 #1              ebad8… exampl… "exampl… Alice  alic… 2021-05-10 13:56:40     2</span>
+<span class="co">#&gt; 7 &lt;NA&gt;            11c2e… First … "First … Alice  alic… 2021-05-10 13:56:40     1</span>
 <span class="co">#&gt; # … with 4 more variables: tag.name &lt;chr&gt;, tag.message &lt;chr&gt;,</span>
 <span class="co">#&gt; #   pattern.type &lt;chr&gt;, pattern.title &lt;chr&gt;</span></code></pre></div>
 <p>Get commits with issues and specific home-made pattern. Use a named vector to properly separate types of patterns.</p>
@@ -203,18 +203,18 @@ If you have your own referencing system for tickets in an external software, you
 <span class="co">#&gt; # A tibble: 12 x 12</span>
 <span class="co">#&gt;    pattern.type pattern.content sha       summary   message        author email </span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;  &lt;chr&gt; </span>
-<span class="co">#&gt;  1 Tickets      ticket6789      e66cf6b1… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
-<span class="co">#&gt;  2 Tickets      ticket1234      e66cf6b1… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
-<span class="co">#&gt;  3 Issues       #32             e66cf6b1… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
-<span class="co">#&gt;  4 Issues       #1              e66cf6b1… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
-<span class="co">#&gt;  5 Issues       #12             e66cf6b1… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
-<span class="co">#&gt;  6 Tickets      &lt;NA&gt;            cebbb5e9… Third co… "Third commit… Alice  alice…</span>
-<span class="co">#&gt;  7 Issues       #2              cebbb5e9… Third co… "Third commit… Alice  alice…</span>
-<span class="co">#&gt;  8 Issues       #145            cebbb5e9… Third co… "Third commit… Alice  alice…</span>
-<span class="co">#&gt;  9 Tickets      ticket1234      934b8178… example:… "example: mod… Alice  alice…</span>
-<span class="co">#&gt; 10 Issues       #1              934b8178… example:… "example: mod… Alice  alice…</span>
-<span class="co">#&gt; 11 Tickets      &lt;NA&gt;            1ba16a26… First co… "First commit… Alice  alice…</span>
-<span class="co">#&gt; 12 Issues       &lt;NA&gt;            1ba16a26… First co… "First commit… Alice  alice…</span>
+<span class="co">#&gt;  1 Tickets      ticket6789      1174cbe3… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
+<span class="co">#&gt;  2 Tickets      ticket1234      1174cbe3… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
+<span class="co">#&gt;  3 Issues       #32             1174cbe3… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
+<span class="co">#&gt;  4 Issues       #1              1174cbe3… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
+<span class="co">#&gt;  5 Issues       #12             1174cbe3… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
+<span class="co">#&gt;  6 Tickets      &lt;NA&gt;            d4af8c93… Third co… "Third commit… Alice  alice…</span>
+<span class="co">#&gt;  7 Issues       #2              d4af8c93… Third co… "Third commit… Alice  alice…</span>
+<span class="co">#&gt;  8 Issues       #145            d4af8c93… Third co… "Third commit… Alice  alice…</span>
+<span class="co">#&gt;  9 Tickets      ticket1234      ebad8089… example:… "example: mod… Alice  alice…</span>
+<span class="co">#&gt; 10 Issues       #1              ebad8089… example:… "example: mod… Alice  alice…</span>
+<span class="co">#&gt; 11 Tickets      &lt;NA&gt;            11c2e4a6… First co… "First commit… Alice  alice…</span>
+<span class="co">#&gt; 12 Issues       &lt;NA&gt;            11c2e4a6… First co… "First commit… Alice  alice…</span>
 <span class="co">#&gt; # … with 5 more variables: when &lt;dttm&gt;, order &lt;int&gt;, tag.name &lt;chr&gt;,</span>
 <span class="co">#&gt; #   tag.message &lt;chr&gt;, pattern.title &lt;chr&gt;</span></code></pre></div>
 </div>
@@ -239,20 +239,20 @@ If you have your own referencing system for tickets in an external software, you
 <tr class="odd">
 <td align="left">NEWS.md</td>
 <td align="left">Yes</td>
-<td align="left">2021-05-08 20:00:01</td>
-<td align="left">2021-05-08 20:00:01</td>
+<td align="left">2021-05-10 15:56:41</td>
+<td align="left">2021-05-10 15:56:41</td>
 </tr>
 <tr class="even">
 <td align="left">example.txt</td>
 <td align="left">Yes</td>
-<td align="left">2021-05-08 20:00:01</td>
-<td align="left">2021-05-08 20:00:01</td>
+<td align="left">2021-05-10 15:56:41</td>
+<td align="left">2021-05-10 15:56:41</td>
 </tr>
 <tr class="odd">
 <td align="left">R/my_mean.R</td>
 <td align="left">No</td>
 <td align="left">NA</td>
-<td align="left">2021-05-08 20:00:01</td>
+<td align="left">2021-05-10 15:56:41</td>
 </tr>
 </tbody>
 </table>
@@ -275,6 +275,8 @@ If you have your own referencing system for tickets in an external software, you
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=gitdown">https://​cloud.r-project.org/​package=gitdown</a>
+</li>
 <li>Browse source code at <br><a href="https://github.com/Thinkr-open/gitdown/">https://​github.com/​Thinkr-open/​gitdown/​</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/Thinkr-open/gitdown/issues">https://​github.com/​Thinkr-open/​gitdown/​issues</a>
@@ -308,6 +310,7 @@ If you have your own referencing system for tickets in an external software, you
 <ul class="list-unstyled">
 <li><a href="https://codecov.io/github/ThinkR-open/gitdown?branch=master"><img src="https://codecov.io/gh/ThinkR-open/gitdown/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
 <li><a href="https://github.com/ThinkR-open/gitdown/actions"><img src="https://github.com/ThinkR-open/gitdown/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://CRAN.R-project.org/package=gitdown"><img src="https://www.r-pkg.org/badges/version/gitdown" alt="CRAN status"></a></li>
 </ul>
 </div>
 </div>
