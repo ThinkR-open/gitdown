@@ -1,6 +1,6 @@
 Package: gitdown
 Title: Turn Your Git Commit Messages into a HTML Book
-Version: 0.1.2
+Version: 0.1.2.9000
 Authors@R: 
     c(person(given = "Sébastien",
              family = "Rochette",
