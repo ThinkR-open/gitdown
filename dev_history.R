@@ -80,6 +80,8 @@ rhub::check_for_cran()
 rhub::check_on_windows(check_args = "--force-multiarch")
 rhub::check_on_fedora()
 rhub::check_on_solaris()
+rhub::check_on_windows()
+
 devtools::check_win_devel()
 devtools::check_win_release()
 

@@ -5,18 +5,18 @@ repo_no_pkg <- fake_repo()
 files <- list.files(repo_pkg, recursive = TRUE)
 infos <- get_info(files[grep("example", files)], repo = repo_pkg)
 infos_not_in_repo <- get_info(files[grep("my_mean", files)], repo = repo_pkg)
-today <- Sys.Date()
+today <- as.character(Sys.Date())
 
 test_that("get_info works", {
   expect_true(infos$in_repository)
   expect_equal(infos$file, "example.txt")
-  expect_equal(as.Date(infos$first_modif), setNames(today, "first"))
-  expect_equal(as.Date(infos$last_modif), setNames(today, "last"))
+  expect_equal(as.character(as.Date(infos$first_modif)), setNames(today, "first"))
+  expect_equal(as.character(as.Date(infos$last_modif)), setNames(today, "last"))
 
   expect_false(infos_not_in_repo$in_repository)
   expect_equal(infos_not_in_repo$file, "R/my_mean.R")
   expect_true(is.na(infos_not_in_repo$first_modif))
-  expect_equal(as.Date(infos_not_in_repo$last_modif), setNames(today, "last"))
+  expect_equal(as.character(as.Date(infos_not_in_repo$last_modif)), setNames(today, "last"))
 })
 
 # get_last_modif ----
