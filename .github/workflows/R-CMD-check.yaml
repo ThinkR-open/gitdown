@@ -75,11 +75,13 @@ jobs:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
         run: |
           options(crayon.enabled = TRUE)
+          print(R.version)
           args <- if (.Platform$OS.type == "windows" & R.version$status == "devel") {
             c("--no-manual", "--as-cran", "--no-multiarch")
           } else {
             c("--no-manual", "--as-cran")
           }
+          print(args)
           rcmdcheck::rcmdcheck(args = args, error_on = "warning", check_dir = "check")
         shell: Rscript {0}
 
