@@ -1,5 +1,9 @@
 # gitdown (development version)
 
+# gitdown 0.1.3
+
+* Protect tests from bad time rounding
+
 # gitdown 0.1.2
 
 * Protect from older Pandoc versions
