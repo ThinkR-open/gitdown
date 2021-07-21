@@ -67,15 +67,23 @@ usethis::use_github_action("test-coverage")
 
 
 # CRAN
-devtools::build_readme()
+# Check content
+# remotes::install_github("ThinkR-open/checkhelper")
+checkhelper::find_missing_tags()
+
+# Check spelling
+# usethis::use_spell_check()
+spelling::spell_check_package()
+
+# Check URL are correct
+# remotes::install_github("r-lib/urlchecker")
 urlchecker::url_check()
 urlchecker::url_update()
 
-usethis::use_version('patch')
-
+# check on other distributions
 rcmdcheck::rcmdcheck(args = "--as-cran")
-spelling::spell_check_package()
-rhub::validate_email()
+
+# rhub::validate_email()
 rhub::check_for_cran()
 rhub::check_on_windows(check_args = "--force-multiarch")
 rhub::check_on_fedora()
@@ -85,9 +93,19 @@ rhub::check_on_windows()
 devtools::check_win_devel()
 devtools::check_win_release()
 
+# Update NEWS
+# Bump version manually and add list of changes
+
+# Upgrade version number
+usethis::use_version(which = c("patch", "minor", "major", "dev")[1])
+
 usethis::use_cran_badge()
 usethis::use_cran_comments()
 usethis::use_git_ignore("cran-comments.md")
 usethis::use_git_ignore("CRAN-RELEASE")
 
 devtools::release()
+
+# After release
+usethis::use_dev_version()
+
