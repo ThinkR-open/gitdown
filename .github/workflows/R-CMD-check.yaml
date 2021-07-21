@@ -76,7 +76,7 @@ jobs:
         run: |
           options(crayon.enabled = TRUE)
           print(R.version)
-          args <- if (.Platform$OS.type == "windows" & R.version$status == "devel") {
+          args <- if (.Platform$OS.type == "windows" & grepl("unstable", R.version$status)) {
             c("--no-manual", "--as-cran", "--no-multiarch")
           } else {
             c("--no-manual", "--as-cran")
