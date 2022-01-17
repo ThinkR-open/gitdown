@@ -84,14 +84,15 @@ urlchecker::url_update()
 rcmdcheck::rcmdcheck(args = "--as-cran")
 
 # rhub::validate_email()
-rhub::check_for_cran()
+rhub::check_for_cran(show_status = FALSE)
 rhub::check_on_windows(check_args = "--force-multiarch")
 rhub::check_on_fedora()
-rhub::check_on_solaris()
+rhub::check_on_solaris(show_status = FALSE)
 rhub::check_on_windows()
 
 devtools::check_win_devel()
 devtools::check_win_release()
+devtools::check_mac_release()
 
 # Update NEWS
 # Bump version manually and add list of changes
@@ -103,6 +104,7 @@ usethis::use_cran_badge()
 usethis::use_cran_comments()
 usethis::use_git_ignore("cran-comments.md")
 usethis::use_git_ignore("CRAN-RELEASE")
+usethis::use_git_ignore("CRAN-SUBMISSION")
 
 devtools::release()
 
