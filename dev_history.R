@@ -7,6 +7,7 @@ usethis::use_git_ignore("gitdown")
 
 usethis::use_git(message = "init commitdown")
 usethis::use_mit_license("ThinkR")
+usethis::use_testthat(edition = 3)
 
 # Functions ----
 usethis::use_pipe()
@@ -81,7 +82,11 @@ urlchecker::url_check()
 urlchecker::url_update()
 
 # check on other distributions
+Sys.time()
 rcmdcheck::rcmdcheck(args = "--as-cran")
+Sys.time()
+devtools::test()
+Sys.time()
 
 # rhub::validate_email()
 rhub::check_for_cran(show_status = FALSE)
@@ -89,6 +94,7 @@ rhub::check_on_windows(check_args = "--force-multiarch")
 rhub::check_on_fedora()
 rhub::check_on_solaris(show_status = FALSE)
 rhub::check_on_windows()
+rhub::check_on_debian(show_status = FALSE)
 
 devtools::check_win_devel()
 devtools::check_win_release()

@@ -1,4 +1,6 @@
-# gitdown (development version)
+# gitdown 0.1.5
+
+* Change unit tests
 
 # gitdown 0.1.4
 

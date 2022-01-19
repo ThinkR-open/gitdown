@@ -5,6 +5,9 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '59 23,11 * * 3'
 
 name: test-coverage
 
