@@ -19,7 +19,7 @@
 
 fake_repo <- function(path = tempfile(pattern = "git2r-"), as.package = FALSE) {
   if (!dir.exists(path)) {dir.create(path)}
-  repo <- init(path)
+  repo <- init(path, branch = "master")
 
   ## Config user
   config(repo, user.name = "Alice", user.email = "alice@example.org")
