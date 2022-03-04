@@ -4,7 +4,7 @@
 \alias{get_commits_tags}
 \title{Get commits associated chronologically with tags}
 \usage{
-get_commits_tags(repo = ".", ref = "master", path = NULL, silent = FALSE)
+get_commits_tags(repo = ".", ref = "main", path = NULL, silent = FALSE)
 }
 \arguments{
 \item{repo}{a path to a repository or a \code{git_repository}

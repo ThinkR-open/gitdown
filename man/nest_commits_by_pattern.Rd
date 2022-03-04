@@ -8,7 +8,7 @@ nest_commits_by_pattern(
   repo,
   pattern = c(Issues = "#[[:digit:]]+"),
   pattern.table = NULL,
-  ref = "master",
+  ref = "main",
   silent = TRUE
 )
 }

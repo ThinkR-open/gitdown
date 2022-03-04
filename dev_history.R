@@ -67,7 +67,7 @@ usethis::use_github_action("pkgdown")
 usethis::use_github_action("test-coverage")
 
 
-# CRAN
+# CRAN ----
 # Check content
 # remotes::install_github("ThinkR-open/checkhelper")
 checkhelper::find_missing_tags()

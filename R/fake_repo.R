@@ -93,5 +93,7 @@ fake_repo <- function(path = tempfile(pattern = "git2r-"), as.package = FALSE) {
     dir.create(file.path(path, "vignettes"))
   }
 
+  git2r::checkout(repo, branch = "main", create = TRUE)
+
   return(path)
 }

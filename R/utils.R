@@ -134,7 +134,7 @@ to_singular <- function(x) {
 nest_commits_by_pattern <- function(repo,
                                     pattern = c("Issues" = "#[[:digit:]]+"),
                                     pattern.table = NULL,
-                                    ref = "master", silent = TRUE) {
+                                    ref = "main", silent = TRUE) {
 
   res <- get_commits_pattern(repo, pattern = pattern,
                              pattern.table = pattern.table,
@@ -211,7 +211,7 @@ nest_commits_by_pattern <- function(repo,
 #' res_commits <- nest_commits_by_pattern(
 #'   repo,
 #'   pattern = c("Tickets" = "ticket[[:digit:]]+"),
-#'   ref = "master", silent = TRUE
+#'   ref = "main", silent = TRUE
 #' )
 #' each_pattern(res_commits, "Tickets")
 

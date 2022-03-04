@@ -11,7 +11,7 @@ git_down(
   author = "John Doe",
   pattern = c(Issues = "#[[:digit:]]+"),
   pattern.table = NULL,
-  ref = "master",
+  ref = "main",
   ...
 )
 }
@@ -29,7 +29,7 @@ git_down(
 \item{pattern.table}{data.frame with two columns: pattern and description of the pattern.
 This is used as correspondence table to add some names to existing patterns.}
 
-\item{ref}{the name of the branch, by default master}
+\item{ref}{the name of the branch, by default main}
 
 \item{...}{Other parameters to pass to \code{\link[rmarkdown:render]{rmarkdown::render()}}}
 }
