@@ -25,9 +25,9 @@
 #' @examples
 #' repo <- fake_repo()
 #' get_commits_tags(repo = repo)
-get_commits_tags <- function(repo = ".", ref = "master",
+get_commits_tags <- function(repo = ".", ref = "main",
                              path = NULL, silent = FALSE) {
-  # checkout(repo, "master")
+  # checkout(repo, "main")
   # Get commits
   all_commits <- commits(
     repo = repo, ref = ref,
@@ -108,7 +108,7 @@ get_commits_tags <- function(repo = ".", ref = "master",
 
 get_commits_pattern <- function(repo = ".", pattern = c("Ticket" = "#[[:digit:]]+"),
                                 pattern.table = NULL,
-                                ref = "master", path = NULL, silent = FALSE) {
+                                ref = "main", path = NULL, silent = FALSE) {
 
   if (is.null(names(pattern))) {names(pattern) <- paste0("`", pattern, "`")}
 

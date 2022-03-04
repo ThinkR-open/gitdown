@@ -34,7 +34,7 @@ repo <- fake_repo()
 res_commits <- nest_commits_by_pattern(
   repo,
   pattern = c("Tickets" = "ticket[[:digit:]]+"),
-  ref = "master", silent = TRUE
+  ref = "main", silent = TRUE
 )
 each_pattern(res_commits, "Tickets")
 }

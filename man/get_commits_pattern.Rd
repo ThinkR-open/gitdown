@@ -8,7 +8,7 @@ get_commits_pattern(
   repo = ".",
   pattern = c(Ticket = "#[[:digit:]]+"),
   pattern.table = NULL,
-  ref = "master",
+  ref = "main",
   path = NULL,
   silent = FALSE
 )

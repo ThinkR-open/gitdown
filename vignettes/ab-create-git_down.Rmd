@@ -59,14 +59,14 @@ As a side effect of {gitdown}, you can get some intermediate information used to
 - Find all commits of a branch and associate with tags recursively
 
 ```{r}
-get_commits_tags(repo, ref = "master")
+get_commits_tags(repo, ref = "main")
 ```
 
 - Find all commits of a branch and detect a specific pattern
     + Here we find commits mentioning an issue with `#123`
     
 ```{r}
-get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master")
+get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "main")
 ```
 
 ## Create a vignette that lists all files with date of modification

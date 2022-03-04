@@ -19,7 +19,7 @@
 
 fake_repo <- function(path = tempfile(pattern = "git2r-"), as.package = FALSE) {
   if (!dir.exists(path)) {dir.create(path)}
-  repo <- init(path, branch = "master")
+  repo <- init(path)
 
   ## Config user
   config(repo, user.name = "Alice", user.email = "alice@example.org")
@@ -92,6 +92,8 @@ fake_repo <- function(path = tempfile(pattern = "git2r-"), as.package = FALSE) {
     # Create a vignette directory
     dir.create(file.path(path, "vignettes"))
   }
+
+  git2r::checkout(repo, branch = "main", create = TRUE)
 
   return(path)
 }

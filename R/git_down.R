@@ -9,7 +9,7 @@
 #' @param book_path The path to the bookdown output. Default is `"gitdown"`.
 #' @param open Should the bookdown be opened once compiled? Default is TRUE.
 #' @param author Author of the bookdown
-#' @param ref the name of the branch, by default master
+#' @param ref the name of the branch, by default main
 #' @param ... Other parameters to pass to [rmarkdown::render()]
 #'
 #' @inheritParams get_commits_pattern
@@ -51,7 +51,7 @@ git_down <- function(repo = ".", book_path = "gitdown",
                      open = TRUE, author = "John Doe",
                      pattern = c("Issues" = "#[[:digit:]]+"),
                      pattern.table = NULL,
-                     ref = "master", ...) {
+                     ref = "main", ...) {
 
   # Clean previous book
   unlink(file.path(repo, book_path), recursive = TRUE)

@@ -25,7 +25,7 @@ file.copy(list.files("reference/figures", full.names = TRUE),
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/ThinkR-open/gitdown/workflows/R-CMD-check/badge.svg)](https://github.com/ThinkR-open/gitdown/actions)
-[![Coverage status](https://codecov.io/gh/ThinkR-open/gitdown/branch/master/graph/badge.svg)](https://codecov.io/github/ThinkR-open/gitdown?branch=master)
+[![Coverage status](https://codecov.io/gh/ThinkR-open/gitdown/branch/main/graph/badge.svg)](https://codecov.io/github/ThinkR-open/gitdown?branch=main)
 [![CRAN status](https://www.r-pkg.org/badges/version/gitdown)](https://CRAN.R-project.org/package=gitdown)
 <!-- badges: end -->
 
@@ -106,7 +106,7 @@ As a side effect of {gitdown}, you can get some intermediate information used to
 Get commits with issues mentioned. The searched pattern is a `#` followed by at least one number: `"#[[:digit:]]+"`. Variable `pattern.content` lists patterns found in the commit messages. 
 
 ```{r}
-get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "master") %>% 
+get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "main") %>% 
   select(pattern.content, everything())
 ```
 
@@ -116,7 +116,7 @@ Get commits with issues and specific home-made pattern. Use a named vector to pr
 get_commits_pattern(
   repo, 
   pattern =  c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"),
-  ref = "master"
+  ref = "main"
 ) %>% 
   select(pattern.type, pattern.content, everything())
 ```
