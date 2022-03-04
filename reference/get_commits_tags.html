@@ -41,7 +41,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -81,7 +81,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_commits_tags</span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"."</span>, ref <span class="op">=</span> <span class="st">"master"</span>, path <span class="op">=</span> <span class="cn">NULL</span>, silent <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_commits_tags</span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"."</span>, ref <span class="op">=</span> <span class="st">"main"</span>, path <span class="op">=</span> <span class="cn">NULL</span>, silent <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -120,12 +120,12 @@ returned; that is, the output of <code>git log</code> with
 <span class="r-in"><span class="fu">get_commits_tags</span><span class="op">(</span>repo <span class="op">=</span> <span class="va">repo</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 4 commits found.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   sha      summary  message      author email when                order tag.name</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 23e4e6c… Add NEWS <span style="color: #949494;">"</span>Add NEWS\n… Alice  alic… 2022-01-21 <span style="color: #949494;">15:31:23</span>     4 <span style="color: #BB0000;">NA</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 3615008… Third c… <span style="color: #949494;">"</span>Third comm… Alice  alic… 2022-01-21 <span style="color: #949494;">15:31:23</span>     3 v0.1    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 68e235b… example… <span style="color: #949494;">"</span>example: m… Alice  alic… 2022-01-21 <span style="color: #949494;">15:31:23</span>     2 v0.1    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 72aee62… First c… <span style="color: #949494;">"</span>First comm… Alice  alic… 2022-01-21 <span style="color: #949494;">15:31:23</span>     1 v0.1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   sha            summary message author email when                order tag.name</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> f3a4a491b8065… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2022-03-04 <span style="color: #949494;">15:41:27</span>     4 <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 19b35de288ef3… Third … <span style="color: #949494;">"</span>Third… Alice  alic… 2022-03-04 <span style="color: #949494;">15:41:27</span>     3 v0.1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> ac43732b39826… exampl… <span style="color: #949494;">"</span>examp… Alice  alic… 2022-03-04 <span style="color: #949494;">15:41:27</span>     2 v0.1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 391786a64f801… First … <span style="color: #949494;">"</span>First… Alice  alic… 2022-03-04 <span style="color: #949494;">15:41:27</span>     1 v0.1    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: tag.message &lt;chr&gt;</span></span>
 </code></pre></div>
     </div>

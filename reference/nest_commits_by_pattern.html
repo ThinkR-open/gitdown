@@ -41,7 +41,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -85,7 +85,7 @@
   <span class="va">repo</span>,
   pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Issues <span class="op">=</span> <span class="st">"#[[:digit:]]+"</span><span class="op">)</span>,
   pattern.table <span class="op">=</span> <span class="cn">NULL</span>,
-  ref <span class="op">=</span> <span class="st">"master"</span>,
+  ref <span class="op">=</span> <span class="st">"main"</span>,
   silent <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span></code></pre></div>
     </div>
@@ -123,14 +123,15 @@ a nested 'data' column with all related commits</p></li>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">repo</span> <span class="op">&lt;-</span> <span class="fu"><a href="fake_repo.html">fake_repo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">nest_commits_by_pattern</span><span class="op">(</span><span class="va">repo</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   pattern.type pattern.content  pattern.title pattern_numeric link_pattern data </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lis&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Issues       #1               #1                          1 issues-1     <span style="color: #949494;">&lt;tib</span>…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Issues       #2               #2                          2 issues-2     <span style="color: #949494;">&lt;tib</span>…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Issues       #12              #12                        12 issues-12    <span style="color: #949494;">&lt;tib</span>…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Issues       #32              #32                        32 issues-32    <span style="color: #949494;">&lt;tib</span>…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Issues       #145             #145                      145 issues-145   <span style="color: #949494;">&lt;tib</span>…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Issues       No related issu… No related i…              <span style="color: #BB0000;">NA</span> issues-na    <span style="color: #949494;">&lt;tib</span>…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   pattern.type pattern.content   pattern.title     pattern_numeric link_pattern</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Issues       #1                #1                              1 issues-1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Issues       #2                #2                              2 issues-2    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Issues       #12               #12                            12 issues-12   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Issues       #32               #32                            32 issues-32   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Issues       #145              #145                          145 issues-145  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Issues       No related issues No related issues              <span style="color: #BB0000;">NA</span> issues-na   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: data &lt;list&gt;</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># With table of correspondence</span></span>
 <span class="r-in"><span class="va">pattern.table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
@@ -143,18 +144,19 @@ a nested 'data' column with all related commits</p></li>
 <span class="r-in">  pattern.table <span class="op">=</span> <span class="va">pattern.table</span>,</span>
 <span class="r-in">  pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Tickets"</span> <span class="op">=</span> <span class="st">"ticket[[:digit:]]+"</span>, <span class="st">"Issues"</span> <span class="op">=</span> <span class="st">"#[[:digit:]]+"</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    pattern.type pattern.content pattern.title pattern_numeric link_pattern data </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lis&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Issues       #1              #1 An exampl…               1 issues-1     <span style="color: #949494;">&lt;tib</span>…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Issues       #2              #2 A second …               2 issues-2     <span style="color: #949494;">&lt;tib</span>…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Issues       #12             #12                        12 issues-12    <span style="color: #949494;">&lt;tib</span>…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Issues       #32             #32                        32 issues-32    <span style="color: #949494;">&lt;tib</span>…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Issues       #145            #145                      145 issues-145   <span style="color: #949494;">&lt;tib</span>…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Issues       #1000           #1000 issue …            <span style="text-decoration: underline;">1</span>000 issues-1000  <span style="color: #949494;">&lt;tib</span>…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Issues       No related iss… No related i…              <span style="color: #BB0000;">NA</span> issues-na    <span style="color: #949494;">&lt;tib</span>…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Tickets      ticket1234      ticket1234               <span style="text-decoration: underline;">1</span>234 tickets-tic… <span style="color: #949494;">&lt;tib</span>…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Tickets      ticket6789      ticket6789               <span style="text-decoration: underline;">6</span>789 tickets-tic… <span style="color: #949494;">&lt;tib</span>…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Tickets      No related tic… No related t…              <span style="color: #BB0000;">NA</span> tickets-na   <span style="color: #949494;">&lt;tib</span>…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    pattern.type pattern.content    pattern.title    pattern_numeric link_pattern</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Issues       #1                 #1 An example o…               1 issues-1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Issues       #2                 #2 A second iss…               2 issues-2    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Issues       #12                #12                           12 issues-12   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Issues       #32                #32                           32 issues-32   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Issues       #145               #145                         145 issues-145  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Issues       #1000              #1000 issue wit…            <span style="text-decoration: underline;">1</span>000 issues-1000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Issues       No related issues  No related issu…              <span style="color: #BB0000;">NA</span> issues-na   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Tickets      ticket1234         ticket1234                  <span style="text-decoration: underline;">1</span>234 tickets-tic…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Tickets      ticket6789         ticket6789                  <span style="text-decoration: underline;">6</span>789 tickets-tic…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Tickets      No related tickets No related tick…              <span style="color: #BB0000;">NA</span> tickets-na  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: data &lt;list&gt;</span></span>
 </code></pre></div>
     </div>
   </div>

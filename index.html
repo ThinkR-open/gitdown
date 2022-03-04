@@ -68,7 +68,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -174,19 +174,19 @@ If you have your own referencing system for tickets in an external software, you
 <p>As a side effect of {gitdown}, you can get some intermediate information used to build the book with some exported functions.</p>
 <p>Get commits with issues mentioned. The searched pattern is a <code>#</code> followed by at least one number: <code>"#[[:digit:]]+"</code>. Variable <code>pattern.content</code> lists patterns found in the commit messages.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/get_commits_pattern.html">get_commits_pattern</a></span><span class="op">(</span><span class="va">repo</span>, pattern <span class="op">=</span> <span class="st">"#[[:digit:]]+"</span>, ref <span class="op">=</span> <span class="st">"master"</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
+<code class="sourceCode R"><span class="fu"><a href="reference/get_commits_pattern.html">get_commits_pattern</a></span><span class="op">(</span><span class="va">repo</span>, pattern <span class="op">=</span> <span class="st">"#[[:digit:]]+"</span>, ref <span class="op">=</span> <span class="st">"main"</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">pattern.content</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; 4 commits found.</span>
-<span class="co">#&gt; # A tibble: 7 x 12</span>
+<span class="co">#&gt; # A tibble: 7 × 12</span>
 <span class="co">#&gt;   pattern.content sha    summary message  author email when                order</span>
 <span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;dttm&gt;              &lt;int&gt;</span>
-<span class="co">#&gt; 1 #32             86ec5… Add NE… "Add NE… Alice  alic… 2021-05-10 14:03:56     4</span>
-<span class="co">#&gt; 2 #1              86ec5… Add NE… "Add NE… Alice  alic… 2021-05-10 14:03:56     4</span>
-<span class="co">#&gt; 3 #12             86ec5… Add NE… "Add NE… Alice  alic… 2021-05-10 14:03:56     4</span>
-<span class="co">#&gt; 4 #2              5e338… Third … "Third … Alice  alic… 2021-05-10 14:03:56     3</span>
-<span class="co">#&gt; 5 #145            5e338… Third … "Third … Alice  alic… 2021-05-10 14:03:56     3</span>
-<span class="co">#&gt; 6 #1              cefcf… exampl… "exampl… Alice  alic… 2021-05-10 14:03:56     2</span>
-<span class="co">#&gt; 7 &lt;NA&gt;            f50e2… First … "First … Alice  alic… 2021-05-10 14:03:56     1</span>
+<span class="co">#&gt; 1 #32             8790c… Add NE… "Add NE… Alice  alic… 2022-03-04 15:31:14     4</span>
+<span class="co">#&gt; 2 #1              8790c… Add NE… "Add NE… Alice  alic… 2022-03-04 15:31:14     4</span>
+<span class="co">#&gt; 3 #12             8790c… Add NE… "Add NE… Alice  alic… 2022-03-04 15:31:14     4</span>
+<span class="co">#&gt; 4 #2              c0870… Third … "Third … Alice  alic… 2022-03-04 15:31:14     3</span>
+<span class="co">#&gt; 5 #145            c0870… Third … "Third … Alice  alic… 2022-03-04 15:31:14     3</span>
+<span class="co">#&gt; 6 #1              a97db… exampl… "exampl… Alice  alic… 2022-03-04 15:31:14     2</span>
+<span class="co">#&gt; 7 &lt;NA&gt;            b27b5… First … "First … Alice  alic… 2022-03-04 15:31:14     1</span>
 <span class="co">#&gt; # … with 4 more variables: tag.name &lt;chr&gt;, tag.message &lt;chr&gt;,</span>
 <span class="co">#&gt; #   pattern.type &lt;chr&gt;, pattern.title &lt;chr&gt;</span></code></pre></div>
 <p>Get commits with issues and specific home-made pattern. Use a named vector to properly separate types of patterns.</p>
@@ -194,25 +194,25 @@ If you have your own referencing system for tickets in an external software, you
 <code class="sourceCode R"><span class="fu"><a href="reference/get_commits_pattern.html">get_commits_pattern</a></span><span class="op">(</span>
   <span class="va">repo</span>, 
   pattern <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Tickets"</span> <span class="op">=</span> <span class="st">"ticket[[:digit:]]+"</span>, <span class="st">"Issues"</span> <span class="op">=</span> <span class="st">"#[[:digit:]]+"</span><span class="op">)</span>,
-  ref <span class="op">=</span> <span class="st">"master"</span>
+  ref <span class="op">=</span> <span class="st">"main"</span>
 <span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">pattern.type</span>, <span class="va">pattern.content</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; 4 commits found.</span>
-<span class="co">#&gt; # A tibble: 12 x 12</span>
+<span class="co">#&gt; # A tibble: 12 × 12</span>
 <span class="co">#&gt;    pattern.type pattern.content sha       summary   message        author email </span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;  &lt;chr&gt; </span>
-<span class="co">#&gt;  1 Tickets      ticket6789      86ec55cd… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
-<span class="co">#&gt;  2 Tickets      ticket1234      86ec55cd… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
-<span class="co">#&gt;  3 Issues       #32             86ec55cd… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
-<span class="co">#&gt;  4 Issues       #1              86ec55cd… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
-<span class="co">#&gt;  5 Issues       #12             86ec55cd… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
-<span class="co">#&gt;  6 Tickets      &lt;NA&gt;            5e338c4c… Third co… "Third commit… Alice  alice…</span>
-<span class="co">#&gt;  7 Issues       #2              5e338c4c… Third co… "Third commit… Alice  alice…</span>
-<span class="co">#&gt;  8 Issues       #145            5e338c4c… Third co… "Third commit… Alice  alice…</span>
-<span class="co">#&gt;  9 Tickets      ticket1234      cefcfbb7… example:… "example: mod… Alice  alice…</span>
-<span class="co">#&gt; 10 Issues       #1              cefcfbb7… example:… "example: mod… Alice  alice…</span>
-<span class="co">#&gt; 11 Tickets      &lt;NA&gt;            f50e27f9… First co… "First commit… Alice  alice…</span>
-<span class="co">#&gt; 12 Issues       &lt;NA&gt;            f50e27f9… First co… "First commit… Alice  alice…</span>
+<span class="co">#&gt;  1 Tickets      ticket6789      8790cc60… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
+<span class="co">#&gt;  2 Tickets      ticket1234      8790cc60… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
+<span class="co">#&gt;  3 Issues       #32             8790cc60… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
+<span class="co">#&gt;  4 Issues       #1              8790cc60… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
+<span class="co">#&gt;  5 Issues       #12             8790cc60… Add NEWS  "Add NEWS\n\n… Alice  alice…</span>
+<span class="co">#&gt;  6 Tickets      &lt;NA&gt;            c0870ab4… Third co… "Third commit… Alice  alice…</span>
+<span class="co">#&gt;  7 Issues       #2              c0870ab4… Third co… "Third commit… Alice  alice…</span>
+<span class="co">#&gt;  8 Issues       #145            c0870ab4… Third co… "Third commit… Alice  alice…</span>
+<span class="co">#&gt;  9 Tickets      ticket1234      a97db45b… example:… "example: mod… Alice  alice…</span>
+<span class="co">#&gt; 10 Issues       #1              a97db45b… example:… "example: mod… Alice  alice…</span>
+<span class="co">#&gt; 11 Tickets      &lt;NA&gt;            b27b55fe… First co… "First commit… Alice  alice…</span>
+<span class="co">#&gt; 12 Issues       &lt;NA&gt;            b27b55fe… First co… "First commit… Alice  alice…</span>
 <span class="co">#&gt; # … with 5 more variables: when &lt;dttm&gt;, order &lt;int&gt;, tag.name &lt;chr&gt;,</span>
 <span class="co">#&gt; #   tag.message &lt;chr&gt;, pattern.title &lt;chr&gt;</span></code></pre></div>
 </div>
@@ -237,20 +237,20 @@ If you have your own referencing system for tickets in an external software, you
 <tr class="odd">
 <td align="left">NEWS.md</td>
 <td align="left">Yes</td>
-<td align="left">2021-05-10 16:03:56</td>
-<td align="left">2021-05-10 16:03:56</td>
+<td align="left">2022-03-04 16:31:14</td>
+<td align="left">2022-03-04 16:31:14</td>
 </tr>
 <tr class="even">
 <td align="left">example.txt</td>
 <td align="left">Yes</td>
-<td align="left">2021-05-10 16:03:56</td>
-<td align="left">2021-05-10 16:03:56</td>
+<td align="left">2022-03-04 16:31:14</td>
+<td align="left">2022-03-04 16:31:14</td>
 </tr>
 <tr class="odd">
 <td align="left">R/my_mean.R</td>
 <td align="left">No</td>
 <td align="left">NA</td>
-<td align="left">2021-05-10 16:03:56</td>
+<td align="left">2022-03-04 16:31:14</td>
 </tr>
 </tbody>
 </table>
@@ -314,7 +314,7 @@ If you have your own referencing system for tickets in an external software, you
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://github.com/ThinkR-open/gitdown/actions" class="external-link"><img src="https://github.com/ThinkR-open/gitdown/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://codecov.io/github/ThinkR-open/gitdown?branch=master" class="external-link"><img src="https://codecov.io/gh/ThinkR-open/gitdown/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
+<li><a href="https://codecov.io/github/ThinkR-open/gitdown?branch=main" class="external-link"><img src="https://codecov.io/gh/ThinkR-open/gitdown/branch/main/graph/badge.svg" alt="Coverage status"></a></li>
 <li><a href="https://CRAN.R-project.org/package=gitdown" class="external-link"><img src="https://www.r-pkg.org/badges/version/gitdown" alt="CRAN status"></a></li>
 </ul>
 </div>

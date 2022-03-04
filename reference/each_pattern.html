@@ -41,7 +41,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -111,16 +111,16 @@ a nested 'data' column with all related commits</p></li>
 <span class="r-in"><span class="va">res_commits</span> <span class="op">&lt;-</span> <span class="fu"><a href="nest_commits_by_pattern.html">nest_commits_by_pattern</a></span><span class="op">(</span></span>
 <span class="r-in">  <span class="va">repo</span>,</span>
 <span class="r-in">  pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Tickets"</span> <span class="op">=</span> <span class="st">"ticket[[:digit:]]+"</span><span class="op">)</span>,</span>
-<span class="r-in">  ref <span class="op">=</span> <span class="st">"master"</span>, silent <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span class="r-in">  ref <span class="op">=</span> <span class="st">"main"</span>, silent <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="fu">each_pattern</span><span class="op">(</span><span class="va">res_commits</span>, <span class="st">"Tickets"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   pattern.content  link_pattern text  pattern.type pattern.title pattern_numeric</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lis&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Tickets          tickets      <span style="color: #949494;">&lt;chr</span>… <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> ticket1234       tickets-tic… <span style="color: #949494;">&lt;chr</span>… Tickets      ticket1234               <span style="text-decoration: underline;">1</span>234</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> ticket6789       tickets-tic… <span style="color: #949494;">&lt;chr</span>… Tickets      ticket6789               <span style="text-decoration: underline;">6</span>789</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> No related tick… tickets-na   <span style="color: #949494;">&lt;chr</span>… Tickets      No related t…              <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Tickets          tickets      &lt;chr&gt; <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> ticket1234       tickets-tic… &lt;chr&gt; Tickets      ticket1234               <span style="text-decoration: underline;">1</span>234</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> ticket6789       tickets-tic… &lt;chr&gt; Tickets      ticket6789               <span style="text-decoration: underline;">6</span>789</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> No related tick… tickets-na   &lt;chr&gt; Tickets      No related t…              <span style="color: #BB0000;">NA</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: data &lt;list&gt;</span></span>
 </code></pre></div>
     </div>

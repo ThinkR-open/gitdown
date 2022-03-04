@@ -44,7 +44,7 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -94,7 +94,7 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
   author <span class="op">=</span> <span class="st">"John Doe"</span>,
   pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Issues <span class="op">=</span> <span class="st">"#[[:digit:]]+"</span><span class="op">)</span>,
   pattern.table <span class="op">=</span> <span class="cn">NULL</span>,
-  ref <span class="op">=</span> <span class="st">"master"</span>,
+  ref <span class="op">=</span> <span class="st">"main"</span>,
   <span class="va">...</span>
 <span class="op">)</span></code></pre></div>
     </div>
@@ -115,7 +115,7 @@ Each chapter is a group of commits. The first page gives a summary of all the gr
 <dd><p>data.frame with two columns: pattern and description of the pattern.
 This is used as correspondence table to add some names to existing patterns.</p></dd>
 <dt>ref</dt>
-<dd><p>the name of the branch, by default master</p></dd>
+<dd><p>the name of the branch, by default main</p></dd>
 <dt>...</dt>
 <dd><p>Other parameters to pass to <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">rmarkdown::render()</a></code></p></dd>
 </dl></div>
@@ -139,9 +139,9 @@ This is used as correspondence table to add some names to existing patterns.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> output file: index.knit.md</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> /usr/bin/pandoc +RTS -K512m -RTS index.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /home/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --metadata-file /tmp/RtmpSjQJyh/file32102695dc70 --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/runner/work/_temp/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --include-in-header /tmp/RtmpSjQJyh/rmarkdown-str321051adbd81.html --mathjax </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> /usr/bin/pandoc +RTS -K512m -RTS index.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /home/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/anchor-sections.lua --metadata-file /tmp/RtmpougvmZ/file345246103108 --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/runner/work/_temp/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header /tmp/RtmpougvmZ/rmarkdown-str345275da9d03.html </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Output created: gitbook-for-git2r-32107416b617.html</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Output created: gitbook-for-git2r-34522ce3d3f3.html</span>
 <span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in"><span class="co"># Open the book</span></span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html" class="external-link">browseURL</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
@@ -162,9 +162,9 @@ This is used as correspondence table to add some names to existing patterns.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> output file: index.knit.md</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> /usr/bin/pandoc +RTS -K512m -RTS index.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /home/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --metadata-file /tmp/RtmpSjQJyh/file321027a6ab0 --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/runner/work/_temp/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --include-in-header /tmp/RtmpSjQJyh/rmarkdown-str32101b4f786b.html --mathjax </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> /usr/bin/pandoc +RTS -K512m -RTS index.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /home/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/anchor-sections.lua --metadata-file /tmp/RtmpougvmZ/file3452151e19bb --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/runner/work/_temp/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header /tmp/RtmpougvmZ/rmarkdown-str34523ed2ce3a.html </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Output created: gitbook-for-git2r-32107416b617.html</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Output created: gitbook-for-git2r-34522ce3d3f3.html</span>
 <span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in"><span class="co"># Open the book</span></span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html" class="external-link">browseURL</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
