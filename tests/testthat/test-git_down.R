@@ -12,12 +12,14 @@ if (rmarkdown::pandoc_available("1.12.3")) {
     )
   })
   lines <- readLines(file.path(dirname(res), "section-issue.html"))
-  one_line_exists <- grep('<h2><span class="header-section-number">1.2</span> Issue: #1</h2>',
-                          lines, fixed = TRUE)
-  sub_commit_1 <- grep('<h3><span class="header-section-number">1.2.1</span> commit: example: modification</h3>',
-                       lines, fixed = TRUE)
-  sub_commit_2 <- grep('<h3><span class="header-section-number">1.2.2</span> commit: Add NEWS</h3>',
-                       lines, fixed = TRUE)
+  # like <h2><span>1.2</span> Issue: #1</h2>',
+  one_line_exists <- grep('h2.+1[.]2.+Issue: #1.+h2', lines, fixed = FALSE)
+  # like <h3><span>1.2.1</span> commit: example: modification</h3>',
+  sub_commit_1 <- grep('h3.+1[.]2[.]1.+commit: example: modification.+h3',
+                       lines, fixed = FALSE)
+  # like <h3><span>1.2.2</span> commit: Add NEWS</h3>',
+  sub_commit_2 <- grep('h3.+1[.]2[.]2.+commit: Add NEWS.+h3',
+                       lines, fixed = FALSE)
 
   test_that("git_down function",{
     expect_match(res, regexp = ".html")
@@ -39,8 +41,9 @@ if (rmarkdown::pandoc_available("1.12.3")) {
   })
 
   lines <- readLines(file.path(dirname(res), "section-digit.html"))
-  one_line_exists <- grep('<h2><span class="header-section-number">1.2</span> <code>#--:digit:--+</code>: #1</h2>',
-                          lines, fixed = TRUE)
+  # like <h2><span>1.2</span> <code>#--:digit:--+</code>: #1</h2>',
+  one_line_exists <- grep('h2.+1[.]2.+<code>#--:digit:--\\+</code>: #1.+h2',
+                          lines, fixed = FALSE)
 
   test_that("git_down no name function",{
     expect_match(res, regexp = ".html")
@@ -69,14 +72,16 @@ if (rmarkdown::pandoc_available("1.12.3")) {
     expect_true(file.exists(tickets_file))
 
     lines <- readLines(tickets_file)
-    one_line_ticket_exists <- grep('<h2><span class="header-section-number">1.2</span> Ticket: ticket1234</h2>',
-                                   lines, fixed = TRUE)
+    # like <h2><span>1.2</span> Ticket: ticket1234</h2>'
+    one_line_ticket_exists <- grep('h2.*1.2.*Ticket: ticket1234.*h2',
+                                   lines, fixed = FALSE)
 
     expect_true(length(one_line_ticket_exists) == 1)
 
     lines <- readLines(issues_file)
-    one_line_exists <- grep('<h2><span class="header-section-number">2.2</span> Issue: #1</h2>',
-                            lines, fixed = TRUE)
+    # like <h2><span>2.2</span> Issue: #1</h2>',
+    one_line_exists <- grep('h2.+2[.]2.+Issue: #1.+h2',
+                            lines, fixed = FALSE)
     expect_true(length(one_line_exists) == 1)
   })
 

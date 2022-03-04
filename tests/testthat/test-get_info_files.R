@@ -1,5 +1,5 @@
-time_before_date <- Sys.Date()
-time_before <- as.character(time_before_date)
+time_before <- Sys.time()
+Sys.sleep(1)
 
 repo_pkg <- fake_repo(as.package = TRUE)
 repo_no_pkg <- fake_repo()
@@ -10,27 +10,21 @@ infos <- get_info(files[grep("example", files)], repo = repo_pkg)
 infos_not_in_repo <- get_info(files[grep("my_mean", files)], repo = repo_pkg)
 
 # if check started one day and finishes the other day
-time_after_date <- Sys.Date()
-time_after <- as.character(time_after_date)
+Sys.sleep(1)
+time_after <- Sys.time()
 
 test_that("get_info works", {
   expect_true(infos$in_repository)
   expect_equal(infos$file, "example.txt")
 
-  expect_gte(as.Date(infos$last_modif), time_before_date)
-  expect_lte(as.Date(infos$last_modif), time_after_date)
-  expect_true(as.character(as.Date(infos$first_modif)) %in%
-                c(setNames(time_before, "first"), setNames(time_after, "first")))
-  expect_true(as.character(as.Date(infos$last_modif)) %in%
-                c(setNames(time_before, "last"), setNames(time_after, "first")))
+  expect_gte(infos$last_modif, time_before)
+  expect_lte(infos$last_modif, time_after)
 
   expect_false(infos_not_in_repo$in_repository)
   expect_equal(infos_not_in_repo$file, "R/my_mean.R")
   expect_true(is.na(infos_not_in_repo$first_modif))
-  expect_gte(as.Date(infos_not_in_repo$last_modif), time_before_date)
-  expect_lte(as.Date(infos_not_in_repo$last_modif), time_after_date)
-  expect_true(as.character(as.Date(infos_not_in_repo$last_modif)) %in%
-               c(setNames(time_before, "last"), setNames(time_after, "first")))
+  expect_gte(infos_not_in_repo$last_modif, time_before)
+  expect_lte(infos_not_in_repo$last_modif, time_after)
 })
 
 # get_last_modif ----
