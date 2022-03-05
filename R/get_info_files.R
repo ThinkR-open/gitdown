@@ -175,7 +175,7 @@ present_files <- function(repo = ".", path = "R",
 #'
 #' # Creates vignette
 #' repo <- fake_repo(as.package = TRUE)
-#' if (rmarkdown::pandoc_available("1.12.3")) {
+#' if (rmarkdown::pandoc_available("2.0.0")) {
 #'   create_vignette_last_modif(repo, path = "R")
 #' }
 
@@ -198,7 +198,7 @@ create_vignette_last_modif <- function(repo = ".", path = "R",
 #' @examples
 #' # update vignette
 #' repo <- fake_repo(as.package = TRUE)
-#' if (rmarkdown::pandoc_available("1.12.3")) {
+#' if (rmarkdown::pandoc_available("2.0.0")) {
 #'   update_vignette_last_modif(repo, path = "R")
 #'   rmarkdown::render(file.path(repo, "vignettes", "modification_files.Rmd"))
 #' }

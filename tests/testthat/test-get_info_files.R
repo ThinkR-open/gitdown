@@ -59,7 +59,7 @@ test_that("present_files error", {
 })
 
 # create_vignette_last_modif ----
-if (rmarkdown::pandoc_available("1.12.3")) {
+if (rmarkdown::pandoc_available("2.0.0")) {
   create_vignette_last_modif(repo_pkg)
   # browseURL(repo_pkg)
 

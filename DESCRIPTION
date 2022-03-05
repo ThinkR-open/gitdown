@@ -1,6 +1,6 @@
 Package: gitdown
 Title: Turn Your Git Commit Messages into a HTML Book
-Version: 0.1.5
+Version: 0.1.6
 Authors@R: c(
     person("Sébastien", "Rochette", , "sebastien@thinkr.fr", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-1565-9313")),

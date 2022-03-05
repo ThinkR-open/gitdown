@@ -1,3 +1,10 @@
+# gitdown 0.1.6
+
+* Ask for Pandoc > 2.0 as for new {rmarkdown}
+* Use 'main' branch as default for the repository example
+* Fix unit test for new 'rmarkdown' version
+* Fix unit test for date-time check due to changing timezone
+
 # gitdown 0.1.5
 
 * Change unit tests

@@ -1,4 +1,4 @@
-if (rmarkdown::pandoc_available("1.12.3")) {
+if (rmarkdown::pandoc_available("2.0.0")) {
   library(withr)
 
   repo_input <- tempfile(pattern = "git2r-")
