@@ -24,7 +24,7 @@ file.copy(list.files("reference/figures", full.names = TRUE),
 # gitdown <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/ThinkR-open/gitdown/workflows/R-CMD-check/badge.svg)](https://github.com/ThinkR-open/gitdown/actions)
+[![R-CMD-check](https://github.com/ThinkR-open/gitdown/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ThinkR-open/gitdown/actions/workflows/R-CMD-check.yaml)
 [![Coverage status](https://codecov.io/gh/ThinkR-open/gitdown/branch/main/graph/badge.svg)](https://codecov.io/github/ThinkR-open/gitdown?branch=main)
 [![CRAN status](https://www.r-pkg.org/badges/version/gitdown)](https://CRAN.R-project.org/package=gitdown)
 <!-- badges: end -->

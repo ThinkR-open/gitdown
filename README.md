@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/ThinkR-open/gitdown/workflows/R-CMD-check/badge.svg)](https://github.com/ThinkR-open/gitdown/actions)
+[![R-CMD-check](https://github.com/ThinkR-open/gitdown/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ThinkR-open/gitdown/actions/workflows/R-CMD-check.yaml)
 [![Coverage
 status](https://codecov.io/gh/ThinkR-open/gitdown/branch/main/graph/badge.svg)](https://codecov.io/github/ThinkR-open/gitdown?branch=main)
 [![CRAN
@@ -40,9 +40,9 @@ remotes::install_github("ThinkR-open/gitdown")
 Create a versioned directory with some commits and a NEWS.md in a
 temporary directory
 
--   Some commits mention an issue with `#`
--   Some commits mention a ticket with `ticket`
--   A commit is associated with a tag
+- Some commits mention an issue with `#`
+- Some commits mention a ticket with `ticket`
+- A commit is associated with a tag
 
 ``` r
 library(dplyr)
@@ -109,17 +109,17 @@ get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "main") %>%
   select(pattern.content, everything())
 #> 4 commits found.
 #> # A tibble: 7 × 12
-#>   pattern.content sha    summary message  author email when                order
-#>   <chr>           <chr>  <chr>   <chr>    <chr>  <chr> <dttm>              <int>
-#> 1 #32             8790c… Add NE… "Add NE… Alice  alic… 2022-03-04 15:31:14     4
-#> 2 #1              8790c… Add NE… "Add NE… Alice  alic… 2022-03-04 15:31:14     4
-#> 3 #12             8790c… Add NE… "Add NE… Alice  alic… 2022-03-04 15:31:14     4
-#> 4 #2              c0870… Third … "Third … Alice  alic… 2022-03-04 15:31:14     3
-#> 5 #145            c0870… Third … "Third … Alice  alic… 2022-03-04 15:31:14     3
-#> 6 #1              a97db… exampl… "exampl… Alice  alic… 2022-03-04 15:31:14     2
-#> 7 <NA>            b27b5… First … "First … Alice  alic… 2022-03-04 15:31:14     1
-#> # … with 4 more variables: tag.name <chr>, tag.message <chr>,
-#> #   pattern.type <chr>, pattern.title <chr>
+#>   pattern.content sha     summary message author email when                order
+#>   <chr>           <chr>   <chr>   <chr>   <chr>  <chr> <dttm>              <int>
+#> 1 #32             1fd238… Add NE… "Add N… Alice  alic… 2024-02-28 13:22:16     4
+#> 2 #1              1fd238… Add NE… "Add N… Alice  alic… 2024-02-28 13:22:16     4
+#> 3 #12             1fd238… Add NE… "Add N… Alice  alic… 2024-02-28 13:22:16     4
+#> 4 #2              91e2c1… Third … "Third… Alice  alic… 2024-02-28 13:22:16     3
+#> 5 #145            91e2c1… Third … "Third… Alice  alic… 2024-02-28 13:22:16     3
+#> 6 #1              7e998d… exampl… "examp… Alice  alic… 2024-02-28 13:22:16     2
+#> 7 <NA>            1b6cc5… First … "First… Alice  alic… 2024-02-28 13:22:16     1
+#> # ℹ 4 more variables: tag.name <chr>, tag.message <chr>, pattern.type <chr>,
+#> #   pattern.title <chr>
 ```
 
 Get commits with issues and specific home-made pattern. Use a named
@@ -134,21 +134,21 @@ get_commits_pattern(
   select(pattern.type, pattern.content, everything())
 #> 4 commits found.
 #> # A tibble: 12 × 12
-#>    pattern.type pattern.content sha       summary   message        author email 
-#>    <chr>        <chr>           <chr>     <chr>     <chr>          <chr>  <chr> 
-#>  1 Tickets      ticket6789      8790cc60… Add NEWS  "Add NEWS\n\n… Alice  alice…
-#>  2 Tickets      ticket1234      8790cc60… Add NEWS  "Add NEWS\n\n… Alice  alice…
-#>  3 Issues       #32             8790cc60… Add NEWS  "Add NEWS\n\n… Alice  alice…
-#>  4 Issues       #1              8790cc60… Add NEWS  "Add NEWS\n\n… Alice  alice…
-#>  5 Issues       #12             8790cc60… Add NEWS  "Add NEWS\n\n… Alice  alice…
-#>  6 Tickets      <NA>            c0870ab4… Third co… "Third commit… Alice  alice…
-#>  7 Issues       #2              c0870ab4… Third co… "Third commit… Alice  alice…
-#>  8 Issues       #145            c0870ab4… Third co… "Third commit… Alice  alice…
-#>  9 Tickets      ticket1234      a97db45b… example:… "example: mod… Alice  alice…
-#> 10 Issues       #1              a97db45b… example:… "example: mod… Alice  alice…
-#> 11 Tickets      <NA>            b27b55fe… First co… "First commit… Alice  alice…
-#> 12 Issues       <NA>            b27b55fe… First co… "First commit… Alice  alice…
-#> # … with 5 more variables: when <dttm>, order <int>, tag.name <chr>,
+#>    pattern.type pattern.content sha                 summary message author email
+#>    <chr>        <chr>           <chr>               <chr>   <chr>   <chr>  <chr>
+#>  1 Tickets      ticket6789      1fd238efc602f52946… Add NE… "Add N… Alice  alic…
+#>  2 Tickets      ticket1234      1fd238efc602f52946… Add NE… "Add N… Alice  alic…
+#>  3 Issues       #32             1fd238efc602f52946… Add NE… "Add N… Alice  alic…
+#>  4 Issues       #1              1fd238efc602f52946… Add NE… "Add N… Alice  alic…
+#>  5 Issues       #12             1fd238efc602f52946… Add NE… "Add N… Alice  alic…
+#>  6 Tickets      <NA>            91e2c152a0525fc589… Third … "Third… Alice  alic…
+#>  7 Issues       #2              91e2c152a0525fc589… Third … "Third… Alice  alic…
+#>  8 Issues       #145            91e2c152a0525fc589… Third … "Third… Alice  alic…
+#>  9 Tickets      ticket1234      7e998d8e673e331274… exampl… "examp… Alice  alic…
+#> 10 Issues       #1              7e998d8e673e331274… exampl… "examp… Alice  alic…
+#> 11 Tickets      <NA>            1b6cc5d04920de4a60… First … "First… Alice  alic…
+#> 12 Issues       <NA>            1b6cc5d04920de4a60… First … "First… Alice  alic…
+#> # ℹ 5 more variables: when <dttm>, order <int>, tag.name <chr>,
 #> #   tag.message <chr>, pattern.title <chr>
 ```
 
@@ -166,9 +166,9 @@ With this example, the vignette will show this content:
 
 | File        | Tracked in git | Date of creation    | Last modification   |
 |:------------|:---------------|:--------------------|:--------------------|
-| NEWS.md     | Yes            | 2022-03-04 16:31:14 | 2022-03-04 16:31:14 |
-| example.txt | Yes            | 2022-03-04 16:31:14 | 2022-03-04 16:31:14 |
-| R/my_mean.R | No             | NA                  | 2022-03-04 16:31:14 |
+| NEWS.md     | Yes            | 2024-02-28 13:22:17 | 2024-02-28 13:22:17 |
+| example.txt | Yes            | 2024-02-28 13:22:17 | 2024-02-28 13:22:17 |
+| R/my_mean.R | No             | NA                  | 2024-02-28 13:22:17 |
 
 ## Sponsor
 

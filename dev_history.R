@@ -62,7 +62,7 @@ checkhelper::print_globals(globals)
 #              travis_endpoint = ".org")
 # # usethis::use_travis()
 # usethis::use_appveyor()
-usethis::use_github_action_check_standard()
+usethis::use_github_action("check-standard")
 usethis::use_github_action("pkgdown")
 usethis::use_github_action("test-coverage")
 
