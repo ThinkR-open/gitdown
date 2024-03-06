@@ -138,10 +138,10 @@ recursively</li>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 9</span></span></span>
 <span><span class="co">#&gt;   sha            summary message author email when                order tag.name</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 543dcdff91cc8… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-02-28 <span style="color: #949494;">13:40:17</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> b0e4eab74fc93… Third … <span style="color: #949494;">"</span>Third… Alice  alic… 2024-02-28 <span style="color: #949494;">13:40:17</span>     3 v0.1    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 434d1f31728c5… exampl… <span style="color: #949494;">"</span>examp… Alice  alic… 2024-02-28 <span style="color: #949494;">13:40:17</span>     2 v0.1    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 616e811b9f843… First … <span style="color: #949494;">"</span>First… Alice  alic… 2024-02-28 <span style="color: #949494;">13:40:17</span>     1 v0.1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> c87237a0ec2b7… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-03-06 <span style="color: #949494;">00:55:46</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> a6aead55f357a… Third … <span style="color: #949494;">"</span>Third… Alice  alic… 2024-03-06 <span style="color: #949494;">00:55:46</span>     3 v0.1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> ae99728125c62… exampl… <span style="color: #949494;">"</span>examp… Alice  alic… 2024-03-06 <span style="color: #949494;">00:55:45</span>     2 v0.1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> b19e8bd644dd3… First … <span style="color: #949494;">"</span>First… Alice  alic… 2024-03-06 <span style="color: #949494;">00:55:45</span>     1 v0.1    </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: tag.message &lt;chr&gt;</span></span></span></code></pre></div>
 <ul>
 <li>Find all commits of a branch and detect a specific pattern
@@ -157,13 +157,13 @@ recursively</li>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 12</span></span></span>
 <span><span class="co">#&gt;   sha            summary message author email when                order tag.name</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 543dcdff91cc8… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-02-28 <span style="color: #949494;">13:40:17</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 543dcdff91cc8… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-02-28 <span style="color: #949494;">13:40:17</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 543dcdff91cc8… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-02-28 <span style="color: #949494;">13:40:17</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> b0e4eab74fc93… Third … <span style="color: #949494;">"</span>Third… Alice  alic… 2024-02-28 <span style="color: #949494;">13:40:17</span>     3 v0.1    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> b0e4eab74fc93… Third … <span style="color: #949494;">"</span>Third… Alice  alic… 2024-02-28 <span style="color: #949494;">13:40:17</span>     3 v0.1    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 434d1f31728c5… exampl… <span style="color: #949494;">"</span>examp… Alice  alic… 2024-02-28 <span style="color: #949494;">13:40:17</span>     2 v0.1    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> 616e811b9f843… First … <span style="color: #949494;">"</span>First… Alice  alic… 2024-02-28 <span style="color: #949494;">13:40:17</span>     1 v0.1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> c87237a0ec2b7… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-03-06 <span style="color: #949494;">00:55:46</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> c87237a0ec2b7… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-03-06 <span style="color: #949494;">00:55:46</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> c87237a0ec2b7… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-03-06 <span style="color: #949494;">00:55:46</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> a6aead55f357a… Third … <span style="color: #949494;">"</span>Third… Alice  alic… 2024-03-06 <span style="color: #949494;">00:55:46</span>     3 v0.1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> a6aead55f357a… Third … <span style="color: #949494;">"</span>Third… Alice  alic… 2024-03-06 <span style="color: #949494;">00:55:46</span>     3 v0.1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> ae99728125c62… exampl… <span style="color: #949494;">"</span>examp… Alice  alic… 2024-03-06 <span style="color: #949494;">00:55:45</span>     2 v0.1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> b19e8bd644dd3… First … <span style="color: #949494;">"</span>First… Alice  alic… 2024-03-06 <span style="color: #949494;">00:55:45</span>     1 v0.1    </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   pattern.content &lt;chr&gt;, pattern.title &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
@@ -190,20 +190,20 @@ modification<a class="anchor" aria-label="anchor" href="#create-a-vignette-that-
 <tr class="odd">
 <td align="left">NEWS.md</td>
 <td align="left">Yes</td>
-<td align="left">2024-02-28 13:40:17</td>
-<td align="left">2024-02-28 13:40:17</td>
+<td align="left">2024-03-06 00:55:46</td>
+<td align="left">2024-03-06 00:55:46</td>
 </tr>
 <tr class="even">
 <td align="left">example.txt</td>
 <td align="left">Yes</td>
-<td align="left">2024-02-28 13:40:17</td>
-<td align="left">2024-02-28 13:40:17</td>
+<td align="left">2024-03-06 00:55:46</td>
+<td align="left">2024-03-06 00:55:46</td>
 </tr>
 <tr class="odd">
 <td align="left">R/my_mean.R</td>
 <td align="left">No</td>
 <td align="left">NA</td>
-<td align="left">2024-02-28 13:40:17</td>
+<td align="left">2024-03-06 00:55:46</td>
 </tr>
 </tbody>
 </table>
