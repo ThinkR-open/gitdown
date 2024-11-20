@@ -8,8 +8,8 @@
 <title>Create a gitbook with git_down • gitdown</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Create a gitbook with git_down">
 </head>
 <body>
@@ -115,10 +115,10 @@ recursively</li>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 9</span></span></span>
 <span><span class="co">#&gt;   sha            summary message author email when                order tag.name</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 351632baa1129… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-11-13 <span style="color: #949494;">01:12:32</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 9c20fc6fd3e9f… Third … <span style="color: #949494;">"</span>Third… Alice  alic… 2024-11-13 <span style="color: #949494;">01:12:32</span>     3 v0.1    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 71eec40f707d6… exampl… <span style="color: #949494;">"</span>examp… Alice  alic… 2024-11-13 <span style="color: #949494;">01:12:32</span>     2 v0.1    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> b51c471967df6… First … <span style="color: #949494;">"</span>First… Alice  alic… 2024-11-13 <span style="color: #949494;">01:12:32</span>     1 v0.1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> fb889ca518b41… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-11-20 <span style="color: #949494;">01:15:55</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> c18e090556cc2… Third … <span style="color: #949494;">"</span>Third… Alice  alic… 2024-11-20 <span style="color: #949494;">01:15:55</span>     3 v0.1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 82f1d80088209… exampl… <span style="color: #949494;">"</span>examp… Alice  alic… 2024-11-20 <span style="color: #949494;">01:15:55</span>     2 v0.1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 229545efef5c3… First … <span style="color: #949494;">"</span>First… Alice  alic… 2024-11-20 <span style="color: #949494;">01:15:55</span>     1 v0.1    </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: tag.message &lt;chr&gt;</span></span></span></code></pre></div>
 <ul>
 <li>Find all commits of a branch and detect a specific pattern
@@ -134,13 +134,13 @@ recursively</li>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 12</span></span></span>
 <span><span class="co">#&gt;   sha            summary message author email when                order tag.name</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 351632baa1129… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-11-13 <span style="color: #949494;">01:12:32</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 351632baa1129… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-11-13 <span style="color: #949494;">01:12:32</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 351632baa1129… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-11-13 <span style="color: #949494;">01:12:32</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 9c20fc6fd3e9f… Third … <span style="color: #949494;">"</span>Third… Alice  alic… 2024-11-13 <span style="color: #949494;">01:12:32</span>     3 v0.1    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 9c20fc6fd3e9f… Third … <span style="color: #949494;">"</span>Third… Alice  alic… 2024-11-13 <span style="color: #949494;">01:12:32</span>     3 v0.1    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 71eec40f707d6… exampl… <span style="color: #949494;">"</span>examp… Alice  alic… 2024-11-13 <span style="color: #949494;">01:12:32</span>     2 v0.1    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> b51c471967df6… First … <span style="color: #949494;">"</span>First… Alice  alic… 2024-11-13 <span style="color: #949494;">01:12:32</span>     1 v0.1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> fb889ca518b41… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-11-20 <span style="color: #949494;">01:15:55</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> fb889ca518b41… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-11-20 <span style="color: #949494;">01:15:55</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> fb889ca518b41… Add NE… <span style="color: #949494;">"</span>Add N… Alice  alic… 2024-11-20 <span style="color: #949494;">01:15:55</span>     4 <span style="color: #BB0000;">NA</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> c18e090556cc2… Third … <span style="color: #949494;">"</span>Third… Alice  alic… 2024-11-20 <span style="color: #949494;">01:15:55</span>     3 v0.1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> c18e090556cc2… Third … <span style="color: #949494;">"</span>Third… Alice  alic… 2024-11-20 <span style="color: #949494;">01:15:55</span>     3 v0.1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 82f1d80088209… exampl… <span style="color: #949494;">"</span>examp… Alice  alic… 2024-11-20 <span style="color: #949494;">01:15:55</span>     2 v0.1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> 229545efef5c3… First … <span style="color: #949494;">"</span>First… Alice  alic… 2024-11-20 <span style="color: #949494;">01:15:55</span>     1 v0.1    </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4 more variables: tag.message &lt;chr&gt;, pattern.type &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   pattern.content &lt;chr&gt;, pattern.title &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
@@ -167,20 +167,20 @@ modification<a class="anchor" aria-label="anchor" href="#create-a-vignette-that-
 <tr class="odd">
 <td align="left">NEWS.md</td>
 <td align="left">Yes</td>
-<td align="left">2024-11-13 01:12:32</td>
-<td align="left">2024-11-13 01:12:32</td>
+<td align="left">2024-11-20 01:15:55</td>
+<td align="left">2024-11-20 01:15:55</td>
 </tr>
 <tr class="even">
 <td align="left">example.txt</td>
 <td align="left">Yes</td>
-<td align="left">2024-11-13 01:12:32</td>
-<td align="left">2024-11-13 01:12:32</td>
+<td align="left">2024-11-20 01:15:55</td>
+<td align="left">2024-11-20 01:15:55</td>
 </tr>
 <tr class="odd">
 <td align="left">R/my_mean.R</td>
 <td align="left">No</td>
 <td align="left">NA</td>
-<td align="left">2024-11-13 01:12:32</td>
+<td align="left">2024-11-20 01:15:55</td>
 </tr>
 </tbody>
 </table>
