@@ -84,13 +84,13 @@ get_commits_pattern(repo = repo, pattern = c("Ticket" = "#[[:digit:]]+"))
 #> # A tibble: 7 × 12
 #>   sha            summary message author email when                order tag.name
 #>   <chr>          <chr>   <chr>   <chr>  <chr> <dttm>              <int> <chr>   
-#> 1 a843105644aa3… Add NE… "Add N… Alice  alic… 2025-11-12 01:24:02     4 NA      
-#> 2 a843105644aa3… Add NE… "Add N… Alice  alic… 2025-11-12 01:24:02     4 NA      
-#> 3 a843105644aa3… Add NE… "Add N… Alice  alic… 2025-11-12 01:24:02     4 NA      
-#> 4 a4cc4e1030b9d… Third … "Third… Alice  alic… 2025-11-12 01:24:02     3 v0.1    
-#> 5 a4cc4e1030b9d… Third … "Third… Alice  alic… 2025-11-12 01:24:02     3 v0.1    
-#> 6 676d6b5a652b5… exampl… "examp… Alice  alic… 2025-11-12 01:24:02     2 v0.1    
-#> 7 3cc5408806dcf… First … "First… Alice  alic… 2025-11-12 01:24:02     1 v0.1    
+#> 1 f46d550dbdb52… Add NE… "Add N… Alice  alic… 2025-11-19 01:23:22     4 NA      
+#> 2 f46d550dbdb52… Add NE… "Add N… Alice  alic… 2025-11-19 01:23:22     4 NA      
+#> 3 f46d550dbdb52… Add NE… "Add N… Alice  alic… 2025-11-19 01:23:22     4 NA      
+#> 4 946f8c5698a88… Third … "Third… Alice  alic… 2025-11-19 01:23:22     3 v0.1    
+#> 5 946f8c5698a88… Third … "Third… Alice  alic… 2025-11-19 01:23:22     3 v0.1    
+#> 6 701dac7f7553c… exampl… "examp… Alice  alic… 2025-11-19 01:23:22     2 v0.1    
+#> 7 e39c3a3474b3f… First … "First… Alice  alic… 2025-11-19 01:23:22     1 v0.1    
 #> # ℹ 4 more variables: tag.message <chr>, pattern.type <chr>,
 #> #   pattern.content <chr>, pattern.title <chr>
 get_commits_pattern(repo = repo,
@@ -99,18 +99,18 @@ get_commits_pattern(repo = repo,
 #> # A tibble: 12 × 12
 #>    sha           summary message author email when                order tag.name
 #>    <chr>         <chr>   <chr>   <chr>  <chr> <dttm>              <int> <chr>   
-#>  1 a843105644aa… Add NE… "Add N… Alice  alic… 2025-11-12 01:24:02     4 NA      
-#>  2 a843105644aa… Add NE… "Add N… Alice  alic… 2025-11-12 01:24:02     4 NA      
-#>  3 a843105644aa… Add NE… "Add N… Alice  alic… 2025-11-12 01:24:02     4 NA      
-#>  4 a843105644aa… Add NE… "Add N… Alice  alic… 2025-11-12 01:24:02     4 NA      
-#>  5 a843105644aa… Add NE… "Add N… Alice  alic… 2025-11-12 01:24:02     4 NA      
-#>  6 a4cc4e1030b9… Third … "Third… Alice  alic… 2025-11-12 01:24:02     3 v0.1    
-#>  7 a4cc4e1030b9… Third … "Third… Alice  alic… 2025-11-12 01:24:02     3 v0.1    
-#>  8 a4cc4e1030b9… Third … "Third… Alice  alic… 2025-11-12 01:24:02     3 v0.1    
-#>  9 676d6b5a652b… exampl… "examp… Alice  alic… 2025-11-12 01:24:02     2 v0.1    
-#> 10 676d6b5a652b… exampl… "examp… Alice  alic… 2025-11-12 01:24:02     2 v0.1    
-#> 11 3cc5408806dc… First … "First… Alice  alic… 2025-11-12 01:24:02     1 v0.1    
-#> 12 3cc5408806dc… First … "First… Alice  alic… 2025-11-12 01:24:02     1 v0.1    
+#>  1 f46d550dbdb5… Add NE… "Add N… Alice  alic… 2025-11-19 01:23:22     4 NA      
+#>  2 f46d550dbdb5… Add NE… "Add N… Alice  alic… 2025-11-19 01:23:22     4 NA      
+#>  3 f46d550dbdb5… Add NE… "Add N… Alice  alic… 2025-11-19 01:23:22     4 NA      
+#>  4 f46d550dbdb5… Add NE… "Add N… Alice  alic… 2025-11-19 01:23:22     4 NA      
+#>  5 f46d550dbdb5… Add NE… "Add N… Alice  alic… 2025-11-19 01:23:22     4 NA      
+#>  6 946f8c5698a8… Third … "Third… Alice  alic… 2025-11-19 01:23:22     3 v0.1    
+#>  7 946f8c5698a8… Third … "Third… Alice  alic… 2025-11-19 01:23:22     3 v0.1    
+#>  8 946f8c5698a8… Third … "Third… Alice  alic… 2025-11-19 01:23:22     3 v0.1    
+#>  9 701dac7f7553… exampl… "examp… Alice  alic… 2025-11-19 01:23:22     2 v0.1    
+#> 10 701dac7f7553… exampl… "examp… Alice  alic… 2025-11-19 01:23:22     2 v0.1    
+#> 11 e39c3a3474b3… First … "First… Alice  alic… 2025-11-19 01:23:22     1 v0.1    
+#> 12 e39c3a3474b3… First … "First… Alice  alic… 2025-11-19 01:23:22     1 v0.1    
 #> # ℹ 4 more variables: tag.message <chr>, pattern.type <chr>,
 #> #   pattern.content <chr>, pattern.title <chr>
 ```
