@@ -56,11 +56,11 @@ get_last_modif(repo = repo, path = "")
 #> 
 #> [[1]]$first_modif
 #>                     first 
-#> "2025-12-17 01:24:29 UTC" 
+#> "2025-12-24 01:27:27 UTC" 
 #> 
 #> [[1]]$last_modif
 #>                      last 
-#> "2025-12-17 01:24:29 UTC" 
+#> "2025-12-24 01:27:27 UTC" 
 #> 
 #> 
 #> [[2]]
@@ -72,11 +72,11 @@ get_last_modif(repo = repo, path = "")
 #> 
 #> [[2]]$first_modif
 #>                     first 
-#> "2025-12-17 01:24:29 UTC" 
+#> "2025-12-24 01:27:27 UTC" 
 #> 
 #> [[2]]$last_modif
 #>                      last 
-#> "2025-12-17 01:24:29 UTC" 
+#> "2025-12-24 01:27:27 UTC" 
 #> 
 #> 
 repo <- fake_repo(as.package = TRUE)
@@ -91,11 +91,11 @@ get_last_modif(repo = repo, path = "")
 #> 
 #> [[1]]$first_modif
 #>                     first 
-#> "2025-12-17 01:24:29 UTC" 
+#> "2025-12-24 01:27:27 UTC" 
 #> 
 #> [[1]]$last_modif
 #>                      last 
-#> "2025-12-17 01:24:29 UTC" 
+#> "2025-12-24 01:27:27 UTC" 
 #> 
 #> 
 #> [[2]]
@@ -107,11 +107,11 @@ get_last_modif(repo = repo, path = "")
 #> 
 #> [[2]]$first_modif
 #>                     first 
-#> "2025-12-17 01:24:29 UTC" 
+#> "2025-12-24 01:27:27 UTC" 
 #> 
 #> [[2]]$last_modif
 #>                      last 
-#> "2025-12-17 01:24:29 UTC" 
+#> "2025-12-24 01:27:27 UTC" 
 #> 
 #> 
 #> $untracked.untracked
@@ -127,7 +127,7 @@ get_last_modif(repo = repo, path = "")
 #> 
 #> $untracked.untracked$last_modif
 #>                      last 
-#> "2025-12-17 01:24:29 UTC" 
+#> "2025-12-24 01:27:27 UTC" 
 #> 
 #> 
 ```
