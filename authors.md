@@ -16,14 +16,14 @@
 Source:
 [`DESCRIPTION`](https://github.com/Thinkr-open/gitdown/blob/main/DESCRIPTION)
 
-Rochette S, Girard C (2025). *gitdown: Turn Your Git Commit Messages
+Rochette S, Girard C (2026). *gitdown: Turn Your Git Commit Messages
 into a HTML Book*. R package version 0.1.6,
 <https://thinkr-open.github.io/gitdown/>.
 
     @Manual{,
       title = {gitdown: Turn Your Git Commit Messages into a HTML Book},
       author = {Sébastien Rochette and Cervan Girard},
-      year = {2025},
+      year = {2026},
       note = {R package version 0.1.6},
       url = {https://thinkr-open.github.io/gitdown/},
     }
