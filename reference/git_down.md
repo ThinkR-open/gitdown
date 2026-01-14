@@ -75,9 +75,9 @@ if (rmarkdown::pandoc_available("2.0.0")) {
 #> processing file: index.Rmd
 #> 1/1
 #> output file: index.knit.md
-#> /opt/hostedtoolcache/pandoc/3.1.11/x64/pandoc +RTS -K512m -RTS index.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /home/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/anchor-sections.lua --metadata-file /tmp/RtmpmXmSQL/file1b425ee1df8a --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/runner/work/_temp/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header /tmp/RtmpmXmSQL/rmarkdown-str1b4250ca0eae.html 
+#> /opt/hostedtoolcache/pandoc/3.1.11/x64/pandoc +RTS -K512m -RTS index.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /home/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/anchor-sections.lua --metadata-file /tmp/RtmpMUUrUC/file1b2d353d5eb0 --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/runner/work/_temp/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header /tmp/RtmpMUUrUC/rmarkdown-str1b2d2e19870a.html 
 #> 
-#> Output created: gitbook-for-git2r-1b423a8829f6.html
+#> Output created: gitbook-for-git2r-1b2d7c740f72.html
 if (FALSE) { # \dontrun{
 # Open the book
   browseURL(res)
@@ -95,9 +95,9 @@ if (rmarkdown::pandoc_available("2.0.0")) {
 #> processing file: index.Rmd
 #> 1/1
 #> output file: index.knit.md
-#> /opt/hostedtoolcache/pandoc/3.1.11/x64/pandoc +RTS -K512m -RTS index.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /home/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/anchor-sections.lua --metadata-file /tmp/RtmpmXmSQL/file1b42b0c9f14 --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/runner/work/_temp/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header /tmp/RtmpmXmSQL/rmarkdown-str1b4238c1a19c.html 
+#> /opt/hostedtoolcache/pandoc/3.1.11/x64/pandoc +RTS -K512m -RTS index.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /home/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/anchor-sections.lua --metadata-file /tmp/RtmpMUUrUC/file1b2d2ab70bac --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/runner/work/_temp/Library/bookdown/templates/gitbook.html --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header /tmp/RtmpMUUrUC/rmarkdown-str1b2d4944392.html 
 #> 
-#> Output created: gitbook-for-git2r-1b423a8829f6.html
+#> Output created: gitbook-for-git2r-1b2d7c740f72.html
 if (FALSE) { # \dontrun{
 # Open the book
   browseURL(res)
