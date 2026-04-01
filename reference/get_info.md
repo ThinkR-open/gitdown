@@ -47,10 +47,10 @@ get_info(list.files(repo)[1], repo = repo)
 #> 
 #> $first_modif
 #>                     first 
-#> "2026-03-25 02:05:07 UTC" 
+#> "2026-04-01 02:29:33 UTC" 
 #> 
 #> $last_modif
 #>                      last 
-#> "2026-03-25 02:05:07 UTC" 
+#> "2026-04-01 02:29:33 UTC" 
 #> 
 ```
