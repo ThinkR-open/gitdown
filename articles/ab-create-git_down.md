@@ -43,10 +43,10 @@ get_commits_tags(repo, ref = "main")
 #> # A tibble: 4 × 9
 #>   sha            summary message author email when                order tag.name
 #>   <chr>          <chr>   <chr>   <chr>  <chr> <dttm>              <int> <chr>   
-#> 1 335abbd69b009… Add NE… "Add N… Alice  alic… 2026-04-22 02:28:14     4 NA      
-#> 2 9e3374df3351f… Third … "Third… Alice  alic… 2026-04-22 02:28:14     3 v0.1    
-#> 3 16c875290f1fa… exampl… "examp… Alice  alic… 2026-04-22 02:28:14     2 v0.1    
-#> 4 02423952b27e8… First … "First… Alice  alic… 2026-04-22 02:28:14     1 v0.1    
+#> 1 ae4f71020e901… Add NE… "Add N… Alice  alic… 2026-04-29 02:46:26     4 NA      
+#> 2 7af26d4ce2e5c… Third … "Third… Alice  alic… 2026-04-29 02:46:26     3 v0.1    
+#> 3 ea78161d75f4b… exampl… "examp… Alice  alic… 2026-04-29 02:46:26     2 v0.1    
+#> 4 92e9d5c286fb8… First … "First… Alice  alic… 2026-04-29 02:46:26     1 v0.1    
 #> # ℹ 1 more variable: tag.message <chr>
 ```
 
@@ -59,13 +59,13 @@ get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "main")
 #> # A tibble: 7 × 12
 #>   sha            summary message author email when                order tag.name
 #>   <chr>          <chr>   <chr>   <chr>  <chr> <dttm>              <int> <chr>   
-#> 1 335abbd69b009… Add NE… "Add N… Alice  alic… 2026-04-22 02:28:14     4 NA      
-#> 2 335abbd69b009… Add NE… "Add N… Alice  alic… 2026-04-22 02:28:14     4 NA      
-#> 3 335abbd69b009… Add NE… "Add N… Alice  alic… 2026-04-22 02:28:14     4 NA      
-#> 4 9e3374df3351f… Third … "Third… Alice  alic… 2026-04-22 02:28:14     3 v0.1    
-#> 5 9e3374df3351f… Third … "Third… Alice  alic… 2026-04-22 02:28:14     3 v0.1    
-#> 6 16c875290f1fa… exampl… "examp… Alice  alic… 2026-04-22 02:28:14     2 v0.1    
-#> 7 02423952b27e8… First … "First… Alice  alic… 2026-04-22 02:28:14     1 v0.1    
+#> 1 ae4f71020e901… Add NE… "Add N… Alice  alic… 2026-04-29 02:46:26     4 NA      
+#> 2 ae4f71020e901… Add NE… "Add N… Alice  alic… 2026-04-29 02:46:26     4 NA      
+#> 3 ae4f71020e901… Add NE… "Add N… Alice  alic… 2026-04-29 02:46:26     4 NA      
+#> 4 7af26d4ce2e5c… Third … "Third… Alice  alic… 2026-04-29 02:46:26     3 v0.1    
+#> 5 7af26d4ce2e5c… Third … "Third… Alice  alic… 2026-04-29 02:46:26     3 v0.1    
+#> 6 ea78161d75f4b… exampl… "examp… Alice  alic… 2026-04-29 02:46:26     2 v0.1    
+#> 7 92e9d5c286fb8… First … "First… Alice  alic… 2026-04-29 02:46:26     1 v0.1    
 #> # ℹ 4 more variables: tag.message <chr>, pattern.type <chr>,
 #> #   pattern.content <chr>, pattern.title <chr>
 ```
@@ -84,6 +84,6 @@ With this example, the vignette will show this content:
 
 | File        | Tracked in git | Date of creation    | Last modification   |
 |:------------|:---------------|:--------------------|:--------------------|
-| NEWS.md     | Yes            | 2026-04-22 02:28:14 | 2026-04-22 02:28:14 |
-| example.txt | Yes            | 2026-04-22 02:28:14 | 2026-04-22 02:28:14 |
-| R/my_mean.R | No             | NA                  | 2026-04-22 02:28:14 |
+| NEWS.md     | Yes            | 2026-04-29 02:46:26 | 2026-04-29 02:46:26 |
+| example.txt | Yes            | 2026-04-29 02:46:26 | 2026-04-29 02:46:26 |
+| R/my_mean.R | No             | NA                  | 2026-04-29 02:46:26 |
