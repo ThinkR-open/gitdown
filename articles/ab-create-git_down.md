@@ -10,6 +10,7 @@ temporary directory
 - A commit is associated with a tag
 
 ``` r
+
 repo <- fake_repo()
 ```
 
@@ -25,6 +26,7 @@ software, you can also create the gitbook associated like using `ticket`
 as in the example below.
 
 ``` r
+
 git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"))
 ```
 
@@ -38,15 +40,16 @@ used to build the book with some exported functions.
 - Find all commits of a branch and associate with tags recursively
 
 ``` r
+
 get_commits_tags(repo, ref = "main")
 #> 4 commits found.
 #> # A tibble: 4 × 9
 #>   sha            summary message author email when                order tag.name
 #>   <chr>          <chr>   <chr>   <chr>  <chr> <dttm>              <int> <chr>   
-#> 1 ae4f71020e901… Add NE… "Add N… Alice  alic… 2026-04-29 02:46:26     4 NA      
-#> 2 7af26d4ce2e5c… Third … "Third… Alice  alic… 2026-04-29 02:46:26     3 v0.1    
-#> 3 ea78161d75f4b… exampl… "examp… Alice  alic… 2026-04-29 02:46:26     2 v0.1    
-#> 4 92e9d5c286fb8… First … "First… Alice  alic… 2026-04-29 02:46:26     1 v0.1    
+#> 1 cc2f7dfa2cb22… Add NE… "Add N… Alice  alic… 2026-05-06 02:47:20     4 NA      
+#> 2 21205f5ae5630… Third … "Third… Alice  alic… 2026-05-06 02:47:20     3 v0.1    
+#> 3 fc118997bc629… exampl… "examp… Alice  alic… 2026-05-06 02:47:20     2 v0.1    
+#> 4 9e722674ba588… First … "First… Alice  alic… 2026-05-06 02:47:20     1 v0.1    
 #> # ℹ 1 more variable: tag.message <chr>
 ```
 
@@ -54,18 +57,19 @@ get_commits_tags(repo, ref = "main")
   - Here we find commits mentioning an issue with `#123`
 
 ``` r
+
 get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "main")
 #> 4 commits found.
 #> # A tibble: 7 × 12
 #>   sha            summary message author email when                order tag.name
 #>   <chr>          <chr>   <chr>   <chr>  <chr> <dttm>              <int> <chr>   
-#> 1 ae4f71020e901… Add NE… "Add N… Alice  alic… 2026-04-29 02:46:26     4 NA      
-#> 2 ae4f71020e901… Add NE… "Add N… Alice  alic… 2026-04-29 02:46:26     4 NA      
-#> 3 ae4f71020e901… Add NE… "Add N… Alice  alic… 2026-04-29 02:46:26     4 NA      
-#> 4 7af26d4ce2e5c… Third … "Third… Alice  alic… 2026-04-29 02:46:26     3 v0.1    
-#> 5 7af26d4ce2e5c… Third … "Third… Alice  alic… 2026-04-29 02:46:26     3 v0.1    
-#> 6 ea78161d75f4b… exampl… "examp… Alice  alic… 2026-04-29 02:46:26     2 v0.1    
-#> 7 92e9d5c286fb8… First … "First… Alice  alic… 2026-04-29 02:46:26     1 v0.1    
+#> 1 cc2f7dfa2cb22… Add NE… "Add N… Alice  alic… 2026-05-06 02:47:20     4 NA      
+#> 2 cc2f7dfa2cb22… Add NE… "Add N… Alice  alic… 2026-05-06 02:47:20     4 NA      
+#> 3 cc2f7dfa2cb22… Add NE… "Add N… Alice  alic… 2026-05-06 02:47:20     4 NA      
+#> 4 21205f5ae5630… Third … "Third… Alice  alic… 2026-05-06 02:47:20     3 v0.1    
+#> 5 21205f5ae5630… Third … "Third… Alice  alic… 2026-05-06 02:47:20     3 v0.1    
+#> 6 fc118997bc629… exampl… "examp… Alice  alic… 2026-05-06 02:47:20     2 v0.1    
+#> 7 9e722674ba588… First … "First… Alice  alic… 2026-05-06 02:47:20     1 v0.1    
 #> # ℹ 4 more variables: tag.message <chr>, pattern.type <chr>,
 #> #   pattern.content <chr>, pattern.title <chr>
 ```
@@ -73,6 +77,7 @@ get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "main")
 ## Create a vignette that lists all files with date of modification
 
 ``` r
+
 repo_pkg <- fake_repo(as.package = TRUE)
 # List only files in R/ directory
 create_vignette_last_modif(repo_pkg)
@@ -84,6 +89,6 @@ With this example, the vignette will show this content:
 
 | File        | Tracked in git | Date of creation    | Last modification   |
 |:------------|:---------------|:--------------------|:--------------------|
-| NEWS.md     | Yes            | 2026-04-29 02:46:26 | 2026-04-29 02:46:26 |
-| example.txt | Yes            | 2026-04-29 02:46:26 | 2026-04-29 02:46:26 |
-| R/my_mean.R | No             | NA                  | 2026-04-29 02:46:26 |
+| NEWS.md     | Yes            | 2026-05-06 02:47:21 | 2026-05-06 02:47:21 |
+| example.txt | Yes            | 2026-05-06 02:47:21 | 2026-05-06 02:47:21 |
+| R/my_mean.R | No             | NA                  | 2026-05-06 02:47:21 |

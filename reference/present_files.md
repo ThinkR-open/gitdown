@@ -38,5 +38,5 @@ repo <- fake_repo(as.package = TRUE)
 cat(present_files(repo))
 #> |File        |Tracked in git |Date of creation |Last modification   |  
 #> |:-----------|:--------------|:----------------|:-------------------|  
-#> |R/my_mean.R |No             |NA               |2026-04-29 02:46:24 |
+#> |R/my_mean.R |No             |NA               |2026-05-06 02:47:19 |
 ```

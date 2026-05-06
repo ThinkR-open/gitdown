@@ -14,12 +14,14 @@ Full documentation on {pkgdown} site :
 You can install the stable version of {gitdown} from CRAN:
 
 ``` r
+
 install.packages("gitdown")
 ```
 
 You can install the last version of {gitdown} from GitHub:
 
 ``` r
+
 remotes::install_github("ThinkR-open/gitdown")
 ```
 
@@ -33,6 +35,7 @@ temporary directory
 - A commit is associated with a tag
 
 ``` r
+
 library(dplyr)
 library(gitdown)
 ## Create fake repository for the example
@@ -51,6 +54,7 @@ software, you can also create the gitbook associated like using `ticket`
 as in the example below.
 
 ``` r
+
 git_down(repo, pattern = c("Tickets" = "ticket[[:digit:]]+",
                            "Issues" = "#[[:digit:]]+"))
 ```
@@ -66,6 +70,7 @@ issues and make a summary report of your
 commits”](https://rtask.thinkr.fr/download-gitlab-or-github-issues-and-make-a-summary-report-of-your-commits/).*
 
 ``` r
+
 # With table of correspondence
 pattern.table <- data.frame(
   number = c("#2", "#1", "#1000"),
@@ -93,6 +98,7 @@ followed by at least one number: `"#[[:digit:]]+"`. Variable
 `pattern.content` lists patterns found in the commit messages.
 
 ``` r
+
 get_commits_pattern(repo, pattern = "#[[:digit:]]+", ref = "main") %>% 
   select(pattern.content, everything())
 #> 4 commits found.
@@ -114,6 +120,7 @@ Get commits with issues and specific home-made pattern. Use a named
 vector to properly separate types of patterns.
 
 ``` r
+
 get_commits_pattern(
   repo, 
   pattern =  c("Tickets" = "ticket[[:digit:]]+", "Issues" = "#[[:digit:]]+"),
@@ -143,6 +150,7 @@ get_commits_pattern(
 ## Create a vignette that lists all files with date of modification
 
 ``` r
+
 repo_pkg <- fake_repo(as.package = TRUE)
 # List only files in R/ directory
 create_vignette_last_modif(repo_pkg)
