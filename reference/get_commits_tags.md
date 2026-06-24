@@ -61,9 +61,9 @@ get_commits_tags(repo = repo)
 #> # A tibble: 4 × 9
 #>   sha            summary message author email when                order tag.name
 #>   <chr>          <chr>   <chr>   <chr>  <chr> <dttm>              <int> <chr>   
-#> 1 2dc879655f00b… Add NE… "Add N… Alice  alic… 2026-06-17 03:58:37     4 NA      
-#> 2 dc7959642f9a9… Third … "Third… Alice  alic… 2026-06-17 03:58:37     3 v0.1    
-#> 3 6907250c16a16… exampl… "examp… Alice  alic… 2026-06-17 03:58:37     2 v0.1    
-#> 4 beb5e11d41601… First … "First… Alice  alic… 2026-06-17 03:58:37     1 v0.1    
+#> 1 307b806ee52d3… Add NE… "Add N… Alice  alic… 2026-06-24 03:27:46     4 NA      
+#> 2 d08228c4d7aa5… Third … "Third… Alice  alic… 2026-06-24 03:27:46     3 v0.1    
+#> 3 c7ec8d6d1cab5… exampl… "examp… Alice  alic… 2026-06-24 03:27:46     2 v0.1    
+#> 4 d280ce85ccbb5… First … "First… Alice  alic… 2026-06-24 03:27:46     1 v0.1    
 #> # ℹ 1 more variable: tag.message <chr>
 ```
