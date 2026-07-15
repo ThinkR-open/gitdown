@@ -30,8 +30,8 @@ Fake repository contains a few files with an initiated git repository.
 ``` r
 # Fake repository with git
 fake_repo()
-#> [1] "/tmp/RtmpnpFz5G/git2r-19fe20bd5ae0"
+#> [1] "/tmp/RtmpPx16Lv/git2r-1a0253c184f1"
 # Fake repository that looks like package with git
 fake_repo(as.package = TRUE)
-#> [1] "/tmp/RtmpnpFz5G/git2r-19fe4414b93c"
+#> [1] "/tmp/RtmpPx16Lv/git2r-1a02338f4b6f"
 ```

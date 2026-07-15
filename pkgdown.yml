@@ -1,6 +1,6 @@
 pandoc: 3.8.3
-pkgdown: 2.2.0
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   ab-create-git_down: ab-create-git_down.html
-last_built: 2026-07-08T02:31Z
+last_built: 2026-07-15T02:13Z
