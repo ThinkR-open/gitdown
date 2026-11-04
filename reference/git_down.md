@@ -75,9 +75,9 @@ if (rmarkdown::pandoc_available("2.0.0")) {
 #> processing file: index.Rmd
 #> 1/1
 #> output file: index.knit.md
-#> /opt/hostedtoolcache/pandoc/3.8.3/x64/pandoc +RTS -K512m -RTS index.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /home/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/table-classes.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/anchor-sections.lua --metadata-file /tmp/Rtmp69QIYY/file18c215c377a0 --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/runner/work/_temp/Library/bookdown/templates/gitbook.html --syntax-highlighting pygments --number-sections --css style.css --mathjax --include-in-header /tmp/Rtmp69QIYY/rmarkdown-str18c218b8863c.html 
+#> /opt/hostedtoolcache/pandoc/3.8.3/x64/pandoc +RTS -K512m -RTS index.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /home/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/table-classes.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/anchor-sections.lua --metadata-file /tmp/RtmpxNNBy8/file19455c602974 --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/runner/work/_temp/Library/bookdown/templates/gitbook.html --syntax-highlighting pygments --number-sections --css style.css --mathjax --include-in-header /tmp/RtmpxNNBy8/rmarkdown-str1945401540e2.html 
 #> 
-#> Output created: gitbook-for-git2r-18c2390cc774.html
+#> Output created: gitbook-for-git2r-194529cc8ffc.html
 if (FALSE) { # \dontrun{
 # Open the book
   browseURL(res)
@@ -95,9 +95,9 @@ if (rmarkdown::pandoc_available("2.0.0")) {
 #> processing file: index.Rmd
 #> 1/1
 #> output file: index.knit.md
-#> /opt/hostedtoolcache/pandoc/3.8.3/x64/pandoc +RTS -K512m -RTS index.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /home/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/table-classes.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/anchor-sections.lua --metadata-file /tmp/Rtmp69QIYY/file18c25de8e017 --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/runner/work/_temp/Library/bookdown/templates/gitbook.html --syntax-highlighting pygments --number-sections --css style.css --mathjax --include-in-header /tmp/Rtmp69QIYY/rmarkdown-str18c29d20ecf.html 
+#> /opt/hostedtoolcache/pandoc/3.8.3/x64/pandoc +RTS -K512m -RTS index.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output index.html --lua-filter /home/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/table-classes.lua --lua-filter /home/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/anchor-sections.lua --metadata-file /tmp/RtmpxNNBy8/file19457d1e240b --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/runner/work/_temp/Library/bookdown/templates/gitbook.html --syntax-highlighting pygments --number-sections --css style.css --mathjax --include-in-header /tmp/RtmpxNNBy8/rmarkdown-str1945242a083a.html 
 #> 
-#> Output created: gitbook-for-git2r-18c2390cc774.html
+#> Output created: gitbook-for-git2r-194529cc8ffc.html
 if (FALSE) { # \dontrun{
 # Open the book
   browseURL(res)
